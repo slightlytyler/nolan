@@ -1,0 +1,227 @@
+/* ******************************************** */
+/* Home page */
+/* ******************************************** */
+.slider_section
+	+bg(#000)
+	+rel
+	z-index: 500
+	.slides, .flexslider
+		+bg(image-url("slide_bg.jpg") no-repeat 100% 0)
+	.slide_wrapper
+		+container
+		+rel
+		height: 332px
+		overflow: hidden
+		.slide1_title
+			+hex(#fff)
+			+fs(26px)
+			+lh(31px)
+			+ChronicleSI
+			+italic
+			+bold
+			+abs_tl(162px,62px)
+			width: 470px
+			z-index: 200
+		.slide_img
+			+abs_tr(0,33px)
+			z-index: 100
+.menu1_section
+	+bg(#003161)
+	.menu1
+		+float-left
+		padding: 0px 0px 0px 27px
+		li
+			+float-left
+			+m_r(45px)
+			padding: 11px 0
+			a
+				+fs(14px)
+				+hex(#fff)
+				+trajan
+.info_title
+	+fs(20px)
+	+hex(515151)
+	+trajan
+	border-bottom: 1px solid #dbdbdb
+	padding: 10px
+	+m_b(9px)
+	h3
+		+bg(image-url("icons/info_title_icon.png") no-repeat 0 0)
+		width: 620px
+		margin: 0 auto
+		padding: 0 0 0 45px
+.info_section
+	+rel	
+	min-height: 310px
+	.info_news
+		+span-columns(6,12)
+		.info_news_title
+			+fs(22px)
+			+hex(#515151)
+			+p_l(35px)
+			+bold
+			+italic
+			+ChronicleSI
+			+m_b(15px)
+			+m_t(9px)
+		.media
+			+m_t(0)
+			+m_l(35px)
+			+m_b(25px)
+		.media-heading, .media-heading a
+			+hex(#2b7bc9)
+			+fs(14px)
+			+ChronicleB
+			margin: 0
+		.news_date
+			+ChronicleI
+			+fs(11px)
+			+hex(#353535)
+	.info_video
+		+span-columns(6 omega,12)
+		// +abs_tr(0,0)
+		iframe
+			width: 100%
+			height: 245px
+		.info_video_wrapprer
+			+m_t(9px)
+			+bg(#eeeeee)
+			padding: 5px
+			+border-radius(3px)
+			+box-shadow(0 1px 2px rgba(0, 0, 0, 0.4))
+		
+.calendar_section
+	+container
+	+rel
+.home
+	.calendar_box
+		+abs_tr(0,46px)
+.calendar_box
+	width: 304px
+.calendar_head
+	border-top: 3px solid #2b7bc9
+	+bg(#003161)
+	+hex(#fff)
+	+fs(18px)
+	+trajan
+	+centered
+	min-height: 34px
+	+p_t(18px)
+	letter-spacing: 5px
+	h4
+		margin: 0
+.calendar_body
+	padding: 0 10px
+	+bg(#003161)
+	.calendar_content
+		+bg(#fff)
+		padding: 10px
+		.media
+			border-bottom: 1px solid #e7e7e7
+			+m_t(0)
+			+m_b(15px)
+			+p_b(13px)
+			&:last-child
+				border-bottom: none
+			.pull-left
+				+m_r(13px)
+		.date_bg
+			+sprite_css(date_bg)
+			.month
+				font-family: Arial
+				+bold
+				+fs(11px)
+				+lh(16px)
+				+centered
+				+hex(#fff)
+				+block
+				+upper
+				height: 16px
+				overflow: hidden
+			.day
+				@extend .month
+				+fs(24px)
+				+lh(28px)
+				+centered
+				+hex(#003161)
+				height: 28px
+		.media-body
+			+ChronicleI
+			+fs(11px)
+			+hex(#353535)
+		.media-heading, .media-heading a
+			+hex(#2b7bc9)
+			+fs(14px)
+			+ChronicleB
+			margin: 0
+.calendar_footer
+	+bg(image-url("calendar_footer.png") no-repeat 0 0)
+	+wxh(304px, 108px)
+	a
+		+block
+		+hex(#67a3dd)
+		+upper
+		+fs(12px)
+		+ChronicleBI
+		+centered
+		+p_t(8px)
+
+.mission_section
+	.mission_head
+		+bg(#545454)
+	.mission_title
+		+span-columns(8,12)	
+		min-height: 55px
+		+rel
+		.mission_arrow
+			+sprite_css(mission_arrow)
+			+abs_tl(45px, 50%)
+			+m_l(-44px)
+		h3
+			+trajan
+			+fs(20px)
+			+bold
+			+hex(#d4d3d3)
+			+centered
+			+m_b(0)
+	.mission_body
+		+bg(#3e3e3e)
+		min-height: 177px
+		+p_t(15px)
+	.mission_txt
+		+span-columns(8,12)
+		+bg(image-url("nchs_watermark_big.png") no-repeat 50% 23px)
+		+Chronicle
+		+fs(13px)
+		+lh(22px)
+		+hex(#fff)
+		p
+			+p_l(64px)
+			+p_r(30px)
+		.blue_btn
+			width: 125px
+			display: block
+			margin: 16px auto 16px auto
+.promo_section
+	+span-columns(8,12)
+.promo_card
+	+bg(#fff)
+	width: 285px
+	margin: 27px 15px 15px 8px
+	+float-left
+	border: 1px solid #d8d8d8
+	+box-shadow(0 1px 2px rgba(0, 0, 0, 0.4))
+	.promo_img
+		padding-top: 15px
+		+centered
+	.promo_title
+		+fs(18px)
+		+ChronicleBI
+		padding: 15px 15px 5px 15px
+	.promo_msg
+		padding: 0 15px 15px 15px
+		+Chronicle
+		.blue_btn
+			display: block
+			margin: 27px auto 13px auto
+			width: 125px

@@ -1,0 +1,27 @@
+.page
+	.logo
+		%a{:href => "/", :title=>"Site name"} 
+	%a.home_link{:href => "/"}
+	.main_menu_btn Menu
+	%nav.main_menu
+		%li.active 
+			%a{:href => "#"}  Viking Parents
+		%li 
+			%a{:href => "#"}  Current Vikings
+		%li 
+			%a{:href => "#"}  Alumni
+		%li 
+			%a{:href => "#"}  Communication
+		%li 
+			%a{:href => "#"}  Quick Links
+	.right_side
+		.social_box
+			.facebook
+			.twitter
+			.google
+			.pinterest
+			.clear
+		%form.search_form.form-inline{:action=>"#", :method=>"post"}
+			%input.search-field.input-medium{:placeholder => "Search our site", :value => "Search our site", :type => "text"}/
+			%button.btn-search{:type => "submit"}
+		.clear

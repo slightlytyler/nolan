@@ -1,0 +1,134 @@
+/* ******************************************** */
+/* Resonsive  */
+/* ******************************************** */
+@media (min-width: 1200px)
+
+@media (max-width: 979px) 
+	.info_section
+		.info_video
+			float: none
+			margin: 0 auto 
+		.info_news
+			+span-columns(12,12)
+	.mission_section
+		.mission_title
+			+span-columns(6,12)	
+		.mission_txt
+			+span-columns(6,12)
+	.blog_wrapper
+		+span-columns(6,12)
+	.right_sidebar
+		+float-right
+		width: 310px
+	.athletics
+		.right_sidebar
+			+rel
+			float: none
+			display: block
+			margin: 0 auto 0px auto 
+		.blog_wrapper, .top_title_mod
+			+span-columns(12,12)	
+		.best_player_box, .team_box
+			float: none
+			display: block
+			margin: 0 auto 20px auto
+@media (max-width: 700px)
+	.blog_section,.right_sidebar
+		flot: none
+		width: 100%
+	.mission_section
+		.mission_title
+			+span-columns(4,12)	
+		.mission_txt
+			+span-columns(4,12)	
+			p
+				padding-left: 4em
+				padding-right: 1em
+	.calendar_box, .home .calendar_box
+		+rel
+		right: 0
+		margin: 0 auto 30px auto
+	.athletics
+		.right_sidebar
+			+rel
+			float: none
+			display: block
+			margin: 0 auto 0px auto 
+		.blog_wrapper
+			+span-columns(12,12)	
+		.best_player_box, .team_box
+			float: none
+			display: block
+			margin: 0 auto 20px auto
+	.interior, .athletics 
+		.info_title, .page_header_box
+			display: block
+	.info_title
+		h3
+			width: auto
+			+fs(12px)
+			+lh(18px)
+			margin: 0 0 0 120px
+			+bg(image-url("icons/info_title_icon_small.png") no-repeat 0 0px)
+			padding: 5px 0px 5px 35px
+	.mission_section
+		.mission_title
+			+span-columns(12,12)	
+		.mission_txt
+			+span-columns(12,12)
+	.promo_section
+		+span-columns(12,12)
+	.promo_card
+		width: 100%
+		margin: 15px auto 15px auto
+		float: none
+		+block
+	footer
+		.left_widget
+			width: 100%
+			border: none
+		.mid_widget
+			display: none
+		.right_widget
+			+float-left
+			width: 100%
+			border: none
+	.slider_section
+		display: none
+	.menu1_section
+		display: none
+	header
+		height: 38px
+		.logo
+			width: 130px
+			a
+				+hex(0096da)
+				+sprite_css(logo_small)
+		.home_link
+			+abs_tr(0px, 150px)
+		.main_menu_btn
+			display: block
+			+hex(#0081ff)
+			+fs(18px)
+			font-fanily: Arial
+			border-left: 1px solid #0081ff
+			padding: 5px 45px 5px 20px
+			+abs_tr(4px, 5px)
+			width: 60px
+			height: 20px
+			+bg(image-url("icons/main_menu_btn.png") no-repeat 100% 0px)
+		.main_menu
+			+abs_tr(35px, 0px)
+			+bg(#003161)
+			z-index: 500
+			display: none
+			li
+				float: none
+				display: block
+				margin: 20px  15px
+				a
+					+fs(18px)
+					+upper
+		.right_side
+			display: none
+@media (max-width: 480px)

@@ -1,0 +1,30 @@
+.page
+	.left_widget
+		.contact_us_box
+			.footer_title Contact Us
+			.contact_us_text
+				Nolan Catholic High School
+				%br/ 
+				4501 Bridge Street, Fort Worth, Texas 76103-1198 
+			%a.contact_us_email{:href => "mailto:email@gmail.com"} Send an Email
+			.contact_us_phone 817.457.2920 
+
+	.right_widget
+		.copyrights_box
+			2013 Nolan Catholic High School
+			%br/ 
+			All Rights Reserved. 
+			%br/ 
+			%a{:href => "#"} Privacy Policy   
+			%span.copyrights_box_divider |   
+			%a{:href => "#"}Terms of Use
+			.clear
+
+	.mid_widget
+		.subscribe_box
+			.footer_title Be on our mailing list
+			.subscribe_text
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+			%form.subscribe_form_footer.form-inline{:action=>"#", :method=>"post"}
+				%input.subscribe_field.input-medium{:placeholder => "", :value => "", :type => "text"}/
+				%button.btn-search.black_btn{:type => "submit"} Sign Up

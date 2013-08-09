@@ -1,0 +1,58 @@
+/* ******************************************** */
+/* Header */
+/* ******************************************** */
+header
+	+bg(#003161)
+/* Logo */
+.logo
+	+wxh(191px, 30px)
+	+float-left
+	a 
+		+abs_tl(-19px,0)
+		+sprite_css(logo)
+		+block
+		z-index: 1000
+.home_link
+	+sprite_css(home_link)
+	+block
+	+float-left
+	+m_t(10px)
+/* Main menu */	
+.main_menu_btn
+	display: none
+.main_menu 
+	+float-left
+	list-style: none
+	margin: 0 0 0 14px
+	li
+		+float-left
+		+m_t(8px)
+		+m_r(13px)
+	a
+		+hex(#d4e6f8)
+		+fs(12px)
+		&:hover, .active
+			+hex(#0081ff)
+			text-decoration: none
+header
+	.right_side
+		+float-right
+		.social_box
+			+float-left
+			+m_r(5px)
+			+m_t(10px)
+			div
+				+float-left
+				+m_r(4px)
+				+pointer
+		.search_form
+			+float-left
+			margin: 5px 17px 5px 0px
+			.search-field
+				height: 18px
+				+lh(18px)
+				+border-radius(0)
+			.btn-search
+				border: none
+				+m_t(3px)
+				+sprite_css(search)

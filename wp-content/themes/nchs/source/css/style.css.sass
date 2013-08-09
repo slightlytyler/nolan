@@ -1,0 +1,69 @@
+@import "compass"
+@import "compass/css3"
+@import "compass/utilities"
+
+@import "susy"
+$total-columns  : 12
+$column-width   : 60px
+$gutter-width   : 20px
+$container-width: 965px
+
+
+// Sass Variables
+@import 'elements/base'
+
+//   ==========================================
+//   primary styles
+//   ========================================== 
+/* ******************************************** */
+/* STYLE CONTENTS */
+/* ******************************************** */
+/* COMPASS SPRITES */
+/* FONTS */
+/* ELEMENTS */
+/* 	- Buttons */
+/* 	- Header */
+/* 	- Footer */
+/* PAGES */
+/* 	- for all pages */
+/* 	- Home */
+/* RESPONSIVE */
+/* ******************************************** */
+
+/* ******************************************** */
+/* Compass sprite, etc. */
+/* ******************************************** */
+// Sprites
+// Note: Name the folder with icons should be "icons". Also check this mixin +sprite_css in base.sass
+@import "icons/*.png" 
+
+// FONTS
+@import 'elements/fonts'
+
+// ELEMENTS
+// @import "elements/typography"
+@import "elements/buttons"
+@import "elements/header"
+@import "elements/footer"
+
+// PAGES
+@import "pages/main"
+@import "pages/home"
+@import "pages/interior"
+@import "pages/athletics"
+
+@import "elements/responsive"
+// Main compass css3 mixins
+
+//   +box-shadow(0 1px 3px rgba(0, 0, 0, 0.1)) --OR-- inset 0 1px 1px rgba(0, 0, 0, 0.075)
+//   +text-shadow (0 1px 1px rgba(255, 255, 255, 0.75))
+//   +border-radius(4px)
+//   +transition(all 0.5s ease)
+//	 +float-left()	
+//	 +float-right()	
+//   +clearfix()
+
+
+//   ==========================================
+//   END primary styles
+//   ============================================ */

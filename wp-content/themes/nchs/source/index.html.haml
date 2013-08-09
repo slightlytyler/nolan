@@ -1,0 +1,80 @@
+---
+title: 'Home'
+pageClassName: 'home'
+---
+/* ****************************** SLIDER ***************************
+.slider_section
+	=partial "/parts/slider"
+/* *************************8*** SECOND MENU ***********************
+.menu1_section
+	=partial "/parts/menu1"
+/* ***************************** PAGE CONTENT **********************
+.page
+	.info_title 
+		%h3 in the marIanist tradition since 1961
+	.info_section
+		.info_video
+			.info_video_wrapprer
+				%iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "http://player.vimeo.com/video/59438095?title=0&byline=0&portrait=0", :webkitallowfullscreen => ""}
+		.info_news
+			.info_news_title Latest News
+			-3.times do
+				.media
+					%a.pull-left{:href => "#"} 
+						=image_tag 'pic_1.jpg', :class=>"media-object"
+					.media-body
+						%h4.media-heading 
+							%a{:href => "#"} Fr. Richard Villa, S.M. Named President of the Year
+						.news_date Thu Aug 1
+		.clear
+.calendar_section
+	.calendar_box
+		.calendar_head
+			%h4 CALENDAR
+		.calendar_body
+			.calendar_content
+				-5.times do
+					.media
+						.pull-left
+							.date_bg
+								%span.month aug
+								%span.day 25
+						.media-body
+							%h4.media-heading Lorem Ipsum Dolor Sit Amet
+							Doskocil Stadium
+		.calendar_footer 
+			%a{:href => "#"} VIEW FULL CALENDAR
+.mission_section
+	.mission_head
+		.page
+			.mission_title
+				.mission_arrow
+				%h3 THE nolan catholic Mission
+	.mission_body
+		.page
+			.mission_txt
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+
+				%p 
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+				.blue_btn Read More   
+.page
+	.promo_section
+		.promo_card
+			.promo_img
+				=image_tag 'pic_2.jpg'
+			.promo_title Class of 2017  - Get your Blue On!
+			.promo_msg
+				Lorem ipsum dolor sit amet,sed do eiusmod tempor incididunt ut labore    
+				%a{:href => "#"} Click Here »
+		.promo_card
+			.promo_img
+				=image_tag 'pic_3.jpg'
+			.promo_title Become a Partner for Progress
+			.promo_msg
+				Lorem ipsum dolor sit amet,sed do eiusmod tempor incididunt ut labore   ea commodo    
+				%a.blue_btn{:href => "#"} Donate Now »
+		.clear
+
+
