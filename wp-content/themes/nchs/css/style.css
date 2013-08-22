@@ -1,0 +1,1415 @@
+/* ******************************************** */
+/* STYLE CONTENTS */
+/* ******************************************** */
+/* COMPASS SPRITES */
+/* FONTS */
+/* ELEMENTS */
+/* 	- Buttons */
+/* 	- Header */
+/* 	- Footer */
+/* PAGES */
+/* 	- for all pages */
+/* 	- Home */
+/* RESPONSIVE */
+/* ******************************************** */
+/* ******************************************** */
+/* Compass sprite, etc. */
+/* ******************************************** */
+/* line 202, icons/*.png */
+.icons-sprite, .logo a, .home_link, header .right_side .search_form .btn-search, .facebook, .twitter, .google, .pinterest, .calendar_body .calendar_content .date_bg, .mission_section .mission_title .mission_arrow, .coaches_section .flex-direction-nav .flex-prev, .coaches_section .flex-direction-nav .flex-next, .players_section .team_box .flex-direction-nav .flex-prev, .players_section .team_box .flex-direction-nav .flex-next, .right_sidebar .facebook_link, .right_sidebar .hchs_watermark_icon {
+  background: url("../img/icons-s7a865abd48.png") no-repeat; }
+
+/* ******************************************** */
+/* Fonts  */
+/* ******************************************** */
+@font-face {
+  font-family: "trajan_proregular";
+  src: url("../fonts/trajan-webfont.eot");
+  src: url("../fonts/trajan-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/trajan-webfont.woff") format("woff"), url("../fonts/trajan-webfont.ttf") format("truetype"), url("../fonts/trajan-webfont.svg#trajan_proregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "ChronicleTextG1BoldItalic";
+  src: url("../fonts/chronicletextg1-bolditalic.eot");
+  src: url("../fonts/chronicletextg1-bolditalic.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-bolditalic.woff") format("woff"), url("../fonts/chronicletextg1-bolditalic.ttf") format("truetype"), url("../fonts/chronicletextg1-bolditalic.svg#ChronicleTextG1BoldItalic") format("svg"); }
+
+@font-face {
+  font-family: "ChronicleTextG1BoldItalic";
+  src: url("../fonts/chronicletextg1-semiitalic.eot");
+  src: url("../fonts/chronicletextg1-semiitalic.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-semiitalic.woff") format("woff"), url("../fonts/chronicletextg1-semiitalic.ttf") format("truetype"), url("../fonts/chronicletextg1-semiitalic.svg#ChronicleTextG1SemiItalic") format("svg"); }
+
+@font-face {
+  font-family: "ChronicleTextG1Bold";
+  src: url("../fonts/chronicletextg1-bold.eot");
+  src: url("../fonts/chronicletextg1-bold.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-bold.woff") format("woff"), url("../fonts/chronicletextg1-bold.ttf") format("truetype"), url("../fonts/chronicletextg1-bold.svg#ChronicleTextG1Bold") format("svg"); }
+
+@font-face {
+  font-family: "ChronicleTextG1Roman";
+  src: url("../fonts/chronicletextg1-roman.eot");
+  src: url("../fonts/chronicletextg1-roman.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-roman.woff") format("woff"), url("../fonts/chronicletextg1-roman.ttf") format("truetype"), url("../fonts/chronicletextg1-roman.svg#ChronicleTextG1Roman") format("svg"); }
+
+@font-face {
+  font-family: "ChronicleTextG1Italic";
+  src: url("../fonts/chronicletextg1-italic.eot");
+  src: url("../fonts/chronicletextg1-italic.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-italic.woff") format("woff"), url("../fonts/chronicletextg1-italic.ttf") format("truetype"), url("../fonts/chronicletextg1-italic.svg#ChronicleTextG1Italic") format("svg"); }
+
+/* ******************************************** */
+/* Buttons */
+/* ******************************************** */
+/* line 5, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_buttons.sass */
+.blue_btn {
+  padding: 10px 25px 5px 25px;
+  display: inline;
+  background: #2b7bc9;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-family: "ChronicleTextG1BoldItalic";
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.46);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.46);
+  cursor: pointer; }
+  /* line 17, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_buttons.sass */
+  .blue_btn:hover {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2467ab), color-stop(100%, #2b7bc9));
+    background-image: -webkit-linear-gradient(#2467ab, #2b7bc9);
+    background-image: -moz-linear-gradient(#2467ab, #2b7bc9);
+    background-image: -o-linear-gradient(#2467ab, #2b7bc9);
+    background-image: linear-gradient(#2467ab, #2b7bc9);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    color: white;
+    text-decoration: none; }
+
+/* line 22, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_buttons.sass */
+.black_btn {
+  background: black;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  color: white;
+  font-family: "ChronicleTextG1BoldItalic";
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  padding: 9px 16px 7px 16px; }
+  /* line 32, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_buttons.sass */
+  .black_btn:hover {
+    background: #3d3d3d; }
+
+/* ******************************************** */
+/* Header */
+/* ******************************************** */
+/* line 5, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+header {
+  background: #003161; }
+
+/* Logo */
+/* line 8, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+.logo {
+  height: 30px;
+  width: 191px;
+  display: inline;
+  float: left; }
+  /* line 11, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+  .logo a {
+    left: 0;
+    top: -19px;
+    position: absolute;
+    background-position: 0 0;
+    height: 165px;
+    width: 197px;
+    display: block;
+    z-index: 1000; }
+
+/* line 16, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+.home_link {
+  background-position: 0 -1174px;
+  height: 14px;
+  width: 15px;
+  display: block;
+  display: inline;
+  float: left;
+  margin-top: 10px; }
+
+/* Main menu */
+/* line 22, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+.main_menu_btn {
+  display: none; }
+
+/* line 24, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+.main_menu {
+  display: inline;
+  float: left;
+  list-style: none;
+  margin: 0 0 0 14px; }
+  /* line 28, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+  .main_menu li {
+    display: inline;
+    float: left;
+    margin-top: 8px;
+    margin-right: 13px; }
+  /* line 32, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+  .main_menu a {
+    color: #d4e6f8;
+    font-size: 12px; }
+    /* line 35, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+    .main_menu a:hover, .main_menu a .active {
+      color: #0081ff;
+      text-decoration: none; }
+
+/* line 39, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+header .right_side {
+  display: inline;
+  float: right; }
+  /* line 41, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+  header .right_side .social_box {
+    display: inline;
+    float: left;
+    margin-right: 5px;
+    margin-top: 10px; }
+    /* line 45, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+    header .right_side .social_box div {
+      display: inline;
+      float: left;
+      margin-right: 4px;
+      cursor: pointer; }
+  /* line 49, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+  header .right_side .search_form {
+    display: inline;
+    float: left;
+    margin: 5px 17px 5px 0px; }
+    /* line 52, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+    header .right_side .search_form .search-field {
+      height: 18px;
+      line-height: 18px;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      -ms-border-radius: 0;
+      -o-border-radius: 0;
+      border-radius: 0; }
+    /* line 56, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_header.sass */
+    header .right_side .search_form .btn-search {
+      border: none;
+      margin-top: 3px;
+      background-position: 0 -1154px;
+      height: 20px;
+      width: 21px; }
+
+/* ******************************************** */
+/* Footer */
+/* ******************************************** */
+/* line 5, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+footer {
+  background: #d9d9d9;
+  border-top: 1px solid #b4b4b4;
+  margin-top: 75px;
+  padding: 25px 0;
+  font-family: arial; }
+  /* line 11, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+  footer .footer_title {
+    color: #797979;
+    font-family: "ChronicleTextG1BoldItalic";
+    font-size: 22px; }
+  /* line 15, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+  footer .left_widget {
+    display: inline;
+    float: left;
+    border-right: 1px solid #bdbdbd;
+    width: 32%; }
+    /* line 19, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+    footer .left_widget .contact_us_box {
+      font-size: 11px;
+      line-height: 20px;
+      padding: 4px 1em 0 1em; }
+      /* line 23, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .left_widget .contact_us_box .contact_us_text {
+        padding-top: 7px; }
+      /* line 25, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .left_widget .contact_us_box .contact_us_email {
+        background: url("../img/icons/chat.png") no-repeat 100% 6px;
+        display: inline;
+        float: left;
+        color: #787878;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 35px 0 0;
+        margin-right: 13px; }
+      /* line 33, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .left_widget .contact_us_box .contact_us_phone {
+        background: url("../img/icons/call.png") no-repeat 100% 6px;
+        display: inline;
+        float: left;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 31px 0 0px; }
+  /* line 40, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+  footer .mid_widget {
+    border-right: 1px solid #bdbdbd;
+    margin: 0 33%; }
+    /* line 43, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+    footer .mid_widget .subscribe_box {
+      padding: 0 1em; }
+      /* line 45, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .mid_widget .subscribe_box .subscribe_text {
+        padding-top: 10px;
+        margin-bottom: 6px; }
+      /* line 49, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .mid_widget .subscribe_box .subscribe_form_footer .subscribe_field {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+        border-radius: 0;
+        width: 170px;
+        margin-right: 15px;
+        margin-top: 15px; }
+      /* line 54, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .mid_widget .subscribe_box .subscribe_form_footer .black_btn {
+        margin-top: 15px; }
+  /* line 56, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+  footer .right_widget {
+    display: inline;
+    float: right;
+    width: 32%; }
+    /* line 59, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+    footer .right_widget .copyrights_box {
+      padding-top: 8px;
+      color: #959595;
+      padding: 8px 1em 0 1em; }
+      /* line 63, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .right_widget .copyrights_box .copyrights_box_divider {
+        display: inline;
+        float: left;
+        background: #959595;
+        height: 11px;
+        width: 1px;
+        margin: 5px 9px 0px 9px; }
+      /* line 68, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+      footer .right_widget .copyrights_box a {
+        display: inline;
+        float: left;
+        color: #959595; }
+        /* line 71, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_footer.sass */
+        footer .right_widget .copyrights_box a:hover {
+          color: #959595; }
+
+/* Main styles (Global styles for all pages) */
+/* line 3, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+body {
+  font-size: Arial, sans-serif;
+  color: #515151;
+  font-size: 12px; }
+
+/* line 7, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.page {
+  *zoom: 1;
+  max-width: 965px;
+  _width: 965px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative; }
+  /* line 38, /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  .page:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+/* Helpers */
+/* line 11, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.fleft {
+  display: inline;
+  float: left; }
+
+/* line 13, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.fright {
+  display: inline;
+  float: right; }
+
+/* line 15, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.clear {
+  clear: both;
+  font-size: 1px;
+  height: 0px; }
+
+/* Icons */
+/* line 20, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.facebook {
+  background-position: 0 -430px;
+  height: 19px;
+  width: 19px; }
+
+/* line 22, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.twitter {
+  background-position: 0 -468px;
+  height: 18px;
+  width: 18px; }
+
+/* line 24, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.google {
+  background-position: 0 -411px;
+  height: 19px;
+  width: 18px; }
+
+/* line 26, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_main.sass */
+.pinterest {
+  background-position: 0 -449px;
+  height: 19px;
+  width: 19px; }
+
+/* ******************************************** */
+/* Home page */
+/* ******************************************** */
+/* line 5, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.slider_section {
+  background: black;
+  position: relative;
+  z-index: 500; }
+  /* line 9, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .slider_section .slides, .slider_section .flexslider {
+    background: url("../img/slide_bg.jpg") no-repeat 100% 0; }
+  /* line 11, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .slider_section .slide_wrapper {
+    *zoom: 1;
+    max-width: 965px;
+    _width: 965px;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    height: 332px;
+    overflow: hidden; }
+    /* line 38, /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+    .slider_section .slide_wrapper:after {
+      content: "";
+      display: table;
+      clear: both; }
+    /* line 16, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .slider_section .slide_wrapper .slide1_title {
+      color: white;
+      font-size: 26px;
+      line-height: 31px;
+      font-family: "ChronicleTextG1SemiItalic";
+      font-style: italic;
+      font-weight: bold;
+      left: 62px;
+      top: 162px;
+      position: absolute;
+      width: 470px;
+      z-index: 200; }
+    /* line 26, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .slider_section .slide_wrapper .slide_img {
+      top: 0;
+      right: 33px;
+      position: absolute;
+      z-index: 100; }
+
+/* line 29, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.menu1_section {
+  background: #003161; }
+  /* line 31, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .menu1_section .menu1 {
+    display: inline;
+    float: left;
+    padding: 0px 0px 0px 27px; }
+    /* line 34, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .menu1_section .menu1 li {
+      display: inline;
+      float: left;
+      margin-right: 45px;
+      padding: 11px 0; }
+      /* line 38, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+      .menu1_section .menu1 li a {
+        font-size: 14px;
+        color: white;
+        font-family: "trajan_proregular"; }
+
+/* line 42, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.info_title {
+  font-size: 20px;
+  color: 515151;
+  font-family: "trajan_proregular";
+  border-bottom: 1px solid #dbdbdb;
+  padding: 10px;
+  margin-bottom: 9px; }
+  /* line 49, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .info_title h3 {
+    background: url("../img/icons/info_title_icon.png") no-repeat 0 0;
+    width: 620px;
+    margin: 0 auto;
+    padding: 0 0 0 45px; }
+
+/* line 54, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.info_section {
+  position: relative;
+  min-height: 310px; }
+  /* line 57, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .info_section .info_news {
+    width: 48.93617%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+    /* line 59, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .info_section .info_news .info_news_title {
+      font-size: 22px;
+      color: #515151;
+      padding-left: 35px;
+      font-weight: bold;
+      font-style: italic;
+      font-family: "ChronicleTextG1SemiItalic";
+      margin-bottom: 15px;
+      margin-top: 9px; }
+    /* line 68, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .info_section .info_news .media {
+      margin-top: 0;
+      margin-left: 35px;
+      margin-bottom: 25px; }
+    /* line 72, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .info_section .info_news .media-heading, .info_section .info_news .media-heading a {
+      color: #2b7bc9;
+      font-size: 14px;
+      font-family: "ChronicleTextG1Bold";
+      margin: 0; }
+    /* line 77, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .info_section .info_news .news_date {
+      font-family: "ChronicleTextG1Italic";
+      font-size: 11px;
+      color: #353535; }
+  /* line 81, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .info_section .info_video {
+    width: 48.93617%;
+    float: right;
+    margin-right: 0;
+    #margin-left: -20px;
+    display: inline; }
+    /* line 84, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .info_section .info_video iframe {
+      width: 100%;
+      height: 245px; }
+    /* line 87, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .info_section .info_video .info_video_wrapprer {
+      margin-top: 9px;
+      background: #eeeeee;
+      padding: 5px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px;
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+
+/* line 94, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.calendar_section {
+  *zoom: 1;
+  max-width: 965px;
+  _width: 965px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative; }
+  /* line 38, /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  .calendar_section:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+/* line 98, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.home .calendar_box {
+  top: 0;
+  right: 46px;
+  position: absolute; }
+
+/* line 100, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.calendar_box {
+  width: 304px; }
+
+/* line 102, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.calendar_head {
+  border-top: 3px solid #2b7bc9;
+  background: #003161;
+  color: white;
+  font-size: 18px;
+  font-family: "trajan_proregular";
+  text-align: center;
+  min-height: 34px;
+  padding-top: 18px;
+  letter-spacing: 5px; }
+  /* line 112, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .calendar_head h4 {
+    margin: 0; }
+
+/* line 114, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.calendar_body {
+  padding: 0 10px;
+  background: #003161; }
+  /* line 117, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .calendar_body .calendar_content {
+    background: white;
+    padding: 10px; }
+    /* line 120, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .calendar_body .calendar_content .media {
+      border-bottom: 1px solid #e7e7e7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      padding-bottom: 13px; }
+      /* line 125, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+      .calendar_body .calendar_content .media:last-child {
+        border-bottom: none; }
+      /* line 127, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+      .calendar_body .calendar_content .media .pull-left {
+        margin-right: 13px; }
+    /* line 129, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .calendar_body .calendar_content .date_bg {
+      background-position: 0 -1188px;
+      height: 42px;
+      width: 42px; }
+      /* line 131, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+      .calendar_body .calendar_content .date_bg .month, .calendar_body .calendar_content .date_bg .day {
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 11px;
+        line-height: 16px;
+        text-align: center;
+        color: white;
+        display: block;
+        text-transform: uppercase;
+        height: 16px;
+        overflow: hidden; }
+      /* line 142, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+      .calendar_body .calendar_content .date_bg .day {
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        color: #003161;
+        height: 28px; }
+    /* line 149, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .calendar_body .calendar_content .media-body {
+      font-family: "ChronicleTextG1Italic";
+      font-size: 11px;
+      color: #353535; }
+    /* line 153, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .calendar_body .calendar_content .media-heading, .calendar_body .calendar_content .media-heading a {
+      color: #2b7bc9;
+      font-size: 14px;
+      font-family: "ChronicleTextG1Bold";
+      margin: 0; }
+
+/* line 158, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.calendar_footer {
+  background: url("../img/calendar_footer.png") no-repeat 0 0;
+  height: 108px;
+  width: 304px; }
+  /* line 161, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .calendar_footer a {
+    display: block;
+    color: #67a3dd;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: "ChronicleTextG1BoldItalic";
+    text-align: center;
+    padding-top: 8px; }
+
+/* line 171, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.mission_section .mission_head {
+  background: #545454; }
+/* line 173, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.mission_section .mission_title {
+  width: 65.95745%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline;
+  min-height: 55px;
+  position: relative; }
+  /* line 177, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .mission_section .mission_title .mission_arrow {
+    background-position: 0 -1077px;
+    height: 21px;
+    width: 88px;
+    left: 50%;
+    top: 45px;
+    position: absolute;
+    margin-left: -44px; }
+  /* line 181, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .mission_section .mission_title h3 {
+    font-family: "trajan_proregular";
+    font-size: 20px;
+    font-weight: bold;
+    color: #d4d3d3;
+    text-align: center;
+    margin-bottom: 0; }
+/* line 188, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.mission_section .mission_body {
+  background: #3e3e3e;
+  min-height: 177px;
+  padding-top: 15px; }
+/* line 192, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.mission_section .mission_txt {
+  width: 65.95745%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline;
+  background: url("../img/nchs_watermark_big.png") no-repeat 50% 23px;
+  font-family: "ChronicleTextG1Roman";
+  font-size: 13px;
+  line-height: 22px;
+  color: white; }
+  /* line 199, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .mission_section .mission_txt p {
+    padding-left: 64px;
+    padding-right: 30px; }
+  /* line 202, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .mission_section .mission_txt .blue_btn {
+    width: 125px;
+    display: block;
+    margin: 16px auto 16px auto; }
+
+/* line 206, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.promo_section {
+  width: 65.95745%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline; }
+
+/* line 208, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+.promo_card {
+  background: white;
+  width: 285px;
+  margin: 27px 15px 15px 8px;
+  display: inline;
+  float: left;
+  border: 1px solid #d8d8d8;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+  /* line 215, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .promo_card .promo_img {
+    padding-top: 15px;
+    text-align: center; }
+  /* line 218, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .promo_card .promo_title {
+    font-size: 18px;
+    font-family: "ChronicleTextG1BoldItalic";
+    padding: 15px 15px 5px 15px; }
+  /* line 222, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+  .promo_card .promo_msg {
+    padding: 0 15px 15px 15px;
+    font-family: "ChronicleTextG1Roman"; }
+    /* line 225, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
+    .promo_card .promo_msg .blue_btn {
+      display: block;
+      margin: 27px auto 13px auto;
+      width: 125px; }
+
+/* line 2, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+.interior .slide_wrapper {
+  height: 250px;
+  overflow: hidden; }
+  /* line 5, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .interior .slide_wrapper .slide1_title {
+    left: 27px;
+    top: 125px;
+    position: absolute;
+    width: 545px;
+    z-index: 200;
+    font-size: 17px;
+    line-height: 22px; }
+    /* line 11, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+    .interior .slide_wrapper .slide1_title h3 {
+      color: #c3e1ff;
+      font-size: 42px;
+      font-family: "trajan_proregular";
+      font-style: normal;
+      margin-bottom: 16px; }
+  /* line 17, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .interior .slide_wrapper .slide_img {
+    top: 0;
+    right: 33px;
+    position: absolute;
+    z-index: 100; }
+/* line 20, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+.interior .info_title {
+  border: none;
+  margin-bottom: 0; }
+/* line 23, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+.interior .info_title, .interior .page_header_box {
+  display: none; }
+
+/* line 25, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+.page_header_box {
+  text-align: center;
+  background: black;
+  padding: 10px 0; }
+  /* line 29, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .page_header_box h2 {
+    color: #c3e1ff;
+    font-size: 32px;
+    font-family: "trajan_proregular";
+    font-style: normal;
+    margin: 0; }
+
+/* line 35, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+.blog_wrapper {
+  width: 65.95745%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline; }
+
+/* line 37, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+.blog_section {
+  font-size: 14px;
+  line-height: 30px;
+  color: #2e2e2e;
+  font-family: "ChronicleTextG1Roman";
+  padding-top: 12px; }
+  /* line 43, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .blog_section h3 {
+    font-size: 18px;
+    font-family: "ChronicleTextG1Roman";
+    font-weight: bold;
+    margin: 18px 0 13px 0;
+    line-height: 30px; }
+  /* line 49, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .blog_section p {
+    margin: 0; }
+  /* line 51, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .blog_section .player {
+    margin-bottom: 17px; }
+  /* line 53, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .blog_section .media {
+    margin: 0 0 0 0; }
+  /* line 55, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+  .blog_section ul {
+    margin: 0px 0 0 10px; }
+    /* line 57, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+    .blog_section ul li {
+      padding: 0px 0px 37px 0px;
+      line-height: 30px; }
+
+/* line 60, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
+.right_sidebar {
+  width: 31.91489%;
+  float: right;
+  margin-right: 0;
+  #margin-left: -20px;
+  display: inline; }
+
+/* line 1, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.athletics {
+  background: #f0f0f0; }
+  /* line 3, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .athletics .blog_wrapper {
+    padding-top: 0; }
+  /* line 5, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .athletics .slider_athletic {
+    background: #d7d7d9 url("../img/slide_bg_athletics.png") no-repeat 100% 0; }
+  /* line 7, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .athletics .slide_wrapper {
+    height: 250px;
+    overflow: hidden; }
+    /* line 10, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .athletics .slide_wrapper .slide1_title {
+      left: 27px;
+      top: 125px;
+      position: absolute;
+      width: 545px;
+      z-index: 200;
+      font-size: 17px;
+      line-height: 22px;
+      color: black; }
+      /* line 17, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+      .athletics .slide_wrapper .slide1_title h3 {
+        color: #2b7bc9;
+        font-size: 42px;
+        font-family: "trajan_proregular";
+        font-style: normal;
+        margin-bottom: 22px;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }
+    /* line 24, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .athletics .slide_wrapper .slide_img {
+      top: 0;
+      right: 22px;
+      position: absolute;
+      z-index: 100; }
+  /* line 27, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .athletics .info_title {
+    border: none;
+    margin-bottom: 0; }
+  /* line 30, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .athletics .info_title, .athletics .page_header_box {
+    display: none; }
+  /* line 33, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .athletics .calendar_box .media {
+    padding-bottom: 10px; }
+  /* line 35, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .athletics .calendar_box .media-body {
+    font-family: "ChronicleTextG1Bold";
+    font-size: 14px; }
+
+/* line 38, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.main_section {
+  position: relative; }
+
+/* line 40, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.blog_wrapper {
+  font-size: 14px;
+  line-height: 30px;
+  color: #2e2e2e;
+  font-family: "ChronicleTextG1Roman";
+  padding-top: 12px;
+  width: 65.95745%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline; }
+  /* line 47, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .blog_wrapper .player {
+    margin-bottom: 17px; }
+  /* line 49, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .blog_wrapper .media {
+    margin: 0 0 0 0; }
+
+/* line 51, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.title_section {
+  position: relative;
+  font-size: 16px;
+  color: black;
+  font-family: "trajan_proregular";
+  font-weight: bold;
+  letter-spacing: 6px;
+  padding: 9px;
+  text-transform: uppercase;
+  margin: 0; }
+  /* line 61, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .title_section.top_title_mod {
+    width: 65.95745%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+  /* line 63, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .title_section .view_more_box {
+    top: 9px;
+    right: 15px;
+    position: absolute;
+    color: #5383b6;
+    font-family: "ChronicleTextG1SemiItalic";
+    font-size: 11px;
+    letter-spacing: normal;
+    font-style: italic;
+    text-transform: none; }
+
+/* line 71, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.lates_news_section {
+  background: white;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  padding-top: 13px; }
+  /* line 76, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .lates_news_section .main_news {
+    margin-bottom: 25px; }
+    /* line 78, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .lates_news_section .main_news .media-body {
+      color: black;
+      font-size: 13px;
+      font-family: "ChronicleTextG1Roman";
+      line-height: 20px; }
+      /* line 83, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+      .lates_news_section .main_news .media-body a {
+        color: #2b7bc9;
+        font-family: "ChronicleTextG1SemiItalic";
+        font-style: italic;
+        font-weight: bold; }
+    /* line 88, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .lates_news_section .main_news .pull-left {
+      margin-right: 17px; }
+      /* line 90, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+      .lates_news_section .main_news .pull-left img {
+        border: 7px solid #d7d7d7; }
+  /* line 92, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .lates_news_section .media-heading, .lates_news_section .media-heading a {
+    color: #5383b6;
+    font-size: 23px;
+    font-family: "ChronicleTextG1SemiItalic";
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 0; }
+  /* line 99, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .lates_news_section .post_date {
+    font-family: Arial;
+    font-size: 11px;
+    color: #8c8c8c;
+    font-weight: bold; }
+  /* line 105, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .lates_news_section .sub_news .media-heading, .lates_news_section .sub_news .media-heading a {
+    font-size: 15px;
+    line-height: 16px; }
+  /* line 108, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .lates_news_section .sub_news .media {
+    display: inline;
+    float: left;
+    width: 50%;
+    margin-bottom: 17px; }
+  /* line 112, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .lates_news_section .sub_news .pull-left img {
+    border: 4px solid #d7d7d7; }
+
+/* line 115, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.schedule_section table {
+  width: 100%;
+  background: white;
+  border: 1px solid #e2e2e2; }
+  /* line 120, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .schedule_section table th {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #67a3dd;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 17px 10px 5px 10px;
+    line-height: 16px; }
+  /* line 129, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .schedule_section table td {
+    padding: 14px;
+    text-align: center;
+    font-size: 12px;
+    color: #67a3dd;
+    line-height: 16px;
+    padding: 10px 0px 0px 0px; }
+  /* line 137, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .schedule_section table tr:last-child td {
+    padding-bottom: 20px; }
+
+/* line 140, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.coaches_section .coach_slider {
+  position: relative;
+  padding: 0 33px; }
+  /* line 143, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .coaches_section .coach_slider .coach_slider_wrapper {
+    background: #b4b4b4;
+    width: 182px; }
+  /* line 146, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .coaches_section .coach_slider .coach_slider_title {
+    padding: 10px; }
+    /* line 148, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .coaches_section .coach_slider .coach_slider_title a {
+      display: block;
+      line-height: 16px; }
+    /* line 151, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .coaches_section .coach_slider .coach_slider_title .coach_name {
+      color: white;
+      font-size: 15px;
+      font-family: "ChronicleTextG1SemiItalic";
+      font-weight: bold;
+      font-style: italic; }
+    /* line 157, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .coaches_section .coach_slider .coach_slider_title .position {
+      font-family: Arial;
+      font-size: 11px;
+      font-weight: bold;
+      color: white; }
+    /* line 162, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .coaches_section .coach_slider .coach_slider_title .more_info {
+      color: #2b7bc9;
+      font-size: 15px;
+      font-family: "ChronicleTextG1SemiItalic";
+      font-weight: bold;
+      font-style: italic; }
+/* line 169, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.coaches_section .flex-direction-nav a {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  height: 262px; }
+/* line 172, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.coaches_section .flex-direction-nav .flex-prev {
+  background-position: 0 -486px;
+  height: 265px;
+  width: 27px;
+  left: 0;
+  top: 20px;
+  position: absolute; }
+/* line 175, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.coaches_section .flex-direction-nav .flex-next {
+  background-position: 0 -767px;
+  height: 265px;
+  width: 27px;
+  top: 20px;
+  right: 0;
+  position: absolute; }
+
+/* line 179, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.players_section .best_player_box {
+  display: inline;
+  float: left;
+  width: 215px; }
+  /* line 182, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .players_section .best_player_box .player_position {
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: bold;
+    font-family: Arial;
+    text-transform: uppercase;
+    color: black; }
+  /* line 189, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .players_section .best_player_box .player_name {
+    font-size: 15px;
+    padding-top: 16px;
+    font-family: "ChronicleTextG1SemiItalic";
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+    line-height: 16px; }
+/* line 197, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.players_section .team_box {
+  display: inline;
+  float: left;
+  width: 420px;
+  padding: 33px 0;
+  position: relative; }
+  /* line 203, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .players_section .team_box .flex-direction-nav a {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1; }
+  /* line 205, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .players_section .team_box .flex-direction-nav .flex-prev {
+    background-position: 0 -1049px;
+    height: 28px;
+    width: 414px;
+    left: 0;
+    top: 20px;
+    position: absolute; }
+  /* line 208, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .players_section .team_box .flex-direction-nav .flex-next {
+    background-position: 0 -1098px;
+    height: 28px;
+    width: 414px;
+    left: 0;
+    top: 318px;
+    position: absolute; }
+  /* line 211, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .players_section .team_box .player_pic {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    display: inline;
+    float: left; }
+    /* line 215, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .players_section .team_box .player_pic a {
+      display: block; }
+
+/* line 218, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+.right_sidebar {
+  width: 31.91489%;
+  float: right;
+  margin-right: 0;
+  #margin-left: -20px;
+  display: inline;
+  top: 0;
+  right: 0;
+  position: absolute; }
+  /* line 221, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .calendar_body {
+    padding: 0 10px 10px; }
+  /* line 223, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .calendar_content {
+    margin-bottom: 10px; }
+  /* line 225, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .facebook_link {
+    background-position: 0 -279px;
+    height: 32px;
+    width: 106px;
+    margin: 20px auto 0px auto; }
+  /* line 228, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .hchs_watermark_icon {
+    background-position: 0 -347px;
+    height: 42px;
+    width: 42px;
+    margin: 0px auto 12px auto; }
+  /* line 231, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .latest_news_box {
+    padding: 29px 20px 10px 20px; }
+    /* line 233, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .right_sidebar .latest_news_box .media {
+      padding-bottom: 4px; }
+  /* line 236, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .state_champ_box h4 {
+    color: #515151;
+    font-size: 23px;
+    font-family: "trajan_proregular";
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 15px; }
+  /* line 244, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .state_champ_box .dates_box {
+    background: #eaeef3;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    color: #003161;
+    font-size: 17px;
+    font-family: "ChronicleTextG1Bold";
+    padding: 15px;
+    text-align: center; }
+    /* line 252, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+    .right_sidebar .state_champ_box .dates_box a {
+      color: #003161;
+      font-size: 17px;
+      font-family: "ChronicleTextG1Bold"; }
+  /* line 256, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .promo_card {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  /* line 263, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .promo_img {
+    padding: 0; }
+  /* line 265, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .promo_msg {
+    padding-bottom: 0; }
+  /* line 267, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
+  .right_sidebar .calendar_footer {
+    background: url("../img/calendar_footer2.png") no-repeat 0 0;
+    height: 50px;
+    width: 304px; }
+
+/* ******************************************** */
+/* Resonsive  */
+/* ******************************************** */
+@media (max-width: 979px) {
+  /* line 9, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .info_section .info_video {
+    float: none;
+    margin: 0 auto; }
+  /* line 12, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .info_section .info_news {
+    width: 100%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+
+  /* line 15, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .mission_section .mission_title {
+    width: 48.93617%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+  /* line 17, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .mission_section .mission_txt {
+    width: 48.93617%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+
+  /* line 19, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .blog_wrapper {
+    width: 48.93617%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+
+  /* line 21, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .right_sidebar {
+    display: inline;
+    float: right;
+    width: 310px; }
+
+  /* line 25, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .athletics .right_sidebar {
+    position: relative;
+    float: none;
+    display: block;
+    margin: 0 auto 0px auto; }
+  /* line 30, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .athletics .blog_wrapper, .athletics .top_title_mod {
+    width: 100%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+  /* line 32, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .athletics .best_player_box, .athletics .team_box {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto; } }
+@media (max-width: 700px) {
+  /* line 37, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .blog_section, .right_sidebar {
+    flot: none;
+    width: 100%; }
+
+  /* line 41, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .mission_section .mission_title {
+    width: 31.91489%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+  /* line 43, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .mission_section .mission_txt {
+    width: 31.91489%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+    /* line 45, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+    .mission_section .mission_txt p {
+      padding-left: 4em;
+      padding-right: 1em; }
+
+  /* line 48, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .calendar_box, .home .calendar_box {
+    position: relative;
+    right: 0;
+    margin: 0 auto 30px auto; }
+
+  /* line 53, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .athletics .right_sidebar {
+    position: relative;
+    float: none;
+    display: block;
+    margin: 0 auto 0px auto; }
+  /* line 58, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .athletics .blog_wrapper {
+    width: 100%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+  /* line 60, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .athletics .best_player_box, .athletics .team_box {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto; }
+
+  /* line 65, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .interior .info_title, .interior .page_header_box, .athletics .info_title, .athletics .page_header_box {
+    display: block; }
+
+  /* line 68, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .info_title h3 {
+    width: auto;
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 0 120px;
+    background: url("../img/icons/info_title_icon_small.png") no-repeat 0 0px;
+    padding: 5px 0px 5px 35px; }
+
+  /* line 76, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .mission_section .mission_title {
+    width: 100%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+  /* line 78, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .mission_section .mission_txt {
+    width: 100%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+
+  /* line 80, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .promo_section {
+    width: 100%;
+    float: left;
+    margin-right: 2.12766%;
+    display: inline; }
+
+  /* line 82, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .promo_card {
+    width: 100%;
+    margin: 15px auto 15px auto;
+    float: none;
+    display: block; }
+
+  /* line 88, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  footer .left_widget {
+    width: 100%;
+    border: none; }
+  /* line 91, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  footer .mid_widget {
+    display: none; }
+  /* line 93, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  footer .right_widget {
+    display: inline;
+    float: left;
+    width: 100%;
+    border: none; }
+
+  /* line 97, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .slider_section {
+    display: none; }
+
+  /* line 99, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  .menu1_section {
+    display: none; }
+
+  /* line 101, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+  header {
+    height: 38px; }
+    /* line 103, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+    header .logo {
+      width: 130px; }
+      /* line 105, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+      header .logo a {
+        color: 96da;
+        background-position: 0 -165px;
+        height: 114px;
+        width: 136px; }
+    /* line 108, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+    header .home_link {
+      top: 0px;
+      right: 150px;
+      position: absolute; }
+    /* line 110, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+    header .main_menu_btn {
+      display: block;
+      color: #0081ff;
+      font-size: 18px;
+      font-fanily: Arial;
+      border-left: 1px solid #0081ff;
+      padding: 5px 45px 5px 20px;
+      top: 4px;
+      right: 5px;
+      position: absolute;
+      width: 60px;
+      height: 20px;
+      background: url("../img/icons/main_menu_btn.png") no-repeat 100% 0px; }
+    /* line 121, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+    header .main_menu {
+      top: 35px;
+      right: 0px;
+      position: absolute;
+      background: #003161;
+      z-index: 500;
+      display: none; }
+      /* line 126, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+      header .main_menu li {
+        float: none;
+        display: block;
+        margin: 20px 15px; }
+        /* line 130, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+        header .main_menu li a {
+          font-size: 18px;
+          text-transform: uppercase; }
+    /* line 133, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
+    header .right_side {
+      display: none; } }
