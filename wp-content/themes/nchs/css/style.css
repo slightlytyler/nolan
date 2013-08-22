@@ -778,7 +778,8 @@ body {
   line-height: 30px;
   color: #2e2e2e;
   font-family: "ChronicleTextG1Roman";
-  padding-top: 12px; }
+  padding-top: 12px;
+  min-height: 1000px; }
   /* line 43, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_interior.sass */
   .blog_section h3 {
     font-size: 18px;

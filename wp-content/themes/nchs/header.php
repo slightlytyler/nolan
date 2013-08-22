@@ -25,7 +25,12 @@
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/flexslider.css" rel="stylesheet" />
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
-  <body class='home'>
+  <?php
+    if (is_home())
+      echo "<body class='home'>";
+    else if (is_single())
+      echo "<body class='interior'>";
+  ?>
     <header>
       <div class='page'>
         <div class='logo'>
