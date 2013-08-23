@@ -25,7 +25,7 @@ define('DB_USER', 'nolan');
 define('DB_PASSWORD', 'fh#%533d');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost:/tmp/mysql.sock');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
