@@ -3,14 +3,24 @@
 get_header(); ?>
 
 <div class='slider_section'>
+  <?php $image_url = types_render_field( "section-background-image", array('raw' => true)) ?>
+  <?php if($image_url !== ''): ?>
+  <div class='slides' style="background-image: url('<?php echo $image_url; ?>')">
+  <?php else: ?>
   <div class='slides'>
+  <?php endif; ?>
     <div class='slide_wrapper'>
       <div class='slide1_title'>
-        <h3>Choir</h3>
-        Nolan offers a variety of choirs including a Women's choir, Varsity Choir, Nolan 12 Vocal Ensemble, and Viking Singers Vocal Ensemble.
+        <h3><?php the_title() ?></h3>
+        <?php echo types_render_field("header-subtext") ?>
       </div>
       <div class='slide_img'>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/slide_1_girl.png" />
+        <?php $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>
+        <?php if ($slide_img !== ''): ?>
+          <?php echo $slide_img; ?>
+        <?php else: ?>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/slide_1_girl.png" />
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -24,7 +34,6 @@ get_header(); ?>
         <div class='blog_wrapper'>
           <h3><?php the_title() ?></h3>
           <?php the_content() ?>
-          <?php comments_template(); ?>
         </div>
       </div>
       <?php endwhile; ?>

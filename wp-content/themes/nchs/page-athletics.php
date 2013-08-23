@@ -1,16 +1,33 @@
 <?php
-/* Template Name: Athletics' */
+/* Template Name: Athletics */
 get_header(); ?>
 
 <div class='slider_section'>
+  <?php $image_url = types_render_field( "athletics-background-image", array('raw' => true)) ?>
+  <?php if($image_url !== ''): ?>
+  <div class='slider_athletic' style="background-image: url('<?php echo $image_url; ?>')">
+  <?php else: ?>
   <div class='slider_athletic'>
+  <?php endif; ?>
     <div class='slide_wrapper'>
       <div class='slide1_title'>
         <h3>Football</h3>
-        Viking Football is TAPPS 5A 2012 and 2013 State Champions!
+        <?php 
+        $header_subtext = types_render_field("athletics-header-subtext", array("raw" => true));
+        if($header_subtext !== '') {
+          echo $header_subtext;
+        } else {
+          echo "Viking Football is TAPPS 5A 2012 and 2013 State Champions!";
+        }
+        ?>
       </div>
       <div class='slide_img'>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/slide_viking.png" />
+        <?php $slide_img = types_render_field( "athletics-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>
+        <?php if ($slide_img !== ''): ?>
+          <?php echo $slide_img; ?>
+        <?php else: ?>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/slide_viking.png" />
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -164,69 +181,29 @@ get_header(); ?>
             </h3>
             <div class='coach_slider'>
               <ul class='slides'>
+                <?php
+                $args = array( 'post_type' => 'coach', 'posts_per_page' => -1 );
+                $loop = new WP_Query( $args );
+                while ( $loop->have_posts() ) :
+                  $loop->the_post();
+                ?>
                 <li>
                   <div class='coach_slider_wrapper'>
                     <div class='coach_slider_img'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_6.jpg" />
+                      <?php echo types_render_field( "coach-picture", array("alt" => get_the_title(), "title" => get_the_title(), "width" => 182, "height" => 195 )) ?>
                     </div>
                     <div class='coach_slider_title'>
-                      <a class='coach_name' href='#'>Lorem ipsum Dolor Sit</a>
-                      <a class='position' href='#'>HEAD COACH</a>
-                      <a class='more_info' href='#'>Read Bio »</a>
+                      <a class='coach_name' href='<?php echo get_permalink() ?>'><?php the_title() ?></a>
+                      <a class='position' href='<?php echo get_permalink() ?>'><?php echo types_render_field( "coach-position" ) ?></a>
+                      <a class='more_info' href='<?php echo get_permalink() ?>'>Read Bio »</a>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <div class='coach_slider_wrapper'>
-                    <div class='coach_slider_img'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_6.jpg" />
-                    </div>
-                    <div class='coach_slider_title'>
-                      <a class='coach_name' href='#'>Lorem ipsum Dolor Sit</a>
-                      <a class='position' href='#'>HEAD COACH</a>
-                      <a class='more_info' href='#'>Read Bio »</a>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class='coach_slider_wrapper'>
-                    <div class='coach_slider_img'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_6.jpg" />
-                    </div>
-                    <div class='coach_slider_title'>
-                      <a class='coach_name' href='#'>Lorem ipsum Dolor Sit</a>
-                      <a class='position' href='#'>HEAD COACH</a>
-                      <a class='more_info' href='#'>Read Bio »</a>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class='coach_slider_wrapper'>
-                    <div class='coach_slider_img'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_6.jpg" />
-                    </div>
-                    <div class='coach_slider_title'>
-                      <a class='coach_name' href='#'>Lorem ipsum Dolor Sit</a>
-                      <a class='position' href='#'>HEAD COACH</a>
-                      <a class='more_info' href='#'>Read Bio »</a>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class='coach_slider_wrapper'>
-                    <div class='coach_slider_img'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_6.jpg" />
-                    </div>
-                    <div class='coach_slider_title'>
-                      <a class='coach_name' href='#'>Lorem ipsum Dolor Sit</a>
-                      <a class='position' href='#'>HEAD COACH</a>
-                      <a class='more_info' href='#'>Read Bio »</a>
-                    </div>
-                  </div>
-                </li>
+                <?php endwhile; ?>
               </ul>
             </div>
           </div>
+
           <div class='players_section'>
             <h3 class='title_section'>
               Players
@@ -245,318 +222,31 @@ get_header(); ?>
             </div>
             <div class='team_box'>
               <ul class='slides'>
-                <li>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='clear'></div>
-                </li>
-                <li>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='clear'></div>
-                </li>
-                <li>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='clear'></div>
-                </li>
-                <li>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='player_pic'>
-                    <a href='#'>
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/pic_8.jpg" />
-                    </a>
-                  </div>
-                  <div class='clear'></div>
-                </li>
+                <?php
+                $i = 0;
+                $args = array( 'post_type' => 'player', 'posts_per_page' => -1 );
+                $loop = new WP_Query( $args );
+                echo "<li>";
+                while ( $loop->have_posts() ) :
+                  $loop->the_post();
+
+                  if ($i % 15 == 0 && $i % 2 != 0) {
+                    echo "<div class='clear'></div>";
+                    echo "</li>";
+                    echo "<li>";
+                  }
+                  
+                  echo "<div class='player_pic'><a href='".get_permalink()."'>".types_render_field( "players-picture", array("alt" => get_the_title(), "title" => get_the_title(), "width" => 76, "height" => 81 ))."</a></div>";
+  
+                  $i++;
+                endwhile;
+                ?>
+                <?php
+                if ($i-1 % 15 != 0) {
+                  echo "<div class='clear'></div>";
+                  echo "</li>";
+                }
+                ?>
               </ul>
               <div class='clear'></div>
             </div>
