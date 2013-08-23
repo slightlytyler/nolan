@@ -7,7 +7,7 @@ get_header(); ?>
 
 <div class='page'>
       <div class='info_title'>
-        <h3>in the marIanist tradition since 1961</h3>
+        <h3>in the marianist tradition since 1961</h3>
       </div>
       <div class='info_section'>
         <div class='info_video'>
@@ -132,7 +132,7 @@ get_header(); ?>
         <div class='page'>
           <div class='mission_title'>
             <div class='mission_arrow'></div>
-            <h3>THE nolan catholic Mission</h3>
+            <h3>the nolan catholic mission</h3>
           </div>
         </div>
       </div>

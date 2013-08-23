@@ -9,7 +9,7 @@
 * @since Vype 1.0
 */
 ?>
-<!doctype html>
+<!DOCTYPE HTML>
 <html <?php language_attributes(); ?>>
   <head>
     <meta charset='utf-8'>
@@ -58,7 +58,7 @@
             <div class='clear'></div>
           </div>
           <form action='#' class='search_form form-inline' method='post'>
-            <input class='search-field input-medium' placeholder='Search our site' type='text' value='Search our site'>
+            <input class='search-field input-medium' style="font-size: 12px;color: gray;" placeholder='Search' type='text' value='Search'>
             <button class='btn-search' type='submit'></button>
           </form>
           <div class='clear'></div>

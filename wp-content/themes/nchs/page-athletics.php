@@ -195,7 +195,7 @@ get_header(); ?>
                     </div>
                     <div class='coach_slider_title'>
                       <a class='coach_name' href='<?php echo get_permalink() ?>'><?php the_title() ?></a>
-                      <a class='position' href='<?php echo get_permalink() ?>'><?php echo types_render_field( "coach-position" ) ?></a>
+                      <a class='position' href='<?php echo get_permalink() ?>'><?php echo types_render_field( "coach-position" ,array('raw'=>true)) ?></a>
                       <a class='more_info' href='<?php echo get_permalink() ?>'>Read Bio »</a>
                     </div>
                   </div>
