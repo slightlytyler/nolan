@@ -28,7 +28,11 @@
   <?php
     if (is_home())
       echo "<body class='home'>";
-    else if (is_single())
+    elseif (is_single())
+      echo "<body class='interior'>";
+    elseif (is_page( $page = 'athletics'))
+      echo "<body class='athletics'>";
+    elseif (is_page())
       echo "<body class='interior'>";
   ?>
     <header>
