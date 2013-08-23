@@ -22,8 +22,8 @@ get_header(); ?>
       <?php while ( have_posts() ) : the_post(); ?>
       <div class='blog_section'>
         <div class='blog_wrapper'>
-          <h3><?php echo the_title() . " - " . types_render_field("players-position"); ?></h3>
-          <?php echo types_render_field("players-bio"); ?>
+          <h3><?php echo the_title() . " - " . types_render_field("players-position",array('raw'=>true)); ?></h3>
+          <?php echo types_render_field("players-bio",array('raw'=>true)); ?>
         </div>
       </div>
       <?php endwhile; ?>
