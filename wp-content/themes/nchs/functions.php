@@ -8,7 +8,7 @@ function nchs_register_menus() {
 }
 add_action( 'init', 'nchs_register_menus' );
 
-function add_sport_column ($gallery_columns) {
+function add_sport_column ($original_columns) {
   $new_columns['cb'] 		= '<input type="checkbox" />';
   $new_columns['title'] = 'Name';
   $new_columns['sport'] = 'Sport';
@@ -34,5 +34,31 @@ function manage_player_sport_columns($column_name, $id) {
 }
 add_action('manage_player_posts_custom_column', 'manage_player_sport_columns', 10, 2);
 add_action('manage_coach_posts_custom_column', 'manage_player_sport_columns', 10, 2);
+
+function add_news_categories_column ($original_columns) {
+  $new_columns['cb'] 		= '<input type="checkbox" />';
+  $new_columns['title'] = 'Name';
+  $new_columns['news_categories'] = 'Categories';
+  $new_columns['comments'] = '<span class="vers"><div title="Comments" class="comment-grey-bubble"></div></span>';
+  $new_columns['date'] 	= 'Date';
+
+  return $new_columns;
+}
+add_filter('manage_edit-news-story_columns', 'add_news_categories_column');
+
+function manage_news_story_columns($column_name, $id) {
+  global $wpdb;
+  switch ($column_name) {
+  case 'news_categories':
+  	$taxonomies = wp_get_post_terms($id, 'news-category');
+  	foreach ($taxonomies as $taxonomy) {
+  		echo $taxonomy->name;
+  	}
+    break;
+  default:
+    break;
+  }
+}
+add_action('manage_news-story_posts_custom_column', 'manage_news_story_columns', 10, 2);
 
 ?>
