@@ -61,6 +61,7 @@ Version: 1.0
     position: relative;
     z-index: 5;
     margin-right: 0 !important;
+    clear: both;
 }
 .menu1 li ul li a {
     padding: 15px 40px;
