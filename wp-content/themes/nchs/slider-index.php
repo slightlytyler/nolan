@@ -1,36 +1,31 @@
+<?php
+$args = array( 'post_type' => 'slide', 'posts_per_page' => 5, 'orderby' => 'menu_order', 'order' => 'ASC');
+$loop = new WP_Query( $args );
+?>
+<?php if ($loop->have_posts()): ?>
 <div class='slider_section'>
     <div class='flexslider'>
         <ul class='slides'>
-            <li>
+            <?php
+            while ( $loop->have_posts() ) :
+              $loop->the_post();
+            ?>
+            <?php $image_url = types_render_field( "slide-background-image", array('raw' => true)); ?>
+            <?php if($image_url !== ''): ?>
+            <li style="background-image: url('<?php echo $image_url; ?>')">
+            <?php endif; ?>
                 <div class='slide_wrapper'>
                     <div class='slide1_title'>
-                        The NCHS Viking Band has won the TPSMEA State Marching Band Title the past nine consecutive years.
+                        <?php echo types_render_field( "slide-text", array()); ?>
                     </div>
                     <div class='slide_img'>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/slide_1_boy.png" />
+                        <?php $slide_img = types_render_field( "slide-foreground-image", array( "height" => "332", "proportional" => "true" )); ?>
+                        <?php echo $slide_img; ?>
                     </div>
                 </div>
             </li>
-            <li>
-                <div class='slide_wrapper'>
-                    <div class='slide1_title'>
-                        The NCHS Viking Band has won the TPSMEA State Marching Band Title the past nine consecutive years.
-                    </div>
-                    <div class='slide_img'>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/slide_1_boy.png" />
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class='slide_wrapper'>
-                    <div class='slide1_title'>
-                        The NCHS Viking Band has won the TPSMEA State Marching Band Title the past nine consecutive years.
-                    </div>
-                    <div class='slide_img'>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/slide_1_boy.png" />
-                    </div>
-                </div>
-            </li>
+            <?php endwhile; ?>
         </ul>
     </div>
 </div>
+<? endif; ?>
