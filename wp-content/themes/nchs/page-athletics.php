@@ -17,15 +17,9 @@ get_header(); ?>
   <?php endif; ?>
     <div class='slide_wrapper'>
       <div class='slide1_title'>
-        <h3>Football</h3>
-        <?php 
-        $header_subtext = types_render_field("athletics-header-subtext", array("raw" => true));
-        if($header_subtext !== '') {
-          echo $header_subtext;
-        } else {
-          echo "Viking Football is TAPPS 5A 2012 and 2013 State Champions!";
-        }
-        ?>
+        <?php $_title = get_the_title(); ?>
+        <h3><?php the_title() ?></h3>
+        <?php echo types_render_field("athletics-header-subtext", array("raw" => true)) ?>
       </div>
       <div class='slide_img'>
         <?php $slide_img = types_render_field( "athletics-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>
@@ -42,19 +36,24 @@ get_header(); ?>
 
 <?php get_template_part('nav'); ?>
 
+<?php
+global $post;
+$slug = get_post( $post )->post_name;
+?>
+
 <div class='page'>
       <div class='info_title'>
         <h3>in the marIanist tradition since 1961</h3>
       </div>
     </div>
     <div class='page_header_box'>
-      <h2>Football</h2>
+      <h2><?php the_title() ?></h2>
     </div>
 
     <div class='main_section'>
       <div class='page'>
         <h3 class='title_section top_title_mod'>
-          Lates News
+          Latest News
           <div class='view_more_box'>
             <a href='#'>View More »</a>
           </div>
@@ -261,33 +260,23 @@ get_header(); ?>
         </div>
         <div class='clear'></div>
       </div>
+
       <div class='right_sidebar'>
         <div class='calendar_box'>
           <div class='calendar_head'>
-            <h4>Football links</h4>
+            <h4><?php echo $_title ?> links</h4>
           </div>
           <div class='calendar_body'>
             <div class='calendar_content latest_news_box'>
-              <div class='media'>
-                <div class='media-body'>
-                  <a href='#'>LATEST NEWS</a>
-                </div>
-              </div>
-              <div class='media'>
-                <div class='media-body'>
-                  <a href='#'>LATEST NEWS</a>
-                </div>
-              </div>
-              <div class='media'>
-                <div class='media-body'>
-                  <a href='#'>LATEST NEWS</a>
-                </div>
-              </div>
-              <div class='media'>
-                <div class='media-body'>
-                  <a href='#'>LATEST NEWS</a>
-                </div>
-              </div>
+              <?php
+                wp_list_bookmarks(array(
+                  'category_name' => $slug,
+                  'categorize'    => false,
+                  'title_li'      => '',
+                  'before'        => '<div class="media"><div class="media-body">',
+                  'after'         => '</div></div>'
+                ));
+              ?>
               <div class='facebook_link'></div>
             </div>
             <div class='hchs_watermark_icon'></div>
