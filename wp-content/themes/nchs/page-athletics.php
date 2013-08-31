@@ -51,6 +51,11 @@ $slug = get_post( $post )->post_name;
     </div>
 
     <div class='main_section'>
+      <?php
+      $args = array( 'post_type' => 'news-story', 'posts_per_page' => 3, 'news-category' => $slug );
+      $loop = new WP_Query( $args );
+      ?>
+      <?php if ($loop->have_posts()): ?>
       <div class='page'>
         <h3 class='title_section top_title_mod'>
           Latest News
@@ -62,49 +67,51 @@ $slug = get_post( $post )->post_name;
       <div class='lates_news_section'>
         <div class='page'>
           <div class='blog_wrapper'>
+            <?php
+            $i = 0;
+
+            while ( $loop->have_posts() ) :
+              $loop->the_post();
+            ?>
+            <?php if ($i == 0): ?>
             <div class='main_news'>
               <div class='media'>
                 <div class='pull-left'>
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/pic_4.jpg" />
+                  <?php the_post_thumbnail(array(146, 132)); ?>
                 </div>
                 <div class='media-body'>
                   <h4 class='media-heading'>
-                    <a href='#'>Lorem ipsum dolor sit amet, consectetur</a>
+                    <a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
                   </h4>
-                  <div class='post_date'>08.01.13</div>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in
-                  <a href='#'>Read More »</a>
+                  <div class='post_date'><?php the_time('m.d.y'); ?></div>
+                  <?php echo substr(get_the_content(), 0, 288); ?>
+                  <a href='<?php the_permalink(); ?>'>Read More »</a>
                 </div>
               </div>
             </div>
-            <div class='sub_news'>
+            <?php else: ?>
+              <?php if ($i == 1): ?><div class='sub_news'><?php endif; ?>
               <div class='media'>
                 <div class='pull-left'>
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/pic_5.jpg" />
+                  <?php the_post_thumbnail(array(82, 73)); ?>
                 </div>
                 <div class='media-body'>
                   <h4 class='media-heading'>
-                    <a href='#'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</a>
+                    <a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
                   </h4>
-                  <div class='post_date'>08.01.13</div>
+                  <div class='post_date'><?php the_time('m.d.y'); ?></div>
                 </div>
               </div>
-              <div class='media'>
-                <div class='pull-left'>
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/pic_5.jpg" />
-                </div>
-                <div class='media-body'>
-                  <h4 class='media-heading'>
-                    <a href='#'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</a>
-                  </h4>
-                  <div class='post_date'>08.01.13</div>
-                </div>
-              </div>
-            </div>
+            <?php endif; ?>
+            <?php $i++; ?>
+            <?php endwhile; ?>
+            <?php if ($i > 1): ?></div><?php endif; ?>
           </div>
         </div>
         <div class='clear'></div>
       </div>
+      <?php endif; ?>
+
       <div class='page'>
         <div class='blog_wrapper'>
           <div class='schedule_section'>
@@ -269,7 +276,7 @@ $slug = get_post( $post )->post_name;
             </div>
           </div>
           <?php endif; ?>
-          
+
         </div>
         <div class='clear'></div>
       </div>
