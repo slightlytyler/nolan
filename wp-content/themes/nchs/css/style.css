@@ -1412,9 +1412,3 @@ body {
     /* line 133, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
     header .right_side {
       display: none; } }
-
-
-
-.ai1ec-calendar-toolbar, .ai1ec-pagination, .ai1ec-calendar-title, .ai1ec-title-buttons {
-  display: none !important;
-}
