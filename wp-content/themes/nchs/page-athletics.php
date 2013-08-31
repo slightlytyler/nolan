@@ -178,6 +178,13 @@ $slug = get_post( $post )->post_name;
               </tr>
             </table>
           </div>
+
+          <?php
+          $args = array( 'post_type' => 'coach', 'posts_per_page' => -1, 'sport' => $slug );
+          $loop = new WP_Query( $args );
+          ?>
+
+          <?php if ($loop->have_posts()): ?>
           <div class='coaches_section'>
             <h3 class='title_section'>
               Coaches
@@ -188,8 +195,6 @@ $slug = get_post( $post )->post_name;
             <div class='coach_slider'>
               <ul class='slides'>
                 <?php
-                $args = array( 'post_type' => 'coach', 'posts_per_page' => -1 );
-                $loop = new WP_Query( $args );
                 while ( $loop->have_posts() ) :
                   $loop->the_post();
                 ?>
@@ -209,7 +214,14 @@ $slug = get_post( $post )->post_name;
               </ul>
             </div>
           </div>
+          <?php endif; ?>
 
+          <?php
+          $args = array( 'post_type' => 'player', 'posts_per_page' => -1, 'sport' => $slug );
+          $loop = new WP_Query( $args );
+          ?>
+
+          <?php if ($loop->have_posts()): ?>
           <div class='players_section'>
             <h3 class='title_section'>
               Players
@@ -230,8 +242,7 @@ $slug = get_post( $post )->post_name;
               <ul class='slides'>
                 <?php
                 $i = 0;
-                $args = array( 'post_type' => 'player', 'posts_per_page' => -1 );
-                $loop = new WP_Query( $args );
+                
                 echo "<li>";
                 while ( $loop->have_posts() ) :
                   $loop->the_post();
@@ -257,6 +268,8 @@ $slug = get_post( $post )->post_name;
               <div class='clear'></div>
             </div>
           </div>
+          <?php endif; ?>
+          
         </div>
         <div class='clear'></div>
       </div>

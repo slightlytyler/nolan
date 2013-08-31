@@ -40,7 +40,7 @@
     $parents = get_post_ancestors( $post->ID );
     $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
     $parent = get_page($id);
-    if (strcmp($parent, "athletics") == 0) {
+    if (strcmp($parent->post_name, "athletics") == 0) {
       $class .= $parent->post_name;
     }
 
