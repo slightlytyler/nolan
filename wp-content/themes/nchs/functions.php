@@ -61,4 +61,14 @@ function manage_news_story_columns($column_name, $id) {
 }
 add_action('manage_news-story_posts_custom_column', 'manage_news_story_columns', 10, 2);
 
+function nchs_register_fields() {
+  register_setting( 'general', 'nchs_slides_number_setting' );
+  add_settings_field( 'nchs_slides_number_setting', 'Number of slides to be displayed', 'nchs_slides_number_fields_html', 'general');
+}
+function nchs_slides_number_fields_html() {
+  $value = get_option( 'nchs_slides_number_setting', 0 );
+  echo '<input type="textfield" id="nchs_slides_number_setting" name="nchs_slides_number_setting" value="'.$value.'" />';
+}
+add_filter( 'admin_init', 'nchs_register_fields');
+
 ?>
