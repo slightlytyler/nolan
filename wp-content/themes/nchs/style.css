@@ -7,3 +7,72 @@ Author URI: http://deepspacerobots.org/
 Version: 1.0
 
 */
+ .ai1ec-calendar-toolbar, .ai1ec-pagination, .ai1ec-calendar-title, .ai1ec-title-buttons {
+    display: none !important;
+}
+/*************/
+/* Main Menu */
+/*************/
+.main_menu li ul {
+    display: none;
+}
+.main_menu li:hover > ul {
+    display: block;
+    z-index: 501;
+    background-color: #003161; 
+}
+.main_menu li ul {
+    position: absolute;
+    top: 100%;
+}
+.main_menu li ul li {
+    background-color: #003161;
+    position: relative;
+    z-index: 501;
+    clear: both;
+}
+.main_menu li ul li a {
+    padding: 15px 40px;
+}
+.main_menu li li {
+	margin-top: 0px;
+}
+.main_menu li ul {
+	margin: 0 0 10px 0;
+}
+/************/
+/* Nav Menu */
+/************/
+.menu1 li ul {
+    display: none;
+}
+.menu1 li:hover > ul {
+    display: block;
+}
+.menu1 li ul {
+	background-color: #003161;
+    position: absolute;
+    top: 100%;
+    z-index: 5
+}
+.menu1 li ul li {
+    background-color: #003161;
+    /*border-top: 1px solid #2b7bc9;*/
+    position: relative;
+    z-index: 5;
+    margin-right: 0 !important;
+    clear: both;
+}
+.menu1 li ul li a {
+    padding: 15px 40px;
+}
+.menu1 li ul {
+	margin: 0 0 10px 0;
+}
+/**/
+.widgets {
+    margin: 0;
+}
+.widgets li {
+    list-style: none;
+}

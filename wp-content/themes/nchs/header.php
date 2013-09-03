@@ -23,18 +23,29 @@
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-loader.css" rel="stylesheet" />
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/style.css" rel="stylesheet" />
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/flexslider.css" rel="stylesheet" />
+    <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" />
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
   <?php
+    $class = "";
+    
     if (is_home())
-      echo "<body class='home'>";
-    elseif (is_single())
-      echo "<body class='interior'>";
+      $class .= "home ";
     elseif (is_page( $page = 'athletics'))
-      echo "<body class='athletics'>";
-    elseif (is_page())
-      echo "<body class='interior'>";
+      $class .= "athletics ";
+    elseif (is_page() || is_single())
+      $class .= "interior ";
+
+    global $post;
+    $parents = get_post_ancestors( $post->ID );
+    $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
+    $parent = get_page($id);
+    if (strcmp($parent->post_name, "athletics") == 0) {
+      $class .= $parent->post_name;
+    }
+
   ?>
+  <body class="<?php echo $class; ?>">
     <header>
       <div class='page'>
         <div class='logo'>
@@ -47,7 +58,8 @@
           'container'       => 'nav',
           'container_class' => 'main_menu',
           'menu_class'      => 'main_menu',
-          'items_wrap'      => '%3$s'))
+          'items_wrap'      => '%3$s',
+          'depth'           => 2))
         ?>
         <div class='right_side'>
           <div class='social_box'>

@@ -12,7 +12,7 @@ get_header(); ?>
     <div class='slide_wrapper'>
       <div class='slide1_title'>
         <h3><?php the_title() ?></h3>
-        <?php echo types_render_field("header-subtext",array('raw'=>true)) ?>
+        <?php echo types_render_field("header-subtext", array()) ?>
       </div>
       <div class='slide_img'>
         <?php $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>
@@ -39,6 +39,11 @@ get_header(); ?>
       </div>
       <?php endwhile; ?>
 
+      <?php
+      global $post;
+      $slug = get_post( $post )->post_name;
+      ?>
+
       <div class='right_sidebar'>
         <div class='calendar_box'>
           <div class='calendar_head'>
@@ -46,66 +51,7 @@ get_header(); ?>
           </div>
           <div class='calendar_body'>
             <div class='calendar_content'>
-              <div class='media'>
-                <div class='pull-left'>
-                  <div class='date_bg'>
-                    <span class='month'>aug</span>
-                    <span class='day'>25</span>
-                  </div>
-                </div>
-                <div class='media-body'>
-                  <h4 class='media-heading'>Lorem Ipsum Dolor Sit Amet</h4>
-                  Doskocil Stadium
-                </div>
-              </div>
-              <div class='media'>
-                <div class='pull-left'>
-                  <div class='date_bg'>
-                    <span class='month'>aug</span>
-                    <span class='day'>25</span>
-                  </div>
-                </div>
-                <div class='media-body'>
-                  <h4 class='media-heading'>Lorem Ipsum Dolor Sit Amet</h4>
-                  Doskocil Stadium
-                </div>
-              </div>
-              <div class='media'>
-                <div class='pull-left'>
-                  <div class='date_bg'>
-                    <span class='month'>aug</span>
-                    <span class='day'>25</span>
-                  </div>
-                </div>
-                <div class='media-body'>
-                  <h4 class='media-heading'>Lorem Ipsum Dolor Sit Amet</h4>
-                  Doskocil Stadium
-                </div>
-              </div>
-              <div class='media'>
-                <div class='pull-left'>
-                  <div class='date_bg'>
-                    <span class='month'>aug</span>
-                    <span class='day'>25</span>
-                  </div>
-                </div>
-                <div class='media-body'>
-                  <h4 class='media-heading'>Lorem Ipsum Dolor Sit Amet</h4>
-                  Doskocil Stadium
-                </div>
-              </div>
-              <div class='media'>
-                <div class='pull-left'>
-                  <div class='date_bg'>
-                    <span class='month'>aug</span>
-                    <span class='day'>25</span>
-                  </div>
-                </div>
-                <div class='media-body'>
-                  <h4 class='media-heading'>Lorem Ipsum Dolor Sit Amet</h4>
-                  Doskocil Stadium
-                </div>
-              </div>
+              <?php echo do_shortcode('[ai1ec view="agenda" cat_name="'.$slug.'"]'); ?>
             </div>
           </div>
           <div class='calendar_footer'>

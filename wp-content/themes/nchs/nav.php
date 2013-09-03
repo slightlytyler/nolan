@@ -4,7 +4,8 @@
 		  'theme_location'  => 'nchs-nav-menu',
 		  'container'       => 'nav',
 		  'container_class' => 'menu1',
-		  'items_wrap'      => '%3$s'))
+		  'items_wrap'      => '%3$s',
+		  'depth' 					=> 2))
 		?>
   </div>
 </div>
