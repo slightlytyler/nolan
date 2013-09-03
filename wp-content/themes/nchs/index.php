@@ -143,26 +143,7 @@ get_header(); ?>
     </div>
     <div class='page'>
       <div class='promo_section'>
-        <div class='promo_card'>
-          <div class='promo_img'>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/pic_2.jpg" />
-          </div>
-          <div class='promo_title'>Class of 2017  - Get your Blue On!</div>
-          <div class='promo_msg'>
-            Lorem ipsum dolor sit amet,sed do eiusmod tempor incididunt ut labore
-            <a href='#'>Click Here »</a>
-          </div>
-        </div>
-        <div class='promo_card'>
-          <div class='promo_img'>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/pic_3.jpg" />
-          </div>
-          <div class='promo_title'>Become a Partner for Progress</div>
-          <div class='promo_msg'>
-            Lorem ipsum dolor sit amet,sed do eiusmod tempor incididunt ut labore   ea commodo
-            <a class='blue_btn' href='#'>Donate Now »</a>
-          </div>
-        </div>
+        <?php get_sidebar() ?>
         <div class='clear'></div>
       </div>
     </div>
