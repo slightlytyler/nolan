@@ -118,32 +118,11 @@ get_header(); ?>
           <a href='#'>VIEW FULL CALENDAR</a>
         </div>
       </div>
-    </div><div class='mission_section'>
-      <div class='mission_head'>
-        <div class='page'>
-          <div class='mission_title'>
-            <div class='mission_arrow'></div>
-            <h3>THE nolan catholic Mission</h3>
-          </div>
-        </div>
-      </div>
-      <div class='mission_body'>
-        <div class='page'>
-          <div class='mission_txt'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            </p>
-            <p>
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <div class='blue_btn'>Read More</div>
-          </div>
-        </div>
-      </div>
     </div>
+    <?php get_sidebar('homepage-middle'); ?>
     <div class='page'>
       <div class='promo_section'>
-        <?php get_sidebar('homepage'); ?>
+        <?php get_sidebar('homepage-bottom'); ?>
         <div class='clear'></div>
       </div>
     </div>

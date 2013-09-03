@@ -102,8 +102,18 @@ function nchs_widgets_init() {
     'description' => __( 'The Right Column widget area', 'nchs' )
   ) );
   register_sidebar( array(
-    'name' => __( 'Homepage Widget Area', 'nchs' ),
-    'id' => 'homepage-widget-area',
+    'name' => __( 'Homepage Top Widget Area', 'nchs' ),
+    'id' => 'homepage-top-widget-area',
+    'description' => __( 'The Homepage top widget area', 'nchs' )
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Homepage Middle Widget Area', 'nchs' ),
+    'id' => 'homepage-middle-widget-area',
+    'description' => __( 'The Homepage middle widget area', 'nchs' )
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Homepage Bottom Widget Area', 'nchs' ),
+    'id' => 'homepage-bottom-widget-area',
     'description' => __( 'The Homepage widget area', 'nchs' )
   ) );
 }
