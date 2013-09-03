@@ -43,7 +43,7 @@ $slug = get_post( $post )->post_name;
 
 <div class='page'>
       <div class='info_title'>
-        <h3>in the marIanist tradition since 1961</h3>
+        <h3>in the marianist tradition since 1961</h3>
       </div>
     </div>
     <div class='page_header_box'>
