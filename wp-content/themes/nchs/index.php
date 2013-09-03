@@ -15,42 +15,33 @@ get_header(); ?>
             <iframe allowfullscreen='' frameborder='0' mozallowfullscreen='' src='http://player.vimeo.com/video/59438095?title=0&amp;byline=0&amp;portrait=0' webkitallowfullscreen=''></iframe>
           </div>
         </div>
+
+        <?php
+        $args = array( 'post_type' => 'post', 'posts_per_page' => 3, 'tag' => 'homepage' );
+        $loop = new WP_Query( $args );
+        ?>
+
+        <?php if ($loop->have_posts()): ?>
         <div class='info_news'>
-          <div class='info_news_title'>Latest News</div>
+            <div class='info_news_title'>Latest News</div>
+          <?php
+          while ( $loop->have_posts() ) :
+            $loop->the_post();
+          ?>
           <div class='media'>
             <a class='pull-left' href='#'>
-              <img class="media-object" src="<?php echo get_template_directory_uri(); ?>/img/pic_1.jpg" />
+              <?php the_post_thumbnail('nchs-index-latest-news-thumb'); ?>
             </a>
             <div class='media-body'>
               <h4 class='media-heading'>
-                <a href='#'>Fr. Richard Villa, S.M. Named President of the Year</a>
+                <a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
               </h4>
-              <div class='news_date'>Thu Aug 1</div>
+              <div class='news_date'><?php the_time('D M j'); ?></div>
             </div>
           </div>
-          <div class='media'>
-            <a class='pull-left' href='#'>
-              <img class="media-object" src="<?php echo get_template_directory_uri(); ?>/img/pic_1.jpg" />
-            </a>
-            <div class='media-body'>
-              <h4 class='media-heading'>
-                <a href='#'>Fr. Richard Villa, S.M. Named President of the Year</a>
-              </h4>
-              <div class='news_date'>Thu Aug 1</div>
-            </div>
-          </div>
-          <div class='media'>
-            <a class='pull-left' href='#'>
-              <img class="media-object" src="<?php echo get_template_directory_uri(); ?>/img/pic_1.jpg" />
-            </a>
-            <div class='media-body'>
-              <h4 class='media-heading'>
-                <a href='#'>Fr. Richard Villa, S.M. Named President of the Year</a>
-              </h4>
-              <div class='news_date'>Thu Aug 1</div>
-            </div>
-          </div>
+          <?php endwhile; ?>
         </div>
+        <?php endif; ?>
         <div class='clear'></div>
       </div>
     </div>

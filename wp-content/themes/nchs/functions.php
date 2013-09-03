@@ -90,6 +90,8 @@ if ( function_exists( 'add_image_size' ) ) {
 
   add_image_size( 'nchs-athletics-news-featured', 146, 132 );
   add_image_size( 'nchs-athletics-news', 82, 73 );
+
+  add_image_size( 'nchs-index-latest-news-thumb', 50, 44 );
 }
 
 /* SIDEBARS */
