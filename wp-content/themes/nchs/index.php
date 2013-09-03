@@ -143,7 +143,7 @@ get_header(); ?>
     </div>
     <div class='page'>
       <div class='promo_section'>
-        <?php get_sidebar() ?>
+        <?php get_sidebar('homepage'); ?>
         <div class='clear'></div>
       </div>
     </div>

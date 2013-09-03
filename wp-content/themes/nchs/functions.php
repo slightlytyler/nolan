@@ -101,6 +101,11 @@ function nchs_widgets_init() {
     'id' => 'right-widget-area',
     'description' => __( 'The Right Column widget area', 'nchs' )
   ) );
+  register_sidebar( array(
+    'name' => __( 'Homepage Widget Area', 'nchs' ),
+    'id' => 'homepage-widget-area',
+    'description' => __( 'The Homepage widget area', 'nchs' )
+  ) );
 }
 add_action( 'widgets_init', 'nchs_widgets_init' );
 
