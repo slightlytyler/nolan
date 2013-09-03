@@ -71,6 +71,27 @@ function nchs_slides_number_fields_html() {
 }
 add_filter( 'admin_init', 'nchs_register_fields');
 
+/* CUSTOM IMAGE SIZE */
+if ( function_exists( 'add_theme_support' ) ) {
+  add_theme_support( 'post-thumbnails' );
+  set_post_thumbnail_size( 150, 150 );
+}
+
+if ( function_exists( 'add_image_size' ) ) { 
+  add_image_size( 'nchs-background', 1251, 328 );
+  add_image_size( 'nchs-foreground', 9999, 254 );
+
+  add_image_size( 'nchs-slide-background', 1242, 332 );
+  add_image_size( 'nchs-slide-foreground', 9999, 332 );
+
+  add_image_size( 'nchs-coach', 182, 195 );
+  add_image_size( 'nchs-player', 76, 81 );
+  add_image_size( 'nchs-player-large', 183, 257 );
+
+  add_image_size( 'nchs-athletics-news-featured', 146, 132 );
+  add_image_size( 'nchs-athletics-news', 82, 73 );
+}
+
 /* SIDEBARS */
 function nchs_widgets_init() {
   register_sidebar( array(
