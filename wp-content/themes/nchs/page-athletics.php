@@ -52,7 +52,7 @@ $slug = get_post( $post )->post_name;
 
     <div class='main_section'>
       <?php
-      $args = array( 'post_type' => 'news-story', 'posts_per_page' => 3, 'news-category' => $slug );
+      $args = array( 'post_type' => 'post', 'posts_per_page' => 3, 'category_name' => $slug );
       $loop = new WP_Query( $args );
       ?>
       <?php if ($loop->have_posts()): ?>
@@ -60,7 +60,7 @@ $slug = get_post( $post )->post_name;
         <h3 class='title_section top_title_mod'>
           Latest News
           <div class='view_more_box'>
-            <a href='#'>View More »</a>
+            <a href='<?php echo get_post_type_archive_link( 'post' ); ?>'>View More »</a>
           </div>
         </h3>
       </div>
@@ -77,7 +77,7 @@ $slug = get_post( $post )->post_name;
             <div class='main_news'>
               <div class='media'>
                 <div class='pull-left'>
-                  <?php the_post_thumbnail(array(146, 132)); ?>
+                  <?php the_post_thumbnail('nchs-athletics-news-featured'); ?>
                 </div>
                 <div class='media-body'>
                   <h4 class='media-heading'>
@@ -93,7 +93,7 @@ $slug = get_post( $post )->post_name;
               <?php if ($i == 1): ?><div class='sub_news'><?php endif; ?>
               <div class='media'>
                 <div class='pull-left'>
-                  <?php the_post_thumbnail(array(82, 73)); ?>
+                  <?php the_post_thumbnail('nchs-athletics-news'); ?>
                 </div>
                 <div class='media-body'>
                   <h4 class='media-heading'>

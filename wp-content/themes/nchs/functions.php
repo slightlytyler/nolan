@@ -90,6 +90,8 @@ if ( function_exists( 'add_image_size' ) ) {
 
   add_image_size( 'nchs-athletics-news-featured', 146, 132 );
   add_image_size( 'nchs-athletics-news', 82, 73 );
+
+  add_image_size( 'nchs-index-latest-news-thumb', 50, 44 );
 }
 
 /* SIDEBARS */
@@ -98,6 +100,11 @@ function nchs_widgets_init() {
     'name' => __( 'Right Column Widget Area', 'nchs' ),
     'id' => 'right-widget-area',
     'description' => __( 'The Right Column widget area', 'nchs' )
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Homepage Widget Area', 'nchs' ),
+    'id' => 'homepage-widget-area',
+    'description' => __( 'The Homepage widget area', 'nchs' )
   ) );
 }
 add_action( 'widgets_init', 'nchs_widgets_init' );
