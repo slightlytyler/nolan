@@ -71,4 +71,14 @@ function nchs_slides_number_fields_html() {
 }
 add_filter( 'admin_init', 'nchs_register_fields');
 
+/* SIDEBARS */
+function nchs_widgets_init() {
+  register_sidebar( array(
+    'name' => __( 'Right Column Widget Area', 'nchs' ),
+    'id' => 'right-widget-area',
+    'description' => __( 'The Right Column widget area', 'nchs' )
+  ) );
+}
+add_action( 'widgets_init', 'nchs_widgets_init' );
+
 ?>

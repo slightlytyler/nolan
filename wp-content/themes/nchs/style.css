@@ -69,3 +69,10 @@ Version: 1.0
 .menu1 li ul {
 	margin: 0 0 10px 0;
 }
+/**/
+.widgets {
+    margin: 0;
+}
+.widgets li {
+    list-style: none;
+}
