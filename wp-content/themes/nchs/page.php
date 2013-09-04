@@ -12,7 +12,7 @@ get_header(); ?>
     <div class='slide_wrapper'>
       <div class='slide1_title'>
         <h3><?php the_title() ?></h3>
-        <?php echo types_render_field("header-subtext", array()) ?>
+        <?php echo types_render_field("header-subtext",array('raw'=>true)) ?>
       </div>
       <div class='slide_img'>
         <?php $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>

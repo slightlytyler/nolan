@@ -118,6 +118,7 @@ get_header(); ?>
           <a href='#'>VIEW FULL CALENDAR</a>
         </div>
       </div>
+<<<<<<< HEAD
     </div><div class='mission_section'>
       <div class='mission_head'>
         <div class='page'>
@@ -141,9 +142,10 @@ get_header(); ?>
         </div>
       </div>
     </div>
+    <?php get_sidebar('homepage-middle'); ?>
     <div class='page'>
       <div class='promo_section'>
-        <?php get_sidebar('homepage'); ?>
+        <?php get_sidebar('homepage-bottom'); ?>
         <div class='clear'></div>
       </div>
     </div>
