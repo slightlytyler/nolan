@@ -568,7 +568,7 @@ class Ai1ec_Calendar_Helper {
 			"IF( e.allday, e.allday, i.end = DATE_ADD( i.start, INTERVAL 1 DAY ) ) AS allday, " .
 			"e.recurrence_rules, e.exception_rules, e.recurrence_dates, e.exception_dates, " .
 			"e.venue, e.country, e.address, e.city, e.province, e.postal_code, e.instant_event," .
-			"e.show_map, e.contact_name, e.contact_phone, e.contact_email, e.cost, " .
+			"e.show_map, e.contact_name, e.contact_phone, e.contact_email, e.cost, e.nchs_opponent, e.nchs_level, e.nchs_results," .
 			"e.ical_feed_url, e.ical_source_url, e.ical_organizer, e.ical_contact, e.ical_uid " .
 			"FROM {$wpdb->prefix}ai1ec_events e " .
 				"INNER JOIN $wpdb->posts p ON p.ID = e.post_id " .
@@ -695,7 +695,7 @@ class Ai1ec_Calendar_Helper {
 					'IF( e.allday, e.allday, i.end = DATE_ADD( i.start, INTERVAL 1 DAY ) ) AS allday, ' .
 					'e.recurrence_rules, e.exception_rules, e.instant_event, e.recurrence_dates, e.exception_dates, ' .
 					'e.venue, e.country, e.address, e.city, e.province, e.postal_code, ' .
-					'e.show_map, e.contact_name, e.contact_phone, e.contact_email, e.cost, ' .
+					'e.show_map, e.contact_name, e.contact_phone, e.contact_email, e.cost, e.nchs_opponent, e.nchs_level, e.nchs_results,' .
 					'e.ical_feed_url, e.ical_source_url, e.ical_organizer, e.ical_contact, e.ical_uid ' .
 					'FROM ' . $wpdb->prefix . 'ai1ec_events e ' .
 						'INNER JOIN ' . $wpdb->posts . ' p ON e.post_id = p.ID ' .

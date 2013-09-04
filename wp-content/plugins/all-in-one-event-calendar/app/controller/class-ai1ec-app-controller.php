@@ -425,6 +425,9 @@ class Ai1ec_App_Controller {
 				facebook_user bigint(20),
 				facebook_status varchar(1) NOT NULL DEFAULT '',
 				force_regenerate tinyint(1) NOT NULL DEFAULT 0,
+				nchs_opponent varchar(45),
+				nchs_level varchar(45),
+				nchs_results varchar(255),
 				PRIMARY KEY  (post_id),
 				KEY feed_source (ical_feed_url)
 			) CHARACTER SET utf8;";

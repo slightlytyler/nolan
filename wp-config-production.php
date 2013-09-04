@@ -19,10 +19,10 @@
 define('DB_NAME', 'nolan');
 
 /** MySQL database username */
-define('DB_USER', 'nolan');
+define('DB_USER', 'nolanified');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'fh#%533d');
+define('DB_PASSWORD', 'vhds$#^j@');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -81,6 +81,10 @@ define('WPLANG', '');
 define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
+
+/** Enable W3 Total Cache */
+define('WP_CACHE', true); // Added by W3 Total Cache
+
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
