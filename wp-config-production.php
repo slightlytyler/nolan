@@ -19,10 +19,10 @@
 define('DB_NAME', 'nolan');
 
 /** MySQL database username */
-define('DB_USER', 'nolan');
+define('DB_USER', 'nolanified');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'fh#%533d');
+define('DB_PASSWORD', 'vhds$#^j@');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
