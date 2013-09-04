@@ -187,6 +187,9 @@ class Ai1ec_Events_Controller {
 		$contact_email    = '';
 		$contact_url      = '';
 		$cost             = '';
+		$nchs_opponent    = '';
+		$nchs_level       = '';
+		$nchs_results     = '';
 		$rrule            = '';
 		$rrule_text       = '';
 		$repeating_event  = false;
@@ -263,6 +266,9 @@ class Ai1ec_Events_Controller {
 			$contact_email    = $event->contact_email;
 			$contact_url      = $event->contact_url;
 			$cost             = $event->cost;
+			$nchs_opponent    = $event->nchs_opponent;
+			$nchs_level       = $event->nchs_level;
+			$nchs_results     = $event->nchs_results;
 			$ticket_url       = $event->ticket_url;
 			$rrule            = empty( $event->recurrence_rules ) ? '' : $ai1ec_events_helper->ics_rule_to_local( $event->recurrence_rules );
 			$exrule           = empty( $event->exception_rules )  ? '' : $ai1ec_events_helper->ics_rule_to_local( $event->exception_rules );
@@ -374,6 +380,19 @@ class Ai1ec_Events_Controller {
 			$args
 		);
 
+		// ================================
+		// = Display game specific fields =
+		// ================================
+		$args = array(
+			'nchs_opponent' => $nchs_opponent,
+			'nchs_level' => $nchs_level,
+			'nchs_results' => $nchs_results,
+		);
+		$boxes[] = $ai1ec_view_helper->get_admin_view(
+			'box_event_nchs_custom.php',
+			$args
+		);
+
 		/*
 			TODO Display Eventbrite ticketing
 			$ai1ec_view_helper->display( 'box_eventbrite.php' );
@@ -463,6 +482,9 @@ class Ai1ec_Events_Controller {
 		$country          = isset( $_POST['ai1ec_country'] )          ? $_POST['ai1ec_country']                       : '';
 		$google_map       = isset( $_POST['ai1ec_google_map'] )       ? 1                                             : 0;
 		$cost             = isset( $_POST['ai1ec_cost'] )             ? $_POST['ai1ec_cost']                          : '';
+		$nchs_opponent    = isset( $_POST['ai1ec_nchs_opponent'] )    ? $_POST['ai1ec_nchs_opponent']                 : '';
+		$nchs_level       = isset( $_POST['ai1ec_nchs_level'] )       ? $_POST['ai1ec_nchs_level']                    : '';
+		$nchs_results     = isset( $_POST['ai1ec_nchs_results'] )     ? $_POST['ai1ec_nchs_results']                  : '';
 		$ticket_url       = isset( $_POST['ai1ec_ticket_url'] )       ? $_POST['ai1ec_ticket_url']                    : '';
 		$contact_name     = isset( $_POST['ai1ec_contact_name'] )     ? $_POST['ai1ec_contact_name']                  : '';
 		$contact_phone    = isset( $_POST['ai1ec_contact_phone'] )    ? $_POST['ai1ec_contact_phone']                 : '';
@@ -516,6 +538,9 @@ class Ai1ec_Events_Controller {
 		$event->country             = $country;
 		$event->show_map            = $google_map;
 		$event->cost                = $cost;
+		$event->nchs_opponent       = $nchs_opponent;
+		$event->nchs_level          = $nchs_level;
+		$event->nchs_results        = $nchs_results;
 		$event->ticket_url          = $ticket_url;
 		$event->contact_name        = $contact_name;
 		$event->contact_phone       = $contact_phone;
