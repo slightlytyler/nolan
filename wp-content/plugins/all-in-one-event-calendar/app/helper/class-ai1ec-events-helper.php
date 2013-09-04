@@ -1132,7 +1132,7 @@ class Ai1ec_Events_Helper {
 		$query = $wpdb->prepare(
 			"SELECT *, e.post_id, e.start as start, e.end as end, e.allday, e.recurrence_rules, e.exception_rules,
 				e.recurrence_dates, e.exception_dates, e.venue, e.country, e.address, e.city, e.province, e.postal_code,
-				e.show_map, e.contact_name, e.contact_phone, e.contact_email, e.cost, e.ical_feed_url, e.ical_source_url,
+				e.show_map, e.contact_name, e.contact_phone, e.contact_email, e.cost, e.nchs_opponent, e.nchs_level, e.nchs_results, e.ical_feed_url, e.ical_source_url,
 				e.ical_organizer, e.ical_contact, e.ical_uid " .
 			"FROM $wpdb->posts " .
 				"INNER JOIN {$wpdb->prefix}ai1ec_events AS e ON e.post_id = ID " .

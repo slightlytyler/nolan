@@ -244,6 +244,30 @@ class Ai1ec_Event {
 	var $ticket_url;
 
 	// ====================================
+	// = NCHS Custom fields               =
+	// ====================================
+	/**
+	 * nchs_opponent class variable
+	 *
+	 * @var string
+	 **/
+	var $nchs_opponent;
+
+	/**
+	 * nchs_level class variable
+	 *
+	 * @var string
+	 **/
+	var $nchs_level;
+
+	/**
+	 * nchs_resutls class variable
+	 *
+	 * @var string
+	 **/
+	var $nchs_results;
+
+	// ====================================
 	// = iCalendar feed (.ics) properties =
 	// ====================================
 	/**
@@ -427,7 +451,7 @@ class Ai1ec_Event {
 				"e.allday, e.instant_event, e.recurrence_dates, e.exception_dates, " .
 				"e.venue, e.country, e.address, e.city, e.province, e.postal_code, " .
 				"e.show_map, e.contact_name, e.contact_phone, e.contact_email, " .
-				"e.contact_url, e.cost, e.ticket_url, e.ical_feed_url, " .
+				"e.contact_url, e.cost, e.nchs_opponent, e.nchs_level, e.nchs_results, e.ticket_url, e.ical_feed_url, " .
 				"e.ical_source_url, e.ical_organizer, e.ical_contact, e.ical_uid, " .
 				"e.longitude, e.latitude, e.show_coordinates, e.facebook_eid, " .
 				"e.facebook_status, e.facebook_user, " .
@@ -1505,6 +1529,9 @@ HTML;
 			'facebook_eid'     => $facebook_eid,
 			'facebook_user'    => $facebook_user,
 			'facebook_status'  => $this->facebook_status,
+			'nchs_opponent'    => $this->nchs_opponent,
+			'nchs_level'       => $this->nchs_level,
+			'nchs_results'     => $this->nchs_results,
 		);
 
 		$format = array(
@@ -1536,6 +1563,9 @@ HTML;
 			'%d',
 			'%f',
 			'%f',
+			'%s',
+			'%s',
+			'%s',
 			'%s',
 			'%s',
 			'%s',
