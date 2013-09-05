@@ -11,8 +11,14 @@ get_header(); ?>
   <?php endif; ?>
     <div class='slide_wrapper'>
       <div class='slide1_title'>
-        <h3><?php the_title() ?></h3>
+		<?php $parents = get_post_ancestors( $post->ID );?>
+        <?php if($post->post_parent==0) : ?>
+		<h3><?php the_title() ?></h3>
         <?php echo types_render_field("header-subtext",array('raw'=>true)) ?>
+		<?php else : ?>
+			<h3 class="subpage_title"><?php echo get_the_title($parents[count($parents)-1])?></h3>
+			<span class="subpage_small_title"><?php the_title(); ?></span>
+		<?php endif;?>
       </div>
       <div class='slide_img'>
         <?php $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>
@@ -29,58 +35,18 @@ get_header(); ?>
 
 <?php get_template_part('nav'); ?>
 
-    <div class='page'>
+    <div class='page interior'>
       <?php while ( have_posts() ) : the_post(); ?>
       <div class='blog_section'>
         <div class='blog_wrapper'>
-          <h3><?php the_title() ?></h3>
           <?php the_content() ?>
         </div>
       </div>
       <?php endwhile; ?>
 
-      <?php
-      global $post;
-      $slug = get_post( $post )->post_name;
-      ?>
-
-      <div class='right_sidebar'>
-        <div class='calendar_box'>
-          <div class='calendar_head'>
-            <h4>CALENDAR</h4>
-          </div>
-          <div class='calendar_body'>
-            <div class='calendar_content'>
-              <?php echo do_shortcode('[ai1ec view="agenda" cat_name="'.$slug.'"]'); ?>
-            </div>
-          </div>
-          <div class='calendar_footer'>
-            <a href='#'>VIEW FULL CALENDAR</a>
-          </div>
-        </div>
-        <div class='promo_card'>
-          <div class='promo_img'>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/pic_2.jpg" />
-          </div>
-          <div class='promo_title'>Class of 2017  - Get your Blue On!</div>
-          <div class='promo_msg'>
-            Lorem ipsum dolor sit amet,sed do eiusmod tempor incididunt ut labore
-            <a href='#'>Click Here »</a>
-          </div>
-        </div>
-        <div class='promo_card'>
-          <div class='promo_img'>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/pic_3.jpg" />
-          </div>
-          <div class='promo_title'>Become a Partner for Progress</div>
-          <div class='promo_msg'>
-            Lorem ipsum dolor sit amet,sed do eiusmod tempor incididunt ut labore   ea commodo
-            <a class='blue_btn' href='#'>Donate Now »</a>
-          </div>
-        </div>
-        <div class='clear'></div>
-      </div>
-      <div class='clear'></div>
-    </div>
+      
+	<?php get_sidebar("page")?>
+ <div class='clear'></div>
+     </div>
 
 <?php get_footer(); ?>

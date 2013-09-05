@@ -428,16 +428,19 @@ body {
     float: left;
     padding: 0px 0px 0px 27px; }
     /* line 34, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
-    .menu1_section .menu1 li {
+    .menu1_section .menu1 > li {
       display: inline;
       float: left;
-      margin-right: 45px;
-      padding: 11px 0; }
+      margin-right: 25px;
+      padding: 11px 10px; }
       /* line 38, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
       .menu1_section .menu1 li a {
         font-size: 14px;
         color: white;
         font-family: "trajan_proregular"; }
+
+
+
 
 /* line 42, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_home.sass */
 .info_title {
@@ -1173,7 +1176,7 @@ body {
       font-size: 17px;
       font-family: "ChronicleTextG1Bold"; }
   /* line 256, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
-  .right_sidebar .promo_card {
+  .athletics .right_sidebar .promo_card {
     float: none;
     display: block;
     width: 100%;
@@ -1183,10 +1186,10 @@ body {
     -moz-box-shadow: none;
     box-shadow: none; }
   /* line 263, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
-  .right_sidebar .promo_img {
+  .athletics .right_sidebar .promo_img {
     padding: 0; }
   /* line 265, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
-  .right_sidebar .promo_msg {
+  .athletics .right_sidebar .promo_msg {
     padding-bottom: 0; }
   /* line 267, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/pages/_athletics.sass */
   .right_sidebar .calendar_footer {
@@ -1412,3 +1415,4 @@ body {
     /* line 133, /Users/danielperez/Desarrollo/nolan2/wp-content/themes/nchs/source/css/elements/_responsive.sass */
     header .right_side {
       display: none; } }
+

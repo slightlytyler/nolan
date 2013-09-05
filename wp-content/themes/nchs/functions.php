@@ -1,5 +1,12 @@
 <?php
-
+function has_children($child_of = null)
+{
+        if(is_null($child_of)) {
+                global $post;
+                $child_of = ($post->post_parent != '0') ? $post->post_parent : $post->ID;
+        }
+        return (wp_list_pages("child_of=$child_of&echo=0")) ? true : false;
+}
 function nchs_register_menus() {
   register_nav_menus( array(
   	'nchs-main-menu' 	=> __('Main Menu'),
@@ -99,7 +106,13 @@ function nchs_widgets_init() {
   register_sidebar( array(
     'name' => __( 'Right Column Widget Area', 'nchs' ),
     'id' => 'right-widget-area',
-    'description' => __( 'The Right Column widget area', 'nchs' )
+    'description' => __( 'The Right Column widget area', 'nchs' ),
+  ) );
+
+register_sidebar( array(
+    'name' => __( 'Page - Right Column Widget Area', 'nchs' ),
+    'id' => 'page-right-widget-area',
+    'description' => __( 'Page - The Right Column widget area', 'nchs' )
   ) );
   register_sidebar( array(
     'name' => __( 'Homepage Top Widget Area', 'nchs' ),
