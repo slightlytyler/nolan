@@ -118,72 +118,7 @@ $slug = get_post( $post )->post_name;
             <h3 class='title_section'>
               Schedule
             </h3>
-            <table>
-              <tr>
-                <th>DATE</th>
-                <th>TIME</th>
-                <th>OPPONENT</th>
-                <th>LOCATION</th>
-                <th>LEVEL</th>
-                <th>RESULTS</th>
-              </tr>
-              <tr>
-                <td>08.15.13</td>
-                <td>7:00PM</td>
-                <td>Benedictine</td>
-                <td>Football Field</td>
-                <td>1</td>
-                <td>Coming Soon</td>
-              </tr>
-              <tr>
-                <td>08.15.13</td>
-                <td>7:00PM</td>
-                <td>Benedictine</td>
-                <td>Football Field</td>
-                <td>1</td>
-                <td>Coming Soon</td>
-              </tr>
-              <tr>
-                <td>08.15.13</td>
-                <td>7:00PM</td>
-                <td>Benedictine</td>
-                <td>Football Field</td>
-                <td>1</td>
-                <td>Coming Soon</td>
-              </tr>
-              <tr>
-                <td>08.15.13</td>
-                <td>7:00PM</td>
-                <td>Benedictine</td>
-                <td>Football Field</td>
-                <td>1</td>
-                <td>Coming Soon</td>
-              </tr>
-              <tr>
-                <td>08.15.13</td>
-                <td>7:00PM</td>
-                <td>Benedictine</td>
-                <td>Football Field</td>
-                <td>1</td>
-                <td>Coming Soon</td>
-              </tr>
-              <tr>
-                <td>08.15.13</td>
-                <td>7:00PM</td>
-                <td>Benedictine</td>
-                <td>Football Field</td>
-                <td>1</td>
-                <td>Coming Soon</td>
-              </tr>
-              <tr>
-                <td>08.15.13</td>
-                <td>7:00PM</td>
-                <td>Benedictine</td>
-                <td>Football Field</td>
-                <td>1</td>
-                <td>Coming Soon</td>
-              </tr>
-            </table>
+            <?php echo do_shortcode('[ai1ec view="schedule" cat_name="'.$slug.'" tag_name="schedule"]'); ?>
           </div>
 
           <?php

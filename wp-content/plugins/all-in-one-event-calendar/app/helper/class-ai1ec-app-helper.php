@@ -1051,6 +1051,7 @@ class Ai1ec_App_Helper {
 			'week' => __( 'Week', AI1EC_PLUGIN_NAME ),
 			'oneday' => __( 'Day', AI1EC_PLUGIN_NAME ),
 			'agenda' => __( 'Agenda', AI1EC_PLUGIN_NAME ),
+			'schedule' => __( 'Schedule', AI1EC_PLUGIN_NAME),
 		);
 	}
 }

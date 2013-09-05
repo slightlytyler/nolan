@@ -288,6 +288,8 @@ class Ai1ec_Calendar_Controller {
 
 		// Get events, then classify into date array
 		$per_page_setting = $type . '_events_per_page';
+		if ($type === 'schedule') { $ai1ec_settings->$per_page_setting = 20; }
+		
 		$results = $ai1ec_calendar_helper->get_events_relative_to(
 			$timestamp,
 			$ai1ec_settings->$per_page_setting,
@@ -713,6 +715,21 @@ class Ai1ec_Calendar_Controller {
 	 */
 	function get_agenda_view( $args ) {
 		return $this->get_agenda_like_view( 'agenda', $args );
+	}
+
+	/**
+	 * Return the schedule view of the calendar
+	 *
+	 * @param array $args     associative array with any of these elements:
+	 *   array categories  => restrict events returned to the given set of
+	 *                        event category slugs
+	 *   array tags        => restrict events returned to the given set of
+	 *                        event tag names
+	 *
+	 * @return string	        returns string of view output
+	 */
+	function get_schedule_view( $args ) {
+		return $this->get_agenda_like_view( 'schedule', $args );
 	}
 
 	/**

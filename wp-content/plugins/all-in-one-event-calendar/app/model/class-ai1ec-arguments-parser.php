@@ -28,6 +28,7 @@ class Ai1ec_Arguments_Parser extends Ai1ec_Abstract_Query {
 			'oneday',
 			'week',
 			'agenda',
+			'schedule',
 		);
 		foreach ( $action_list as $action ) {
 			$action_list[] = 'ai1ec_' . $action;
