@@ -2,7 +2,7 @@
 /* Template Name: Athletics */
 get_header(); ?>
 
-<?php $_title = get_the_title(); ?>
+<?php global $_title; $_title = get_the_title(); ?>
 <div class='slider_section'>
   <?php $image_url = types_render_field( "athletics-background-image", array('raw' => true)) ?>
   <?php if($image_url !== ''): ?>
