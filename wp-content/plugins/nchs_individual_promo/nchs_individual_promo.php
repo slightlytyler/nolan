@@ -30,12 +30,14 @@ class nchs_individual_promo_Widget extends WP_Widget {
 
     echo $before_widget;
 
+    echo '<div class="calendar_content">';
     echo '<div class="promo_card">';
 		
     if( !empty( $img_id ) ) { echo '<div class="promo_img"><img src="'.$img->get_image_src('full').'" /></div>'; }
 		if( !empty( $title ) ) { echo '<div class="promo_title">'.$title.'</div>'; }
     if( !empty( $msg ) ) { echo '<div class="promo_msg">'.$msg.'</div>'; }
 
+    echo '</div>';
     echo '</div>';
 
   	echo $after_widget;

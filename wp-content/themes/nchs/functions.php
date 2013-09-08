@@ -104,12 +104,13 @@ if ( function_exists( 'add_image_size' ) ) {
 /* SIDEBARS */
 function nchs_widgets_init() {
   register_sidebar( array(
-    'name' => __( 'Right Column Widget Area', 'nchs' ),
-    'id' => 'right-widget-area',
-    'description' => __( 'The Right Column widget area', 'nchs' ),
+    'name' => __( 'Athletics - Right Column Widget Area', 'nchs' ),
+    'id' => 'athletics-right-widget-area',
+    'description' => __( 'Athletics - The Right Column widget area', 'nchs' ),
+    'before_widget' => '',
+    'after_widget'  => '',
   ) );
-
-register_sidebar( array(
+  register_sidebar( array(
     'name' => __( 'Page - Right Column Widget Area', 'nchs' ),
     'id' => 'page-right-widget-area',
     'description' => __( 'Page - The Right Column widget area', 'nchs' )
@@ -117,17 +118,30 @@ register_sidebar( array(
   register_sidebar( array(
     'name' => __( 'Homepage Top Widget Area', 'nchs' ),
     'id' => 'homepage-top-widget-area',
-    'description' => __( 'The Homepage top widget area', 'nchs' )
+    'description' => __( 'The Homepage top widget area', 'nchs' ),
+    'before_widget' => '',
+    'after_widget'  => '',
   ) );
   register_sidebar( array(
     'name' => __( 'Homepage Middle Widget Area', 'nchs' ),
     'id' => 'homepage-middle-widget-area',
-    'description' => __( 'The Homepage middle widget area', 'nchs' )
+    'description' => __( 'The Homepage middle widget area', 'nchs' ),
+    'before_widget' => '',
+    'after_widget'  => '',
   ) );
   register_sidebar( array(
     'name' => __( 'Homepage Bottom Widget Area', 'nchs' ),
     'id' => 'homepage-bottom-widget-area',
-    'description' => __( 'The Homepage widget area', 'nchs' )
+    'description' => __( 'The Homepage bottom widget area', 'nchs' ),
+    'before_widget' => '',
+    'after_widget'  => '',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Homepage Right Widget Area', 'nchs' ),
+    'id' => 'homepage-right-widget-area',
+    'description' => __( 'The Homepage right widget area', 'nchs' ),
+    'before_widget' => '',
+    'after_widget'  => '',
   ) );
 }
 add_action( 'widgets_init', 'nchs_widgets_init' );
