@@ -32,7 +32,7 @@ class nchs_calendar_Widget extends WP_Widget {
     echo $before_widget;
 
     echo '
-    <div class="calendar_box">
+    <div class="calendar_box calendar_box_width_auto">
     <div class="calendar_head">
       <h4>'.$title.'</h4>
     </div>

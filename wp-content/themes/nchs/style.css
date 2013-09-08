@@ -161,6 +161,6 @@ span.subpage_small_title {
     font-size: 25px;
     line-height: 30px;
 }
-.calendar_box {
+.calendar_box_width_auto {
     width: auto;
 }
