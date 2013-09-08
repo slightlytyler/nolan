@@ -18,7 +18,7 @@ class nchs_calendar_Widget extends WP_Widget {
 
   function widget( $args, $instance ) {
     $use_calendar = types_render_field("use-calendar", array('raw' => true));
-    if (!$use_calendar) {
+    if (!$use_calendar && !is_home()) {
       return;
     }
   	
@@ -30,6 +30,8 @@ class nchs_calendar_Widget extends WP_Widget {
     $slug = get_post( $post )->post_name;
 
     echo $before_widget;
+
+    if (is_home()) echo '<div class="calendar_section">';
 
     echo '
     <div class="calendar_box calendar_box_width_auto">
@@ -45,6 +47,8 @@ class nchs_calendar_Widget extends WP_Widget {
       echo '<div class="calendar_footer"><a href="#">VIEW FULL CALENDAR</a></div>';
     }
     echo '</div>';
+
+    if (is_home()) echo '</div>';
 
   	echo $after_widget;
   }
