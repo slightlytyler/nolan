@@ -123,6 +123,7 @@ Version: 1.0
     position: absolute !important;
 }
 /**/
+
  .interior div.right_sidebar li.widget {
     background: white;
     width: 285px;
@@ -133,6 +134,15 @@ Version: 1.0
     -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.4);
     box-shadow: 0 1px 0px rgba(0, 0, 0, 0.4);
+}
+ .interior div.right_sidebar li.NCHSCalendarWidget {
+	background: none;
+	width: auto;
+	margin: 0px;
+	border: 0px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
 }
 .interior div.right_sidebar li.widget h2 {
     font-family:"trajan_proregular";
@@ -163,4 +173,47 @@ span.subpage_small_title {
 }
 .calendar_box_width_auto {
     width: auto;
+}
+.slider_section .slides, .slider_section .flexslider {
+   background: url("img/slide_bg_main.jpg") no-repeat 50% 0; 
+}
+.slider_section .slide_wrapper .slide1_title {
+  color: black;
+}
+.slider_section .slider_wrapper .slide1_title h3,
+.interior .slide_wrapper .slide1_title h3{
+	color: #2b7bc9;
+}
+.athletics .lowerhalf{
+	min-height: 500px;
+}
+.athletics .right_sidebar .latest_news_box{
+	padding-top: 10px;
+}
+.athletics .right_sidebar .latest_news_box ul{
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.athletics .right_sidebar .latest_news_box ul li{
+	padding: 0px;
+	border-bottom: 1px solid #CCC;
+}
+
+.athletics .right_sidebar .latest_news_box ul li a{
+	color: #2b7bc9;
+	font-family: "ChronicleTextG1Bold";
+	font-size: 14px;
+	line-height: 20px;
+	padding: 10px 0px;
+	display: block;
+}
+.interior .single_athletics .promo_card{
+	float: none;
+	display: block;
+	width: 260px;
+}
+
+.home .page .promo_section .promo_card{
+	min-height: 271px;
 }

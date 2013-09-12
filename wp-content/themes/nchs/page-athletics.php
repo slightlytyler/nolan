@@ -2,39 +2,13 @@
 /* Template Name: Athletics */
 get_header(); ?>
 
-<?php global $_title; $_title = get_the_title(); ?>
-<div class='slider_section'>
-  <?php $image_url = types_render_field( "athletics-background-image", array('raw' => true)) ?>
-  <?php if($image_url !== ''): ?>
-  <div class='slider_athletic' style="background-image: url('<?php echo $image_url; ?>')">
-  <?php else: ?>
-  <div class='slider_athletic'>
-  <?php endif; ?>
-    <div class='slide_wrapper'>
-      <div class='slide1_title'>
-        
-        <h3><?php the_title() ?></h3>
-        <?php echo types_render_field("athletics-header-subtext", array("raw" => true)) ?>
-      </div>
-      <div class='slide_img'>
-        <?php $slide_img = types_render_field( "athletics-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>
-        <?php if ($slide_img !== ''): ?>
-          <?php echo $slide_img; ?>
-        <?php else: ?>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/slide_viking.png" />
-        <?php endif; ?>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<?php get_template_part('nav'); ?>
-
-<?php
+<?php 
+global $_title; $_title = get_the_title(); 
 global $post;
 $slug = get_post( $post )->post_name;
 ?>
+
+	
 
 <div class='page'>
       <div class='info_title'>
@@ -106,16 +80,19 @@ $slug = get_post( $post )->post_name;
         <div class='clear'></div>
       </div>
       <?php endif; ?>
-
-      <div class='page'>
+		
+	  <?php wp_reset_query(); ?>
+      <div class='page lowerhalf'>
         <div class='blog_wrapper'>
+	<?php if( has_event_category($slug) || $slug=="athletics") : ?>
           <div class='schedule_section'>
             <h3 class='title_section'>
               Schedule
             </h3>
-            <?php echo do_shortcode('[ai1ec view="schedule" cat_name="'.$slug.'" tag_name="schedule"]'); ?>
-          </div>
 
+            <?php echo do_shortcode('[ai1ec view="schedule" cat_name="'.$slug.'"]'); ?>
+          </div>
+		<?php endif;?>
           <?php
           $args = array( 'post_type' => 'coach', 'posts_per_page' => -1, 'sport' => $slug );
           $loop = new WP_Query( $args );
@@ -152,7 +129,8 @@ $slug = get_post( $post )->post_name;
             </div>
           </div>
           <?php endif; ?>
-
+		  <?php wp_reset_query(); ?>
+		
           <?php
           $args = array( 'post_type' => 'player', 'posts_per_page' => -1, 'sport' => $slug );
           $loop = new WP_Query( $args );
@@ -206,7 +184,7 @@ $slug = get_post( $post )->post_name;
             </div>
           </div>
           <?php endif; ?>
-
+	  <?php wp_reset_query(); ?>
         </div>
         <div class='clear'></div>
       </div>
@@ -216,5 +194,4 @@ $slug = get_post( $post )->post_name;
       </div>
       <div class='clear'></div>
     </div>
-
 <?php get_footer() ?>

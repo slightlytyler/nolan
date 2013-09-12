@@ -1,7 +1,6 @@
 <?php
-
+/* Template Name: Single Athletics */
 get_header(); ?>
-
 
 <div class='page'>
 	<?php while ( have_posts() ) : the_post(); ?>

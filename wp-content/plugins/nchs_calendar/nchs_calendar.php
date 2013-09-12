@@ -28,7 +28,6 @@ class nchs_calendar_Widget extends WP_Widget {
     $show_link = $instance['show_link'];
 
     $slug = get_post( $post )->post_name;
-
     echo $before_widget;
 
     if (is_home()) echo '<div class="calendar_section">';
@@ -39,9 +38,13 @@ class nchs_calendar_Widget extends WP_Widget {
       <h4>'.$title.'</h4>
     </div>
     <div class="calendar_body">
-      <div class="calendar_content">'.
-        do_shortcode('[ai1ec view="agenda" cat_name="'.$slug.'"]').
-      '</div>
+      <div class="calendar_content">';
+if(is_home()) : 
+	 echo   do_shortcode('[ai1ec view="agenda"]');
+	else : 
+     echo   do_shortcode('[ai1ec view="agenda" cat_name="'.$slug.'"]');
+endif;
+      echo '</div>
     </div>';
     if ($show_link) {
       echo '<div class="calendar_footer"><a href="#">VIEW FULL CALENDAR</a></div>';
@@ -51,6 +54,7 @@ class nchs_calendar_Widget extends WP_Widget {
     if (is_home()) echo '</div>';
 
   	echo $after_widget;
+	wp_reset_query();
   }
 
   function update( $new_instance, $old_instance ) {

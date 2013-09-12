@@ -1,37 +1,20 @@
-<?php
-global $slug;
-global $_title;
-?>
+<?php $parents = get_post_ancestors( $post->ID );?>
+<?php $section_title = get_the_title($parents[count($parents)-1])?>
+<?php $subsection_title = get_the_title($parents[count($parents)-2])?>
+<?php if ($section_title=="Athletics" && count($parents)>1) $section_title = $subsection_title; ?>
+<?php if($post->post_parent==0 || ($section_title=="Athletics")) $section_title = get_the_title() ?>
 <div class='calendar_box'>
-  <?php
-  $bookmarks = get_bookmarks( array(
-    'category_name'  => $slug
-    )
-  );
-  ?>
-  <?php if (!empty($bookmarks)) : ?>
-  <div class='calendar_head'>
-    <h4><?php echo $_title ?> links</h4>
-  </div>
-  <div class='calendar_body'>
-  <div class='calendar_content latest_news_box'>
-    <?php
-    foreach ($bookmarks as $bookmark) {
-      echo '<div class="media"><div class="media-body">';
-      echo '<a href="'.$bookmark->link_url.'">'.$bookmark->link_name.'</a>';
-      echo '</div></div>';
-    }
-    ?>
-    <div class='facebook_link'></div>
-  </div>
-  <?php else: ?>
-  <div class='calendar_body'>
-  <?php endif;?>
-    <div class='hchs_watermark_icon'></div>
-    <?php
-    if ( !dynamic_sidebar( 'athletics-right-widget-area' ) ) {}
-    ?>
-  </div>
-  <div class='calendar_footer'></div>
+	
+		<div class='calendar_head'>
+			
+			<h4><?php echo $section_title;?></h4></div>
+	<div class='calendar_body'>
+		<?php
+	if ( !dynamic_sidebar( 'athletics-right-widget-area' ) ) {}
+		?>
+		<div class='hchs_watermark_icon'></div>
+	</div>
+	<div class='calendar_footer'></div>
+
 </div>
 <div class='clear'></div>

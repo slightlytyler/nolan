@@ -42,12 +42,14 @@ get_header(); ?>
     </div>
     <?php get_sidebar('homepage-right'); ?>
     <?php get_sidebar('homepage-middle'); ?>
+
     <div class='page'>
       <div class='promo_section'>
         <?php get_sidebar('homepage-bottom'); ?>
         <div class='clear'></div>
       </div>
     </div>
+
 
 <?php get_footer(); ?>
 

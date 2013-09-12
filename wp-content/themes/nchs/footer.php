@@ -1,3 +1,4 @@
+</div>
 <footer>
     <div class='page'>
         <div class='left_widget'>

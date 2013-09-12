@@ -76,23 +76,7 @@ $the_query = new WP_Query( $args );
       </div>
       <?php endwhile; ?>
 
-      <div class='right_sidebar'>
-        <div class='calendar_box'>
-          <div class='calendar_head'>
-            <h4>CALENDAR</h4>
-          </div>
-          <div class='calendar_body'>
-            <div class='calendar_content'>
-              <?php echo do_shortcode('[ai1ec view="agenda"]'); ?>
-            </div>
-          </div>
-          <div class='calendar_footer'>
-            <a href='#'>VIEW FULL CALENDAR</a>
-          </div>
-        </div>
-        <?php get_sidebar() ?>
-        <div class='clear'></div>
-      </div>
+        <?php get_sidebar("page") ?>
       <div class='clear'></div>
     </div>
 <?php get_footer(); ?>

@@ -40,6 +40,13 @@ if (typeof jQuery !== 'undefined') {
             $(document).on('click', '.main_menu_btn', function(){
               $('.main_menu').toggle();
             })
+						$(window).load(function() {
+							if($(".right_sidebar").height() > $(".page_container").height()){
+							$(".page_container").height(parseInt($(".right_sidebar").height())+100);
+						}
+						    
+						});
+						
         });
 	});
 };

@@ -22,7 +22,7 @@ define('DB_NAME', 'nolan');
 define('DB_USER', 'nolanified');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'vhds$#^j@');
+define('DB_PASSWORD', 'dfhsdWqkWsa');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

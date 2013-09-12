@@ -1,4 +1,11 @@
 <?php
+function has_event_category($slug){
+	$arr = array();
+	foreach(get_terms( 'events_categories', array( 'hide_empty' => false )) as $term) :
+		$arr[]=$term->name;
+	endforeach;
+	return in_array($slug,$arr);
+}
 function has_children($child_of = null)
 {
         if(is_null($child_of)) {

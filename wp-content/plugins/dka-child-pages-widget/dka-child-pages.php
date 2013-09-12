@@ -37,15 +37,16 @@ class dka_child_pages extends WP_Widget {
 		
 		$child_of = 0 ;
 		
-		if ( is_page() )
+		if ( is_page() ){
 			$child_of = get_the_ID() ;
 			$post = get_post();
-			
+		}	
 		$childs = array(
 			'title_li' => '',
 			'child_of' => $child_of,
 			'depth' => 1,
 			'echo' => 0,
+			'post_type'=>'page',
 			'exclude' => $instance['exclude']
 		) ;
 		$brothers = array_merge( $childs, array( 'child_of' => $GLOBALS['post']->post_parent ) ) ;
@@ -64,21 +65,42 @@ class dka_child_pages extends WP_Widget {
 			return false ;
 			
 		}
-		
 		extract( $args );
 		$title = apply_filters( 'widget_title', $instance['title'] );
-
+		
 		echo $before_widget;
-		if ( ! empty( $title ) )
-			echo $before_title .get_the_title()  . $after_title;
-		if($post->post_parent!=0) : 
+		
+		if($instance['is_athletics']=="true"){
+			$before_title="";
+			$after_title= "";
+			$before_content="<div class='calendar_content latest_news_box'>";
+			$after_content = "<div class='facebook_link'></div></div>";
+		}else{
+			$before_content="";
+			$after_content="";
+		}
+		echo $before_title;
+		if ( ! empty( $title ) && $instance['is_athletics']!="true") :
+			echo get_the_title();
+		endif;
+		echo $after_title;
+		echo $before_content;
+		if($post->post_parent!=0): 
+			if($instance['is_athletics']!="true") :
 			echo "<a class='parent_page' href='".get_permalink($post->post_parent)."'>&#171; Back to ".get_the_title($post->post_parent)."</a>";
+			else : 
+			echo "<ul><li><a class='parent_page' href='".get_permalink($post->post_parent)."'>&#171; Back to ".get_the_title($post->post_parent)."</a></li></ul>";
+			endif;
 		endif;
+	
 		if(has_children($post->ID)) :
-			echo "<ul>".$wp_list_pages."</ul>". $after_widget;
-		else :
-			$after_widget;
+			echo "<ul>".$wp_list_pages."</ul>";
 		endif;
+		echo $after_content;
+		echo $after_widget;
+		
+			
+		
 		
 	}
 
@@ -95,6 +117,7 @@ class dka_child_pages extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['is_athletics'] = strip_tags( $new_instance['is_athletics'] );
 		$instance['exclude'] = implode( ',', array_unique( array_filter( array_map( 'trim', preg_split( '/(\s)*,(\s)*/', $new_instance['exclude'] ) ), 'is_numeric' ) ) ) ;
 
 		return $instance;
@@ -113,6 +136,10 @@ class dka_child_pages extends WP_Widget {
 		if ( isset( $instance[ 'title' ] ) )
 			$title = $instance[ 'title' ];
 		
+		$is_athletics = '';
+		if (isset($instance["is_athletics"]))
+			$is_athletics = $instance[ 'is_athletics' ];
+		
 		$exclude = '' ;
 		if ( isset( $instance[ 'exclude' ] ) )
 			$exclude = $instance[ 'exclude' ];
@@ -124,6 +151,10 @@ class dka_child_pages extends WP_Widget {
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( '<strong>Title</strong>:', 'dka-child-pages' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'is_athletics' ); ?>"><?php _e( '<strong>Athletics Page</strong>:', 'dka-child-pages' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'is_athletics' ); ?>" name="<?php echo $this->get_field_name( 'is_athletics' ); ?>" type="checkbox" value="true" <?php if(esc_attr( $is_athletics )=="true") echo 'checked'; ?>/>
 		</p>
 		<p>
 		<label for="<?= $exclude_id ?>"><?php _e( '<strong>Exclude pages</strong>. Comma separated page ID values. Write:', 'dka-child-pages' ); ?></label> 
