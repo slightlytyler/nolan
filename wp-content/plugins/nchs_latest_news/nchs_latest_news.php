@@ -26,10 +26,13 @@ class nchs_latest_news_Widget extends WP_Widget {
     $slug = get_post( $post )->post_name;
 
     if ($filter_by_context && !is_home()) {
-      $args = array( 'post_type' => 'post', 'posts_per_page' => 3, 'category_name' => $slug );
-    } else {
-      $args = array( 'post_type' => 'post', 'posts_per_page' => 3, 'tag' => 'homepage' );
-    }
+      $args = array( 'post_type' => 'post', 'posts_per_page' => 5, 'category_name' => $slug );
+    } elseif(!is_home()) {
+      $args = array( 'post_type' => 'post', 'posts_per_page' => 5);
+    } else{
+	    $args = array( 'post_type' => 'post', 'posts_per_page' => 3, 'tag' => 'homepage' );
+	
+}
 
     $loop = new WP_Query( $args );
 
@@ -41,14 +44,14 @@ class nchs_latest_news_Widget extends WP_Widget {
       while ( $loop->have_posts() ) {
         $loop->the_post();
         echo "<div class='media'>";
-        echo "<a class='pull-left' href='#'>";
+        echo "<a class='pull-left' href='".get_permalink()."'>";
         echo the_post_thumbnail('nchs-index-latest-news-thumb');
         echo "</a>";
         echo "<div class='media-body'>";
         echo "<h4 class='media-heading'>";
-        echo "<a href='<?php the_permalink(); ?>'>".the_title()."</a>";
+        echo "<a href='".get_permalink()."'>".get_the_title()."</a>";
         echo "</h4>";
-        echo "<div class='news_date'>".the_time('D M j')."</div>";
+        echo "<div class='news_date'>".get_the_time('D M j')."</div>";
         echo "</div>";
         echo "</div>";
       }
@@ -56,6 +59,8 @@ class nchs_latest_news_Widget extends WP_Widget {
     }
 
   	echo $after_widget;
+	wp_reset_query();	
+	wp_reset_postdata();
   }
 
   function update( $new_instance, $old_instance ) {

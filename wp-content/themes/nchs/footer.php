@@ -1,4 +1,6 @@
+<?php if(!is_single() && !is_home()) : ?>
 </div>
+<?php endif;?>
 <footer>
     <div class='page'>
         <div class='left_widget'>

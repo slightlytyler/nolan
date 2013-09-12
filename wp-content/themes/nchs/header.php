@@ -80,5 +80,5 @@
 <?php if(!is_single() && !is_home()) : ?>
 	<?php get_template_part('titles'); ?>
 	<?php get_template_part('nav'); ?>
+	<div class="page_container">
 <?php endif;?>
-<div class="page_container">

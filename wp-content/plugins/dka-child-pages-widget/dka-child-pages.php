@@ -34,7 +34,7 @@ class dka_child_pages extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-		
+		if(is_single()) return;
 		$child_of = 0 ;
 		
 		if ( is_page() ){

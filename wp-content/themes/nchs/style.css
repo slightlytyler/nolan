@@ -144,6 +144,14 @@ Version: 1.0
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 }
+.interior div.right_sidebar li.NCHSLatestNewsWidget .media{
+	padding: 2px 10px;
+	border-bottom: 1px dotted #CCC;
+}
+.interior div.right_sidebar li.NCHSLatestNewsWidget .media-heading{
+	font-size: 14px;
+}
+.interior div.right_sidebar li.NCHSLatestNewsWidget .info_news_title,
 .interior div.right_sidebar li.widget h2 {
     font-family:"trajan_proregular";
     font-size: 20px;

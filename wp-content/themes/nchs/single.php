@@ -64,7 +64,7 @@ $the_query = new WP_Query( $args );
 <?php endif; ?>
 
 <?php get_template_part('nav'); ?>
-
+	<div class="page_container">
 		<div class='page'>
 			<?php while ( have_posts() ) : the_post(); ?>
 			<div class='blog_section'>
@@ -75,8 +75,9 @@ $the_query = new WP_Query( $args );
         </div>
       </div>
       <?php endwhile; ?>
-
+	<?php wp_reset_query()?>
         <?php get_sidebar("page") ?>
       <div class='clear'></div>
     </div>
+</div>
 <?php get_footer(); ?>
