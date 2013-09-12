@@ -166,23 +166,25 @@ $slug = get_post( $post )->post_name;
                 <a href='<?php echo get_post_type_archive_link( 'player' ); ?>'>View More »</a>
               </div>
             </h3>
+            <?php
+            $i = 0;
+            
+            while ( $loop->have_posts() ) :
+                  $loop->the_post();
+            ?>
+            <?php if ($i == 0) : ?>
             <div class='best_player_box'>
-              <img src="<?php echo get_template_directory_uri(); ?>/img/pic_7.jpg" />
-              <div class='player_name'>Lorem ipsum Dolor Sit</div>
+              <?php echo types_render_field( "players-picture", array("width" => 183, "height" => 257 )) ?>
+              <div class='player_name'><?php the_title(); ?></div>
               <div class='player_position'>
-                DEFENSIVE BACK
-                <br>
-                SOPHOMORE
+                <?php echo types_render_field( "players-position", array()) ?>
               </div>
             </div>
             <div class='team_box'>
               <ul class='slides'>
+                <li>
+            <?php endif; ?>
                 <?php
-                $i = 0;
-                
-                echo "<li>";
-                while ( $loop->have_posts() ) :
-                  $loop->the_post();
 
                   if ($i % 15 == 0 && $i % 2 != 0) {
                     echo "<div class='clear'></div>";
@@ -190,7 +192,7 @@ $slug = get_post( $post )->post_name;
                     echo "<li>";
                   }
                   
-                  echo "<div class='player_pic'><a href='".get_permalink()."'>".types_render_field( "players-picture", array("alt" => get_the_title(), "title" => get_the_title(), "width" => 76, "height" => 81 ))."</a></div>";
+                  echo "<div class='player_pic'><a href='#' data-name='".get_the_title()."' data-position='".types_render_field( "players-position", array())."' data-image='".types_render_field( "players-picture", array("width" => 183, "height" => 257, "raw" => true ))."' onClick='updatePlayerPicture(this); return false;'>".types_render_field( "players-picture", array("alt" => get_the_title(), "title" => get_the_title(), "width" => 76, "height" => 81 ))."</a></div>";
   
                   $i++;
                 endwhile;
@@ -216,5 +218,17 @@ $slug = get_post( $post )->post_name;
       </div>
       <div class='clear'></div>
     </div>
+
+    <script type="text/javascript">
+    function updatePlayerPicture (element) {
+      var name = $(element).data('name');
+      var position = $(element).data('position');
+      var image = $(element).data('image');
+      
+      $(".best_player_box .player_name").html(name);
+      $(".best_player_box .player_position").html(position);
+      $(".best_player_box img").attr('src', image);
+    }
+    </script>
 
 <?php get_footer() ?>
