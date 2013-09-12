@@ -22,6 +22,7 @@ class nchs_latest_news_Widget extends WP_Widget {
     $title = $instance['title'];
     $filter_by_context = $instance['filter_by_context'];
 
+    wp_reset_postdata();
     $slug = get_post( $post )->post_name;
 
     if ($filter_by_context && !is_home()) {

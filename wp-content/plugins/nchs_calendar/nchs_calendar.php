@@ -27,6 +27,7 @@ class nchs_calendar_Widget extends WP_Widget {
     $title 		 = $instance['title'];
     $show_link = $instance['show_link'];
 
+    wp_reset_postdata();
     $slug = get_post( $post )->post_name;
 
     echo $before_widget;
