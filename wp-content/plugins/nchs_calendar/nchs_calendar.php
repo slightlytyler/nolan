@@ -71,7 +71,7 @@ class nchs_calendar_Widget extends WP_Widget {
 
     $result_string = '
 		<p><label for="'.$this->get_field_id("title").'">Title: <input class="widefat" id="'.$this->get_field_id("title").'" name="'.$this->get_field_name("title").'" type="text" value="'.attribute_escape($title).'" /></label></p>
-    <p><label for="'.$this->get_field_id("title").'">Show "View full calendar link"?: <input class="widefat" id="'.$this->get_field_id("show_link").'" name="'.$this->get_field_name("show_link").'" type="checkbox" value="1"'.$checked.' /></label></p>';
+    <p><label for="'.$this->get_field_id("show_link").'">Show "View full calendar link"?: <input class="widefat" id="'.$this->get_field_id("show_link").'" name="'.$this->get_field_name("show_link").'" type="checkbox" value="1"'.$checked.' /></label></p>';
 
 		echo $result_string;
   }
