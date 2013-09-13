@@ -16,8 +16,8 @@
 		<?php foreach( $date_info['events'] as $category ): ?>
 			<?php foreach( $category as $event ): ?>
 				<tr>
-					<td><?php echo Ai1ec_Time_Utility::date_i18n( 'm.d.y', $timestamp, true ) ?></td>
-					<td><?php echo Ai1ec_Time_Utility::date_i18n( 'g:iA', $event->start, true ) ?></td>
+					<td><?php echo Ai1ec_Time_Utility::date_i18n( 'm.d.y', Ai1ec_Time_Utility::gmt_to_local($event->start), true ) ?></td>
+					<td><?php echo Ai1ec_Time_Utility::date_i18n( 'g:iA', Ai1ec_Time_Utility::gmt_to_local($event->start), true ) ?></td>
 					<td><?php echo $event->nchs_opponent ?></td>
 					<td><?php echo $event->venue ?></td>
 					<td><?php echo $event->nchs_level ?></td>

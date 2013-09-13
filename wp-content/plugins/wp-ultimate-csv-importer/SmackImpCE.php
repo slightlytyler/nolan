@@ -544,12 +544,15 @@ class SmackImpCE extends SmackWpHandler
                     if (isset($sticky) && $sticky)
                         stick_post($post_id);
 
-                    if (!empty ($custom_array)) {
-                        foreach ($custom_array as $custom_key => $custom_value) {
-                            add_post_meta($post_id, $custom_key, $custom_value);
-                        }
-                    }
-
+					if (!empty ($custom_array)) {
+						foreach ($custom_array as $custom_key => $custom_value) {
+							if(strpos($custom_key,"ai1ec")=== false){
+								add_post_meta($post_id, $custom_key, $custom_value);
+							}
+						}
+					}
+					
+					
                     // Create custom taxonomy to post
                     if (!empty ($smack_taxo)) {
                         foreach ($smack_taxo as $taxo_key => $taxo_value) {
@@ -595,6 +598,24 @@ class SmackImpCE extends SmackWpHandler
                         wp_update_attachment_metadata($attach_id, $attach_data);
                         set_post_thumbnail($post_id, $attach_id);
                     }
+					if($post_id){
+					//	var_dump($post_id);
+						 // Date format post
+						if (!$custom_array['ai1ec_starts_at']) $custom_array['ai1ec_starts_at'] = "0000-12-01 00:00:00";
+						if (!$custom_array['ai1ec_ends_at']) $custom_array['ai1ec_ends_at'] = $custom_array['ai1ec_starts_at'];
+						
+					//	var_dump($custom_array);
+			
+						$data = array(
+							'venue'=>$custom_array['ai1ec_venue'],
+							'start'=>strtotime($custom_array['ai1ec_starts_at']),
+							'end'=>strtotime($custom_array['ai1ec_ends_at']),
+							'post_id'=>$post_id
+						);
+						$event = new Ai1ec_Event($data);
+						$event->save();
+						//die;
+					}
                 }
             }
         }

@@ -22,7 +22,7 @@
 				
 				</div>
 				<div class='slide_img'>
-					<?php $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" )); ?>
+					<?php $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "height" => "254", "proportional" => "true" )); ?>
 					<?php if ($slide_img !== ''): ?>
 						<?php echo $slide_img; ?>
 					<?php else: ?>

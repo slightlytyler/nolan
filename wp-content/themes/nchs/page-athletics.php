@@ -89,8 +89,7 @@ $slug = get_post( $post )->post_name;
             <h3 class='title_section'>
               Schedule
             </h3>
-
-            <?php echo do_shortcode('[ai1ec view="schedule" cat_name="'.$slug.'"]'); ?>
+		    <?php echo do_shortcode('[ai1ec view="schedule" cat_name="'.$slug.'"]'); ?>
           </div>
 		<?php endif;?>
           <?php

@@ -63,7 +63,7 @@ class Ai1ec_Calendar_Controller {
 		$this->load_css();
 		// Are we loading a shortcode?
 		$shortcode = $request->get( 'shortcode' );
-
+		
 		$view_args = $this->get_view_args_for_view( $request );
 		$action = $view_args['action'];
 		$type = $request->get( 'request_type' );
