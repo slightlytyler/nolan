@@ -63,6 +63,8 @@ class Ai1ec_Arguments_Parser extends Ai1ec_Abstract_Query {
 		$this->add_rule( 'no_navigation' ,false, 'string', false, false );
 		$this->add_rule( 'applying_filters' ,false, 'string', false, false );
 		$this->add_rule( 'shortcode' ,false, 'string', false, false );
+		$this->add_rule( 'from_date', false, 'string', null, false );
+		$this->add_rule( 'to_date', false, 'string', null, false );
 	}
 
 	/**

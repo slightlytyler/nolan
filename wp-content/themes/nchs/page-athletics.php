@@ -89,7 +89,8 @@ $slug = get_post( $post )->post_name;
             <h3 class='title_section'>
               Schedule
             </h3>
-		    <?php echo do_shortcode('[ai1ec view="schedule" cat_name="'.$slug.'"]'); ?>
+        <?php /* This date is hardcoded just as an example. Date format must be: m/d/yyyy. Both options are optional. */ ?>
+		    <?php echo do_shortcode('[ai1ec view="schedule" from_date="5/16/2010" to_date="10/10/2013" cat_name="'.$slug.'"]'); ?>
           </div>
 		<?php endif;?>
           <?php

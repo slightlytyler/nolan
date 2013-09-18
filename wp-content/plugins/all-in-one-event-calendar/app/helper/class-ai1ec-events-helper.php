@@ -2427,6 +2427,12 @@ class Ai1ec_Events_Helper {
 		if( isset( $atts['exact_date'] ) ) {
 			$query['exact_date'] = $atts['exact_date'];
 		}
+		if ( isset($atts['from_date']) ) {
+			$query['from_date'] = $atts['from_date'];
+		}
+		if ( isset($atts['to_date']) ) {
+			$query['to_date'] = $atts['to_date'];
+		}
 	
 		return $this->_get_view_and_restore_globals( $query );
 	}

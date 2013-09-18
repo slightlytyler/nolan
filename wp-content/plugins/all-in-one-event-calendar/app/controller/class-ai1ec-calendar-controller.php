@@ -69,6 +69,8 @@ class Ai1ec_Calendar_Controller {
 		$type = $request->get( 'request_type' );
 
 		$exact_date = $this->get_exact_date( $request );
+		$from_date = $this->get_from_date( $request );
+		$to_date = $this->get_to_date( $request );
 		$get_view = "get_{$action}_view";
 
 		$view = $this->$get_view( $view_args );
@@ -288,8 +290,8 @@ class Ai1ec_Calendar_Controller {
 
 		// Get events, then classify into date array
 		$per_page_setting = $type . '_events_per_page';
-		if ($type === 'schedule') { $ai1ec_settings->$per_page_setting = 20; }
-		
+		if ($type === 'schedule') { $ai1ec_settings->$per_page_setting = 50; } // TODO: Make this an option
+
 		$results = $ai1ec_calendar_helper->get_events_relative_to(
 			$timestamp,
 			$ai1ec_settings->$per_page_setting,
@@ -298,6 +300,8 @@ class Ai1ec_Calendar_Controller {
 				'post_ids' => $args['post_ids'],
 				'cat_ids' => $args['cat_ids'],
 				'tag_ids' => $args['tag_ids'],
+				'from_date' => $args['request']->get('from_date'),
+				'to_date' => $args['request']->get('to_date')
 			),
 			$args['time_limit']
 		);
@@ -784,6 +788,30 @@ class Ai1ec_Calendar_Controller {
 	 */
 	function get_requested_categories() {
 		return $this->request['ai1ec_cat_ids'];
+	}
+
+	private function get_from_date( Ai1ec_Abstract_Query $request ) {
+		global $ai1ec_settings;
+
+		$from_date = $request->get( 'from_date' );
+		if ( false !== $from_date ) {
+			if( ! Ai1ec_Validation_Utility::is_valid_time_stamp( $from_date ) ) {
+				$from_date = $this->return_gmtime_from_exact_date( $from_date );
+			}
+		}
+		return $from_date;
+	}
+
+	private function get_to_date( Ai1ec_Abstract_Query $request ) {
+		global $ai1ec_settings;
+
+		$to_date = $request->get( 'to_date' );
+		if ( false !== $to_date ) {
+			if( ! Ai1ec_Validation_Utility::is_valid_time_stamp( $to_date ) ) {
+				$to_date = $this->return_gmtime_from_exact_date( $to_date );
+			}
+		}
+		return $to_date;
 	}
 }
 // END class

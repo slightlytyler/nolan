@@ -687,6 +687,17 @@ class Ai1ec_Calendar_Helper {
 			$first_record        = 0;
 		}
 
+		$nchs_where_particle = '';
+		if ($filter['from_date'] != NULL) {
+			$nchs_where_particle .= " AND e.start >= '". date('Y-m-d 00:00:00', strtotime($filter['from_date'])) ."'";
+		}
+		if ($filter['to_date'] != NULL) {
+			$nchs_where_particle .= " AND e.end <= '".date('Y-m-d 00:00:00', strtotime($filter['to_date']))."'";
+		}
+		if ($filter['from_date'] != NULL || $filter['to_date'] != NULL) {
+			$filter_date_clause = '%s != 1 ';
+		}
+
 		$query = $wpdb->prepare(
 					'SELECT DISTINCT SQL_CALC_FOUND_ROWS p.*, e.post_id, i.id AS instance_id, ' .
 					'i.start AS start, ' .
@@ -696,20 +707,21 @@ class Ai1ec_Calendar_Helper {
 					'e.recurrence_rules, e.exception_rules, e.instant_event, e.recurrence_dates, e.exception_dates, ' .
 					'e.venue, e.country, e.address, e.city, e.province, e.postal_code, ' .
 					'e.show_map, e.contact_name, e.contact_phone, e.contact_email, e.cost, e.nchs_opponent, e.nchs_level, e.nchs_results,' .
-					'e.ical_feed_url, e.ical_source_url, e.ical_organizer, e.ical_contact, e.ical_uid ' .
+					'e.ical_feed_url, e.ical_source_url, e.ical_organizer, e.ical_contact, e.ical_uid, e.start AS e_start, e.end AS e_end ' .
 					'FROM ' . $wpdb->prefix . 'ai1ec_events e ' .
 						'INNER JOIN ' . $wpdb->posts . ' p ON e.post_id = p.ID ' .
 						$wpml_join_particle .
 						'INNER JOIN ' . $wpdb->prefix . 'ai1ec_event_instances i ON e.post_id = i.post_id ' .
 						$filter['filter_join'] .
 					"WHERE post_type = '" . AI1EC_POST_TYPE . "' " .
+					$nchs_where_particle .
 					'AND ' . $filter_date_clause .
 					$wpml_where_particle .
 					$filter['filter_where'] .
 					$post_status_where .
 					// Reverse order when viewing negative pages, to get correct set of
 					// records. Then reverse results later to order them properly.
-					'ORDER BY i.start ' . $order_direction .
+					'ORDER BY e.start ' . $order_direction .
 						', post_title ' . $order_direction .
 					' LIMIT ' . $first_record . ', ' . $upper_boundary,
 					$args
