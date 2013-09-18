@@ -103,7 +103,10 @@ $slug = get_post( $post )->post_name;
             <h3 class='title_section'>
               Coaches
               <div class='view_more_box'>
-                <a href='<?php echo get_post_type_archive_link( 'coach' ); ?>'>View More »</a>
+                <?php
+                $coach_archive_url = add_query_arg('sport', $slug, get_post_type_archive_link( 'coach' ));
+                ?>
+                <a href='<?php echo $coach_archive_url; ?>'>View More »</a>
               </div>
             </h3>
             <div class='coach_slider'>
@@ -141,7 +144,10 @@ $slug = get_post( $post )->post_name;
             <h3 class='title_section'>
               Players
               <div class='view_more_box'>
-                <a href='<?php echo get_post_type_archive_link( 'player' ); ?>'>View More »</a>
+                <?php
+                $player_archive_url = add_query_arg('sport', $slug, get_post_type_archive_link( 'player' ));
+                ?>
+                <a href='<?php echo $player_archive_url; ?>'>View More »</a>
               </div>
             </h3>
             <?php
