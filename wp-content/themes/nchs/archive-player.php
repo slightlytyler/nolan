@@ -11,7 +11,7 @@ $slug = get_post( $post )->post_name;
       <div class='page'>
         <div class='blog_wrapper'>
           <?php
-          $args = array( 'post_type' => 'player', 'posts_per_page' => -1, 'sport' => get_query_var( 'sport' ) );
+          $args = array( 'post_type' => 'player', 'posts_per_page' => -1, 'sport' => get_query_var( 'sport' ), 'orderby' => 'menu_order', 'order' => 'ASC' );
           $loop = new WP_Query( $args );
           ?>
 

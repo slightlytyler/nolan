@@ -94,7 +94,7 @@ $slug = get_post( $post )->post_name;
           </div>
 		<?php endif;?>
           <?php
-          $args = array( 'post_type' => 'coach', 'posts_per_page' => -1, 'sport' => $slug );
+          $args = array( 'post_type' => 'coach', 'posts_per_page' => -1, 'sport' => $slug, 'orderby' => 'menu_order', 'order' => 'ASC' );
           $loop = new WP_Query( $args );
           ?>
 
@@ -136,7 +136,7 @@ $slug = get_post( $post )->post_name;
 		  <?php wp_reset_query(); ?>
 		
           <?php
-          $args = array( 'post_type' => 'player', 'posts_per_page' => -1, 'sport' => $slug );
+          $args = array( 'post_type' => 'player', 'posts_per_page' => -1, 'sport' => $slug, 'orderby' => 'menu_order', 'order' => 'ASC' );
           $loop = new WP_Query( $args );
           ?>
 
