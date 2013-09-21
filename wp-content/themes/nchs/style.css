@@ -225,3 +225,27 @@ span.subpage_small_title {
 .home .page .promo_section .promo_card{
 	min-height: 271px;
 }
+
+/* ARCHIVE */
+.archive-info {
+    margin-bottom: 10px;
+    border-left: 5px solid #2b7bc9;
+    padding-left: 10px;
+    line-height: auto;
+}
+.archive-position {
+    line-height: 20px;
+    font-style: italic;
+    color: silver;
+}
+.archive-bio {
+    padding: 10px;
+    display: inline-block;
+    text-align: justify;
+}
+.archive-img {
+    width:165px;
+    height:auto;
+    float:left;
+    margin: 0 10px 0 0;"
+}

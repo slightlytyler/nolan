@@ -31,7 +31,7 @@
     
     if (is_home())
       $class .= "home ";
-    elseif (is_page( $page = 'athletics'))
+    elseif (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player'))))
       $class .= "athletics ";
     elseif (is_page() || is_single())
       $class .= "interior ";
@@ -78,7 +78,11 @@
       </div>
     </header>
 <?php if(!is_single() && !is_home()) : ?>
-	<?php get_template_part('titles'); ?>
+  <?php if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))): ?>
+	 <?php get_template_part('titles-athletics'); ?>
+  <?php else: ?>
+    <?php get_template_part('titles'); ?>
+  <?php endif; ?>
 	<?php get_template_part('nav'); ?>
 	<div class="page_container">
 <?php endif;?>

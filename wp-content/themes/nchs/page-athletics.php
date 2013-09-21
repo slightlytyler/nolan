@@ -120,10 +120,11 @@ $slug = get_post( $post )->post_name;
                     <div class='coach_slider_img'>
                       <?php echo types_render_field( "coach-picture", array("alt" => get_the_title(), "title" => get_the_title(), "width" => 182, "height" => 195 )) ?>
                     </div>
+                    <?php $url = $coach_archive_url . "#" . get_the_ID(); ?>
                     <div class='coach_slider_title'>
-                      <a class='coach_name' href='<?php echo get_permalink() ?>'><?php the_title() ?></a>
-                      <a class='position' href='<?php echo get_permalink() ?>'><?php echo types_render_field( "coach-position" ,array('raw'=>true)) ?></a>
-                      <a class='more_info' href='<?php echo get_permalink() ?>'>Read Bio »</a>
+                      <a class='coach_name' href='<?php echo $url; ?>'><?php the_title() ?></a>
+                      <a class='position' href='<?php echo $url; ?>'><?php echo types_render_field( "coach-position" ,array('raw'=>true)) ?></a>
+                      <a class='more_info' href='<?php echo $url; ?>'>Read Bio »</a>
                     </div>
                   </div>
                 </li>
