@@ -79,10 +79,10 @@
     </header>
 <?php if(!is_single() && !is_home()) : ?>
   <?php if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))): ?>
-	 <?php get_template_part('titles-athletics'); ?>
+   <?php get_template_part('titles-athletics'); ?>
   <?php else: ?>
     <?php get_template_part('titles'); ?>
   <?php endif; ?>
-	<?php get_template_part('nav'); ?>
-	<div class="page_container">
+  <?php get_template_part('nav'); ?>
+  <div class="page_container">
 <?php endif;?>

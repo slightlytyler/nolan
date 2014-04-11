@@ -5,7 +5,7 @@ get_header(); ?>
 <?php get_template_part('slider', 'index'); ?>
 <?php get_template_part('nav'); ?>
 
-<div class='page'>
+    <div class='page'>
       <div class='info_title'>
         <h3>in the marianist tradition since 1961</h3>
       </div>
@@ -14,6 +14,7 @@ get_header(); ?>
         <div class='clear'></div>
       </div>
     </div>
+
     <?php get_sidebar('homepage-right'); ?>
     <?php get_sidebar('homepage-middle'); ?>
 
