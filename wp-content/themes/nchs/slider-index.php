@@ -29,4 +29,4 @@ $loop = new WP_Query( $args );
         </ul>
     </div>
 </div>
-<? endif; ?>
+<?php endif; ?>
