@@ -18,3 +18,5 @@ sitemap.xml.gz
 .sass-cache/*
 
 adminer.php
+adminer.sql
+rreplace.php
