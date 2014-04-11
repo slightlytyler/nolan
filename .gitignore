@@ -16,3 +16,5 @@ sitemap.xml.gz
 /wp-content/compass/.sass-cache
 /wp-content/compass/vype/.sass-cache
 .sass-cache/*
+
+adminer.php
