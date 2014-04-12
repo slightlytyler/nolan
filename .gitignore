@@ -20,3 +20,4 @@ sitemap.xml.gz
 adminer.php
 adminer.sql
 rreplace.php
+nginx.conf
