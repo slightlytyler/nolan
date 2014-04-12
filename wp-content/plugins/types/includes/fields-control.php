@@ -40,13 +40,21 @@ class WPCF_Custom_Fields_Control_Table extends WP_List_Table
             $cf_types[$cf_id]['groups_txt'] = empty( $cf_types[$cf_id]['groups'] ) ? __( 'None', 'wpcf' ) : implode(', ', $cf_types[$cf_id]['groups'] );
         }
 
-        // Get others (cache this result?)
-        $cf_other = $wpdb->get_results("
+        // Get others
+        if ( !isset( $_REQUEST['show_hidden'] ) || $_REQUEST['show_hidden'] == 'false' ) {
+            $cf_other = $wpdb->get_results( "
 		SELECT meta_id, meta_key
 		FROM $wpdb->postmeta
 		GROUP BY meta_key
 		HAVING meta_key NOT LIKE '\_%'
-		ORDER BY meta_key");
+		ORDER BY meta_key" );
+        } else {
+            $cf_other = $wpdb->get_results( "
+		SELECT meta_id, meta_key
+		FROM $wpdb->postmeta
+		GROUP BY meta_key
+		ORDER BY meta_key" );
+        }
 
         // Clean from ours
         foreach ($cf_other as $type_id => $type_data) {
@@ -103,7 +111,7 @@ class WPCF_Custom_Fields_Control_Table extends WP_List_Table
         }
 
         // Order
-        if ( !empty( $_REQUEST['orderby'] ) ) {
+        if (!empty($_REQUEST['orderby'])) {
             $sort_matches = array(
                 'c' => 'name',
                 'g' => 'groups_txt',
@@ -112,14 +120,14 @@ class WPCF_Custom_Fields_Control_Table extends WP_List_Table
             );
             $sorted_keys = array();
             $new_array = array();
-            foreach ( $cf_types as $cf_id_temp => $cf_temp ) {
+            foreach ($cf_types as $cf_id_temp => $cf_temp) {
                 $sorted_keys[$cf_temp['id']] = strtolower( $cf_temp[$sort_matches[$_REQUEST['orderby']]] );
             }
-            asort( $sorted_keys, SORT_STRING );
-            if ( $_REQUEST['order'] == 'desc' ) {
-                $sorted_keys = array_reverse( $sorted_keys, true );
+            asort($sorted_keys, SORT_STRING);
+            if ($_REQUEST['order'] == 'desc') {
+                $sorted_keys = array_reverse($sorted_keys, true);
             }
-            foreach ( $sorted_keys as $cf_id_temp => $groups_txt ) {
+            foreach ($sorted_keys as $cf_id_temp => $groups_txt) {
                 $new_array[$cf_id_temp] = $cf_types[$cf_id_temp];
             }
             $cf_types = $new_array;
@@ -227,7 +235,6 @@ class WPCF_Custom_Fields_Control_Table extends WP_List_Table
 
     function get_bulk_actions() {
         $actions = array();
-        $output = array();
         $actions['wpcf-add-to-group-bulk'] = __('Add to group', 'wpcf');
         $actions['wpcf-remove-from-group-bulk'] = __('Remove from group', 'wpcf');
         $actions['wpcf-change-type-bulk'] = __('Change type', 'wpcf');
@@ -239,7 +246,12 @@ class WPCF_Custom_Fields_Control_Table extends WP_List_Table
     }
 
     function view_switcher($current_mode = '') {
-        echo '<div style="clear:both; margin: 20px 0 10px 0; float: right;"><a class="button button-secondary" href="';
+        echo '<div style="clear:both; margin: 20px 0 10px 0; float: right;"><label><input type="checkbox" name="types_show_hidden" value="1"';
+        if ( isset( $_REQUEST['show_hidden'] ) && $_REQUEST['show_hidden'] == 'true' ) {
+            echo ' checked="checked"';
+        }
+        echo ' />&nbsp;'
+        . __( 'Show hidden fields', 'wpcf' ) . '</label>&nbsp;&nbsp;<a class="button button-secondary" href="';
         if (empty($_GET['display_all'])) {
             echo esc_url($_SERVER['REQUEST_URI']) . '&amp;display_all=1">' . __('Display all items',
                     'wpcf');
@@ -259,6 +271,12 @@ function wpcf_admin_custom_fields_control_js() {
 
     ?>
     <script type="text/javascript">
+        jQuery(document).ready(function($){
+            $('[name="types_show_hidden"]').on('click', function(){
+                var show = $(this).is(':checked') ? 'true' : 'false';
+                window.location.href = window.location.href.replace(/(&show_hidden=[^\s?!&]*)/, '')+'&show_hidden='+show;
+            });
+        });
         jQuery(document).ready(function(){
             jQuery('#wpcf-custom-fields-control-form .actions select').change(function(){
                 return wpcfAdminCustomFieldsControlSubmit(jQuery(this));

@@ -14,12 +14,6 @@ if ( version_compare( $wp_version, '3.5', '<' ) ) {
     $wpcf_button_style30 = 'style="line-height: 30px;"';
 }
 
-/*
- * Hook some JS
- */
-add_filter( 'wpcf_validation_js_invalid_handler',
-        '_wpcf_fields_form_js_validation_invalid_handler' );
-
 /**
  * Saves fields and groups.
  * 
@@ -95,7 +89,15 @@ function wpcf_admin_save_fields_groups_submit( $form ) {
                                         'wpcf' ), $field['name'] ), 'error' );
                 return $form;
             }
+            if ( (!empty( $field['name'] ) && is_numeric($field['name'] ))
+                    || (!empty( $field['slug'] ) && is_numeric($field['slug'] )) ) {
+                $form->triggerError();
+                wpcf_admin_message( sprintf( __( 'Field names or slugs cannot contain only numbers.',
+                                        'wpcf' ), $field['name'] ), 'error' );
+                return $form;
+            }
         }
+        // First check all fields
         foreach ( $_POST['wpcf']['fields'] as $key => $field ) {
             $field = apply_filters( 'wpcf_field_pre_save', $field );
             if ( !empty( $field['is_new'] ) ) {
@@ -115,6 +117,10 @@ function wpcf_admin_save_fields_groups_submit( $form ) {
                     return $form;
                 }
             }
+        }
+        // Now save fields
+        foreach ( $_POST['wpcf']['fields'] as $key => $field ) {
+            $field = apply_filters( 'wpcf_field_pre_save', $field );
             // Field ID and slug are same thing
             $field_id = wpcf_admin_fields_save_field( $field );
             if ( is_wp_error( $field_id ) ) {
@@ -768,6 +774,8 @@ function wpcf_admin_fields_form() {
     );
 
     /** Admin styles* */
+    // messes up menu buttons
+//    wp_deregister_style('editor-buttons');
     $form['adminstyles-table-open'] = array(
         '#type' => 'markup',
         '#markup' => '<table class="widefat" id="wpcf-admin-styles-box"><thead><tr><th>'
@@ -1242,7 +1250,7 @@ function wpcf_fields_get_field_form_data( $type, $form_data = array() ) {
         }
 
         // WPML Translation Preferences
-        if ( function_exists( 'wpml_cf_translation_preferences' ) ) {
+        if ( function_exists( 'wpml_cf_translation_preferences' ) && defined('WPML_TM_VERSION') ) {
             $custom_field = !empty( $form_data['slug'] ) ? wpcf_types_get_meta_prefix( $form_data ) . $form_data['slug'] : false;
             $suppress_errors = $custom_field == false ? true : false;
             $translatable = array('textfield', 'textarea', 'wysiwyg');
@@ -1584,15 +1592,4 @@ function _wpcf_filter_wrap( $id, $title, $txt, $txt_empty, $e, $edit_button = ''
     );
 
     return $form;
-}
-
-/**
- * Validation JS.
- * 
- * @param type $string
- * @param type $selector
- */
-function _wpcf_fields_form_js_validation_invalid_handler( $string ) {
-    $string .= "\r\n" . 'wpcfLoadingButtonStop();' . "\r\n";
-    return $string;
 }

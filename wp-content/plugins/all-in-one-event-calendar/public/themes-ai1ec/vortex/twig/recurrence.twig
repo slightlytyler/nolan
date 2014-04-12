@@ -1,0 +1,24 @@
+{% if recurrence is not empty %}
+  <div class="ai1ec-recurrence ai1ec-row">
+    <div class="ai1ec-field-label ai1ec-col-sm-3">
+      <i class="ai1ec-fa ai1ec-fa-repeat"></i>
+      {{ 'Repeats:' | __ }}
+    </div>
+    <div class="ai1ec-field-value ai1ec-col-sm-9">
+      {% if edit_instance_url is not empty %}
+        <a class="ai1ec-edit-instance-link ai1ec-pull-right"
+          href="{{ edit_instance_url }}">
+          <i class="ai1ec-fa ai1ec-fa-pencil"></i>
+          {{ edit_instance_text }}
+        </a>
+      {% endif %}
+      {{ recurrence | capitalize }}
+      {% if exclude is not empty %}
+        <div class="ai1ec-exclude">
+          {{ 'Excluding:' | __ }}
+          {{ exclude }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

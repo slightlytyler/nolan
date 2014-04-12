@@ -6,6 +6,7 @@ require_once WPCF_EMBEDDED_ABSPATH . '/includes/conditional-display.php';
 
 add_filter( 'wpcf_form_field', 'wpcf_cd_form_field_filter', 10, 2 );
 add_filter( 'wpcf_field_pre_save', 'wpcf_cd_field_pre_save_filter' );
+add_filter( 'wpcf_group_pre_save', 'wpcf_cd_group_pre_save_filter' );
 add_filter( 'wpcf_fields_form_additional_filters',
         'wpcf_cd_fields_form_additional_filters', 10, 2 );
 add_action( 'wpcf_save_group', 'wpcf_cd_save_group_action' );
@@ -34,16 +35,34 @@ function wpcf_cd_form_field_filter( $form, $data ) {
         $vars['group_id'] = $_GET['group_id'];
     }
     if ( !isset( $vars['group_id'] ) ) {
-        return $form + array(
+        $form = $form + array(
             'cd_not_available' => array(
                 '#type' => 'markup',
                 '#markup' => '<p>' . __( 'You will be able to set conditional field display once this group is saved.',
-                        'wpcf' ) . '</p>',
+                        'wpcf' ) . '</p><div style="display:none;">',
             ),
         );
     }
     $form = $form + wpcf_cd_admin_form_filter( $data );
+    if ( !isset( $vars['group_id'] ) ) {
+        $form = $form + array(
+            'cd_not_available2' => array(
+                '#type' => 'markup',
+                '#markup' => '</div>',
+            ),
+        );
+    }
     return $form;
+}
+
+/**
+ * Group pre-save filter.
+ * 
+ * @param array $data
+ * @return array 
+ */
+function wpcf_cd_group_pre_save_filter( $data ) {
+    return wpcf_cd_field_pre_save_filter( $data );
 }
 
 /**
@@ -322,7 +341,7 @@ function wpcf_cd_admin_form_single_filter( $data, $condition, $key = null,
 //    if ( $group_id && !$group ) {// Allow group to use other fields
 //        $fields = wpcf_admin_fields_get_fields_by_group( $group_id );
 //    } else {
-    $fields = wpcf_admin_fields_get_fields();
+    $fields = wpcf_admin_fields_get_fields(true, false, true);
     ksort( $fields, SORT_STRING );
 //    }
 

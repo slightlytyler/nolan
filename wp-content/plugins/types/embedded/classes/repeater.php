@@ -96,7 +96,9 @@ class WPCF_Repeater extends WPCF_Field
         global $wpcf;
 
         // Delete all fields
+        do_action('wpcf_postmeta_before_delete_repetitive', $this->post, $this->cf);
         delete_post_meta( $this->post->ID, $this->slug );
+        do_action('wpcf_postmeta_after_delete_repetitive', $this->post, $this->cf);
 
         // Allow $data to replace $_POST
         if ( is_null( $data ) && isset( $_POST['wpcf'][$this->cf['slug']] ) ) {
@@ -105,9 +107,12 @@ class WPCF_Repeater extends WPCF_Field
 
         // Set data
         if ( !empty( $data ) ) {
+            
+            do_action('wpcf_postmeta_before_add_repetitive', $this->post, $this->cf);
 
             // Insert new meta and collect all new mids
             $mids = array();
+            $i = 1;
             foreach ( $data as $meta_value ) {
 
                 /*
@@ -127,14 +132,18 @@ class WPCF_Repeater extends WPCF_Field
                 $_meta_value = $this->_filter_save_value( $meta_value );
 
                 // Adding each field will return $mid
-                $mid = add_post_meta( $this->post->ID, $this->slug,
-                        $_meta_value, false );
+                if ( count($data) == $i++ ) {
+                    do_action('wpcf_postmeta_before_add_last_repetitive', $this->post, $this->cf);
+                }
+                $mid = add_post_meta( $this->post->ID, $this->slug, $_meta_value, false );
 
                 $mids[] = $mid;
 
                 // Call insert post actions on each field
                 $this->_action_save( $this->cf, $_meta_value, $mid, $meta_value );
             }
+            
+            do_action('wpcf_postmeta_after_add_repetitive', $this->post, $this->cf);
 
             // Save order
             if ( !empty( $mids ) ) {
@@ -158,8 +167,13 @@ class WPCF_Repeater extends WPCF_Field
         global $wpdb;
 
         $cache_key = md5( 'repeater::_get_meta' . $this->post->ID . $this->slug );
-        if ( $this->use_cache && isset( $this->cache[$cache_key] ) ) {
-            return $this->cache[$cache_key];
+        $cache_group = 'types_cache';
+        $cached_object = wp_cache_get( $cache_key, $cache_group );
+        
+        if ( $this->use_cache ) {
+			if ( false != $cached_object && is_array( $cached_object ) ) {
+				return $cached_object;
+			}
         }
 
         $this->order_meta_name = '_' . $this->slug . '-sort-order';
@@ -167,14 +181,32 @@ class WPCF_Repeater extends WPCF_Field
         $ordered = array();
         $this->order = get_post_meta( $this->post->ID, $this->order_meta_name,
                 true );
-        $r = $wpdb->get_results(
-                $wpdb->prepare(
-                        "SELECT * FROM $wpdb->postmeta
-                WHERE post_id=%d
-                AND meta_key=%s",
-                        $this->post->ID, $this->slug )
-        );
-
+		
+		$cache_key_field = md5( 'field::_get_meta' . $this->post->ID . $this->slug );
+        $cached_object_field = wp_cache_get( $cache_key_field, $cache_group );
+        
+        if ( $this->use_cache ) {
+			if ( false != $cached_object_field && is_array( $cached_object_field ) ) {// WordPress cache
+				$r = $cached_object_field;
+			} else {
+				$r = $wpdb->get_results(
+						$wpdb->prepare(
+								"SELECT * FROM $wpdb->postmeta
+								WHERE post_id=%d
+								AND meta_key=%s",
+								$this->post->ID, $this->slug )
+				);
+			}
+		} else {
+			// If not using cache, get straight from DB
+			$r = $wpdb->get_results(
+					$wpdb->prepare(
+							"SELECT * FROM $wpdb->postmeta
+					WHERE post_id=%d
+					AND meta_key=%s",
+							$this->post->ID, $this->slug )
+			);
+		}
         if ( !empty( $r ) ) {
             $_meta = array();
             $_meta['by_meta_id'] = array();
@@ -227,7 +259,7 @@ class WPCF_Repeater extends WPCF_Field
         }
 
         // Cache it
-        $this->cache[$cache_key] = $_meta;
+        wp_cache_add( $cache_key, $_meta, $cache_group );// WordPress cache
 
         return $_meta;
     }
@@ -313,9 +345,13 @@ class WPCF_Repeater extends WPCF_Field
         // Set title and desc
         if ( !empty( $_main_element['#title'] ) ) {
             $this->title = $_main_element['#title'];
+        } else {
+            $this->title = '';
         }
         if ( !empty( $_main_element['#description'] ) ) {
             $this->description = $_main_element['#description'];
+        } else {
+            $this->description = '';
         }
 
         /*
