@@ -2,7 +2,7 @@
 /* Template Name: Single Athletics */
 get_header(); ?>
 
-<div class='page'>
+<div class='page_section'>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<div class='blog_section'>
 			<div class='blog_wrapper'>
