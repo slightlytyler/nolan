@@ -1,17 +1,14 @@
 /* ******************************************** */
 /* STYLE CONTENTS */
 /* ******************************************** */
-/* COMPASS SPRITES */
-/* FONTS */
-/* ELEMENTS */
-/* 	- Buttons */
-/* 	- Header */
-/* 	- Footer */
-/* PAGES */
-/* 	- for all pages */
-/* 	- Home */
-/* RESPONSIVE */
-/* ******************************************** */
+
+.page_container p,
+.page_container ul,
+.page_container ol {
+  line-height: 21px;
+  padding-bottom: 15px;
+}
+
 /* ******************************************** */
 /* Compass sprite, etc. */
 /* ******************************************** */
@@ -765,7 +762,7 @@ header .fa:hover {
   margin-right: 2.12766%;
   display: inline; }
 
-
+/*
 .blog_section {
   font-size: 14px;
   line-height: 30px;
@@ -794,7 +791,7 @@ header .fa:hover {
     .blog_section ul li {
       padding: 0px 0px 37px 0px;
       line-height: 30px; }
-
+*/
 
 .right_sidebar {
   width: 31.91489%;
