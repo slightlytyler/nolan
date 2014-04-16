@@ -20,15 +20,20 @@
 
     <?php wp_head(); ?>
 
-    <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-loader.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"> -->
+
+    <!-- <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-loader.css" rel="stylesheet" /> -->
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/style.css" rel="stylesheet" />
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/flexslider.css" rel="stylesheet" />
+
     <!-- I moved these styles into /css/style.css - 2 style.css's is confusing.
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" /> -->
 
     <link type="text/css" media="screen" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- <link href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css" rel="stylesheet" /> -->
 
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
   <?php
