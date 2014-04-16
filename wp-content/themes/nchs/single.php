@@ -65,7 +65,7 @@ $the_query = new WP_Query( $args );
 
 <?php get_template_part('nav'); ?>
 	<div class="page_container">
-		<div class='page'>
+		<div class='page_section'>
 			<?php while ( have_posts() ) : the_post(); ?>
 			<div class='blog_section'>
         <div class='blog_wrapper'>

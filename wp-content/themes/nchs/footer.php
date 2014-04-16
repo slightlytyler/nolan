@@ -2,7 +2,7 @@
 </div>
 <?php endif;?>
 <footer>
-    <div class='page'>
+    <div class='page_section'>
         <div class='left_widget'>
             <div class='contact_us_box'>
                 <div class='footer_title'>Contact Us</div>

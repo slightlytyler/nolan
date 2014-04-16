@@ -28,14 +28,13 @@
   </head>
   <?php
     $class = "";
-    
+    // can this be detected with the just added body classes instead?
     if (is_home())
       $class .= "home ";
     elseif (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player'))))
       $class .= "athletics ";
     elseif (is_page() || is_single())
       $class .= "interior ";
-
     global $post;
     $parents = get_post_ancestors( $post->ID );
     $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
@@ -43,11 +42,10 @@
     if (strcmp($parent->post_name, "athletics") == 0) {
       $class .= $parent->post_name;
     }
-
   ?>
-  <body class="<?php echo $class; ?>">
+  <body <?php body_class($class); ?>>
     <header>
-      <div class='page'>
+      <div class='page_section'>
         <div class='logo'>
           <a href='/' title='Site name'></a>
         </div>
@@ -63,10 +61,14 @@
         ?>
         <div class='right_side'>
           <div class='social_box'>
-            <div class='facebook'></div>
+            <i class='icon-facebook'></i>
+            <i class='icon-twitter'></i>
+            <i class='icon-google'></i>
+            <i class='icon-pinterest'></i>
+            <!-- <div class='facebook'></div>
             <div class='twitter'></div>
             <div class='google'></div>
-            <div class='pinterest'></div>
+            <div class='pinterest'></div> -->
             <div class='clear'></div>
           </div>
           <form action='#' class='search_form form-inline' method='post'>
@@ -77,6 +79,7 @@
         </div>
       </div>
     </header>
+
 <?php if(!is_single() && !is_home()) : ?>
   <?php if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))): ?>
    <?php get_template_part('titles-athletics'); ?>

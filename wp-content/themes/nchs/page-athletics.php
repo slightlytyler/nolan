@@ -10,7 +10,7 @@ $slug = get_post( $post )->post_name;
 
 	
 
-<div class='page'>
+<div class='page_section'>
       <div class='info_title'>
         <h3>in the marianist tradition since 1961</h3>
       </div>
@@ -25,7 +25,7 @@ $slug = get_post( $post )->post_name;
       $loop = new WP_Query( $args );
       ?>
       <?php if ($loop->have_posts()): ?>
-      <div class='page'>
+      <div class='page_section'>
         <h3 class='title_section top_title_mod'>
           Latest News
           <div class='view_more_box'>
@@ -34,7 +34,7 @@ $slug = get_post( $post )->post_name;
         </h3>
       </div>
       <div class='lates_news_section'>
-        <div class='page'>
+        <div class='page_section'>
           <div class='blog_wrapper'>
             <?php
             $i = 0;
@@ -82,7 +82,7 @@ $slug = get_post( $post )->post_name;
       <?php endif; ?>
 		
 	  <?php wp_reset_query(); ?>
-      <div class='page lowerhalf'>
+      <div class='page_section lowerhalf'>
         <div class='blog_wrapper'>
 	<?php if( has_event_category($slug) || $slug=="athletics") : ?>
           <div class='schedule_section'>
