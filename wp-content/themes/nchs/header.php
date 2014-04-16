@@ -23,7 +23,12 @@
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-loader.css" rel="stylesheet" />
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/style.css" rel="stylesheet" />
     <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/flexslider.css" rel="stylesheet" />
-    <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" />
+    <!-- I moved these styles into /css/style.css - 2 style.css's is confusing.
+    <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" /> -->
+
+    <link type="text/css" media="screen" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css" rel="stylesheet" /> -->
+
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
   <?php
@@ -61,14 +66,18 @@
         ?>
         <div class='right_side'>
           <div class='social_box'>
-            <i class='icon-facebook'></i>
-            <i class='icon-twitter'></i>
-            <i class='icon-google'></i>
-            <i class='icon-pinterest'></i>
-            <!-- <div class='facebook'></div>
-            <div class='twitter'></div>
-            <div class='google'></div>
-            <div class='pinterest'></div> -->
+            <a href="#facebook">
+              <i class='fa fa-facebook-square'></i>
+            </a>
+            <a href="#twitter">
+              <i class='fa fa-twitter-square'></i>
+            </a>
+            <a href="#gplus">
+              <i class='fa fa-google-plus-square'></i>
+            </a>
+            <a href="#pinterest">
+              <i class='fa fa-pinterest-square'></i>
+            </a>
             <div class='clear'></div>
           </div>
           <form action='#' class='search_form form-inline' method='post'>
