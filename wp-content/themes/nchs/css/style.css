@@ -27,11 +27,12 @@ img {
   padding-bottom: 15px;
 }
 
-.social-nav {
+.nav i {
   font-size: 32px;
 }
+.nav li.icon > a,
 .social-nav > li > a {
-  padding: 5px
+  padding: 5px !important;
 }
 
 ul.widgets {
