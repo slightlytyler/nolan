@@ -8,12 +8,27 @@ img {
 
 .navbar {
   border-radius: 0;
+  min-height: 0;
+}
+.navbar-top {
+  margin: 0;
+}
+.navbar-nav>li>a {
+  padding: 10px;
 }
 .container>.navbar-header,
 .container-fluid>.navbar-header,
 .container>.navbar-collapse,
 .container-fluid>.navbar-collapse {
   padding: 0;
+}
+
+.navbar .form-control {
+  height: 24px;
+  padding: 3px 9px;
+}
+.navbar .btn {
+  padding: 1px 5px
 }
 
 .dropdown:hover .dropdown-menu {
@@ -28,11 +43,11 @@ img {
 }
 
 .nav i {
-  font-size: 32px;
+  font-size: 28px;
 }
 .nav li.icon > a,
 .social-nav > li > a {
-  padding: 5px !important;
+  padding: 7px 5px 0 0 !important;
 }
 
 ul.widgets {
