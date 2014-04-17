@@ -9,4 +9,5 @@
     </div>
     <?php nhcs_get_nav( 'nchs-nav-menu' ); ?>
   </div>
+  <?php nhcs_get_nav( 'nchs-nav-menu' ); ?>
 </div>

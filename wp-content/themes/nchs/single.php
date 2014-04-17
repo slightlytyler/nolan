@@ -1,6 +1,6 @@
-<?php get_header(); ?>
-
 <?php
+get_header();
+
 $__['title']     = get_the_title();
 $__['excerpt']   = get_the_excerpt();
 $__['image_url'] = types_render_field( "post-background-image", array('raw' => true));
@@ -9,9 +9,7 @@ $__['slide_img'] = types_render_field( "post-foreground-image", array( "alt" => 
 $cat = get_the_category();
 $args = array( 'name' => $cat[0]->slug, 'post_type' => 'page', 'posts_per_page' => 1 );
 $the_query = new WP_Query( $args );
-?>
 
-<?php
 if ( $the_query->have_posts() ) :
   while ( $the_query->have_posts() ) : $the_query->the_post();
     $parent_image_url = types_render_field( "athletics-background-image", array('raw' => true));
@@ -62,7 +60,6 @@ if ( $the_query->have_posts() ) :
 endif;
 get_template_part('nav');
 ?>
-<div class='container'>
   <div class='col-sm-8'>
 <?php
     while ( have_posts() ) : the_post();
@@ -76,5 +73,4 @@ get_template_part('nav');
   <div class='col-sm-4 right_sidebar'>
     <?php get_sidebar("page") ?>
   </div>
-</div>
 <?php get_footer(); ?>

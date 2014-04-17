@@ -71,50 +71,50 @@
   ?>
   <body <?php body_class($class); ?>>
     <div class="navbar navbar-top navbar-inverse"><!-- navbar-fixed-top -->
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse">
-          <?php
-            nhcs_get_nav( 'nchs-main-menu' );
-            nhcs_get_nav( 'nchs-nav-menu', true ); // mobile_only
-          ?>
-          <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">
-              <i class="fa fa-search"></i>
-            </button>
-          </form>
-          <ul class="social-nav nav navbar-nav navbar-right visible-md visible-lg">
-            <li>
-              <a href="#facebook">
-                <i class='fa fa-facebook-square'></i>
-              </a>
-            </li>
-            <li>
-              <a href="#twitter">
-                <i class='fa fa-twitter-square'></i>
-              </a>
-            </li>
-            <li>
-              <a href="#gplus">
-                <i class='fa fa-google-plus-square'></i>
-              </a>
-            </li>
-            <li>
-              <a href="#pinterest">
-                <i class='fa fa-pinterest-square'></i>
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <?php
+          nhcs_get_nav( 'nchs-main-menu' );
+          nhcs_get_nav( 'nchs-nav-menu', true ); // mobile_only
+        ?>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
+        <ul class="social-nav nav navbar-nav navbar-right visible-md visible-lg">
+          <li>
+            <a href="#facebook">
+              <i class='fa fa-facebook-square'></i>
+            </a>
+          </li>
+          <li>
+            <a href="#twitter">
+              <i class='fa fa-twitter-square'></i>
+            </a>
+          </li>
+          <li>
+            <a href="#gplus">
+              <i class='fa fa-google-plus-square'></i>
+            </a>
+          </li>
+          <li>
+            <a href="#pinterest">
+              <i class='fa fa-pinterest-square'></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 

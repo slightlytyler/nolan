@@ -1,6 +1,7 @@
 <?php if(!is_single() && !is_home()) : ?>
 </div>
 <?php endif;?>
+<div class='clearfix'></div>
 <footer>
     <div class='page_section'>
         <div class='left_widget'>
