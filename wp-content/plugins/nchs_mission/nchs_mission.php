@@ -39,6 +39,7 @@ class nchs_mission_Widget extends WP_Widget {
           </div>
         </div>
       </div>
+      <div class='clearfix'></div>
     </div>";
 
   	echo $after_widget;
