@@ -2,6 +2,18 @@
 /* STYLE CONTENTS */
 /* ******************************************** */
 
+img {
+  max-width: 100%;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 .page_container p,
 .page_container ul,
 .page_container ol {

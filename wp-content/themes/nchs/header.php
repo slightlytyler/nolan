@@ -51,7 +51,6 @@
     <link type="text/css" media="screen" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- <link href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css" rel="stylesheet" /> -->
 
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
   <?php
@@ -71,9 +70,31 @@
       $class .= $parent->post_name;
     }
   ?>
+
   <body <?php body_class($class); ?>>
-    <header>
-      <div class='page_section'>
+    <div class="navbar navbar-inverse"><!-- navbar-fixed-top -->
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <?php wp_bootstrap_main_nav(); ?>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+<!-- <div class='page_section'>
         <div class='logo'>
           <a href='/' title='Site name'></a>
         </div>
@@ -109,8 +130,7 @@
           </form>
           <div class='clear'></div>
         </div>
-      </div>
-    </header>
+      </div> -->
 
 <?php if(!is_single() && !is_home()) : ?>
   <?php if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))): ?>
