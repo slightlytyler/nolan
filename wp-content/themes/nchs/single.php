@@ -11,10 +11,9 @@ $args = array( 'name' => $cat[0]->slug, 'post_type' => 'page', 'posts_per_page' 
 $the_query = new WP_Query( $args );
 ?>
 
-<?php if ( $the_query->have_posts() ) : ?>
-  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-    <?php
+<?php
+if ( $the_query->have_posts() ) :
+  while ( $the_query->have_posts() ) : $the_query->the_post();
     $parent_image_url = types_render_field( "athletics-background-image", array('raw' => true));
     $parent_slide_img = types_render_field( "athletics-foreground-image", array( "alt" => "Lorem", "width" => "191", "height" => "254", "proportional" => "true" ));
 
@@ -33,7 +32,7 @@ $the_query = new WP_Query( $args );
     } else {
       $slide_img = '';
     }
-    ?>
+?>
 
     <div class='slider_section'>
       <?php if($image_url !== ''): ?>
@@ -57,27 +56,25 @@ $the_query = new WP_Query( $args );
       </div>
     </div>
     </div>
-  <?php endwhile; ?>
-
-  <?php wp_reset_postdata(); ?>
-
-<?php endif; ?>
-
-<?php get_template_part('nav'); ?>
-	<div class="page_container">
-		<div class='page_section'>
-			<?php while ( have_posts() ) : the_post(); ?>
-			<div class='blog_section'>
-        <div class='blog_wrapper'>
-        	<h3><?php the_title() ?></h3>
-        	<?php the_content() ?>
-        	<?php //comments_template(); ?>
-        </div>
-      </div>
-      <?php endwhile; ?>
-	<?php wp_reset_query()?>
-        <?php get_sidebar("page") ?>
-      <div class='clear'></div>
-    </div>
+<?php
+  endwhile;
+  wp_reset_postdata();
+endif;
+get_template_part('nav');
+?>
+<div class='container'>
+  <div class='col-sm-8'>
+<?php
+    while ( have_posts() ) : the_post();
+      the_title( '<h3>', '</h3>' );
+      the_content();
+      //comments_template();
+    endwhile;
+    wp_reset_query();
+?>
+  </div>
+  <div class='col-sm-4 right_sidebar'>
+    <?php get_sidebar("page") ?>
+  </div>
 </div>
 <?php get_footer(); ?>

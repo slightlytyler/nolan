@@ -1,15 +1,14 @@
 <?php get_header(); ?>
-
-  <div class='page_section interior'>
-    <?php while ( have_posts() ) : the_post(); ?>
-      <div class='blog_section'>
-        <div class='blog_wrapper'>
-          <?php the_content() ?>
-        </div>
-      </div>
-    <?php endwhile; ?>
-    <?php get_sidebar("page")?>
-   <div class='clear'></div>
+  <div class='container'>
+    <div class='col-sm-8'>
+      <?php
+        while ( have_posts() ) : the_post();
+          the_content();
+        endwhile;
+      ?>
+    </div>
+    <div class='col-sm-4 right_sidebar'>
+      <?php get_sidebar("page"); ?>
+    </div>
   </div>
-
 <?php get_footer(); ?>
