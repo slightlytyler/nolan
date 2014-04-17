@@ -10,7 +10,6 @@
 */
 ?>
 <!doctype html>  
-
 <!--[if IEMobile 7 ]> <html <?php language_attributes(); ?>class="no-js iem7"> <![endif]-->
 <!--[if lt IE 7 ]> <html <?php language_attributes(); ?> class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html <?php language_attributes(); ?> class="no-js ie7"> <![endif]-->
@@ -70,7 +69,6 @@
       $class .= $parent->post_name;
     }
   ?>
-
   <body <?php body_class($class); ?>>
     <div class="navbar navbar-inverse"><!-- navbar-fixed-top -->
       <div class="container">
@@ -81,63 +79,56 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <?php wp_bootstrap_main_nav(); ?>
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
+        <div class="navbar-collapse collapse">
+          <?php
+            nhcs_get_nav( 'nchs-main-menu' );
+            nhcs_get_nav( 'nchs-nav-menu', true ); // mobile_only
+          ?>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+          <ul class="social-nav nav navbar-nav navbar-right visible-md visible-lg">
+            <li>
+              <a href="#facebook">
+                <i class='fa fa-facebook-square'></i>
+              </a>
+            </li>
+            <li>
+              <a href="#twitter">
+                <i class='fa fa-twitter-square'></i>
+              </a>
+            </li>
+            <li>
+              <a href="#gplus">
+                <i class='fa fa-google-plus-square'></i>
+              </a>
+            </li>
+            <li>
+              <a href="#pinterest">
+                <i class='fa fa-pinterest-square'></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
 
-<!-- <div class='page_section'>
-        <div class='logo'>
-          <a href='/' title='Site name'></a>
-        </div>
-        <a class='home_link' href='/'></a>
-        <div class='main_menu_btn'>Menu</div>
-        <?php wp_nav_menu( array(
-          'theme_location'  => 'nchs-main-menu',
-          'container'       => 'nav',
-          'container_class' => 'main_menu',
-          'menu_class'      => 'main_menu',
-          'items_wrap'      => '%3$s',
-          'depth'           => 2))
-        ?>
-        <div class='right_side'>
-          <div class='social_box'>
-            <a href="#facebook">
-              <i class='fa fa-facebook-square'></i>
-            </a>
-            <a href="#twitter">
-              <i class='fa fa-twitter-square'></i>
-            </a>
-            <a href="#gplus">
-              <i class='fa fa-google-plus-square'></i>
-            </a>
-            <a href="#pinterest">
-              <i class='fa fa-pinterest-square'></i>
-            </a>
-            <div class='clear'></div>
-          </div>
-          <form action='#' class='search_form form-inline' method='post'>
-            <input class='search-field input-medium' style="font-size: 12px;color: gray;" placeholder='Search' type='text' value='Search'>
-            <button class='btn-search' type='submit'></button>
-          </form>
-          <div class='clear'></div>
-        </div>
-      </div> -->
-
 <?php if(!is_single() && !is_home()) : ?>
+
   <?php if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))): ?>
    <?php get_template_part('titles-athletics'); ?>
   <?php else: ?>
     <?php get_template_part('titles'); ?>
   <?php endif; ?>
+
   <?php get_template_part('nav'); ?>
+  
   <div class="page_container">
+
 <?php endif;?>

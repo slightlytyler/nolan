@@ -9,6 +9,12 @@ img {
 .navbar {
   border-radius: 0;
 }
+.container>.navbar-header,
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container-fluid>.navbar-collapse {
+  padding: 0;
+}
 
 .dropdown:hover .dropdown-menu {
   display: block;
@@ -19,6 +25,13 @@ img {
 .page_container ol {
   line-height: 21px;
   padding-bottom: 15px;
+}
+
+.social-nav {
+  font-size: 32px;
+}
+.social-nav > li > a {
+  padding: 5px
 }
 
 /* ******************************************** */

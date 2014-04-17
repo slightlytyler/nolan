@@ -1,19 +1,16 @@
 <?php
 
-function wp_bootstrap_main_nav() {
-  // display the wp3 menu if available
-  wp_nav_menu( 
-    array( 
-      'menu' => 'nchs-main-menu',
-      'menu_class' => 'nav navbar-nav',
-      'container_class' => 'collapse navbar-collapse bs-navbar-collapse',
-      // 'theme_location' => 'main_nav',
-      'container' => 'nav',
-      // 'fallback_cb' => 'wp_bootstrap_main_nav_fallback',
-      // 'depth' => '2',  suppress lower levels for now 
-      'walker' => new Bootstrap_walker()
-    )
+function nhcs_get_nav( $menu, $mobile_only = null ) {
+  if($mobile_only == null) $mobile_only = false;
+  $args = array( 
+    'menu_class' => 'nav navbar-nav',
+    'theme_location'  => $menu,
+    // 'fallback_cb' => 'wp_bootstrap_main_nav_fallback',
+    // 'depth' => '2',  suppress lower levels
+    'walker' => new Bootstrap_walker()
   );
+  if ( $mobile_only ) $args['menu_class'] = "nav navbar-nav visible-xs";
+  wp_nav_menu( $args );
 }
 
 // Menu output mods
@@ -25,17 +22,17 @@ class Bootstrap_walker extends Walker_Nav_Menu{
    $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
   
    $class_names = $value = '';
-  
+
     // If the item has children, add the dropdown class for bootstrap
     if ( $args->has_children ) {
       $class_names = "dropdown ";
     }
-  
+
     $classes = empty( $object->classes ) ? array() : (array) $object->classes;
-    
+
     $class_names .= join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $object ) );
     $class_names = ' class="'. esc_attr( $class_names ) . '"';
-       
+
     $output .= $indent . '<li id="menu-item-'. $object->ID . '"' . $value . $class_names .'>';
 
     $attributes  = ! empty( $object->attr_title ) ? ' title="'  . esc_attr( $object->attr_title ) .'"' : '';
@@ -65,12 +62,12 @@ class Bootstrap_walker extends Walker_Nav_Menu{
 
     $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $object, $depth, $args );
   } // end start_el function
-        
+
   function start_lvl(&$output, $depth = 0, $args = Array()) {
     $indent = str_repeat("\t", $depth);
     $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
   }
-      
+
   function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ){
     $id_field = $this->db_fields['id'];
     if ( is_object( $args[0] ) ) {
