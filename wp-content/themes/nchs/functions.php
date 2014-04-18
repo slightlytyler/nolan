@@ -1,4 +1,39 @@
 <?php
+function my_connection_types() {
+    p2p_register_connection_type( array(
+        'name' => 'faculty_to_pages',
+        'from' => 'page',
+        'to' => 'faculty'
+    ) );
+}
+add_action( 'p2p_init', 'my_connection_types' );
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+  register_post_type( 'faculty',
+    array(
+      'labels' => array(
+        'name' => __( 'Faculty' ),
+        'singular_name' => __( 'Teacher' )
+      ),
+    'public' => true,
+    'has_archive' => true,
+    )
+  );
+}
+
+function order_pages_by_title( $args, $ctype, $post_id ) {
+  if ( 'faculty_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
+    $args['post_type'] = 'page';
+    $args['meta_key'] = '_wp_page_template';
+    $args['meta_value'] = 'page-department.php';
+    $args['meta_compare'] = '=';
+  }
+  return $args;
+}
+
+add_filter( 'p2p_connectable_args', 'order_pages_by_title', 10, 3 );
+
 
 function nchs_header_includes() {
   wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
@@ -240,5 +275,102 @@ function nchs_widgets_init() {
   ) );
 }
 add_action( 'widgets_init', 'nchs_widgets_init' );
+
+if(function_exists("register_field_group"))
+{
+  register_field_group(array (
+    'id' => 'acf_faculty',
+    'title' => 'Faculty',
+    'fields' => array (
+      array (
+        'key' => 'field_5350ed65a16ca',
+        'label' => 'Teaches',
+        'name' => 'teaches',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'html',
+        'maxlength' => '',
+      ),
+      array (
+        'key' => 'field_5350ec4de0adc',
+        'label' => 'Education',
+        'name' => 'education',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'html',
+        'maxlength' => '',
+      ),
+      array (
+        'key' => 'field_5350ed70a16cb',
+        'label' => 'At NHCS since',
+        'name' => 'since',
+        'type' => 'text',
+        'instructions' => 'calculates years of service',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'html',
+        'maxlength' => '',
+      ),
+      array (
+        'key' => 'field_5350ec66e0ade',
+        'label' => 'Bio',
+        'name' => 'bio',
+        'type' => 'wysiwyg',
+        'default_value' => '',
+        'toolbar' => 'full',
+        'media_upload' => 'yes',
+      ),
+      array (
+        'key' => 'field_5350ec53e0add',
+        'label' => 'Years of service',
+        'name' => 'years',
+        'type' => 'text',
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'html',
+        'maxlength' => '',
+      ),
+    ),
+    'location' => array (
+      array (
+        array (
+          'param' => 'post_type',
+          'operator' => '==',
+          'value' => 'faculty',
+          'order_no' => 0,
+          'group_no' => 0,
+        ),
+      ),
+    ),
+    'options' => array (
+      'position' => 'normal',
+      'layout' => 'no_box',
+      'hide_on_screen' => array (
+        0 => 'the_content',
+        1 => 'excerpt',
+        2 => 'discussion',
+        3 => 'comments',
+        4 => 'slug',
+        5 => 'author',
+        6 => 'format',
+        7 => 'categories',
+        8 => 'tags',
+        9 => 'send-trackbacks',
+      ),
+    ),
+    'menu_order' => 0,
+  ));
+}
+
 
 ?>
