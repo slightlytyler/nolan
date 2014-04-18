@@ -11,6 +11,10 @@ nvm install v0.10.16
 nvm alias default 0.10
 nvm use 0.10
 
+npm install -g less
+
+lessc style.less > style.css
+
 npm install -g watch-less
 
 # In wp-content/themes/nhcs/
