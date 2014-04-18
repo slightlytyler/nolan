@@ -67,7 +67,7 @@
           <div class="form-group input-group">
             <input type="text" class="form-control" placeholder="Search">
             <span class="input-group-btn">
-              <button type="submit" class="btn btn-default">
+              <button type="submit" class="btn btn-success">
                 <i class="fa fa-search"></i>
               </button>
             </span>
