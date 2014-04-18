@@ -2,108 +2,47 @@
 /* STYLE CONTENTS */
 /* ******************************************** */
 
-img {
-  max-width: 100%;
-}
-
-.navbar {
-  border-radius: 0;
-  min-height: 0;
-}
-.navbar-top {
-  margin: 0;
-}
-.navbar-nav>li>a {
-  padding: 10px;
-}
-.container>.navbar-header,
-.container-fluid>.navbar-header,
-.container>.navbar-collapse,
-.container-fluid>.navbar-collapse {
-  padding: 0;
-}
-.navbar .form-control {
-  height: 24px;
-  padding: 3px 6px;
-}
-.navbar .btn {
-  padding: 1px 5px
-}
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-.nav i {
-  font-size: 28px;
-}
-.nav li.icon > a,
-.social-nav > li > a {
-  padding: 7px 5px 0 0 !important;
-}
-.input-group-btn {
-  position: absolute;
-  right: -2px;
-}
-
-.page_container p,
-.page_container ul,
-.page_container ol {
-  line-height: 21px;
-  padding-bottom: 15px;
-}
-
-ul.widgets {
-  padding-left: 0;
-}
-
-li.widget {
-  width: 100%;
-}
-
-.single .navbar-main {
-  border-top: 0;
-}
-
 /* ******************************************** */
 /* Compass sprite, etc. */
 /* ******************************************** */
 
 .icons-sprite, .logo a, .home_link, header .right_side .search_form .btn-search, .facebook, .twitter, .google, .pinterest, .calendar_body .calendar_content .date_bg, .mission_section .mission_title .mission_arrow, .coaches_section .flex-direction-nav .flex-prev, .coaches_section .flex-direction-nav .flex-next, .players_section .team_box .flex-direction-nav .flex-prev, .players_section .team_box .flex-direction-nav .flex-next, .right_sidebar .facebook_link, .right_sidebar .hchs_watermark_icon {
-  background: url("../img/icons-s7a865abd48.png") no-repeat; }
+  background: url("img/icons-s7a865abd48.png") no-repeat; }
 
 /* ******************************************** */
 /* Fonts  */
 /* ******************************************** */
 @font-face {
   font-family: "trajan_proregular";
-  src: url("../fonts/trajan-webfont.eot");
-  src: url("../fonts/trajan-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/trajan-webfont.woff") format("woff"), url("../fonts/trajan-webfont.ttf") format("truetype"), url("../fonts/trajan-webfont.svg#trajan_proregular") format("svg");
+  src: url("fonts/trajan-webfont.eot");
+  src: url("fonts/trajan-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/trajan-webfont.woff") format("woff"), url("fonts/trajan-webfont.ttf") format("truetype"), url("fonts/trajan-webfont.svg#trajan_proregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: "ChronicleTextG1BoldItalic";
-  src: url("../fonts/chronicletextg1-bolditalic.eot");
-  src: url("../fonts/chronicletextg1-bolditalic.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-bolditalic.woff") format("woff"), url("../fonts/chronicletextg1-bolditalic.ttf") format("truetype"), url("../fonts/chronicletextg1-bolditalic.svg#ChronicleTextG1BoldItalic") format("svg"); }
+  src: url("fonts/chronicletextg1-bolditalic.eot");
+  src: url("fonts/chronicletextg1-bolditalic.eot") format("embedded-opentype"), url("fonts/chronicletextg1-bolditalic.woff") format("woff"), url("fonts/chronicletextg1-bolditalic.ttf") format("truetype"), url("fonts/chronicletextg1-bolditalic.svg#ChronicleTextG1BoldItalic") format("svg"); }
 
 @font-face {
   font-family: "ChronicleTextG1BoldItalic";
-  src: url("../fonts/chronicletextg1-semiitalic.eot");
-  src: url("../fonts/chronicletextg1-semiitalic.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-semiitalic.woff") format("woff"), url("../fonts/chronicletextg1-semiitalic.ttf") format("truetype"), url("../fonts/chronicletextg1-semiitalic.svg#ChronicleTextG1SemiItalic") format("svg"); }
+  src: url("fonts/chronicletextg1-semiitalic.eot");
+  src: url("fonts/chronicletextg1-semiitalic.eot") format("embedded-opentype"), url("fonts/chronicletextg1-semiitalic.woff") format("woff"), url("fonts/chronicletextg1-semiitalic.ttf") format("truetype"), url("fonts/chronicletextg1-semiitalic.svg#ChronicleTextG1SemiItalic") format("svg"); }
 
 @font-face {
   font-family: "ChronicleTextG1Bold";
-  src: url("../fonts/chronicletextg1-bold.eot");
-  src: url("../fonts/chronicletextg1-bold.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-bold.woff") format("woff"), url("../fonts/chronicletextg1-bold.ttf") format("truetype"), url("../fonts/chronicletextg1-bold.svg#ChronicleTextG1Bold") format("svg"); }
+  src: url("fonts/chronicletextg1-bold.eot");
+  src: url("fonts/chronicletextg1-bold.eot") format("embedded-opentype"), url("fonts/chronicletextg1-bold.woff") format("woff"), url("fonts/chronicletextg1-bold.ttf") format("truetype"), url("fonts/chronicletextg1-bold.svg#ChronicleTextG1Bold") format("svg"); }
 
 @font-face {
   font-family: "ChronicleTextG1Roman";
-  src: url("../fonts/chronicletextg1-roman.eot");
-  src: url("../fonts/chronicletextg1-roman.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-roman.woff") format("woff"), url("../fonts/chronicletextg1-roman.ttf") format("truetype"), url("../fonts/chronicletextg1-roman.svg#ChronicleTextG1Roman") format("svg"); }
+  src: url("fonts/chronicletextg1-roman.eot");
+  src: url("fonts/chronicletextg1-roman.eot") format("embedded-opentype"), url("fonts/chronicletextg1-roman.woff") format("woff"), url("fonts/chronicletextg1-roman.ttf") format("truetype"), url("fonts/chronicletextg1-roman.svg#ChronicleTextG1Roman") format("svg"); }
 
 @font-face {
   font-family: "ChronicleTextG1Italic";
-  src: url("../fonts/chronicletextg1-italic.eot");
-  src: url("../fonts/chronicletextg1-italic.eot") format("embedded-opentype"), url("../fonts/chronicletextg1-italic.woff") format("woff"), url("../fonts/chronicletextg1-italic.ttf") format("truetype"), url("../fonts/chronicletextg1-italic.svg#ChronicleTextG1Italic") format("svg"); }
+  src: url("fonts/chronicletextg1-italic.eot");
+  src: url("fonts/chronicletextg1-italic.eot") format("embedded-opentype"), url("fonts/chronicletextg1-italic.woff") format("woff"), url("fonts/chronicletextg1-italic.ttf") format("truetype"), url("fonts/chronicletextg1-italic.svg#ChronicleTextG1Italic") format("svg"); }
 
 /* ******************************************** */
 /* Buttons */
@@ -290,7 +229,7 @@ footer {
         padding-top: 7px; }
 
       footer .left_widget .contact_us_box .contact_us_email {
-        background: url("../img/icons/chat.png") no-repeat 100% 6px;
+        background: url("img/icons/chat.png") no-repeat 100% 6px;
         display: inline;
         float: left;
         color: #787878;
@@ -300,7 +239,7 @@ footer {
         margin-right: 13px; }
 
       footer .left_widget .contact_us_box .contact_us_phone {
-        background: url("../img/icons/call.png") no-repeat 100% 6px;
+        background: url("img/icons/call.png") no-repeat 100% 6px;
         display: inline;
         float: left;
         font-size: 12px;
@@ -422,11 +361,11 @@ header .fa:hover {
   z-index: 500; }
 
   .slider_section .slides, .slider_section .flexslider {
-    background: url("../img/slide_bg.jpg") no-repeat 100% 0; }
+    background: url("img/slide_bg.jpg") no-repeat 100% 0; }
 
   .slider_section .slide_wrapper {
     *zoom: 1;
-    max-width: 965px;
+    /*max-width: 965px;*/
     _width: 965px;
     padding-left: 1em;
     padding-right: 1em;
@@ -493,7 +432,7 @@ header .fa:hover {
   margin-bottom: 9px; }
 
   .info_title h3 {
-    background: url("../img/icons/info_title_icon.png") no-repeat 0 0;
+    background: url("img/icons/info_title_icon.png") no-repeat 0 0;
     width: 620px;
     margin: 0 auto;
     padding: 0 0 0 45px; }
@@ -539,7 +478,7 @@ header .fa:hover {
     width: 48.93617%;
     float: right;
     margin-right: 0;
-    #margin-left: -20px;
+    margin-left: -20px;
     display: inline; }
 
     .info_section .info_video iframe {
@@ -658,7 +597,7 @@ header .fa:hover {
 
 
 .calendar_footer {
-  background: url("../img/calendar_footer.png") no-repeat 0 0;
+  background: url("img/calendar_footer.png") no-repeat 0 0;
   height: 108px;
   width: 304px; }
 
@@ -710,7 +649,7 @@ header .fa:hover {
   float: left;
   margin-right: 2.12766%;
   display: inline;
-  background: url("../img/nchs_watermark_big.png") no-repeat 50% 23px;
+  background: url("img/nchs_watermark_big.png") no-repeat 50% 23px;
   font-family: "ChronicleTextG1Roman";
   font-size: 13px;
   line-height: 22px;
@@ -862,7 +801,7 @@ header .fa:hover {
     padding-top: 0; }
 
   .athletics .slider_athletic {
-    background: #d7d7d9 url("../img/slide_bg_athletics.png") no-repeat 100% 0; }
+    background: #d7d7d9 url("img/slide_bg_athletics.png") no-repeat 100% 0; }
 
   .athletics .slide_wrapper {
     height: 250px;
@@ -1234,7 +1173,7 @@ header .fa:hover {
     padding-bottom: 0; }
 
   .right_sidebar .calendar_footer {
-    background: url("../img/calendar_footer2.png") no-repeat 0 0;
+    background: url("img/calendar_footer2.png") no-repeat 0 0;
     height: 50px;
     width: 304px; }
 
@@ -1353,7 +1292,7 @@ header .fa:hover {
     font-size: 12px;
     line-height: 18px;
     margin: 0 0 0 120px;
-    background: url("../img/icons/info_title_icon_small.png") no-repeat 0 0px;
+    background: url("img/icons/info_title_icon_small.png") no-repeat 0 0px;
     padding: 5px 0px 5px 35px; }
 
 
@@ -1435,7 +1374,7 @@ header .fa:hover {
       position: absolute;
       width: 60px;
       height: 20px;
-      background: url("../img/icons/main_menu_btn.png") no-repeat 100% 0px; }
+      background: url("img/icons/main_menu_btn.png") no-repeat 100% 0px; }
 
     header .main_menu {
       top: 35px;
@@ -1640,7 +1579,7 @@ span.subpage_small_title {
     width: auto;
 }
 .slider_section .slides, .slider_section .flexslider {
-   background: url(../img/slide_bg_main.jpg) no-repeat 50% 0; 
+   background: url(/img/slide_bg_main.jpg) no-repeat 50% 0; 
 }
 .slider_section .slide_wrapper .slide1_title {
   color: black;
@@ -1704,6 +1643,6 @@ span.subpage_small_title {
     width:165px;
     height:auto;
     float:left;
-    margin: 0 10px 0 0;"
+    margin: 0 10px 0 0;
 }
 

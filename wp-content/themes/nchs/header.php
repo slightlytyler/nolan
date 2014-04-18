@@ -20,36 +20,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><?php wp_title( '|', true, 'right' ); ?></title> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- media-queries.js (fallback) -->
     <!--[if lt IE 9]>
       <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>     
     <![endif]-->
-
-    <!-- html5.js -->
+    <!-- html5.js (fallback) -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
     <?php wp_head(); ?>
-
-    <!-- @todo load these properly... -->
-
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"> -->
-
-    <!-- <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-loader.css" rel="stylesheet" /> -->
-    <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/style.css" rel="stylesheet" />
-    <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/flexslider.css" rel="stylesheet" />
-
-    <!-- I moved these styles into /css/style.css - 2 style.css's is confusing.
-    <link type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" /> -->
-
-    <link type="text/css" media="screen" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <!-- <link href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css" rel="stylesheet" /> -->
-
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
   <?php
@@ -117,18 +97,14 @@
         </ul>
       </div>
     </div>
-
-
-<?php if(!is_single() && !is_home()) : ?>
-
-  <?php if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))): ?>
-   <?php get_template_part('titles-athletics'); ?>
-  <?php else: ?>
-    <?php get_template_part('titles'); ?>
-  <?php endif; ?>
-
-  <?php get_template_part('nav'); ?>
-  
-  <div class="page_container">
-
-<?php endif;?>
+<?php
+if(!is_single() && !is_home()) :
+  if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))):
+   get_template_part('titles-athletics');
+  else:
+    get_template_part('titles');
+  endif;
+  get_template_part('nav');
+  echo '<div class="page_container">';
+endif;
+?>

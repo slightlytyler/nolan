@@ -1,5 +1,19 @@
 <?php
 
+function nchs_header_includes() {
+  wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
+  // wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'nchs_header_includes' );
+
+function nchs_register_menus() {
+  register_nav_menus( array(
+    'nchs-main-menu'  => __('Main Menu'),
+    'nchs-nav-menu'   => __('Nav Menu')
+  ) );
+}
+add_action( 'init', 'nchs_register_menus' );
+
 function nhcs_get_nav( $menu, $mobile_only = null ) {
   if($mobile_only == null) $mobile_only = false;
   $args = array( 
@@ -94,14 +108,6 @@ function has_children($child_of = null) {
   }
   return (wp_list_pages("child_of=$child_of&echo=0")) ? true : false;
 }
-
-function nchs_register_menus() {
-  register_nav_menus( array(
-    'nchs-main-menu'  => __('Main Menu'),
-    'nchs-nav-menu'   => __('Nav Menu')
-  ) );
-}
-add_action( 'init', 'nchs_register_menus' );
 
 function add_sport_column ($original_columns) {
   $new_columns['cb']    = '<input type="checkbox" />';
