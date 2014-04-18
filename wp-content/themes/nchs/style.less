@@ -26,9 +26,6 @@ img {
   border-radius: 0;
   min-height: 0;
 }
-.navbar-top {
-  margin: 0;
-}
 .navbar-nav>li>a {
   padding: 10px;
 }
@@ -60,6 +57,22 @@ img {
   right: -2px;
 }
 
+.navbar-top {
+  margin: 0;
+  border: none;
+}
+.nchs-nav > li > a {
+  font-family: @font-family-trajan;
+}
+.navbar-inverse .nchs-nav > li > a:hover
+, .navbar-inverse .nchs-main > li > a:hover {
+  color: @brand-success;
+}
+.single .navbar-main {
+  border-top: 0;
+}
+
+
 .page_container p,
 .page_container ul,
 .page_container ol {
@@ -75,9 +88,6 @@ li.widget {
   width: 100%;
 }
 
-.single .navbar-main {
-  border-top: 0;
-}
 
 .inset {
   padding: 20px;

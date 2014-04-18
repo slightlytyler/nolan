@@ -50,7 +50,7 @@
     }
   ?>
   <body <?php body_class($class); ?>>
-    <div class="navbar navbar-top navbar-inverse"><!-- navbar-fixed-top -->
+    <div class="navbar navbar-top"><!-- navbar-fixed-top -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
@@ -58,7 +58,7 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-      <div class="navbar-collapse collapse">
+      <div class="navbar-collapse collapse navbar-inverse">
         <?php
           nhcs_get_nav( 'nchs-main-menu' );
           nhcs_get_nav( 'nchs-nav-menu', true ); // mobile_only

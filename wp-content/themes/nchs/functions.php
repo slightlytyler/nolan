@@ -16,9 +16,11 @@ add_action( 'init', 'nchs_register_menus' );
 
 function nhcs_get_nav( $menu, $mobile_only = null ) {
   if($mobile_only == null) $mobile_only = false;
+  $class = str_replace( '-menu', '', $menu );
   $args = array( 
-    'menu_class' => 'nav navbar-nav',
+    'menu_class' => 'nav navbar-nav '.$class,
     'theme_location'  => $menu,
+    'container' => '',
     // 'fallback_cb' => 'wp_bootstrap_main_nav_fallback',
     // 'depth' => '2',  suppress lower levels
     'walker' => new Bootstrap_walker()

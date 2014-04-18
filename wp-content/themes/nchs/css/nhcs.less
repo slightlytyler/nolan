@@ -16,9 +16,9 @@
 @gray-lighter: #ecf0f1;
 // #eee
 
-@brand-primary:         #2C3E50;
-@brand-success:         #18BC9C;
-@brand-info: #3498DB;
+@brand-primary:         #11233b;
+@brand-success:         #2b7bc9;
+@brand-info:            #3498DB;
 @brand-warning:         #F39C12;
 @brand-danger:          #E74C3C;
 
@@ -38,10 +38,17 @@
 
 //== Typography
 //
+// trajan_proregular
+// ChronicleTextG1BoldItalic
+// ChronicleTextG1BoldItalic
+// ChronicleTextG1Bold
+// ChronicleTextG1Roman
+// ChronicleTextG1Italic
+// 
 //## Font, line-height, and color for body text, headings, and more.
-
+@font-family-trajan:      "trajan_proregular";
 @font-family-sans-serif:  "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-serif:       "ChronicleTextG1Roman", Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
@@ -71,7 +78,7 @@
 // ~20px
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    @font-family-base;
+@headings-font-family:    @font-family-serif;
 @headings-font-weight: 400;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
@@ -332,16 +339,16 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height: 340px;
 
-@navbar-default-color:             #777;
+@navbar-default-color:             @brand-success;
 @navbar-default-bg:                @brand-primary;
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
 @navbar-default-link-color:                #fff;
-@navbar-default-link-hover-color:          @brand-success;
-@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-hover-color:          #fff;
+@navbar-default-link-hover-bg:             @brand-success;
 @navbar-default-link-active-color:         #fff;
-@navbar-default-link-active-bg:            darken(@navbar-default-bg, 10%);
+@navbar-default-link-active-bg:            black;
 @navbar-default-link-disabled-color:       #ccc;
 @navbar-default-link-disabled-bg:          transparent;
 
@@ -359,8 +366,8 @@
 // Inverted navbar
 // Reset inverted navbar basics
 @navbar-inverse-color:                      #fff;
-@navbar-inverse-bg:                         @brand-success;
-@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-bg:                         @brand-primary;
+@navbar-inverse-border:                     black;
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 #fff;
