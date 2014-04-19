@@ -10,6 +10,6 @@ endwhile;
 ?>
   </div>
   <div class='col-sm-4 right_sidebar'>
-    <?php get_sidebar("page") ?>
+    <?php get_sidebar("sport") ?>
   </div>
 <?php get_footer() ?>

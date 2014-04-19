@@ -242,36 +242,44 @@ function nchs_slides_number_fields_html() {
 }
 add_filter( 'admin_init', 'nchs_register_fields');
 
-/* CUSTOM IMAGE SIZE */
-if ( function_exists( 'add_theme_support' ) ) {
-  add_theme_support( 'post-thumbnails' );
-  set_post_thumbnail_size( 150, 150 );
-}
-
-$image_sizes = [
-  [ 'nchs-background', 1251, 328 ],
-  [ 'nchs-foreground', 9999, 254 ],
-  [ 'nchs-slide-background', 1242, 332 ],
-  [ 'nchs-slide-foreground', 9999, 332 ],
-  [ 'nchs-coach', 182, 195 ],
-  [ 'nchs-player', 76, 81 ],
-  [ 'nchs-player-large', 183, 257 ],
-  [ 'nchs-athletics-news-featured', 146, 132 ],
-  [ 'nchs-athletics-news', 82, 73 ],
-  [ 'nchs-index-latest-news-thumb', 50, 44 ]
-];
-
-if ( function_exists( 'add_image_size' ) ) { 
-  foreach( $image_sizes as $size ) {
-    add_image_size( $size[0], $size[1], $size[2] );
+function nchs_theme_init() { 
+  /* CUSTOM IMAGE SIZE */
+  if ( function_exists( 'add_theme_support' ) ) {
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 150, 150 );
+  }
+  $image_sizes = [
+    [ 'nchs-background', 1251, 328 ],
+    [ 'nchs-foreground', 9999, 254 ],
+    [ 'nchs-slide-background', 1242, 332 ],
+    [ 'nchs-slide-foreground', 9999, 332 ],
+    [ 'nchs-coach', 182, 195 ],
+    [ 'nchs-player', 76, 81 ],
+    [ 'nchs-player-large', 183, 257 ],
+    [ 'nchs-athletics-news-featured', 146, 132 ],
+    [ 'nchs-athletics-news', 82, 73 ],
+    [ 'nchs-index-latest-news-thumb', 50, 44 ]
+  ];
+  if ( function_exists( 'add_image_size' ) ) { 
+    foreach( $image_sizes as $size ) {
+      add_image_size( $size[0], $size[1], $size[2] );
+    }
   }
 }
+add_action( 'after_setup_theme', 'nchs_theme_init' );
 
 /* SIDEBARS */
 function nchs_widgets_init() {
+  unregister_widget('WP_Widget_Archives');
+  unregister_widget('WP_Widget_Links');
+  unregister_widget('WP_Widget_Recent_Posts');
+  unregister_widget('WP_Widget_Recent_Comments');
+  unregister_widget('Twenty_Eleven_Ephemera_Widget');
+  register_widget( 'Athletics_Widget' );
+  register_widget( 'News_Widget' );
   register_sidebar( array(
     'name' => __( 'Sport Page Sidebar', 'nchs' ),
-    'id' => 'team',
+    'id' => 'sport-sidebar',
     'description' => __( 'Sidebar for the page-sport.php template', 'nchs' ),
     'before_widget' => '',
     'after_widget'  => '',
@@ -319,4 +327,98 @@ function nchs_widgets_init() {
 }
 add_action( 'widgets_init', 'nchs_widgets_init' );
 
+class News_Widget extends WP_Widget {
+  function __construct() {
+    parent::__construct(
+      'news_widget'
+      , 'News'
+      , array( 'description' => 'Displays 5 most recent News Stories' )
+    );
+  }
+  function widget($args, $instance) {
+    extract( $args );
+    $title    = apply_filters('widget_title', $instance['title']);
+    $posts = get_posts( array(
+      'post_type' => 'news'
+    ) );
+    echo $before_widget;
+    if ( $title )
+      echo $before_title . $title . $after_title;
+    echo '<ul>';
+    foreach( $posts as $post ) {
+      echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink( $post->ID ), $post->post_title );
+    }
+    echo '</ul>';
+    echo $after_widget;
+  }
+  function update($new_instance, $old_instance) {   
+    $instance = $old_instance;
+    $instance['title'] = strip_tags($new_instance['title']);
+    return $instance;
+  }
+  function getarchives_where_filter($where) {
+    $where = str_replace( "post_type = 'post'", "post_type = 'athletics'", $where );
+    return $where;
+  }
+  function form($instance) {  
+    $title    = esc_attr($instance['title']);
+    if( !$title )
+      $title = 'News';
+    ?>
+    <p>
+      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
+      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+    </p>
+    <?php 
+  }
+}
+// function register_athletics_widget() {
+//   register_widget( 'Athletics_Widget' );
+// }
+// add_action( 'widgets_init', 'register_athletics_widget' );
+class Athletics_Widget extends WP_Widget {
+  function __construct() {
+    parent::__construct(
+      'athletics_widget'
+      , 'Athletics News'
+      , array( 'description' => 'Displays 5 most recent Athletics Stories' )
+    );
+  }
+  function widget($args, $instance) {
+    extract( $args );
+    $title    = apply_filters('widget_title', $instance['title']);
+    $posts = get_posts( array(
+      'post_type' => 'athletics'
+    ) );
+    echo $before_widget;
+    if ( $title )
+      echo $before_title . $title . $after_title;
+    echo '<ul>';
+    foreach( $posts as $post ) {
+      echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink( $post->ID ), $post->post_title );
+    }
+    echo '</ul>';
+    echo $after_widget;
+  }
+  function update($new_instance, $old_instance) {   
+    $instance = $old_instance;
+    $instance['title'] = strip_tags($new_instance['title']);
+    return $instance;
+  }
+  function getarchives_where_filter($where) {
+    $where = str_replace( "post_type = 'post'", "post_type = 'athletics'", $where );
+    return $where;
+  }
+  function form($instance) {  
+    $title    = esc_attr($instance['title']);
+    if( !$title )
+      $title = 'Athletics News';
+    ?>
+    <p>
+      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
+      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+    </p>
+    <?php 
+  }
+}
 ?>
