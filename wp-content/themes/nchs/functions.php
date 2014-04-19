@@ -1,4 +1,7 @@
 <?php
+// $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
+// print_r($response);
+
 function my_connection_types() {
     p2p_register_connection_type( array(
         'name' => 'faculty_to_pages',

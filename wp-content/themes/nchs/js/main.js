@@ -45,6 +45,37 @@ if (typeof jQuery !== 'undefined') {
         $(".page_container").height(parseInt($(".right_sidebar").height())+100);
       }
       });
+
+      if( $('body').hasClass('page-template-page-table-php') === true ) {
+        // //docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml
+        var url = '//spreadsheets.google.com/feeds/list/' + spreadsheet_id + '/od6/public/basic';
+        $.ajax({
+          type: 'GET',
+          data: { 'alt': 'json-in-script' },
+          url: url,
+          async: false,
+          contentType: "application/json",
+          dataType: 'jsonp'
+        })
+        .done( function( data ) {
+          console.log( JSON.stringify( data ) );
+          var $table = $( '<table />' ).addClass( 'table table-striped' );
+          console.log( data );
+          $.each( data.feed.entry, function ( i, v ) {
+            var $row = $( '<tr />' );
+            $.each( v.content.$t.split( ',' ), function ( idx, val ){
+              var value = val.split( ':' )
+              var $cell = $( '<td />' );
+              if( i === 0 )
+                $cell = $( '<th />' );
+              $cell.text( value[1].trim() );
+              $row.append( $cell );
+            });
+            $table.append( $row );
+          });
+          $('.col-sm-8').append( $table );
+        });
+      }
     });
   });
 };
