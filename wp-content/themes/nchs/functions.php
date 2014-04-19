@@ -2,7 +2,12 @@
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
-function my_connection_types() {
+/* 
+ * Posts 2 Posts Configuration
+ */
+
+// Register Connections
+function nhcs_p2p_connections() {
   p2p_register_connection_type( array(
     'name' => 'faculty_to_pages',
     'from' => 'page',
@@ -16,10 +21,11 @@ function my_connection_types() {
     'sortable' => 'any'
   ) );
 }
-add_action( 'p2p_init', 'my_connection_types' );
+
 
 function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
-  // Affecting All Relationships!
+  // @todo Theme Option?
+  $args['p2p:per_page'] = 15;
   if ( 'faculty_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
     $args['post_type'] = 'page';
     $args['meta_key'] = '_wp_page_template';
@@ -34,9 +40,11 @@ function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
   }
   return $args;
 }
+add_action( 'p2p_init', 'nhcs_p2p_connections' );
 add_filter( 'p2p_connectable_args', 'nhcs_filter_pages_by_template', 10, 3 );
-
-function restrict_p2p_box_display( $show, $ctype, $post ) {
+add_filter( 'p2p_connectable_args', 'connectable_results_per_page', 10, 3 );
+add_filter( 'p2p_admin_box_show', 'nhcs_restrict_p2p_box_display', 10, 3 );
+function nhcs_restrict_p2p_box_display( $show, $ctype, $post ) {
   if ( 'faculty_to_pages' == $ctype->name )
     if( $post->post_type == 'page' || $post->post_type == 'faculty' )
       return ( 'page-department.php' == $post->page_template );
@@ -45,7 +53,10 @@ function restrict_p2p_box_display( $show, $ctype, $post ) {
       return ( 'page-ministry.php' == $post->page_template );
   return $show;
 }
-add_filter( 'p2p_admin_box_show', 'restrict_p2p_box_display', 10, 3 );
+
+/* 
+ * Register Custom Post Types
+ */
 
 function create_post_type() {
   register_post_type( 'faculty',
