@@ -54,24 +54,6 @@ function nhcs_restrict_p2p_box_display( $show, $ctype, $post ) {
   return $show;
 }
 
-/* 
- * Register Custom Post Types
- */
-
-function create_post_type() {
-  register_post_type( 'faculty',
-    array(
-      'labels' => array(
-        'name' => __( 'Faculty' ),
-        'singular_name' => __( 'Teacher' )
-      ),
-    'public' => true,
-    'has_archive' => true,
-    )
-  );
-}
-add_action( 'init', 'create_post_type' );
-
 function nchs_header_includes() {
   wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
   // wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
