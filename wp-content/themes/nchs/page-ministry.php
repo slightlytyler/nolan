@@ -1,7 +1,7 @@
 <?php
 /* Template Name: Ministry */
 get_header();
-  echo "<div class='col-md-8'>";
+  echo "<div class='page-content col-md-8'>";
   while ( have_posts() ) : the_post();
     echo '<h1>'.get_the_title().'</h1>';
     the_content();

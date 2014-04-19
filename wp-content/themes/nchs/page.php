@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-  <div class='col-sm-8'>
+  <div class='page-content col-sm-8'>
     <?php
       while ( have_posts() ) : the_post();
         the_content();
