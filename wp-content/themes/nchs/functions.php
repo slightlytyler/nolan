@@ -27,6 +27,18 @@ class NHCS_Posts2Posts {
       'to' => 'ministry',
       'sortable' => 'any'
     ) );
+    p2p_register_connection_type( array(
+      'name' => 'coach_to_pages',
+      'from' => 'page',
+      'to' => 'coach',
+      'sortable' => 'any'
+    ) );
+    p2p_register_connection_type( array(
+      'name' => 'player_to_pages',
+      'from' => 'page',
+      'to' => 'player',
+      'sortable' => 'any'
+    ) );
   }
 
   public function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
@@ -54,7 +66,7 @@ class NHCS_Posts2Posts {
     if ( 'ministry_to_pages' == $ctype->name )
       if( $post->post_type == 'page' )
         return ( 'page-ministry.php' == $post->page_template );
-    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' )
+    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach'|| $post->post_type == 'page' )
     return $show;
   }
 }
@@ -90,41 +102,28 @@ function nhcs_get_nav( $menu, $mobile_only = null ) {
 
 // Menu output mods
 class Bootstrap_walker extends Walker_Nav_Menu{
-
   function start_el(&$output, $object, $depth = 0, $args = Array(), $current_object_id = 0){
-
    global $wp_query;
    $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-  
    $class_names = $value = '';
-
     // If the item has children, add the dropdown class for bootstrap
-    if ( $args->has_children ) {
+    if ( $args->has_children )
       $class_names = "dropdown ";
-    }
-
     $classes = empty( $object->classes ) ? array() : (array) $object->classes;
-
     $class_names .= join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $object ) );
     $class_names = ' class="'. esc_attr( $class_names ) . '"';
-
     $output .= $indent . '<li id="menu-item-'. $object->ID . '"' . $value . $class_names .'>';
-
     $attributes  = ! empty( $object->attr_title ) ? ' title="'  . esc_attr( $object->attr_title ) .'"' : '';
     $attributes .= ! empty( $object->target )     ? ' target="' . esc_attr( $object->target     ) .'"' : '';
     $attributes .= ! empty( $object->xfn )        ? ' rel="'    . esc_attr( $object->xfn        ) .'"' : '';
     $attributes .= ! empty( $object->url )        ? ' href="'   . esc_attr( $object->url        ) .'"' : '';
-
     // if the item has children add these two attributes to the anchor tag
-    // if ( $args->has_children ) {
-      // $attributes .= ' class="dropdown-toggle" data-toggle="dropdown"';
-    // }
-
+    // if ( $args->has_children )
+    //   $attributes .= ' class="dropdown-toggle" data-toggle="dropdown"';
     $item_output = $args->before;
     $item_output .= '<a'. $attributes .'>';
     $item_output .= $args->link_before .apply_filters( 'the_title', $object->title, $object->ID );
     $item_output .= $args->link_after;
-
     // if the item has children add the caret just before closing the anchor tag
     if ( $args->has_children ) {
       $item_output .= '<b class="caret"></b></a>';
@@ -132,9 +131,7 @@ class Bootstrap_walker extends Walker_Nav_Menu{
     else {
       $item_output .= '</a>';
     }
-
     $item_output .= $args->after;
-
     $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $object, $depth, $args );
   } // end start_el function
 
@@ -145,9 +142,8 @@ class Bootstrap_walker extends Walker_Nav_Menu{
 
   function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ){
     $id_field = $this->db_fields['id'];
-    if ( is_object( $args[0] ) ) {
-        $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
-    }
+    if ( is_object( $args[0] ) )
+      $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
     return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
   }
 }
@@ -250,25 +246,34 @@ if ( function_exists( 'add_theme_support' ) ) {
   set_post_thumbnail_size( 150, 150 );
 }
 
+$image_sizes = [
+  [ 'nchs-background', 1251, 328 ],
+  [ 'nchs-foreground', 9999, 254 ],
+  [ 'nchs-slide-background', 1242, 332 ],
+  [ 'nchs-slide-foreground', 9999, 332 ],
+  [ 'nchs-coach', 182, 195 ],
+  [ 'nchs-player', 76, 81 ],
+  [ 'nchs-player-large', 183, 257 ],
+  [ 'nchs-athletics-news-featured', 146, 132 ],
+  [ 'nchs-athletics-news', 82, 73 ],
+  [ 'nchs-index-latest-news-thumb', 50, 44 ]
+];
+
 if ( function_exists( 'add_image_size' ) ) { 
-  add_image_size( 'nchs-background', 1251, 328 );
-  add_image_size( 'nchs-foreground', 9999, 254 );
-
-  add_image_size( 'nchs-slide-background', 1242, 332 );
-  add_image_size( 'nchs-slide-foreground', 9999, 332 );
-
-  add_image_size( 'nchs-coach', 182, 195 );
-  add_image_size( 'nchs-player', 76, 81 );
-  add_image_size( 'nchs-player-large', 183, 257 );
-
-  add_image_size( 'nchs-athletics-news-featured', 146, 132 );
-  add_image_size( 'nchs-athletics-news', 82, 73 );
-
-  add_image_size( 'nchs-index-latest-news-thumb', 50, 44 );
+  foreach( $image_sizes as $size ) {
+    add_image_size( $size[0], $size[1], $size[2] );
+  }
 }
 
 /* SIDEBARS */
 function nchs_widgets_init() {
+  register_sidebar( array(
+    'name' => __( 'Sport Page Sidebar', 'nchs' ),
+    'id' => 'team',
+    'description' => __( 'Sidebar for the page-sport.php template', 'nchs' ),
+    'before_widget' => '',
+    'after_widget'  => '',
+  ) );
   register_sidebar( array(
     'name' => __( 'Athletics - Right Column Widget Area', 'nchs' ),
     'id' => 'athletics-right-widget-area',

@@ -1,10 +1,28 @@
 ## CPTs
 
-- Faculty & Ministry
+#### Faculty
 
-Custom metaboxes setup with Advanced Custom Fields. Save files in `/nhcs/acf`
+Connected to Department Template
 
-Clicking the add page button from these posts edit pages requires the user to select the correct template when creating a page (then save it).
+#### Ministry
+
+Connected to Ministry Template
+
+#### Coaches
+
+Connected to Sport Template
+
+#### Players
+
+Connected to Sport Template
+
+#### Athletics
+
+Athletics News Stories, Sports Taxonomy
+
+#### News (Articles)
+
+Custom blog posts
 
 
 ## Templates
@@ -19,15 +37,21 @@ Clicking the add page button from these posts edit pages requires the user to se
     @todo cache response in a transient
     @idea sub-templates for better responsive display?
 
-
-#### Department & Ministry
-
-Ministry is the same as Department, but with just Name, Title and Picture data. (Different ACF settings)
+#### Department
 
 Departments are linked to faculty. You can select Faculty from the department pages, or you can select a deparment for each faculty memeber.
 
     @idea Faculty Pages are a template away, if we can solve the data gathering issue.
 
+#### Ministry
+
+Ministry is the almost the same as Department, with different connection post type.
+
+#### Sport
+
+One team, many sports. A department page template that includes both Coaches and Players.
+
+    @todo athletics news category selector
 
 ## Plugins 
 
@@ -37,6 +61,15 @@ Custom Post Type and Template Meta Box editor
 
 #### P2P - Posts 2 Posts
 
-Define Relationships, Drag & Drop Ordering
+Define Relationships, Drag & Drop Ordering, Widget
 
 [Shortcodes](https://github.com/scribu/wp-posts-to-posts/wiki/Shortcodes)
+
+## Meta Boxes
+
+Custom metaboxes setup with Advanced Custom Fields. Save files in `/nhcs/acf`
+
+Clicking the add page button from these posts edit pages requires the user to select the correct template when creating a page (then save it).
+
+    @todo Find elusive on template change hook. (JavaScript?)
+
