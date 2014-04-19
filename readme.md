@@ -1,4 +1,4 @@
-## CPTs
+## CPTs, Connections & Taxa
 
 #### Faculty
 
@@ -22,7 +22,7 @@ Athletics News Stories, Sports Taxonomy
 
 #### News (Articles)
 
-Custom blog posts
+Custom blog posts, Uses Vanilla Cats and Tags
 
 
 ## Templates
