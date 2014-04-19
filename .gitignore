@@ -22,3 +22,5 @@ adminer.sql
 rreplace.php
 nginx.conf
 style.css
+wp-content/plugins/adminer
+wp-content/plugins/regenerate-thumbnails
