@@ -6,7 +6,8 @@ function my_connection_types() {
     p2p_register_connection_type( array(
         'name' => 'faculty_to_pages',
         'from' => 'page',
-        'to' => 'faculty'
+        'to' => 'faculty',
+        'sortable' => 'any'
     ) );
 }
 add_action( 'p2p_init', 'my_connection_types' );
