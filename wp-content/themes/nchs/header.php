@@ -62,17 +62,8 @@
         <?php
           nhcs_get_nav( 'nchs-main-menu' );
           nhcs_get_nav( 'nchs-nav-menu', true ); // mobile_only
+          get_search_form();
         ?>
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-success">
-                <i class="fa fa-search"></i>
-              </button>
-            </span>
-          </div>
-        </form>
         <ul class="social-nav nav navbar-nav navbar-right visible-md visible-lg">
           <li>
             <a href="#facebook">
