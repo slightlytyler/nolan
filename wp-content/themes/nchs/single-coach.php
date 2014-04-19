@@ -1,8 +1,4 @@
-<?php
-
-get_header(); ?>
-
-
+<?php get_header(); ?>
 <div class='page_section'>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<div class='blog_section'>
@@ -12,11 +8,9 @@ get_header(); ?>
 			</div>
 		</div>
 	<?php endwhile; ?>
-
 	<div class='right_sidebar single_athletics'>
 		<?php get_sidebar("athletics")?>
 	</div>
 	<div class="clear"></div>
 </div>
-
 <?php get_footer(); ?>

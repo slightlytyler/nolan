@@ -58,7 +58,6 @@ if ( $the_query->have_posts() ) :
   endwhile;
   wp_reset_postdata();
 endif;
-get_template_part('nav');
 ?>
   <div class='col-sm-8'>
 <?php

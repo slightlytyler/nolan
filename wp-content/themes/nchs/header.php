@@ -89,13 +89,11 @@
       </div>
     </div>
 <?php
-if(!is_single() && !is_home()) :
-  if (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player')))):
-   get_template_part('titles-athletics');
-  else:
-    get_template_part('titles');
-  endif;
-  get_template_part('nav');
-  echo '<div class="page_container">';
-endif;
+if( is_home() )
+  get_template_part('slider', 'index');
+if( is_single() || is_page() )
+  get_template_part('titles');
+if( is_page( $page = 'athletics') || (is_archive() && in_array( get_query_var('post_type'), array('coach','player') ) ) )
+  get_template_part('titles-athletics');
+get_template_part('nav');
 ?>
