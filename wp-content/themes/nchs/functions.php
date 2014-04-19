@@ -44,17 +44,16 @@ class NHCS_Posts2Posts {
   public function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
     // @todo Theme Option?
     $args['p2p:per_page'] = 15;
-    if ( 'faculty_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
+    if( 'to' == $ctype->get_direction() ) {
       $args['post_type'] = 'page';
       $args['meta_key'] = '_wp_page_template';
       $args['meta_compare'] = '=';
-      $args['meta_value'] = 'page-department.php';
-    }
-    if ( 'ministry_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
-      $args['post_type'] = 'page';
-      $args['meta_key'] = '_wp_page_template';
-      $args['meta_compare'] = '=';
-      $args['meta_value'] = 'page-ministry.php';
+      if ( 'faculty_to_pages' == $ctype->name )
+        $args['meta_value'] = 'page-department.php';
+      if ( 'ministry_to_pages' == $ctype->name )
+        $args['meta_value'] = 'page-ministry.php';
+      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
+        $args['meta_value'] = 'page-sport.php';
     }
     return $args;
   }
@@ -63,10 +62,13 @@ class NHCS_Posts2Posts {
     if ( 'faculty_to_pages' == $ctype->name )
       if( $post->post_type == 'page' )
         return ( 'page-department.php' == $post->page_template );
-    if ( 'ministry_to_pages' == $ctype->name )
-      if( $post->post_type == 'page' )
+    if( $post->post_type == 'page' )
+      if ( 'ministry_to_pages' == $ctype->name )
         return ( 'page-ministry.php' == $post->page_template );
-    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach'|| $post->post_type == 'page' )
+    if( $post->post_type == 'page' )
+      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
+        return ( 'page-sport.php' == $post->page_template );
+    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach' )
     return $show;
   }
 }
