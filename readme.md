@@ -49,7 +49,7 @@ Ministry is the almost the same as Department, with different connection post ty
 
 #### Sport
 
-One team, many sports. A department page template that includes both Coaches and Players.
+A department page template that includes both Coaches and Players.
 
     @todo athletics news category selector
 
