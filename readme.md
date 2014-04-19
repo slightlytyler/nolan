@@ -1,4 +1,3 @@
-
 ## CPTs
 
 - Faculty & Ministry
@@ -10,7 +9,7 @@ Clicking the add page button from these posts edit pages requires the user to se
 
 ## Templates
 
-- Google Spreadsheet (Table Template)
+#### Google Spreadsheet (Table Template)
 
 **How To:** Create a single spreadsheet in a Google Doc. Pubish the document to the web. Move your tables 1 column over and 1 row down. Headers are read from row 2. Data in colum A and row 1 are not displayed. Copy the spreadsheet_id from the url into page.
 
@@ -21,7 +20,7 @@ Clicking the add page button from these posts edit pages requires the user to se
     @idea sub-templates for better responsive display?
 
 
-- Department & Ministry
+#### Department & Ministry
 
 Ministry is the same as Department, but with just Name, Title and Picture data. (Different ACF settings)
 
@@ -30,12 +29,14 @@ Departments are linked to faculty. You can select Faculty from the department pa
     @idea Faculty Pages are a template away, if we can solve the data gathering issue.
 
 
-Plugins 
+## Plugins 
 
-ACF - Advanced Custom Fields
+#### ACF - Advanced Custom Fields
+
 Custom Post Type and Template Meta Box editor
 
-P2P - Posts 2 Posts
+#### P2P - Posts 2 Posts
+
 Define Relationships, Drag & Drop Ordering
 
-https://github.com/scribu/wp-posts-to-posts/wiki/Shortcodes
+[Shortcodes](https://github.com/scribu/wp-posts-to-posts/wiki/Shortcodes)
