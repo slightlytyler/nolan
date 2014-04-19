@@ -1,4 +1,5 @@
 <?php
+// @todo transient cache for spreadsheet template
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
@@ -6,59 +7,62 @@
  * Posts 2 Posts Configuration
  */
 
-// Register Connections
-function nhcs_p2p_connections() {
-  p2p_register_connection_type( array(
-    'name' => 'faculty_to_pages',
-    'from' => 'page',
-    'to' => 'faculty',
-    'sortable' => 'any'
-  ) );
-  p2p_register_connection_type( array(
-    'name' => 'ministry_to_pages',
-    'from' => 'page',
-    'to' => 'ministry',
-    'sortable' => 'any'
-  ) );
-}
-
-
-function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
-  // @todo Theme Option?
-  $args['p2p:per_page'] = 15;
-  if ( 'faculty_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
-    $args['post_type'] = 'page';
-    $args['meta_key'] = '_wp_page_template';
-    $args['meta_compare'] = '=';
-    $args['meta_value'] = 'page-department.php';
+class NHCS_Posts2Posts {
+  public static function init() {
+    add_action( 'p2p_init', array( __CLASS__, 'nhcs_p2p_connections' ) );
+    add_filter( 'p2p_connectable_args', array( __CLASS__, 'nhcs_filter_pages_by_template' ), 10, 3 );
+    add_filter( 'p2p_admin_box_show', array( __CLASS__, 'nhcs_restrict_p2p_box_display' ), 10, 3 );
   }
-  if ( 'ministry_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
-    $args['post_type'] = 'page';
-    $args['meta_key'] = '_wp_page_template';
-    $args['meta_compare'] = '=';
-    $args['meta_value'] = 'page-ministry.php';
-  }
-  return $args;
-}
-add_action( 'p2p_init', 'nhcs_p2p_connections' );
-add_filter( 'p2p_connectable_args', 'nhcs_filter_pages_by_template', 10, 3 );
-add_filter( 'p2p_connectable_args', 'connectable_results_per_page', 10, 3 );
-add_filter( 'p2p_admin_box_show', 'nhcs_restrict_p2p_box_display', 10, 3 );
-function nhcs_restrict_p2p_box_display( $show, $ctype, $post ) {
-  if ( 'faculty_to_pages' == $ctype->name )
-    if( $post->post_type == 'page' || $post->post_type == 'faculty' )
-      return ( 'page-department.php' == $post->page_template );
-  if ( 'ministry_to_pages' == $ctype->name )
-    if( $post->post_type == 'page' || $post->post_type == 'ministry' )
-      return ( 'page-ministry.php' == $post->page_template );
-  return $show;
-}
 
-function nchs_header_includes() {
-  wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
-  // wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
+  public function nhcs_p2p_connections() {
+    p2p_register_connection_type( array(
+      'name' => 'faculty_to_pages',
+      'from' => 'page',
+      'to' => 'faculty',
+      'sortable' => 'any'
+    ) );
+    p2p_register_connection_type( array(
+      'name' => 'ministry_to_pages',
+      'from' => 'page',
+      'to' => 'ministry',
+      'sortable' => 'any'
+    ) );
+  }
+
+  public function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
+    // @todo Theme Option?
+    $args['p2p:per_page'] = 15;
+    if ( 'faculty_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
+      $args['post_type'] = 'page';
+      $args['meta_key'] = '_wp_page_template';
+      $args['meta_compare'] = '=';
+      $args['meta_value'] = 'page-department.php';
+    }
+    if ( 'ministry_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
+      $args['post_type'] = 'page';
+      $args['meta_key'] = '_wp_page_template';
+      $args['meta_compare'] = '=';
+      $args['meta_value'] = 'page-ministry.php';
+    }
+    return $args;
+  }
+
+  public function nhcs_restrict_p2p_box_display( $show, $ctype, $post ) {
+    if ( 'faculty_to_pages' == $ctype->name )
+      if( $post->post_type == 'page' )
+        return ( 'page-department.php' == $post->page_template );
+    if ( 'ministry_to_pages' == $ctype->name )
+      if( $post->post_type == 'page' )
+        return ( 'page-ministry.php' == $post->page_template );
+    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' )
+    return $show;
+  }
 }
-add_action( 'wp_enqueue_scripts', 'nchs_header_includes' );
+NHCS_Posts2Posts::init();
+
+/* 
+ * Menu Configuration
+ */
 
 function nchs_register_menus() {
   register_nav_menus( array(
@@ -68,6 +72,7 @@ function nchs_register_menus() {
 }
 add_action( 'init', 'nchs_register_menus' );
 
+// Template Helper
 function nhcs_get_nav( $menu, $mobile_only = null ) {
   if($mobile_only == null) $mobile_only = false;
   $class = str_replace( '-menu', '', $menu );
@@ -147,7 +152,19 @@ class Bootstrap_walker extends Walker_Nav_Menu{
   }
 }
 
+/* 
+ * Header Includes
+ */
 
+function nchs_header_includes() {
+  wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
+  // wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'nchs_header_includes' );
+
+/* 
+ * Original Stuff
+ */
 
 function has_event_category($slug){
   $arr = array();
