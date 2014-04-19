@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Department */
+/* Template Name: Ministry */
 get_header();
   echo "<div class='col-md-8'>";
   while ( have_posts() ) : the_post();
@@ -8,7 +8,7 @@ get_header();
     echo '<hr>';
   endwhile;
   $connected = new WP_Query( array(
-    'connected_type' => 'faculty_to_pages',
+    'connected_type' => 'ministry_to_pages',
     'connected_items' => get_queried_object(),
     'nopaging' => true,
   ) );
@@ -26,8 +26,7 @@ get_header();
       <?php the_post_thumbnail(); ?>
     </div>
     <div class='col-md-8'>
-      <p><strong>Teaches:</strong> <?php the_field('teaches'); ?></p>
-      <p><strong>Education:</strong> <?php the_field('education'); ?></p>
+      <?php the_field('title') ?>
       <p><strong><?php echo date('Y') - get_field('since'); ?> Years of service</strong></p>
     </div>
     <div class='clearfix'></div>

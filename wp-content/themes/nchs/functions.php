@@ -3,14 +3,49 @@
 // print_r($response);
 
 function my_connection_types() {
-    p2p_register_connection_type( array(
-        'name' => 'faculty_to_pages',
-        'from' => 'page',
-        'to' => 'faculty',
-        'sortable' => 'any'
-    ) );
+  p2p_register_connection_type( array(
+    'name' => 'faculty_to_pages',
+    'from' => 'page',
+    'to' => 'faculty',
+    'sortable' => 'any'
+  ) );
+  p2p_register_connection_type( array(
+    'name' => 'ministry_to_pages',
+    'from' => 'page',
+    'to' => 'ministry',
+    'sortable' => 'any'
+  ) );
 }
 add_action( 'p2p_init', 'my_connection_types' );
+
+function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
+  // Affecting All Relationships!
+  if ( 'faculty_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
+    $args['post_type'] = 'page';
+    $args['meta_key'] = '_wp_page_template';
+    $args['meta_compare'] = '=';
+    $args['meta_value'] = 'page-department.php';
+  }
+  if ( 'ministry_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
+    $args['post_type'] = 'page';
+    $args['meta_key'] = '_wp_page_template';
+    $args['meta_compare'] = '=';
+    $args['meta_value'] = 'page-ministry.php';
+  }
+  return $args;
+}
+add_filter( 'p2p_connectable_args', 'nhcs_filter_pages_by_template', 10, 3 );
+
+function restrict_p2p_box_display( $show, $ctype, $post ) {
+  if ( 'faculty_to_pages' == $ctype->name )
+    if( $post->post_type == 'page' || $post->post_type == 'faculty' )
+      return ( 'page-department.php' == $post->page_template );
+  if ( 'ministry_to_pages' == $ctype->name )
+    if( $post->post_type == 'page' || $post->post_type == 'ministry' )
+      return ( 'page-ministry.php' == $post->page_template );
+  return $show;
+}
+add_filter( 'p2p_admin_box_show', 'restrict_p2p_box_display', 10, 3 );
 
 function create_post_type() {
   register_post_type( 'faculty',
@@ -25,19 +60,6 @@ function create_post_type() {
   );
 }
 add_action( 'init', 'create_post_type' );
-
-function order_pages_by_title( $args, $ctype, $post_id ) {
-  if ( 'faculty_to_pages' == $ctype->name && 'to' == $ctype->get_direction() ) {
-    $args['post_type'] = 'page';
-    $args['meta_key'] = '_wp_page_template';
-    $args['meta_value'] = 'page-department.php';
-    $args['meta_compare'] = '=';
-  }
-  return $args;
-}
-
-add_filter( 'p2p_connectable_args', 'order_pages_by_title', 10, 3 );
-
 
 function nchs_header_includes() {
   wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
