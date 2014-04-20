@@ -349,18 +349,25 @@ class News_Widget extends WP_Widget {
   function widget($args, $instance) {
     extract( $args );
     $title    = apply_filters('widget_title', $instance['title']);
-    $posts = get_posts( array(
-      'post_type' => 'news'
-    ) );
-    echo $before_widget;
-    if ( $title )
-      echo $before_title . $title . $after_title;
-    echo '<ul>';
-    foreach( $posts as $post ) {
-      echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink( $post->ID ), $post->post_title );
-    }
-    echo '</ul>';
-    echo $after_widget;
+    $news_query = new WP_Query( [ 
+      'post_type' => 'athletics',
+      'posts_per_page' => '5'
+    ] );
+    if( $news_query->have_posts() ) :
+      echo $before_widget;
+      if ( $title )
+        echo $before_title . $title . $after_title;
+      else
+        echo $before_title . $term->slug . ' News' . $after_title;
+      echo '<ul>';
+      while ( $news_query->have_posts() ) : $news_query->the_post();
+        echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
+        // the_excerpt();
+      endwhile;
+      wp_reset_postdata();
+      echo '</ul>';
+      echo $after_widget;
+    endif;
   }
   function update($new_instance, $old_instance) {   
     $instance = $old_instance;
