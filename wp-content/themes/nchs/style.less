@@ -31,6 +31,30 @@ img {
    margin: 0 !important;
 }
 
+// Banner
+// $('.banner').outerWidth() - 30;
+// var banner_tail = (($('.banner').outerWidth() - 50)/2);
+
+
+// width: @banner-width/2;
+@banner-width: 640px;
+.banner {
+  // width: 100%;
+  // width: @banner-width + 30;
+}
+.banner-inner {
+  padding: 10px;
+  border: 10px solid @brand-blue;
+  // margin-bottom: 30px;
+}
+.banner-right,
+.banner-left {
+  height: 0;
+  border-top: 30px solid @brand-blue;
+  float: left;
+}
+
+// Navigation
 .navbar {
   border-radius: 0;
   min-height: 0;
