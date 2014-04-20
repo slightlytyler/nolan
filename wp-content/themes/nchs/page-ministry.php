@@ -1,7 +1,7 @@
 <?php
 /* Template Name: Ministry */
 get_header();
-  echo "<div class='page-content col-md-8'>";
+  echo "<div class='page-content col-sm-7 col-md-8'>";
   while ( have_posts() ) : the_post();
     echo '<h1>'.get_the_title().'</h1>';
     the_content();
@@ -36,7 +36,7 @@ get_header();
   endif;
 ?>
   </div>
-  <div class='col-sm-4 right_sidebar'>
+  <div class='col-sm-5 col-md-4 right_sidebar'>
     <?php get_sidebar("page"); ?>
   </div>
 <?php get_footer(); ?>

@@ -6,7 +6,7 @@ get_header();
 </div>
 
 <div class="col-sm-12 home-top-wrap">
-<div class="col-sm-6 latest">
+<div class="col-md-6 latest">
   <h2>Latest News</h2>
 <?php 
 while ( have_posts() ) : the_post();
@@ -19,18 +19,18 @@ next_posts_link();
 // echo '<a href="/news">More News &raquo;</a>'
 ?>
 </div>
-<div class="col-sm-6 video">
+<div class="col-md-6 video">
   <h2>Video Here</h2>
 </div>
 </div>
 <div class="clearfix"></div>
 <div class="col-sm-12 nopad home-stripe">
-  <div class="col-sm-8 mission">
+  <div class="col-sm-7 col-md-8 mission">
     <h2>NHCS Mission</h2>
     <p>Yeah, yeah what are you wearing, Dave. I can't play. Pretty Mediocre photographic fakery, they cut off your brother's hair. I know what you're gonna say, son, and you're right, you're right, But Biff just happens to be my supervisor, and I'm afraid I'm not very good at confrontations. Hey man, the dance is over. Unless you know someone else who could play the guitar.</p>
     <p><button class="btn btn-info">Read More</button></p>
   </div>
-  <div class="col-sm-4 banner">
+  <div class="col-sm-5 col-md-4 banner">
     <h3>Events</h3>
     <div class="banner-inner">
       <ul class="widgets">
