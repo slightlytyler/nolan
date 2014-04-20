@@ -32,7 +32,7 @@ get_header();
     <div class='clearfix'></div>
 <?php
     endwhile;
-  wp_reset_postdata();
+    wp_reset_postdata();
   endif;
 ?>
   </div>
