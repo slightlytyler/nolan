@@ -165,6 +165,13 @@ class NHCS_ThemeSetup {
       'after_widget'  => '',
     ) );
     register_sidebar( array(
+      'name' => __( 'Video Page Sidebar', 'nchs' ),
+      'id' => 'video-sidebar',
+      'description' => __( 'Accompanies all video templates', 'nchs' ),
+      'before_widget' => '',
+      'after_widget'  => '',
+    ) );
+    register_sidebar( array(
       'name' => __( 'Homepage Bottom', 'nchs' ),
       'id' => 'homepage-bottom-widget-area',
       'description' => __( 'The Homepage bottom widget area', 'nchs' ),

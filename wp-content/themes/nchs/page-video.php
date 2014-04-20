@@ -14,8 +14,15 @@ get_header();
     echo '<hr>';
   endwhile;
   echo '</div>';
-  echo "<div class='col-md-4 right_sidebar'>";
-    get_sidebar("page");
-  echo '</div>';
+  echo "<div class='col-sm-4'>";
+    echo "<div class='right_sidebar'>";
+      echo "<ul class='widgets'>";
+        if ( !dynamic_sidebar( 'video-sidebar' ) ) {}
+      echo "</ul>";
+    echo "</div>";
+  echo "</div>";
 get_footer();
+
+
+
 ?>
