@@ -10,6 +10,10 @@ while ( have_posts() ) : the_post();
   the_author();
   the_excerpt();
 endwhile;
+previous_posts_link();
+echo ' | ';
+next_posts_link();
+echo paginate_links();
 ?>
   </div>
 <?php get_footer(); ?>

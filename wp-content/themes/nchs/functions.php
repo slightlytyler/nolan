@@ -3,6 +3,43 @@
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
+add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+function add_my_post_types_to_query( $query ) {
+  if ( $query->is_main_query() && is_home() ) {
+    $query->set( 'post_type', array( 'news', 'athletics' ) );
+    $query->set( 'posts_per_page', '3' );
+  } else {
+    return $query;
+  }
+}
+
+add_filter( 'manage_taxonomies_for_athletics_columns', 'activity_type_columns' );
+function activity_type_columns( $taxonomies ) {
+    $taxonomies[] = 'sport';
+    return $taxonomies;
+}
+
+function nchs_add_taxonomy_filters() {
+  global $typenow; 
+  $taxonomies = array('sport');
+  if( $typenow == 'athletics' ){
+    foreach ($taxonomies as $tax_slug) {
+      $tax_obj = get_taxonomy($tax_slug);
+      $tax_name = $tax_obj->labels->name;
+      $terms = get_terms($tax_slug);
+      if(count($terms) > 0) {
+        echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+        echo "<option value=''>Show All $tax_name</option>";
+        foreach ($terms as $term) { 
+          echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
+        }
+        echo "</select>";
+      }
+    }
+  }
+}
+add_action( 'restrict_manage_posts', 'nchs_add_taxonomy_filters' );
+
 /* 
  * Menu Helpers
  */
@@ -121,14 +158,14 @@ class NHCS_ThemeSetup {
       'after_widget'  => '',
     ) );
     register_sidebar( array(
-      'name' => __( 'Homepage Middle Widget Area', 'nchs' ),
-      'id' => 'homepage-middle-widget-area',
-      'description' => __( 'The Homepage middle widget area', 'nchs' ),
+      'name' => __( 'Homepage Ribbion', 'nchs' ),
+      'id' => 'homepage-ribbion',
+      'description' => __( 'The Homepage Ribbion widget area', 'nchs' ),
       'before_widget' => '',
       'after_widget'  => '',
     ) );
     register_sidebar( array(
-      'name' => __( 'Homepage Bottom Widget Area', 'nchs' ),
+      'name' => __( 'Homepage Bottom', 'nchs' ),
       'id' => 'homepage-bottom-widget-area',
       'description' => __( 'The Homepage bottom widget area', 'nchs' ),
       'before_widget' => '<div class="col-sm-6 col-md-4">',
@@ -348,9 +385,9 @@ class News_Widget extends WP_Widget {
   }
   function widget($args, $instance) {
     extract( $args );
-    $title    = apply_filters('widget_title', $instance['title']);
+    $title = apply_filters('widget_title', $instance['title']);
     $news_query = new WP_Query( [ 
-      'post_type' => 'athletics',
+      'post_type' => 'news',
       'posts_per_page' => '5'
     ] );
     if( $news_query->have_posts() ) :
@@ -362,6 +399,7 @@ class News_Widget extends WP_Widget {
       echo '<ul>';
       while ( $news_query->have_posts() ) : $news_query->the_post();
         echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
+        // echo '<p>'.get_terms('sport', 'orderby=count&hide_empty=0').'</p>';
         // the_excerpt();
       endwhile;
       wp_reset_postdata();
@@ -415,8 +453,8 @@ class Athletics_Widget extends WP_Widget {
         echo $before_title . $term->slug . ' News' . $after_title;
       echo '<ul>';
       while ( $news_query->have_posts() ) : $news_query->the_post();
+        echo get_the_term_list( $post->ID, 'sport' );
         echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
-        // the_excerpt();
       endwhile;
       wp_reset_postdata();
       echo '</ul>';

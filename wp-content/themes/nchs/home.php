@@ -15,6 +15,8 @@ while ( have_posts() ) : the_post();
   the_author();
   the_excerpt();
 endwhile;
+next_posts_link();
+// echo '<a href="/news">More News &raquo;</a>'
 ?>
 </div>
 <div class="col-sm-6 video">
@@ -30,21 +32,10 @@ endwhile;
   </div>
   <div class="col-sm-4 banner">
     <div class="banner-inner">
-      <h3>Banner</h3>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <h3>Banner</h3>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <h3>Banner</h3>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <p>Some Content</p>
-      <p>Some Content</p>
+
+      <ul class="widgets">
+        <?php if ( !dynamic_sidebar( 'homepage-ribbion' ) ) {} ?>
+      </ul>
       <div class="clearfix"></div>
     </div>
     <div class="banner-left"></div><div class="banner-right"></div>
