@@ -31,6 +31,18 @@ img {
    margin: 0 !important;
 }
 
+.home-stripe {
+  height: 240px;
+  background: @brand-gray;
+}
+.mission {
+  margin: 20px inherit;
+  color: @brand-light-gray;
+}
+.mission h2,
+.mission p {
+  text-align: center;
+}
 // Banner
 // $('.banner').outerWidth() - 30;
 // var banner_tail = (($('.banner').outerWidth() - 50)/2);
@@ -39,10 +51,13 @@ img {
 // width: @banner-width/2;
 @banner-width: 320px;
 .banner {
+  position: relative;
+  top: -20px;
   // width: 100%;
   // width: @banner-width + 30;
 }
 .banner-inner {
+  background: white;
   padding: 10px;
   border: 10px solid @brand-blue;
   // margin-bottom: 30px;
