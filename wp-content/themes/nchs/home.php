@@ -4,7 +4,9 @@ get_header();
 <div class='info_title'>
   <h3>In the Marianist tradition since 1961</h3>
 </div>
-<div class="col-sm-6">
+
+<div class="col-sm-12 home-top-wrap">
+<div class="col-sm-6 latest">
   <h2>Latest News</h2>
 <?php 
 while ( have_posts() ) : the_post();
@@ -15,8 +17,9 @@ while ( have_posts() ) : the_post();
 endwhile;
 ?>
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 video">
   <h2>Video Here</h2>
+</div>
 </div>
 <div class="clearfix"></div>
 <div class="col-sm-12 nopad home-stripe">

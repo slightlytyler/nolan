@@ -6,7 +6,6 @@ function tail_resize( tail_size ) {
   $('.banner-left').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
   $('.banner-right').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
   reset = false;
-  // .banner-right
 }
 function tail_resize_reset() {
   reset = true;
