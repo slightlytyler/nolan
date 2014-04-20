@@ -75,18 +75,9 @@ class NHCS_Posts2Posts {
 NHCS_Posts2Posts::init();
 
 /* 
- * Menu Configuration
+ * Menu Helpers
  */
 
-function nchs_register_menus() {
-  register_nav_menus( array(
-    'nchs-main-menu'  => __('Main Menu'),
-    'nchs-nav-menu'   => __('Nav Menu')
-  ) );
-}
-add_action( 'init', 'nchs_register_menus' );
-
-// Template Helper
 function nhcs_get_nav( $menu, $mobile_only = null ) {
   if($mobile_only == null) $mobile_only = false;
   $class = str_replace( '-menu', '', $menu );
@@ -102,7 +93,6 @@ function nhcs_get_nav( $menu, $mobile_only = null ) {
   wp_nav_menu( $args );
 }
 
-// Menu output mods
 class Bootstrap_walker extends Walker_Nav_Menu{
   function start_el(&$output, $object, $depth = 0, $args = Array(), $current_object_id = 0){
    global $wp_query;
@@ -151,14 +141,110 @@ class Bootstrap_walker extends Walker_Nav_Menu{
 }
 
 /* 
- * Header Includes
+ * Theme Setup
  */
 
-function nchs_header_includes() {
-  wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
-  // wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
+class NHCS_ThemeSetup {
+  public static function init() {
+    add_action( 'init', [ __CLASS__, 'nchs_init' ] );
+    add_action( 'widgets_init', [ __CLASS__, 'nchs_widgets_init' ] );
+    add_action( 'after_setup_theme', [ __CLASS__, 'nchs_after_setup_theme' ] );
+    add_action( 'wp_enqueue_scripts', [ __CLASS__, 'nchs_wp_enqueue_scripts' ] );
+  }
+
+  public function nchs_init() {
+    register_nav_menus( array(
+      'nchs-main-menu'  => __('Main Menu'),
+      'nchs-nav-menu'   => __('Nav Menu')
+    ) );
+  }
+
+  public function nchs_widgets_init() {
+    unregister_widget('WP_Widget_Archives');
+    unregister_widget('WP_Widget_Links');
+    unregister_widget('WP_Widget_Recent_Posts');
+    unregister_widget('WP_Widget_Recent_Comments');
+    register_widget( 'Athletics_Widget' );
+    register_widget( 'News_Widget' );
+    register_widget( 'Sport_News_Widget' );
+    register_sidebar( array(
+      'name' => __( 'Sport Page Sidebar', 'nchs' ),
+      'id' => 'sport-sidebar',
+      'description' => __( 'Sidebar for the page-sport.php template', 'nchs' )
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Athletics - Right Column Widget Area', 'nchs' ),
+      'id' => 'athletics-right-widget-area',
+      'description' => __( 'Athletics - The Right Column widget area', 'nchs' ),
+      'before_widget' => '',
+      'after_widget'  => '',
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Page - Right Column Widget Area', 'nchs' ),
+      'id' => 'page-right-widget-area',
+      'description' => __( 'Page - The Right Column widget area', 'nchs' )
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Homepage Top Widget Area', 'nchs' ),
+      'id' => 'homepage-top-widget-area',
+      'description' => __( 'The Homepage top widget area', 'nchs' ),
+      'before_widget' => '',
+      'after_widget'  => '',
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Homepage Middle Widget Area', 'nchs' ),
+      'id' => 'homepage-middle-widget-area',
+      'description' => __( 'The Homepage middle widget area', 'nchs' ),
+      'before_widget' => '',
+      'after_widget'  => '',
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Homepage Bottom Widget Area', 'nchs' ),
+      'id' => 'homepage-bottom-widget-area',
+      'description' => __( 'The Homepage bottom widget area', 'nchs' ),
+      'before_widget' => '',
+      'after_widget'  => '',
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Homepage Right Widget Area', 'nchs' ),
+      'id' => 'homepage-right-widget-area',
+      'description' => __( 'The Homepage right widget area', 'nchs' ),
+      'before_widget' => '',
+      'after_widget'  => '',
+    ) );
+  }
+
+  public function nchs_after_setup_theme() { 
+    /* CUSTOM IMAGE SIZE */
+    if ( function_exists( 'add_theme_support' ) ) {
+      add_theme_support( 'post-thumbnails' );
+      set_post_thumbnail_size( 150, 150 );
+    }
+    $image_sizes = [
+      [ 'nchs-background', 1251, 328 ],
+      [ 'nchs-foreground', 9999, 254 ],
+      [ 'nchs-slide-background', 1242, 332 ],
+      [ 'nchs-slide-foreground', 9999, 332 ],
+      [ 'nchs-coach', 182, 195 ],
+      [ 'nchs-player', 76, 81 ],
+      [ 'nchs-player-large', 183, 257 ],
+      [ 'nchs-athletics-news-featured', 146, 132 ],
+      [ 'nchs-athletics-news', 82, 73 ],
+      [ 'nchs-index-latest-news-thumb', 50, 44 ]
+    ];
+    if ( function_exists( 'add_image_size' ) ) { 
+      foreach( $image_sizes as $size ) {
+        add_image_size( $size[0], $size[1], $size[2] );
+      }
+    }
+  }
+
+  public function nchs_wp_enqueue_scripts() {
+    wp_enqueue_style( 'nhcs-style', get_stylesheet_uri() );
+    // wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
+  }
 }
-add_action( 'wp_enqueue_scripts', 'nchs_header_includes' );
+NHCS_ThemeSetup::init();
 
 /* 
  * Original Stuff
@@ -241,90 +327,6 @@ function nchs_slides_number_fields_html() {
   echo '<input type="textfield" id="nchs_slides_number_setting" name="nchs_slides_number_setting" value="'.$value.'" />';
 }
 add_filter( 'admin_init', 'nchs_register_fields');
-
-function nchs_theme_init() { 
-  /* CUSTOM IMAGE SIZE */
-  if ( function_exists( 'add_theme_support' ) ) {
-    add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size( 150, 150 );
-  }
-  $image_sizes = [
-    [ 'nchs-background', 1251, 328 ],
-    [ 'nchs-foreground', 9999, 254 ],
-    [ 'nchs-slide-background', 1242, 332 ],
-    [ 'nchs-slide-foreground', 9999, 332 ],
-    [ 'nchs-coach', 182, 195 ],
-    [ 'nchs-player', 76, 81 ],
-    [ 'nchs-player-large', 183, 257 ],
-    [ 'nchs-athletics-news-featured', 146, 132 ],
-    [ 'nchs-athletics-news', 82, 73 ],
-    [ 'nchs-index-latest-news-thumb', 50, 44 ]
-  ];
-  if ( function_exists( 'add_image_size' ) ) { 
-    foreach( $image_sizes as $size ) {
-      add_image_size( $size[0], $size[1], $size[2] );
-    }
-  }
-}
-add_action( 'after_setup_theme', 'nchs_theme_init' );
-
-/* SIDEBARS */
-function nchs_widgets_init() {
-  unregister_widget('WP_Widget_Archives');
-  unregister_widget('WP_Widget_Links');
-  unregister_widget('WP_Widget_Recent_Posts');
-  unregister_widget('WP_Widget_Recent_Comments');
-  unregister_widget('Twenty_Eleven_Ephemera_Widget');
-  register_widget( 'Athletics_Widget' );
-  register_widget( 'News_Widget' );
-  register_widget( 'Sport_News_Widget' );
-  register_sidebar( array(
-    'name' => __( 'Sport Page Sidebar', 'nchs' ),
-    'id' => 'sport-sidebar',
-    'description' => __( 'Sidebar for the page-sport.php template', 'nchs' )
-  ) );
-  register_sidebar( array(
-    'name' => __( 'Athletics - Right Column Widget Area', 'nchs' ),
-    'id' => 'athletics-right-widget-area',
-    'description' => __( 'Athletics - The Right Column widget area', 'nchs' ),
-    'before_widget' => '',
-    'after_widget'  => '',
-  ) );
-  register_sidebar( array(
-    'name' => __( 'Page - Right Column Widget Area', 'nchs' ),
-    'id' => 'page-right-widget-area',
-    'description' => __( 'Page - The Right Column widget area', 'nchs' )
-  ) );
-  register_sidebar( array(
-    'name' => __( 'Homepage Top Widget Area', 'nchs' ),
-    'id' => 'homepage-top-widget-area',
-    'description' => __( 'The Homepage top widget area', 'nchs' ),
-    'before_widget' => '',
-    'after_widget'  => '',
-  ) );
-  register_sidebar( array(
-    'name' => __( 'Homepage Middle Widget Area', 'nchs' ),
-    'id' => 'homepage-middle-widget-area',
-    'description' => __( 'The Homepage middle widget area', 'nchs' ),
-    'before_widget' => '',
-    'after_widget'  => '',
-  ) );
-  register_sidebar( array(
-    'name' => __( 'Homepage Bottom Widget Area', 'nchs' ),
-    'id' => 'homepage-bottom-widget-area',
-    'description' => __( 'The Homepage bottom widget area', 'nchs' ),
-    'before_widget' => '',
-    'after_widget'  => '',
-  ) );
-  register_sidebar( array(
-    'name' => __( 'Homepage Right Widget Area', 'nchs' ),
-    'id' => 'homepage-right-widget-area',
-    'description' => __( 'The Homepage right widget area', 'nchs' ),
-    'before_widget' => '',
-    'after_widget'  => '',
-  ) );
-}
-add_action( 'widgets_init', 'nchs_widgets_init' );
 
 class News_Widget extends WP_Widget {
   function __construct() {
