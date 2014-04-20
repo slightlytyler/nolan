@@ -37,7 +37,7 @@ img {
 
 
 // width: @banner-width/2;
-@banner-width: 640px;
+@banner-width: 320px;
 .banner {
   // width: 100%;
   // width: @banner-width + 30;
@@ -47,9 +47,17 @@ img {
   border: 10px solid @brand-blue;
   // margin-bottom: 30px;
 }
-.banner-right,
+.banner-right {
+  // width: @banner-width/2;
+  height: 0; 
+  border-left: @banner-width/2 solid transparent;
+  border-top: 30px solid @brand-blue;
+  float: left;
+}
 .banner-left {
-  height: 0;
+  width: @banner-width/2;
+  height: 0; 
+  border-right: @banner-width/2 solid transparent;
   border-top: 30px solid @brand-blue;
   float: left;
 }
