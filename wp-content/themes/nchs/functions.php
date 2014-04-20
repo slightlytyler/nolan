@@ -4,77 +4,6 @@
 // print_r($response);
 
 /* 
- * Posts 2 Posts Configuration
- */
-
-class NHCS_Posts2Posts {
-  public static function init() {
-    add_action( 'p2p_init', array( __CLASS__, 'nhcs_p2p_connections' ) );
-    add_filter( 'p2p_connectable_args', array( __CLASS__, 'nhcs_filter_pages_by_template' ), 10, 3 );
-    add_filter( 'p2p_admin_box_show', array( __CLASS__, 'nhcs_restrict_p2p_box_display' ), 10, 3 );
-  }
-
-  public function nhcs_p2p_connections() {
-    p2p_register_connection_type( array(
-      'name' => 'faculty_to_pages',
-      'from' => 'page',
-      'to' => 'faculty',
-      'sortable' => 'any'
-    ) );
-    p2p_register_connection_type( array(
-      'name' => 'ministry_to_pages',
-      'from' => 'page',
-      'to' => 'ministry',
-      'sortable' => 'any'
-    ) );
-    p2p_register_connection_type( array(
-      'name' => 'coach_to_pages',
-      'from' => 'page',
-      'to' => 'coach',
-      'sortable' => 'any'
-    ) );
-    p2p_register_connection_type( array(
-      'name' => 'player_to_pages',
-      'from' => 'page',
-      'to' => 'player',
-      'sortable' => 'any'
-    ) );
-  }
-
-  public function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
-    // @todo Theme Option?
-    $args['p2p:per_page'] = 15;
-    if( 'to' == $ctype->get_direction() ) {
-      $args['post_type'] = 'page';
-      $args['meta_key'] = '_wp_page_template';
-      $args['meta_compare'] = '=';
-      if ( 'faculty_to_pages' == $ctype->name )
-        $args['meta_value'] = 'page-department.php';
-      if ( 'ministry_to_pages' == $ctype->name )
-        $args['meta_value'] = 'page-ministry.php';
-      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
-        $args['meta_value'] = 'page-sport.php';
-    }
-    return $args;
-  }
-
-  public function nhcs_restrict_p2p_box_display( $show, $ctype, $post ) {
-    if ( 'faculty_to_pages' == $ctype->name )
-      if( $post->post_type == 'page' )
-        return ( 'page-department.php' == $post->page_template );
-    if( $post->post_type == 'page' )
-      if ( 'ministry_to_pages' == $ctype->name )
-        return ( 'page-ministry.php' == $post->page_template );
-    if( $post->post_type == 'page' )
-      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
-        return ( 'page-sport.php' == $post->page_template );
-    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach' )
-    return $show;
-  }
-}
-NHCS_Posts2Posts::init();
-
-/* 
  * Menu Helpers
  */
 
@@ -247,6 +176,77 @@ class NHCS_ThemeSetup {
 NHCS_ThemeSetup::init();
 
 /* 
+ * Posts 2 Posts Configuration
+ */
+
+class NHCS_Posts2Posts {
+  public static function init() {
+    add_action( 'p2p_init', array( __CLASS__, 'nhcs_p2p_connections' ) );
+    add_filter( 'p2p_connectable_args', array( __CLASS__, 'nhcs_filter_pages_by_template' ), 10, 3 );
+    add_filter( 'p2p_admin_box_show', array( __CLASS__, 'nhcs_restrict_p2p_box_display' ), 10, 3 );
+  }
+
+  public function nhcs_p2p_connections() {
+    p2p_register_connection_type( array(
+      'name' => 'faculty_to_pages',
+      'from' => 'page',
+      'to' => 'faculty',
+      'sortable' => 'any'
+    ) );
+    p2p_register_connection_type( array(
+      'name' => 'ministry_to_pages',
+      'from' => 'page',
+      'to' => 'ministry',
+      'sortable' => 'any'
+    ) );
+    p2p_register_connection_type( array(
+      'name' => 'coach_to_pages',
+      'from' => 'page',
+      'to' => 'coach',
+      'sortable' => 'any'
+    ) );
+    p2p_register_connection_type( array(
+      'name' => 'player_to_pages',
+      'from' => 'page',
+      'to' => 'player',
+      'sortable' => 'any'
+    ) );
+  }
+
+  public function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
+    // @todo Theme Option?
+    $args['p2p:per_page'] = 15;
+    if( 'to' == $ctype->get_direction() ) {
+      $args['post_type'] = 'page';
+      $args['meta_key'] = '_wp_page_template';
+      $args['meta_compare'] = '=';
+      if ( 'faculty_to_pages' == $ctype->name )
+        $args['meta_value'] = 'page-department.php';
+      if ( 'ministry_to_pages' == $ctype->name )
+        $args['meta_value'] = 'page-ministry.php';
+      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
+        $args['meta_value'] = 'page-sport.php';
+    }
+    return $args;
+  }
+
+  public function nhcs_restrict_p2p_box_display( $show, $ctype, $post ) {
+    if ( 'faculty_to_pages' == $ctype->name )
+      if( $post->post_type == 'page' )
+        return ( 'page-department.php' == $post->page_template );
+    if( $post->post_type == 'page' )
+      if ( 'ministry_to_pages' == $ctype->name )
+        return ( 'page-ministry.php' == $post->page_template );
+    if( $post->post_type == 'page' )
+      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
+        return ( 'page-sport.php' == $post->page_template );
+    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach' )
+    return $show;
+  }
+}
+NHCS_Posts2Posts::init();
+
+/* 
  * Original Stuff
  */
 
@@ -328,6 +328,16 @@ function nchs_slides_number_fields_html() {
 }
 add_filter( 'admin_init', 'nchs_register_fields');
 
+/*
+ * Custom Widgets
+ * @todo Move!
+ */
+
+// function register_athletics_widget() {
+//   register_widget( 'Athletics_Widget' );
+// }
+// add_action( 'widgets_init', 'register_athletics_widget' );
+
 class News_Widget extends WP_Widget {
   function __construct() {
     parent::__construct(
@@ -373,10 +383,7 @@ class News_Widget extends WP_Widget {
     <?php 
   }
 }
-// function register_athletics_widget() {
-//   register_widget( 'Athletics_Widget' );
-// }
-// add_action( 'widgets_init', 'register_athletics_widget' );
+
 class Athletics_Widget extends WP_Widget {
   function __construct() {
     parent::__construct(
