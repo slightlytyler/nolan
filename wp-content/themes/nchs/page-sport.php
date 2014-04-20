@@ -14,53 +14,45 @@ $player_query = new WP_Query( [
   'nopaging' => true
 ] );
 ?>
-<div class='col-md-8'>
+<div class='col-sm-8'>
+  <div>
 <?php
-echo '<div>';
-
   while ( have_posts() ) : the_post();
     the_content();
   endwhile;
   wp_reset_postdata();
-
   echo '</div><div>';
-
   if ( $coach_query->have_posts() ) :
     echo '<h2>Coaches</h2>';
     while ( $coach_query->have_posts() ) : $coach_query->the_post(); 
-      if( get_field('title') == "Department Head" ) {
+      if( get_field('title') == "Department Head" )
         echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
-      }
-      else {
+      else
         echo '<h3>'.get_the_title().'</h3>';
-      }
       the_post_thumbnail();
     endwhile;
     wp_reset_postdata();
   endif;
-  
   echo '</div><div>';
-
 if ( $player_query->have_posts() ) :
   echo '<h2>Players</h2>';
   while ( $player_query->have_posts() ) : $player_query->the_post(); 
-    if( get_field('title') == "Department Head" ) {
+    if( get_field('title') == "Department Head" )
       echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
-    }
-    else {
+    else
       echo '<h3>'.get_the_title().'</h3>';
-    }
-      the_post_thumbnail();
+    the_post_thumbnail();
   endwhile;
   wp_reset_postdata();
   echo '</div>';
 endif;
 ?>
 </div>
-
-<div class='col-md-4'>
+<div class='col-sm-4'>
   <div class='right_sidebar'>
-    <?php get_sidebar("sport") ?>
+    <ul class="widgets">
+      <?php if ( !dynamic_sidebar( 'sport-sidebar' ) ) {} ?>
+    </ul>
   </div>
 </div>
 <?php 

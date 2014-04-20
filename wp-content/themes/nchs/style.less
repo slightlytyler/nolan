@@ -20,6 +20,34 @@ Version: 1.0
 
 // Taylor's Code
 
+.gradient (@startColor: #eee, @endColor: white) {
+  background-color: @startColor;
+  background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
+}
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius:    @radius;
+  border-radius:         @radius;
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+
+.card {
+  background: white;
+  border: 1px solid @brand-gray;
+  padding: 15px;
+  margin: 15px inherit;
+  .gradient( white, lighten( @brand-primary, 80% ) );
+  // border-top: 10px solid lighten( @brand-primary, 42% );
+  border-bottom: 4px solid @brand-gray;
+  border-left: 2px solid @brand-gray;
+}
+
 img {
   max-width: 100%;
 }

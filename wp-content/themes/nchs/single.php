@@ -1,6 +1,6 @@
 <?php
 get_header();
-
+/*
 $__['title']     = get_the_title();
 $__['excerpt']   = get_the_excerpt();
 $__['image_url'] = types_render_field( "post-background-image", array('raw' => true));
@@ -58,11 +58,14 @@ if ( $the_query->have_posts() ) :
   endwhile;
   wp_reset_postdata();
 endif;
+*/
 ?>
   <div class='col-sm-8'>
 <?php
     while ( have_posts() ) : the_post();
-      the_title( '<h3>', '</h3>' );
+      the_title( '<h2>', '</h2>' );
+      the_date();
+      the_author();
       the_content();
       //comments_template();
     endwhile;

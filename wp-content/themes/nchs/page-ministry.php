@@ -13,23 +13,23 @@ get_header();
     'nopaging' => true,
   ) );
   if ( $connected->have_posts() ) :
-    echo '<h2>Faculty</h2>';
+    echo '<h2>Ministry</h2>';
     while ( $connected->have_posts() ) : $connected->the_post(); 
-      if( get_field('title') == "Department Head" ) {
+      echo '<div class="card">';
+      if( get_field('title') == "Department Head" )
         echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
-      }
-      else {
+      else
         echo '<h3>'.get_the_title().'</h3>';
-      }
 ?>
-    <div class='col-md-4'>
-      <?php the_post_thumbnail(); ?>
+      <div class='col-md-4'>
+        <?php the_post_thumbnail(); ?>
+      </div>
+      <div class='col-md-8'>
+        <?php the_field('title') ?>
+        <p><strong><?php echo date('Y') - get_field('since'); ?> Years of service</strong></p>
+      </div>
+      <div class='clearfix'></div>
     </div>
-    <div class='col-md-8'>
-      <?php the_field('title') ?>
-      <p><strong><?php echo date('Y') - get_field('since'); ?> Years of service</strong></p>
-    </div>
-    <div class='clearfix'></div>
 <?php
     endwhile;
     wp_reset_postdata();
