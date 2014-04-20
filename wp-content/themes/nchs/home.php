@@ -4,7 +4,7 @@ get_header();
 <div class='info_title'>
   <h3>In the Marianist tradition since 1961</h3>
 </div>
-<div class="col-md-6">
+<div class="col-sm-6">
   <h2>Latest News</h2>
 <?php 
 while ( have_posts() ) : the_post();
@@ -15,17 +15,17 @@ while ( have_posts() ) : the_post();
 endwhile;
 ?>
 </div>
-<div class="col-md-6">
+<div class="col-sm-6">
   <h2>Video Here</h2>
 </div>
 <div class="clearfix"></div>
-<div class="col-md-12 nopad home-stripe">
-  <div class="col-md-8 mission">
+<div class="col-sm-12 nopad home-stripe">
+  <div class="col-sm-8 mission">
     <h2>NHCS Mission</h2>
     <p>Yeah, yeah what are you wearing, Dave. I can't play. Pretty Mediocre photographic fakery, they cut off your brother's hair. I know what you're gonna say, son, and you're right, you're right, But Biff just happens to be my supervisor, and I'm afraid I'm not very good at confrontations. Hey man, the dance is over. Unless you know someone else who could play the guitar.</p>
     <p><button class="btn btn-info">Read More</button></p>
   </div>
-  <div class="col-md-4 banner">
+  <div class="col-sm-4 banner">
     <div class="banner-inner">
       <h3>Banner</h3>
       <p>Some Content</p>

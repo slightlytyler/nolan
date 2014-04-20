@@ -28,12 +28,14 @@ img {
 }
 .nopad {
    padding: 0 !important;
-   margin: 0 !important;
+   // margin: 0 !important;
 }
 
 .home-stripe {
+  margin-top: 30px;
   height: 240px;
   background: @brand-gray;
+  z-index: 1;
 }
 .mission {
   margin: 20px inherit;
@@ -67,15 +69,21 @@ img {
   height: 0; 
   border-left: @banner-width/2 solid transparent;
   border-top: 0px solid @brand-blue;
-  float: left;
+  position: absolute;
+  right: 15px;
 }
 .banner-left {
   width: @banner-width/2;
   height: 0; 
   border-right: @banner-width/2 solid transparent;
   border-top: 0px solid @brand-blue;
-  float: left;
+  position: absolute;
+  left: 15px;
 }
+.promo_card {
+  width: 100% !important;
+}
+
 
 // Navigation
 .navbar {

@@ -1,6 +1,6 @@
 var reset = true;
 function tail_resize( tail_size ) {
-  var banner_tail = ( ( $('.banner').outerWidth() - 30 ) /2 );
+  var banner_tail = ( ( $('.banner').outerWidth() - 32 ) /2 );
   $('.banner-right').css({ 'width': banner_tail, 'border-left-width': banner_tail });
   $('.banner-left').css({ 'width': banner_tail, 'border-right-width': banner_tail });
   $('.banner-left').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
