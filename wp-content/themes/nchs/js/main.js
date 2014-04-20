@@ -1,8 +1,22 @@
-function tail_resize() {
+var reset = true;
+function tail_resize( tail_size ) {
   var banner_tail = ( ( $('.banner').outerWidth() - 30 ) /2 );
   $('.banner-right').css({ 'width': banner_tail, 'border-left-width': banner_tail });
   $('.banner-left').css({ 'width': banner_tail, 'border-right-width': banner_tail });
+  $('.banner-left').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
+  $('.banner-right').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
+  reset = false;
+  // .banner-right
 }
+function tail_resize_reset() {
+  reset = true;
+  $('.banner-right').css({ 'border-top-width': '0' });
+  $('.banner-left').css({ 'border-top-width': '0' });
+}
+$(window).resize(function(){
+  if( !reset )
+    tail_resize_reset();
+});
 (function($,sr){
   // debouncing function from John Hann
   // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
@@ -22,7 +36,7 @@ function tail_resize() {
           else if (execAsap)
               func.apply(obj, args);
 
-          timeout = setTimeout(delayed, threshold || 100);
+          timeout = setTimeout(delayed, threshold || 500);
       };
   }
   // smartresize 
@@ -107,13 +121,10 @@ if (typeof jQuery !== 'undefined') {
           $('.col-sm-8').append( $table );
         });
       }
-      // Banner Tail Resizing
-      // @todo Just hide it while resize is happening.
-      // @idea Animate out?
       $(window).smartresize(function(){
-        tail_resize();
+        tail_resize( 30 );
       });
-      tail_resize();
+      tail_resize( 30 );
     });
   });
 };
