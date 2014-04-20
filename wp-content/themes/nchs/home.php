@@ -31,8 +31,8 @@ next_posts_link();
     <p><button class="btn btn-info">Read More</button></p>
   </div>
   <div class="col-sm-4 banner">
+    <h3>Events</h3>
     <div class="banner-inner">
-
       <ul class="widgets">
         <?php if ( !dynamic_sidebar( 'homepage-ribbion' ) ) {} ?>
       </ul>

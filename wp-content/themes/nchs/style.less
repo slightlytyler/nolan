@@ -39,13 +39,19 @@ Version: 1.0
 
 .card {
   background: white;
-  border: 1px solid @brand-gray;
+  // border: 1px solid @brand-gray;
+  border: 1px solid #d8d8d8;
   padding: 15px;
   margin: 15px inherit;
   .gradient( white, lighten( @brand-primary, 80% ) );
   // border-top: 10px solid lighten( @brand-primary, 42% );
-  border-bottom: 4px solid @brand-gray;
-  border-left: 2px solid @brand-gray;
+  // border-bottom: 4px solid @brand-gray;
+  // border-left: 2px solid @brand-gray;
+  border-bottom: 2px solid #d8d8d8;
+  border-left: 1px solid #d8d8d8;
+}
+.interior div.right_sidebar li.widget {
+  margin: 10px 0;
 }
 
 .footer {
@@ -95,12 +101,28 @@ img {
   border: 1px solid @brand-light-gray;
   webkit-box-shadow: none;
   box-shadow: none;
+  margin: 15px 0 !important;
 }
 .home {
   background: @brand-light;
 }
 
 // Banner
+.banner h3 {
+  display: block;
+  background: @brand-blue;
+  color: @brand-light;
+  margin:0 !important;
+  line-height: 48px;
+  border-top: 5px solid @brand-info;
+  text-align: center;
+}
+.banner .widgettitle {
+  width: 80%;
+  margin: 0;
+  position: absolute;
+  font-size: 24px;
+}
 // $('.banner').outerWidth() - 30;
 // var banner_tail = (($('.banner').outerWidth() - 50)/2);
 // width: @banner-width/2;
@@ -114,7 +136,9 @@ img {
 .banner-inner {
   background: white;
   padding: 10px;
-  border: 10px solid @brand-blue;
+  border-left: 10px solid @brand-blue;
+  border-right: 10px solid @brand-blue;
+  border-bottom: 10px solid @brand-blue;
   // margin-bottom: 30px;
 }
 .banner-right {
@@ -259,7 +283,6 @@ li.widget {
   width: 100%;
 }
 
-
 .inset {
   padding: 20px;
 }
@@ -267,6 +290,16 @@ li.widget {
 @media (max-width:767px) {
   .inset {
     padding: 15px;
+  }
+  .home-stripe {
+    height: 100%;
+  }
+  .mission {
+    margin: 0 !important;
+    padding: 15px 15px 45px 15px;
+  }
+  .home-top-wrap {
+    padding-top: 20px;
   }
 }
 
