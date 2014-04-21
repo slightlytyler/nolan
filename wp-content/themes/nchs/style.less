@@ -16,8 +16,147 @@ Version: 1.0
 @import "css/lib/font-awesome/font-awesome";
 @import "css/lib/bootstrap/bootstrap";
 @import "css/lib/bootstrap-social";
-@import "css/nhcs";
+@import "css/nchs";
 
+@brand-border: #dbdbdb;
+
+/*
+ * Taylor's Code
+ */
+
+img {
+  max-width: 100%;
+}
+.post img {
+  float: left;
+  margin: 0 15px 15px 0;
+}
+.nopad {
+   padding: 0 !important;
+   // margin: 0 !important;
+}
+.single .navbar-main {
+  border-top: 0;
+}
+
+blockquote{
+  display:block;
+  background: #fff;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  
+  /*Font*/
+  font-family: @font-family-bold;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #666;
+  text-align: justify;
+
+  /*Borders - (Optional)*/
+  border-left: 8px solid @brand-primary;
+  // border-right: 2px solid @brand-primary;
+
+  /*Box Shadow - (Optional)
+  -moz-box-shadow: 2px 2px 15px @gray-dark;
+  -webkit-box-shadow: 2px 2px 15px @gray-dark;
+  box-shadow: 2px 2px 15px @gray-dark;
+  */
+}
+
+blockquote::before{
+  content: "\201C"; /*Unicode for Left Double Quote*/
+  
+  /*Font*/
+  font-family: @font-family-bold;
+  font-size: 60px;
+  font-weight: bold;
+  color: @brand-primary;
+  
+  /*Positioning*/
+  position: absolute;
+  left: 10px;
+  top:5px;
+}
+
+blockquote::after{
+  /*Reset to make sure*/
+  content: "";
+}
+.page-content {
+  background: @brand-light;
+  border-right: 1px solid @brand-border;
+}
+.page-content p,
+.page-content ul,
+.page-content ol {
+  padding-bottom: 15px;
+  // font-family: @font-family-serif;
+}
+
+.inset {
+  padding: 20px;
+}
+
+@media (max-width:767px) {
+  .inset {
+    padding: 15px;
+  }
+  .home-stripe {
+    height: 100%;
+  }
+  .mission {
+    margin: 0 !important;
+    padding: 15px 15px 45px 15px;
+  }
+  .home-top-wrap {
+    padding-top: 20px;
+  }
+  .venue-map,
+  .eo-venue-map {
+    min-height: 320px;
+  }
+  .venue-map {
+    border-bottom: 10px solid @brand-primary;
+    margin-bottom: 20px;
+  }
+}
+
+/*
+ * Footer
+ */
+
+.footer {
+  background: #d9d9d9;
+  border-top: 1px solid #b4b4b4;
+  padding: 30px inherit;
+}
+
+/*
+ * Widgets
+ */
+
+// .right_sidebar {
+//   border-left: 1px solid @brand-border;
+// }
+ul.widgets {
+  padding-left: 0;
+}
+ul.widgets li {
+  list-style: none;
+}
+
+li.widget {
+  width: 100%;
+  // background: white;
+  // .gradient( lighten( @brand-primary, 82% ) , white );
+  border-bottom: 1px solid @brand-light-gray;
+  padding: 0 15px 15px 15px;
+}
+
+.widget p {
+  padding: 0 15px;
+}
 .eo-venue-map {
   z-index: -1 !important;
   min-height: 260px;
@@ -35,6 +174,10 @@ Version: 1.0
   background: rgba(255,255,255,0.8);
   padding: 5px;
 }
+
+/*
+ * Video Template
+ */
 
 .video-container {
   position: relative;
@@ -54,9 +197,9 @@ Version: 1.0
   height: 100%;
 }
 
-
-
-// Taylor's Code
+/*
+ * Person Cards
+ */
 
 .gradient (@startColor: #eee, @endColor: white) {
   background-color: @startColor;
@@ -74,7 +217,6 @@ Version: 1.0
   -webkit-background-clip: padding-box;
   background-clip:         padding-box;
 }
-
 .card {
   background: white;
   // border: 1px solid @brand-gray;
@@ -92,22 +234,9 @@ Version: 1.0
   margin: 10px 0;
 }
 
-.footer {
-  background: #d9d9d9;
-  border-top: 1px solid #b4b4b4;
-  padding: 30px inherit;
-}
-
-img {
-  max-width: 100%;
-}
-.widget p {
-  padding: 0 15px;
-}
-.nopad {
-   padding: 0 !important;
-   // margin: 0 !important;
-}
+/* 
+ * Homepage Template
+ */
 
 .info_title {
   margin: 0;
@@ -144,7 +273,10 @@ img {
   background: @brand-light;
 }
 
-// Banner
+/*
+ * Homepage Banner
+ */
+
 .banner .widget {
   margin-bottom: 30px;
 }
@@ -206,6 +338,19 @@ img {
   min-height: 0;
   margin-bottom: 0; 
 }
+.navbar li.icon:hover {
+  background: none;
+}
+.navbar li:hover {
+  background: @brand-blue;
+}
+.navbar-top ul > li > a {
+  padding: 10px 10px 10px 10px;
+  line-height: 20px;
+}
+// .navbar li:hover > a {
+//   color: white;
+// }
 .navbar-header {
   background: @brand-primary;
 }
@@ -253,6 +398,16 @@ img {
   margin: 0;
   border: none;
 }
+.navbar .navbar-top > li > a {
+  line-height: 21px;
+  padding: 4px 10px;
+}
+
+.navbar-inverse .nchs-nav > li > a:hover, .navbar-inverse .nchs-main > li > a:hover {
+  color: white;
+}
+
+
 .nchs-nav > li > a {
   font-family: @font-family-trajan;
 }
@@ -260,101 +415,6 @@ img {
 , .navbar-inverse .nchs-main > li > a:hover {
   color: @brand-success;
 }
-.single .navbar-main {
-  border-top: 0;
-}
-blockquote{
-  display:block;
-  background: #fff;
-  padding: 15px 20px 15px 45px;
-  margin: 0 0 20px;
-  position: relative;
-  
-  /*Font*/
-  font-family: @font-family-bold;
-  font-size: 16px;
-  line-height: 1.2;
-  color: #666;
-  text-align: justify;
-
-  /*Borders - (Optional)*/
-  border-left: 8px solid @brand-primary;
-  // border-right: 2px solid @brand-primary;
-
-  /*Box Shadow - (Optional)
-  -moz-box-shadow: 2px 2px 15px @gray-dark;
-  -webkit-box-shadow: 2px 2px 15px @gray-dark;
-  box-shadow: 2px 2px 15px @gray-dark;
-  */
-}
-
-blockquote::before{
-  content: "\201C"; /*Unicode for Left Double Quote*/
-  
-  /*Font*/
-  font-family: @font-family-bold;
-  font-size: 60px;
-  font-weight: bold;
-  color: @brand-primary;
-  
-  /*Positioning*/
-  position: absolute;
-  left: 10px;
-  top:5px;
-}
-
-blockquote::after{
-  /*Reset to make sure*/
-  content: "";
-}
-
-
-.page-content p,
-.page-content ul,
-.page-content ol {
-  line-height: 21px;
-  padding-bottom: 15px;
-  // font-family: @font-family-serif;
-}
-
-ul.widgets {
-  padding-left: 0;
-}
-
-li.widget {
-  width: 100%;
-}
-
-.inset {
-  padding: 20px;
-}
-
-@media (max-width:767px) {
-  .inset {
-    padding: 15px;
-  }
-  .home-stripe {
-    height: 100%;
-  }
-  .mission {
-    margin: 0 !important;
-    padding: 15px 15px 45px 15px;
-  }
-  .home-top-wrap {
-    padding-top: 20px;
-  }
-  .venue-map,
-  .eo-venue-map {
-    min-height: 320px;
-  }
-  .venue-map {
-    border-bottom: 10px solid @brand-primary;
-    margin-bottom: 20px;
-  }
-}
-
-
-
 
 // __________________________________________
 // Events Tables Calendar

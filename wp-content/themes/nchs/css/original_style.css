@@ -298,11 +298,11 @@ footer {
 
 /* Main styles (Global styles for all pages) */
 
-body {
+/*body {
   font-size: Arial, sans-serif;
   color: #515151;
   font-size: 12px; }
-
+*/
 
 .page_section {
   *zoom: 1;
@@ -1496,7 +1496,7 @@ header .fa:hover {
 .menu1_section .menu1 li ul {
     margin: 0 0 0px -25px;
 }
-/**/
+/**
  .widgets {
     margin: 0;
 }
@@ -1519,7 +1519,7 @@ header .fa:hover {
 .athletics .right_sidebar {
     position: absolute !important;
 }
-/**/
+/**
 
  .interior div.right_sidebar li.widget {
     background: white;
@@ -1622,7 +1622,7 @@ span.subpage_small_title {
   min-height: 271px;
 }
 
-/* ARCHIVE */
+/* ARCHIVE *
 .archive-info {
     margin-bottom: 10px;
     border-left: 5px solid #2b7bc9;
@@ -1646,3 +1646,4 @@ span.subpage_small_title {
     margin: 0 10px 0 0;
 }
 
+*/

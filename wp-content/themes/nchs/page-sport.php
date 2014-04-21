@@ -20,7 +20,7 @@ $player_query = new WP_Query( [
   'nopaging' => true
 ] );
 ?>
-<div class='col-sm-8'>
+<div class='page-content col-sm-8'>
 <?php
 if( $news_query->have_posts() ) :
   echo '<div>';

@@ -1,5 +1,5 @@
 <?php get_header('venue'); ?>
-<div class="col-sm-7 col-md-8" role="main">
+<div class="page-content col-sm-7 col-md-8" role="main">
 <?php
   if ( have_posts() ) :
     // Pagination

@@ -7,7 +7,7 @@ get_header();
 
 <div class="col-sm-12 home-top-wrap">
 <div class="col-md-6 latest">
-  <h2>Latest News</h2>
+  <h2>Latest</h2>
 <?php 
 while ( have_posts() ) : the_post();
   the_title('<a href="'.get_permalink().'"><h3>','</h3></a>');

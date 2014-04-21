@@ -1,11 +1,11 @@
 <?php
 // Template Name: Table
 get_header(); ?>
-  <div class='col-sm-7 col-md-8 spreadsheet'>
+  <div class='page-content col-sm-7 col-md-8 spreadsheet'>
     <?php
       while ( have_posts() ) : the_post();
         if( get_field('table_title') )
-          echo '<h3>'.get_field('table_title').'</h3>';
+          echo '<h1>'.get_field('table_title').'</h1>';
         the_content();
       endwhile;
     ?>

@@ -60,10 +60,10 @@ if ( $the_query->have_posts() ) :
 endif;
 */
 ?>
-  <div class='col-sm-8'>
+  <div class='page-content col-sm-7 col-md-8'>
 <?php
     while ( have_posts() ) : the_post();
-      the_title( '<h2>', '</h2>' );
+      the_title( '<h1>', '</h1>' );
       the_date();
       the_author();
       the_content();
@@ -72,7 +72,7 @@ endif;
     wp_reset_query();
 ?>
   </div>
-  <div class='col-sm-4 right_sidebar'>
-    <?php get_sidebar("page") ?>
-  </div>
-<?php get_footer(); ?>
+<?php
+get_sidebar("page");
+get_footer();
+?>

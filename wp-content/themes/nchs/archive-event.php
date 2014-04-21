@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div class="col-sm-7 col-md-8" role="main">
+<div class="page-content col-sm-7 col-md-8" role="main">
 	<h1 class="page-title">
 	<?php
 		if( eo_is_event_archive('day') )
