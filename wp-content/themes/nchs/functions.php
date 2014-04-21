@@ -3,12 +3,37 @@
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
+function nchs_save_page_on_template_change() {
+    global $parent_file;
+    if ( is_admin() && $parent_file == 'edit.php?post_type=page') {
+    ?>
+    <script type="text/javascript">
+    jQuery(function($){
+      $('#page_template').on('change', function(){
+        $('#save-post').click();
+        $('#publish').click();
+      });
+    });
+    </script>
+    <?php
+    }
+}
+add_filter('admin_head', 'nchs_save_page_on_template_change');
+
+
 add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 function add_my_post_types_to_query( $query ) {
   if ( $query->is_main_query() && is_home() ) {
+    // show athletics and news on the homepage
     $query->set( 'post_type', array( 'news', 'athletics' ) );
     $query->set( 'posts_per_page', '3' );
-  } else {
+  }
+  elseif ( $query->is_main_query() && is_tax('sport') ) {
+    // show past events on the sport tag archives
+    $query->set( 'post_type', array( 'event', 'athletics' ) );
+    $query->set( 'posts_per_page', '10' );
+  }
+  else {
     return $query;
   }
 }
@@ -133,29 +158,28 @@ class NHCS_ThemeSetup {
     register_widget( 'Athletics_Widget' );
     register_widget( 'News_Widget' );
     register_widget( 'Sport_News_Widget' );
+    register_widget( 'Sport_Events_Widget' );
     register_sidebar( array(
       'name' => __( 'Sport Page Sidebar', 'nchs' ),
       'id' => 'sport-sidebar',
       'description' => __( 'Sidebar for the page-sport.php template', 'nchs' )
     ) );
     register_sidebar( array(
+      'name' => __( 'Archive Sidebar', 'nchs' ),
+      'id' => 'archive-sidebar',
+      'description' => __( 'The Default/Index Sidebar', 'nchs' )
+    ) );
+    register_sidebar( array(
       'name' => __( 'Athletics - Right Column Widget Area', 'nchs' ),
       'id' => 'athletics-right-widget-area',
       'description' => __( 'Athletics - The Right Column widget area', 'nchs' ),
       'before_widget' => '',
-      'after_widget'  => '',
+      'after_widget'  => ''
     ) );
     register_sidebar( array(
-      'name' => __( 'Page - Right Column Widget Area', 'nchs' ),
-      'id' => 'page-right-widget-area',
-      'description' => __( 'Page - The Right Column widget area', 'nchs' )
-    ) );
-    register_sidebar( array(
-      'name' => __( 'Homepage Top Widget Area', 'nchs' ),
-      'id' => 'homepage-top-widget-area',
-      'description' => __( 'The Homepage top widget area', 'nchs' ),
-      'before_widget' => '',
-      'after_widget'  => '',
+      'name' => __( 'Page Sidebar', 'nchs' ),
+      'id' => 'page-sidebar',
+      'description' => __( 'Default Page widget area.', 'nchs' )
     ) );
     register_sidebar( array(
       'name' => __( 'Homepage Ribbion', 'nchs' ),
@@ -163,28 +187,35 @@ class NHCS_ThemeSetup {
       'description' => __( 'The Homepage Ribbion widget area', 'nchs' ),
     ) );
     register_sidebar( array(
-      'name' => __( 'Video Page Sidebar', 'nchs' ),
+      'name' => __( 'Video Sidebar', 'nchs' ),
       'id' => 'video-sidebar',
       'description' => __( 'Accompanies all video templates', 'nchs' )
     ) );
     register_sidebar( array(
-      'name' => __( 'Events Section Sidebar', 'nchs' ),
+      'name' => __( 'Events Sidebar', 'nchs' ),
       'id' => 'events-sidebar',
       'description' => __( 'Shown on event templates', 'nchs' )
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Homepage Top Widget Area', 'nchs' ),
+      'id' => 'homepage-top-widget-area',
+      'description' => __( 'The Homepage top widget area', 'nchs' ),
+      'before_widget' => '',
+      'after_widget'  => ''
     ) );
     register_sidebar( array(
       'name' => __( 'Homepage Bottom', 'nchs' ),
       'id' => 'homepage-bottom-widget-area',
       'description' => __( 'The Homepage bottom widget area', 'nchs' ),
       'before_widget' => '<div class="col-sm-6 col-md-4">',
-      'after_widget'  => '</div>',
+      'after_widget'  => '</div>'
     ) );
     register_sidebar( array(
       'name' => __( 'Homepage Right Widget Area', 'nchs' ),
       'id' => 'homepage-right-widget-area',
       'description' => __( 'The Homepage right widget area', 'nchs' ),
       'before_widget' => '',
-      'after_widget'  => '',
+      'after_widget'  => ''
     ) );
   }
 
@@ -498,8 +529,8 @@ class Athletics_Widget extends WP_Widget {
 class Sport_News_Widget extends WP_Widget {
   function __construct() {
     parent::__construct(
-      'sports_widget'
-      , 'Sport Page News'
+      'sports_news_widget'
+      , 'Sport News'
       , array( 'description' => 'Displays 5 most recent Athletics Stories for the current sport page.' )
     );
   }
@@ -507,9 +538,12 @@ class Sport_News_Widget extends WP_Widget {
   function widget($args, $instance) {
     extract( $args );
     $title    = apply_filters('widget_title', $instance['title']);
-    $term = get_term( get_field('news_category', $GLOBALS['post']->ID ), 'sport' );
+    $sport_id = $instance['sport'];
+    if( !$sport_id )
+      $sport_id = get_field('news_category', $GLOBALS['post']->ID );
+    $term = get_term( $sport_id, 'sport' );
     $news_query = new WP_Query( [ 
-      'post_type' => 'athletics',
+      'post_type' => 'event',
       'posts_per_page' => '5',
       'sport' => $term->slug
     ] );
@@ -533,6 +567,7 @@ class Sport_News_Widget extends WP_Widget {
   function update($new_instance, $old_instance) {   
     $instance = $old_instance;
     $instance['title'] = strip_tags($new_instance['title']);
+    $instance['sport'] = strip_tags($new_instance['sport']);
     return $instance;
   }
 
@@ -543,13 +578,121 @@ class Sport_News_Widget extends WP_Widget {
 
   function form($instance) {  
     $title = esc_attr($instance['title']);
+    $sport = esc_attr($instance['sport']);
     ?>
     <p>Leave the title blank to use '[Sport] News' default title</p>
     <p>
       <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
       <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
     </p>
-    <?php 
+    <p>When used with the Sport Template 'Sport Page Context' mode automatically displays relevant content. (Category set on page template)</p>
+    <p>
+      <label for="<?php echo $this->get_field_id('sport'); ?>">Sport:</label> 
+<?php
+    $terms = get_terms('sport');
+    if(count($terms) > 0) {
+      echo '<select id="'.$this->get_field_id("sport").'" name="'.$this->get_field_name("sport").'" type="text" value="'.$sport.'">';
+      echo "<option value=''>Sport Page Context</option>";
+      foreach ($terms as $term) { 
+        if( $term->term_id === $sport )
+          echo "<option value='$term->term_id' selected='selected'>$term->name ($term->count)</option>";
+        else
+          echo "<option value='$term->term_id'>$term->name ($term->count)</option>";
+      }
+      echo "</select>";
+    }
+    echo "</p>";
+  }
+}
+
+class Sport_Events_Widget extends WP_Widget {
+  function __construct() {
+    parent::__construct(
+      'sports_events_widget'
+      , 'Sport Events'
+      , array( 'description' => 'Displays 5 most recent Events in the sport for the current sport page.' )
+    );
+  }
+
+  function widget($args, $instance) {
+    extract( $args );
+    $title = apply_filters('widget_title', $instance['title']);
+    $sport_id = $instance['sport'];
+    if( !$sport_id )
+      $sport_id = get_field('news_category', $GLOBALS['post']->ID );
+    $term = get_term( $sport_id, 'sport' );
+    $event_query = new WP_Query( [ 
+      'post_type' => 'event',
+      'posts_per_page' => '5',
+      'sport' => $term->slug
+    ] );
+    if( $event_query->have_posts() ) :
+      echo $before_widget;
+      if ( $title )
+        echo $before_title . $title . $after_title;
+      else
+        echo $before_title . $term->slug . ' Events' . $after_title;
+      echo '<ul>';
+      while ( $event_query->have_posts() ) : $event_query->the_post();
+          //Format date/time according to whether its an all day event.
+          //Use microdata http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035
+          if( eo_is_all_day() ){
+            $format = 'd F Y';
+            $microformat = 'Y-m-d';
+          }else{
+            $format = 'd F Y '.get_option('time_format');
+            $microformat = 'c';
+          }
+?>
+          <time itemprop="startDate" datetime="<?php eo_the_start($microformat); ?>"><?php eo_the_start($format); ?></time>
+<?php
+        echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
+        the_excerpt();
+      endwhile;
+      wp_reset_postdata();
+      echo '</ul>';
+      echo $after_widget;
+    endif;
+  }
+
+  function update($new_instance, $old_instance) {   
+    $instance = $old_instance;
+    $instance['title'] = strip_tags($new_instance['title']);
+    $instance['sport'] = strip_tags($new_instance['sport']);
+    return $instance;
+  }
+
+  function getarchives_where_filter($where) {
+    $where = str_replace( "post_type = 'post'", "post_type = 'athletics'", $where );
+    return $where;
+  }
+
+  function form($instance) {  
+    $title = esc_attr($instance['title']);
+    $sport = esc_attr($instance['sport']);
+?>
+    <p>Leave the title blank to use '[Sport] Events' default title</p>
+    <p>
+      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
+      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+    </p>
+    <p>When used with the Sport Template 'Sport Page Context' mode automatically displays relevant content. (Category set on page template)</p>
+    <p>
+      <label for="<?php echo $this->get_field_id('sport'); ?>">Sport:</label> 
+<?php
+    $terms = get_terms('sport');
+    if(count($terms) > 0) {
+      echo '<select id="'.$this->get_field_id("sport").'" name="'.$this->get_field_name("sport").'" type="text" value="'.$sport.'">';
+      echo "<option value=''>Sport Page Context</option>";
+      foreach ($terms as $term) { 
+        if( $term->term_id === $sport )
+          echo "<option value='$term->term_id' selected='selected'>$term->name ($term->count)</option>";
+        else
+          echo "<option value='$term->term_id'>$term->name ($term->count)</option>";
+      }
+      echo "</select>";
+    }
+    echo "</p>";
   }
 }
 ?>

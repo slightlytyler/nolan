@@ -36,7 +36,7 @@ get_header();
   endif;
 ?>
   </div>
-  <div class='col-sm-5 col-md-4 right_sidebar'>
-    <?php get_sidebar("page"); ?>
-  </div>
-<?php get_footer(); ?>
+<?php
+get_sidebar("page");
+get_footer();
+?>

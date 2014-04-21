@@ -22,7 +22,4 @@ get_header();
     echo "</div>";
   echo "</div>";
 get_footer();
-
-
-
 ?>

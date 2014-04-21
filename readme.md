@@ -18,11 +18,19 @@ Connected to Sport Template
 
 #### Athletics
 
-Athletics News Stories, Sports Taxonomy
+Athletics News Stories - Sports Taxonomy
 
 #### News (Articles)
 
-Custom blog posts, Uses Vanilla Cats and Tags
+New Stories - Vanilla Cats and Tags
+
+#### Events
+
+Event Organizer - Event Cats, Event Tags and Sports Taxonomy
+
+#### Venues
+
+Related to Events by Event Organizer
 
 
 ## Templates
@@ -65,6 +73,10 @@ Define Relationships, Drag & Drop Ordering, Widget
 
 [Shortcodes](https://github.com/scribu/wp-posts-to-posts/wiki/Shortcodes)
 
+#### Event Organizer
+
+Event Post Type and Dashboard Interface, Widgets
+
 ## Meta Boxes
 
 Custom metaboxes setup with Advanced Custom Fields. Save files in `/nhcs/acf`
@@ -73,3 +85,7 @@ Clicking the add page button from these posts edit pages requires the user to se
 
     @todo Find elusive on template change hook. (JavaScript?)
 
+@later
+- Event Board Page -http://wordpress.org/plugins/event-organiser-posterboard/
+- Calendar Page
+- Fix Calendar Widget Links
