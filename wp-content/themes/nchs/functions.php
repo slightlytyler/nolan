@@ -222,7 +222,7 @@ class NHCS_ThemeSetup {
       'name' => __( 'Homepage Bottom', 'nchs' ),
       'id' => 'homepage-bottom-widget-area',
       'description' => __( 'The Homepage bottom widget area', 'nchs' ),
-      'before_widget' => '<div class="col-sm-6 col-md-4">',
+      'before_widget' => '<div class="col-md-6">',
       'after_widget'  => '</div>'
     ) );
     register_sidebar( array(

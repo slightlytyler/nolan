@@ -100,12 +100,15 @@ blockquote::after{
   padding: 20px;
 }
 
+@media (min-width:768px) {
+  .home-stripe {
+    height: 240px;
+  }
+}
+
 @media (max-width:767px) {
   .inset {
     padding: 15px;
-  }
-  .home-stripe {
-    height: 100%;
   }
   .mission {
     margin: 0 !important;
@@ -252,7 +255,6 @@ li.widget {
   padding-bottom: 30px;
 }
 .home-stripe {
-  height: 240px;
   background: @brand-gray;
   z-index: 1;
 }

@@ -7,11 +7,9 @@
 			<div class="entry-content">
 				<!-- Get event information, see template: event-meta-event-single.php -->
 				<?php eo_get_template_part('event-meta','event-single'); ?>
-
 				<!-- The content or the description of the event-->
 				<?php the_content(); ?>
 			</div><!-- .entry-content -->
-
 			<div class="entry-meta">
 			<?php
 				//Events have their own 'event-category' taxonomy. Get list of categories this event is in.
@@ -30,19 +28,14 @@
 					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
 				);
 			?>
-
 			<?php edit_post_link( __( 'Edit'), '<span class="edit-link">', '</span>' ); ?>
 			</div><!-- .entry-meta -->
-
 		</div><!-- #post-<?php the_ID(); ?> -->
-
 		<!-- If comments are enabled, show them -->
 		<div class="comments-template">
 			<?php comments_template(); ?>
-		</div>				
-
+		</div>
 	<?php endwhile; // end of the loop. ?>
-
 </div><!-- #primary -->
 <?php 
 get_sidebar('events');
