@@ -3,6 +3,14 @@
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
+function nhcs_video( $id ) {
+  if ( is_numeric( $id ) )
+    $url = '//player.vimeo.com/video/'.$id;
+  else
+    $url = '//www.youtube.com/embed/'.$id;
+  return sprintf( '<div class="video-container"><iframe src="%s" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>', $url );
+}
+
 //attach our function to the wp_pagenavi filter
 add_filter( 'wp_pagenavi', 'nchs_pagination', 10, 2 );
  

@@ -6,7 +6,7 @@ get_header();
 </div>
 <div class="col-sm-12 home-top-wrap">
   <div class="col-sm-7 col-md-8 col-sm-push-5 col-md-push-4 video">
-    <h2>Video Here</h2>
+    <?php echo nhcs_video( get_field('homepage_video', 'option') ); ?>
   </div>
   <div class="col-sm-5 col-md-4 col-sm-pull-7 col-md-pull-8 latest">
     <h2>Latest</h2>
