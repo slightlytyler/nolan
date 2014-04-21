@@ -117,7 +117,7 @@ if (typeof jQuery !== 'undefined') {
             });
             $table.append( $row );
           });
-          $('.col-sm-8').append( $table );
+          $('.spreadsheet').append( $table );
         });
       }
       $(window).smartresize(function(){
