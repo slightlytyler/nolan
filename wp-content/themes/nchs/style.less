@@ -477,6 +477,55 @@ th {
 }
 
 /* ******************************************** */
+/* Slider  */
+/* ******************************************** */
+
+.slider_section {
+  background: black;
+  position: relative;
+  z-index: 500;
+}
+.slides,
+.slider_section{
+  background: url("img/slide_bg.jpg") no-repeat 100% 0;
+}
+.slide_wrapper {
+  *zoom: 1;
+  /*max-width: 965px;*/
+  _width: 965px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  height: 332px;
+  overflow: hidden;
+}
+.slide_wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.slide1_title {
+  color: white;
+  font-size: 26px;
+  line-height: 31px;
+  font-family: "ChronicleTextG1SemiItalic";
+  font-style: italic;
+  font-weight: bold;
+  left: 62px;
+  top: 162px;
+  position: absolute;
+  width: 470px;
+  z-index: 200;
+}
+.slide_img {
+  top: 0;
+  right: 33px;
+  position: absolute;
+  z-index: 100;
+}
+/* ******************************************** */
 /* Fonts  */
 /* ******************************************** */
 @font-face {
