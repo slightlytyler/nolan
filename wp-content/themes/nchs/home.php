@@ -4,6 +4,7 @@ get_header();
 <div class='info_title'>
   <h3>In the Marianist tradition since 1961</h3>
 </div>
+<div class="container">
 <div class="col-sm-12 home-top-wrap">
   <div class="col-sm-7 col-md-8 col-sm-push-5 col-md-push-4 video">
     <h2>Video Here</h2>
@@ -49,5 +50,6 @@ get_header();
 // get_sidebar('homepage-middle');
 get_sidebar('homepage-bottom');
 ?>
+</div>
 </div>
 <?php get_footer(); ?>
