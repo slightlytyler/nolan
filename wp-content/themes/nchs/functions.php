@@ -3,6 +3,21 @@
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
+//attach our function to the wp_pagenavi filter
+add_filter( 'wp_pagenavi', 'nchs_pagination', 10, 2 );
+ 
+//customize the PageNavi HTML before it is output
+function nchs_pagination($html) {
+  $out = '';
+  $out = str_replace("<a","<li><a",$html);  
+  $out = str_replace("</a>","</a></li>",$out);
+  $out = str_replace("<span","<li><span",$out); 
+  $out = str_replace("</span>","</span></li>",$out);
+  $out = str_replace("<div class='wp-pagenavi'>","",$out);
+  $out = str_replace("</div>","",$out);
+  return '<ul class="pagination">'.$out.'</ul>';
+}
+
 function nchs_save_page_on_template_change() {
     global $parent_file;
     if ( is_admin() && $parent_file == 'edit.php?post_type=page') {

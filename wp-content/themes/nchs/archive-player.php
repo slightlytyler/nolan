@@ -31,7 +31,7 @@ $slug = get_post( $post )->post_name;
             <br class="clear">
             <?php endwhile; ?>
           <?php endif; ?>
-          <?php wp_reset_query(); ?>
+          <?php wp_pagenavi(); wp_reset_query(); ?>
 
         </div>
         <div class='clear'></div>

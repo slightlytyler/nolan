@@ -17,6 +17,7 @@ echo "<div class='page-content col-sm-7 col-md-8'>";
     echo "<div class='clearfix'></div>";
     echo "</div>";
   endwhile;
+  wp_pagenavi();
   previous_posts_link();
   echo ' | ';
   next_posts_link();
