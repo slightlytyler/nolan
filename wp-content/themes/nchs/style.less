@@ -18,6 +18,23 @@ Version: 1.0
 @import "css/lib/bootstrap-social";
 @import "css/nhcs";
 
+.eo-venue-map {
+  z-index: -1 !important;
+  min-height: 260px;
+}
+.venue-map {
+  min-height: 260px;
+  position: relative;
+}
+.venue-map h1 {
+  display: block;
+  position: absolute;
+  top: 170px;
+  left: 10px;
+  font-size: 42px;
+  background: rgba(255,255,255,0.8);
+  padding: 5px;
+}
 
 .video-container {
   position: relative;
@@ -320,6 +337,14 @@ li.widget {
   }
   .home-top-wrap {
     padding-top: 20px;
+  }
+  .venue-map,
+  .eo-venue-map {
+    min-height: 320px;
+  }
+  .venue-map {
+    border-bottom: 10px solid @brand-primary;
+    margin-bottom: 20px;
   }
 }
 

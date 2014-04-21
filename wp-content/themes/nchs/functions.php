@@ -161,15 +161,16 @@ class NHCS_ThemeSetup {
       'name' => __( 'Homepage Ribbion', 'nchs' ),
       'id' => 'homepage-ribbion',
       'description' => __( 'The Homepage Ribbion widget area', 'nchs' ),
-      'before_widget' => '',
-      'after_widget'  => '',
     ) );
     register_sidebar( array(
       'name' => __( 'Video Page Sidebar', 'nchs' ),
       'id' => 'video-sidebar',
-      'description' => __( 'Accompanies all video templates', 'nchs' ),
-      'before_widget' => '',
-      'after_widget'  => '',
+      'description' => __( 'Accompanies all video templates', 'nchs' )
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Events Section Sidebar', 'nchs' ),
+      'id' => 'events-sidebar',
+      'description' => __( 'Shown on event templates', 'nchs' )
     ) );
     register_sidebar( array(
       'name' => __( 'Homepage Bottom', 'nchs' ),
