@@ -107,6 +107,17 @@ blockquote::after{
 }
 
 @media (max-width:767px) {
+  .slider_section .slides {
+    height: 70px;
+  }
+  .slider_section .slide1_title {
+    top: 0;
+    width: 100%;
+  }
+  .subpage_small_title,
+  .slide_img {
+    display: none;
+  }
   .inset {
     padding: 15px;
   }
@@ -485,20 +496,18 @@ th {
   position: relative;
   z-index: 500;
 }
-.slides,
-.slider_section{
-  background: url("img/slide_bg.jpg") no-repeat 100% 0;
+.slides {height: 254px;}
+.slider_section {
+  background: url("img/slide_bg.jpg") black no-repeat top center;
+}
+.flexslider .slide_wrapper {
+  height: 345px;
 }
 .slide_wrapper {
   *zoom: 1;
-  /*max-width: 965px;*/
-  _width: 965px;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-left: auto;
-  margin-right: auto;
+  height: 100%;
+  padding: 15px 0;
   position: relative;
-  height: 332px;
   overflow: hidden;
 }
 .slide_wrapper:after {
@@ -506,15 +515,20 @@ th {
   display: table;
   clear: both;
 }
+.slide1_title h3 {
+  color: #c3e1ff;
+  font-family: @font-family-trajan;
+  font-style: normal;
+}
 .slide1_title {
   color: white;
-  font-size: 26px;
-  line-height: 31px;
+  font-size: 16px;
+  line-height: 18px;
   font-family: "ChronicleTextG1SemiItalic";
   font-style: italic;
   font-weight: bold;
-  left: 62px;
-  top: 162px;
+  left: 15px;
+  top: 128px;
   position: absolute;
   width: 470px;
   z-index: 200;
