@@ -43,7 +43,7 @@ next_posts_link();
   </div>
 </div>
 <div class="clearfix"></div>
-<div class="col-sm-6 col-md-8">
+<div class="col-sm-6 col-md-8 nopad">
 <?php
 // get_sidebar("homepage-top");
 // get_sidebar('homepage-right');
