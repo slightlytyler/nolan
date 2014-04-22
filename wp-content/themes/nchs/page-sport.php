@@ -4,7 +4,7 @@ get_header();
 $term = get_term( get_field('news_category'), 'sport' );
 $news_query = new WP_Query( [ 
   'post_type' => 'athletics',
-  'posts_per_page' => '5',
+  'posts_per_page' => '3',
   'sport' => $term->slug
 ] );
 $coach_query = new WP_Query( [
@@ -23,29 +23,20 @@ $student_query = new WP_Query( [
     'compare' => 'NOT EXISTS'
   ] ],
 ] );
-?>
-<div class='page-content col-sm-8'>
-<?php
+echo "<div class='page-content col-sm-8'>";
+echo "<h2>Football News</h2>";
 if( $news_query->have_posts() ) :
-  echo '<div>';
-  echo $before_widget;
-  if ( $title )
-    echo $before_title . $title . $after_title;
-  else
-    echo $before_title . $term->slug . ' News' . $after_title;
-  echo '<ul>';
+  echo "<div class='sport-news'>";
   while ( $news_query->have_posts() ) : $news_query->the_post();
-    echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
-    // the_excerpt();
+    echo sprintf( "<h4><a href='%s'>%s</a></h4>", get_permalink(), get_the_title() );
+    the_date();
   endwhile;
   wp_reset_postdata();
-  echo '</ul>';
-  echo $after_widget;
-  echo '</div>';
+  echo "</div>";
 endif;
-
-echo '<div>';
+echo "<div>";
 while ( have_posts() ) : the_post();
+  the_title( '<h1>', '</h1>' );
   the_content();
 endwhile;
 wp_reset_postdata();
@@ -55,11 +46,13 @@ echo '<div>';
 if ( $coach_query->have_posts() ) :
   echo '<h2>Coaches</h2>';
   while ( $coach_query->have_posts() ) : $coach_query->the_post(); 
-    echo '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-4">';
+    echo '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-4 nopad">';
     if( get_field('title') == "Department Head" )
       echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
     else
       echo '<h3>'.get_the_title().'</h3>';
+      the_field('wpcf-coach-position');
+      echo sprintf( '<a href="$s">Read Bio &raquo;</a>', get_permalink() );
     the_post_thumbnail();
     echo '</div>';
   endwhile;
@@ -69,13 +62,17 @@ echo '<div class="clearfix"></div></div>';
 
 if ( $student_query->have_posts() ) :
   echo '<div>';
-  echo '<h2>Players</h2>';
+    echo '<h2>Players</h2>';
   while ( $student_query->have_posts() ) : $student_query->the_post(); 
-    echo '<div class="col-xs-4 col-sm-3 col-lg-2">';
+    echo '<div class="player-picture col-xs-4 col-sm-3 col-lg-2 nopad">';
+    echo '<div class="info">';
+    echo '<div class="number">'.p2p_get_meta( get_post()->p2p_id, 'number', true ).'</div>';
     if( get_field('title') == "Department Head" )
       echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
     else
       echo '<h3>'.get_the_title().'</h3>';
+    echo '<div class="clear">'.p2p_get_meta( get_post()->p2p_id, 'position', true ).'</div style="clear:both">';
+    echo '</div>';
     $pictures = get_field('sport_pictures');
     $output = false;
     if( $pictures ) :
@@ -89,14 +86,10 @@ if ( $student_query->have_posts() ) :
     endif;
     if( !$output )
       the_post_thumbnail();
-    echo '<br>';
-    echo 'Number: ' . p2p_get_meta( get_post()->p2p_id, 'number', true );
-    echo '<br>';
-    echo 'Position: ' . p2p_get_meta( get_post()->p2p_id, 'position', true );
     echo '</div>';
   endwhile;
   wp_reset_postdata();
-  echo '</div>';
+  echo '<div class="clearfix"></div></div>';
 endif;
 ?>
 </div>
