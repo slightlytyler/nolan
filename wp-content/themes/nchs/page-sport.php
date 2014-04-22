@@ -78,16 +78,18 @@ if ( $student_query->have_posts() ) :
       echo '<br>';
       echo 'Position: ' . p2p_get_meta( get_post()->p2p_id, 'position', true );
       $pictures = get_field('sport_pictures');
+      $output = false;
       if( $pictures ) :
         foreach( $pictures as $row ) :
           if( $term->term_id === $row['sport']->term_id ) :
             $image = $row['image'];
             echo "<img src='$image' alt='' />";
+            $output = true;
           endif;
         endforeach;
-      else :
-        the_post_thumbnail();
       endif;
+      if( !$output )
+        the_post_thumbnail();
   endwhile;
   wp_reset_postdata();
   echo '</div>';
