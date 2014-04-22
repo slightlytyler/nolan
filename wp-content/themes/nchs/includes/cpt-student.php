@@ -4,7 +4,7 @@ $student = new CPT( [
   'singular' => 'Student',
   'plural' => 'Students',
   'slug' => 'student',
-] );
+], $supports );
 $student->columns(array(
   'cb' => '<input type="checkbox" />',
   'image' => __('Image'),

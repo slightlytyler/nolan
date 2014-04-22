@@ -1,5 +1,5 @@
 <div class='slider_section'>
-	<?php $image_url = types_render_field( "section-background-image", array('raw' => true)) ?>
+	<?php // $image_url = types_render_field( "section-background-image", array('raw' => true)) ?>
 	<?php if($image_url !== ''): ?>
 		<div class='slides' style="background-image: url('<?php echo $image_url; ?>')">
 		<?php else: ?>
@@ -14,7 +14,7 @@
 				
 					<?php if($post->post_parent==0 || ($section_title=="Athletics")) : ?>
 						<h3><?php the_title() ?></h3>
-						<?php echo types_render_field("header-subtext",array('raw'=>true)) ?>
+						<?php // echo types_render_field("header-subtext",array('raw'=>true)) ?>
 					<?php else : ?>
 						<h3 class="subpage_title"><?php echo $section_title?></h3>
 						<span class="subpage_small_title"><?php the_title(); ?></span>
@@ -22,7 +22,7 @@
 				
 				</div>
 				<div class='slide_img'>
-					<?php $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "height" => "254", "proportional" => "true" )); ?>
+					<?php // $slide_img = types_render_field( "section-foreground-image", array( "alt" => "Lorem", "height" => "254", "proportional" => "true" )); ?>
 					<?php if ($slide_img !== ''): ?>
 						<?php echo $slide_img; ?>
 					<?php else: ?>

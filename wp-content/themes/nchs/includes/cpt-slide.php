@@ -4,6 +4,6 @@ $slide = new CPT( [
   'singular' => 'Slide',
   'plural' => 'Slides',
   'slug' => 'slide',
-] );
+], $supports );
 $slide->menu_icon("dashicons-align-none");
 ?>

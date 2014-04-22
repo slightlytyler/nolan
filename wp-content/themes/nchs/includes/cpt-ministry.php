@@ -4,7 +4,7 @@ $ministry = new CPT( [
   'singular' => 'Minister',
   'plural' => 'Ministry',
   'slug' => 'ministry',
-] );
+], $supports );
 $ministry->columns($faculty_columns);
 $ministry->populate_column('since', function($column, $post) {
   the_field('since');

@@ -7,6 +7,10 @@ $faculty_columns = [
   'since' => __('Since'),
   'date' => __('Date')
 ];
+$supports = [
+  'supports' => [ 'title', 'editor', 'thumbnail' ],
+];
+
 include_once('includes/cpt-faculty.php');
 include_once('includes/cpt-coach.php');
 include_once('includes/cpt-ministry.php');

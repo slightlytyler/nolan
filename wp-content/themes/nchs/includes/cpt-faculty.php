@@ -4,7 +4,7 @@ $faculty = new CPT( [
   'singular' => 'Teacher',
   'plural' => 'Faculty',
   'slug' => 'faculty',
-] );
+], $supports );
 $faculty->columns($faculty_columns);
 $faculty->populate_column('since', function($column, $post) {
   the_field('since');

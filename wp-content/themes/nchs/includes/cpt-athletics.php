@@ -4,6 +4,6 @@ $athletics = new CPT( [
   'singular' => 'Athletics',
   'plural' => 'Athletics',
   'slug' => 'athletics',
-] );
+], $supports );
 $athletics->menu_icon("dashicons-megaphone");
 ?>

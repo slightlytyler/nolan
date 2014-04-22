@@ -89,7 +89,7 @@
       </div>
     </div>
 <?php
-if( is_home() )
+if( is_home() && is_front_page() )
   get_template_part('slider', 'index');
 if( is_single() || is_page() )
   get_template_part('titles');
