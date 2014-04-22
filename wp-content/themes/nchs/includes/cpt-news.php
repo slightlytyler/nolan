@@ -4,6 +4,6 @@ $news = new CPT( [
   'singular' => 'News',
   'plural' => 'News',
   'slug' => 'news',
-] );
+], $supports );
 $news->menu_icon("dashicons-admin-post");
 ?>
