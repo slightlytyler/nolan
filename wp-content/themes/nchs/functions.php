@@ -278,51 +278,14 @@ NHCS_ThemeSetup::init();
  * Posts 2 Posts Configuration
  */
 
-function terms_slug_list( $taxonomy ) {
-  $slugs = [];
-  $terms = get_terms( $taxonomy );
-  foreach( $terms as $term ):
-    array_push( $slugs, $term->slug );
-  endforeach;
-  return $slugs;
-}
-
-function davalues( $connection, $direction ) {
-  global $post;
-  $key = ( 'from' == $direction ) ? 'p2p_to' : 'p2p_from';
-
-  $post = get_post( $connection->$key );
-  setup_postdata( $post );
-  if( $direction === 'from' ) {
-    return $direction.' '.get_post_meta( $post->ID, 'sport_pictures', true );
-  }
-  else {
-    return '';
-  }
-  // global $post;
-  // $key = ( 'from' == $direction ) ? 'p2p_to' : 'p2p_from';
-  // $post = get_post( $connection->$key );
-  // setup_postdata( $post );
-  // global $wp_query;
-  // echo ' this ';
-  // echo $post->ID;
-  // echo get_post_meta( $post->ID, 'sport_pictures', true );
-  // echo ' this ';
-  // wp_reset_query();
-  // $sports = [$post->ID, 'letters'];
-  // $pictures = get_field('sport_pictures', $post->ID );
-  // // echo get_field( 'graduation_year', $post->ID );
-  // print_r( get_post_custom($post->ID) );
-  // print_r( $pictures );
-  // print_r( $sports );
-  // foreach( $pictures as $row ) :
-  //   echo $row['sport']->name;
-  //   $sports[$row['sport']->term_id] = $row['sport']->name;
-  //   $image = $row['image'];
-  //   echo "<img src='$image' alt='' />";
-  // endforeach;
-  // return implode( ',', $sports );
-}
+// function terms_slug_list( $taxonomy ) {
+//   $slugs = [];
+//   $terms = get_terms( $taxonomy );
+//   foreach( $terms as $term ):
+//     array_push( $slugs, $term->slug );
+//   endforeach;
+//   return $slugs;
+// }
 
 class NHCS_Posts2Posts {
   public static function init() {
@@ -369,16 +332,10 @@ class NHCS_Posts2Posts {
         'position' => array(
           'title' => 'Position',
           'type' => 'text',
-          'default_cb' => 'davalues',
         ),
         'hide' => array(
-          'title' => 'Special',
+          'title' => 'Hide',
           'type' => 'checkbox'
-        ),
-        'sport' => array(
-            'title' => 'Sport Tax',
-            'type' => 'select',
-            'values' => terms_slug_list('sport'),
         ),
       )
     ) );
