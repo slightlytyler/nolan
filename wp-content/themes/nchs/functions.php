@@ -3,6 +3,13 @@
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
+add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+function remove_width_attribute( $html ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}
+
 function nhcs_video( $id ) {
   if ( is_numeric( $id ) )
     $url = '//player.vimeo.com/video/'.$id;
@@ -190,7 +197,12 @@ class NHCS_ThemeSetup {
     register_sidebar( array(
       'name' => __( 'Archive Sidebar', 'nchs' ),
       'id' => 'archive-sidebar',
-      'description' => __( 'The Default/Index Sidebar', 'nchs' )
+      'description' => __( 'The default/index sidebar', 'nchs' )
+    ) );
+    register_sidebar( array(
+      'name' => __( 'Student Sidebar', 'nchs' ),
+      'id' => 'student-sidebar',
+      'description' => __( 'Sidebar for the single student pages', 'nchs' )
     ) );
     register_sidebar( array(
       'name' => __( 'Athletics - Right Column Widget Area', 'nchs' ),
@@ -202,12 +214,12 @@ class NHCS_ThemeSetup {
     register_sidebar( array(
       'name' => __( 'Page Sidebar', 'nchs' ),
       'id' => 'page-sidebar',
-      'description' => __( 'Default Page widget area.', 'nchs' )
+      'description' => __( 'Default page widget area.', 'nchs' )
     ) );
     register_sidebar( array(
       'name' => __( 'Homepage Ribbion', 'nchs' ),
       'id' => 'homepage-ribbion',
-      'description' => __( 'The Homepage Ribbion widget area', 'nchs' ),
+      'description' => __( 'The homepage ribbion widget area', 'nchs' ),
     ) );
     register_sidebar( array(
       'name' => __( 'Video Sidebar', 'nchs' ),
@@ -229,14 +241,14 @@ class NHCS_ThemeSetup {
     register_sidebar( array(
       'name' => __( 'Homepage Bottom', 'nchs' ),
       'id' => 'homepage-bottom-widget-area',
-      'description' => __( 'The Homepage bottom widget area', 'nchs' ),
+      'description' => __( 'The homepage bottom widget area', 'nchs' ),
       'before_widget' => '<div class="col-md-6">',
       'after_widget'  => '</div>'
     ) );
     register_sidebar( array(
       'name' => __( 'Homepage Right Widget Area', 'nchs' ),
       'id' => 'homepage-right-widget-area',
-      'description' => __( 'The Homepage right widget area', 'nchs' ),
+      'description' => __( 'The homepage right widget area', 'nchs' ),
       'before_widget' => '',
       'after_widget'  => ''
     ) );
@@ -246,16 +258,16 @@ class NHCS_ThemeSetup {
     /* CUSTOM IMAGE SIZE */
     if ( function_exists( 'add_theme_support' ) ) {
       add_theme_support( 'post-thumbnails' );
-      set_post_thumbnail_size( 150, 150 );
+      set_post_thumbnail_size( 400, 500 );
     }
     $image_sizes = [
       [ 'nchs-background', 1251, 328 ],
       [ 'nchs-foreground', 9999, 254 ],
       [ 'nchs-slide-background', 1242, 332 ],
       [ 'nchs-slide-foreground', 9999, 332 ],
-      [ 'nchs-coach', 182, 195 ],
-      [ 'nchs-player', 76, 81 ],
-      [ 'nchs-player-large', 183, 257 ],
+      [ 'nchs-coach', 200, 250 ],
+      [ 'nchs-player', 200, 250 ],
+      [ 'nchs-player-large', 400, 500 ],
       [ 'nchs-athletics-news-featured', 146, 132 ],
       [ 'nchs-athletics-news', 82, 73 ],
       [ 'nchs-index-latest-news-thumb', 50, 44 ]
@@ -348,6 +360,8 @@ class NHCS_Posts2Posts {
       $args['post_type'] = 'page';
       $args['meta_key'] = '_wp_page_template';
       $args['meta_compare'] = '=';
+      // if ( 'student_to_pages' == $ctype->name )
+      //   $args['meta_value'] = 'page-club.php';
       if ( 'faculty_to_pages' == $ctype->name )
         $args['meta_value'] = 'page-department.php';
       if ( 'ministry_to_pages' == $ctype->name )
@@ -363,11 +377,15 @@ class NHCS_Posts2Posts {
       if( $post->post_type == 'page' )
         return ( 'page-department.php' == $post->page_template );
     if( $post->post_type == 'page' )
-      if ( 'ministry_to_pages' == $ctype->name )
-        return ( 'page-ministry.php' == $post->page_template );
-    if( $post->post_type == 'page' )
-      if ( 'student_to_pages' == $ctype->name || 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
-        return ( 'page-sport.php' == $post->page_template );
+      if ( $post->page_template == 'page-ministry.php' )
+        if ( 'ministry_to_pages' == $ctype->name )
+          return ( 'page-ministry.php' == $post->page_template );
+      if ( $post->page_template == 'page-sport.php' )
+        if ( 'student_to_pages' == $ctype->name || 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )        
+          return ( 'page-sport.php' == $post->page_template );
+      if ( $post->page_template == 'page-club.php' )
+        if ( 'student_to_pages' == $ctype->name )
+          return ( 'page-club.php' == $post->page_template );
     if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach' || $post->post_type == 'student' )
     return $show;
   }

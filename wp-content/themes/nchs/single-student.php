@@ -21,6 +21,6 @@
 ?>
   </div>
 <?php
-get_sidebar("page");
+get_sidebar("student");
 get_footer();
 ?>

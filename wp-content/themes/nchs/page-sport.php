@@ -55,52 +55,59 @@ echo '<div>';
 if ( $coach_query->have_posts() ) :
   echo '<h2>Coaches</h2>';
   while ( $coach_query->have_posts() ) : $coach_query->the_post(); 
+    echo '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-4">';
     if( get_field('title') == "Department Head" )
       echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
     else
       echo '<h3>'.get_the_title().'</h3>';
     the_post_thumbnail();
+    echo '</div>';
   endwhile;
   wp_reset_postdata();
 endif;
-echo '</div>';
+echo '<div class="clearfix"></div></div>';
 
 if ( $student_query->have_posts() ) :
   echo '<div>';
   echo '<h2>Players</h2>';
   while ( $student_query->have_posts() ) : $student_query->the_post(); 
+    echo '<div class="col-xs-4 col-sm-3 col-lg-2">';
     if( get_field('title') == "Department Head" )
       echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
     else
       echo '<h3>'.get_the_title().'</h3>';
-      echo '<br>';
-      echo 'Number: ' . p2p_get_meta( get_post()->p2p_id, 'number', true );
-      echo '<br>';
-      echo 'Position: ' . p2p_get_meta( get_post()->p2p_id, 'position', true );
-      $pictures = get_field('sport_pictures');
-      $output = false;
-      if( $pictures ) :
-        foreach( $pictures as $row ) :
-          if( $term->term_id === $row['sport']->term_id ) :
-            $image = $row['image'];
-            echo "<img src='$image' alt='' />";
-            $output = true;
-          endif;
-        endforeach;
-      endif;
-      if( !$output )
-        the_post_thumbnail();
+    $pictures = get_field('sport_pictures');
+    $output = false;
+    if( $pictures ) :
+      foreach( $pictures as $row ) :
+        if( $term->term_id === $row['sport']->term_id ) :
+          $image = $row['image'];
+          echo "<img src='$image' alt='' />";
+          $output = true;
+        endif;
+      endforeach;
+    endif;
+    if( !$output )
+      the_post_thumbnail();
+    echo '<br>';
+    echo 'Number: ' . p2p_get_meta( get_post()->p2p_id, 'number', true );
+    echo '<br>';
+    echo 'Position: ' . p2p_get_meta( get_post()->p2p_id, 'position', true );
+    echo '</div>';
   endwhile;
   wp_reset_postdata();
   echo '</div>';
 endif;
 ?>
 </div>
-<div class='col-sm-4'>
-  <div class='right_sidebar'>
+<div class="col-sm-4 banner nopad">
+  <h3>NCHS Athletics</h3>
+  <div class="banner-inner">
     <ul class="widgets">
       <?php if ( !dynamic_sidebar( 'sport-sidebar' ) ) {} ?>
     </ul>
+    <div class="clearfix"></div>
   </div>
+  <div class="banner-left"></div><div class="banner-right"></div>
 </div>
 <?php get_footer(); ?>
