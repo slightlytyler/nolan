@@ -24,8 +24,7 @@ $student_query = new WP_Query( [
   ] ],
 ] );
 
-echo "<div class='page-content col-sm-8 nopad'>"
-; 
+echo "<div class='page-content col-sm-8 nopad'>"; 
 
   if( $news_query->have_posts() ) :
     echo "<div class='col-sm-12 nopad'>";
@@ -36,11 +35,11 @@ echo "<div class='page-content col-sm-8 nopad'>"
       while ( $news_query->have_posts() ) : $news_query->the_post();
         if( $news_query->current_post === 0 ) :
           echo "<div class='col-md-12'>";
-            echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), the_date() );
+            echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), get_the_date() );
           echo "</div>";
         else :
           echo "<div class='col-md-6'>";
-            echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), the_date() );
+            echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), get_the_date() );
           echo "</div>";
         endif;
       endwhile;
@@ -49,6 +48,10 @@ echo "<div class='page-content col-sm-8 nopad'>"
       wp_reset_postdata();
     echo "</div>";
   endif;
+
+  echo "<div class='col-sm-12'>";
+    echo '<h1>Schedule</h1>';
+  echo '</div>';
 
   echo "<div class='col-sm-12'>";
     while ( have_posts() ) : the_post();
@@ -96,7 +99,7 @@ if ( $student_query->have_posts() ) :
     if( $pictures ) :
       foreach( $pictures as $row ) :
         if( $term->term_id === $row['sport']->term_id ) :
-          $image = $row['image'];
+          $image = $row['image']['sizes']['thumbnail'];
           echo "<img src='$image' alt='' />";
           $output = true;
         endif;

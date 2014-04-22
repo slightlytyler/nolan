@@ -3,17 +3,15 @@
 <?php
     while ( have_posts() ) : the_post();
       the_title( '<h1>', '</h1>' );
+      echo the_post_thumbnail();
       the_meta();
       the_date();
       the_author();
       the_content();
       $pictures = get_field('sport_pictures',$post->ID);
-      // print_r($pictures);
       foreach( get_field('sport_pictures') as $row ) :
-        // echo print_r($row);
-        echo $row['sport']->term_id;
         echo $row['sport']->name;
-        $image = $row['image'];
+        $image = $row['image']['sizes']['thumbnail'];
         echo "<img src='$image' alt='' />";
       endforeach;
     endwhile;

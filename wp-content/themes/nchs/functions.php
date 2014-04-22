@@ -1,8 +1,34 @@
 <?php
+include_once('includes/CPT.php');
+$faculty_columns = [
+  'cb' => '<input type="checkbox" />',
+  'image' => __('Image'),
+  'title' => __('Name'),
+  'since' => __('Since'),
+  'date' => __('Date')
+];
+include_once('includes/cpt-faculty.php');
+include_once('includes/cpt-coach.php');
+include_once('includes/cpt-ministry.php');
+include_once('includes/cpt-student.php');
+
+include_once('includes/cpt-slide.php');
+include_once('includes/cpt-news.php');
+include_once('includes/cpt-athletics.php');
+
+// CPT Dashboard Image Column Width
+add_action('admin_head', 'nhcs_column_width');
+function nhcs_column_width() {
+    echo '<style type="text/css">';
+    echo '.column-image { text-align: center; width:100px !important; overflow:hidden }';
+    echo '</style>';
+}
+
 // @todo transient cache for spreadsheet template
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
+// Don't use width on <img tags
 add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 function remove_width_attribute( $html ) {
@@ -17,11 +43,9 @@ function nhcs_video( $id ) {
     $url = '//www.youtube.com/embed/'.$id;
   return sprintf( '<div class="video-container"><iframe src="%s" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>', $url );
 }
-
-//attach our function to the wp_pagenavi filter
-add_filter( 'wp_pagenavi', 'nchs_pagination', 10, 2 );
  
 //customize the PageNavi HTML before it is output
+add_filter( 'wp_pagenavi', 'nchs_pagination', 10, 2 );
 function nchs_pagination($html) {
   $out = '';
   $out = str_replace("<a","<li><a",$html);  
@@ -33,6 +57,8 @@ function nchs_pagination($html) {
   return '<ul class="pagination">'.$out.'</ul>';
 }
 
+// Save the page on template change, so user sees correct interface for template.
+add_filter('admin_head', 'nchs_save_page_on_template_change');
 function nchs_save_page_on_template_change() {
     global $parent_file;
     if ( is_admin() && $parent_file == 'edit.php?post_type=page') {
@@ -48,9 +74,8 @@ function nchs_save_page_on_template_change() {
     <?php
     }
 }
-add_filter('admin_head', 'nchs_save_page_on_template_change');
 
-
+// Modify the Homepage Query
 add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 function add_my_post_types_to_query( $query ) {
   if ( $query->is_main_query() && is_home() ) {
@@ -58,11 +83,11 @@ function add_my_post_types_to_query( $query ) {
     $query->set( 'post_type', array( 'news', 'athletics' ) );
     $query->set( 'posts_per_page', '3' );
   }
-  elseif ( $query->is_main_query() && is_tax('sport') ) {
-    // show past events on the sport tag archives
-    $query->set( 'post_type', array( 'event', 'athletics' ) );
-    $query->set( 'posts_per_page', '10' );
-  }
+  // elseif ( $query->is_main_query() && is_tax('sport') ) {
+  //   // show past events on the sport tag archives
+  //   $query->set( 'post_type', array( 'event', 'athletics' ) );
+  //   $query->set( 'posts_per_page', '10' );
+  // }
   else {
     return $query;
   }
@@ -262,6 +287,7 @@ class NHCS_ThemeSetup {
       set_post_thumbnail_size( 400, 500 );
     }
     $image_sizes = [
+      [ 'nchs-admin', 125, 100 ],
       [ 'nchs-background', 1251, 328 ],
       [ 'nchs-foreground', 9999, 254 ],
       [ 'nchs-slide-background', 1242, 332 ],
@@ -312,38 +338,51 @@ class NHCS_Posts2Posts {
       'name' => 'faculty_to_pages',
       'from' => 'page',
       'to' => 'faculty',
-      'sortable' => 'any'
+      'sortable' => 'any',
+      'admin_column' => 'any',
     ) );
     p2p_register_connection_type( array(
       'name' => 'ministry_to_pages',
       'from' => 'page',
       'to' => 'ministry',
-      'sortable' => 'any'
+      'sortable' => 'any',
+      'admin_column' => 'any',
     ) );
     p2p_register_connection_type( array(
       'name' => 'coach_to_pages',
       'from' => 'page',
       'to' => 'coach',
-      'sortable' => 'any'
+      'sortable' => 'any',
+      'admin_column' => 'any',
     ) );
     // p2p_register_connection_type( array(
     //   'name' => 'player_to_pages',
     //   'from' => 'page',
     //   'to' => 'player',
-    //   'sortable' => 'any'
+    //   'sortable' => 'any',
+    //   'admin_column' => 'any',
     // ) );
     p2p_register_connection_type( array(
       'name' => 'student_to_pages',
       'from' => 'page',
       'to' => 'student',
       'sortable' => 'any',
+      'admin_column' => 'any',
       'fields' => array(
-        'number' => array(
-          'title' => 'Number',
+        'field_1' => array(
+          'title' => 'Field 1',
           'type' => 'text',
         ),
-        'position' => array(
-          'title' => 'Position',
+        'field_2' => array(
+          'title' => 'Field 2',
+          'type' => 'text',
+        ),
+        'field_3' => array(
+          'title' => 'Field 3',
+          'type' => 'text',
+        ),
+        'field_4' => array(
+          'title' => 'Field 4',
           'type' => 'text',
         ),
         'hide' => array(
@@ -413,31 +452,31 @@ function has_children($child_of = null) {
   return (wp_list_pages("child_of=$child_of&echo=0")) ? true : false;
 }
 
-function add_sport_column ($original_columns) {
-  $new_columns['cb']    = '<input type="checkbox" />';
-  $new_columns['title'] = 'Name';
-  $new_columns['sport'] = 'Sport';
-  $new_columns['date']  = 'Date';
-  return $new_columns;
-}
-add_filter('manage_edit-player_columns', 'add_sport_column');
-add_filter('manage_edit-coach_columns', 'add_sport_column');
+// function add_sport_column ($original_columns) {
+//   $new_columns['cb']    = '<input type="checkbox" />';
+//   $new_columns['title'] = 'Name';
+//   $new_columns['sport'] = 'Sport';
+//   $new_columns['date']  = 'Date';
+//   return $new_columns;
+// }
+// add_filter('manage_edit-player_columns', 'add_sport_column');
+// add_filter('manage_edit-coach_columns', 'add_sport_column');
 
-function manage_player_sport_columns($column_name, $id) {
-  global $wpdb;
-  switch ($column_name) {
-  case 'sport':
-    $taxonomies = wp_get_post_terms($id, 'sport');
-    foreach ($taxonomies as $taxonomy) {
-      echo $taxonomy->name;
-    }
-    break;
-  default:
-    break;
-  }
-}
-add_action('manage_player_posts_custom_column', 'manage_player_sport_columns', 10, 2);
-add_action('manage_coach_posts_custom_column', 'manage_player_sport_columns', 10, 2);
+// function manage_player_sport_columns($column_name, $id) {
+//   global $wpdb;
+//   switch ($column_name) {
+//   case 'sport':
+//     $taxonomies = wp_get_post_terms($id, 'sport');
+//     foreach ($taxonomies as $taxonomy) {
+//       echo $taxonomy->name;
+//     }
+//     break;
+//   default:
+//     break;
+//   }
+// }
+// add_action('manage_player_posts_custom_column', 'manage_player_sport_columns', 10, 2);
+// add_action('manage_coach_posts_custom_column', 'manage_player_sport_columns', 10, 2);
 
 function add_news_categories_column ($original_columns) {
   $new_columns['cb']    = '<input type="checkbox" />';
