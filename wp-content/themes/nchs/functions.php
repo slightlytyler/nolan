@@ -278,6 +278,52 @@ NHCS_ThemeSetup::init();
  * Posts 2 Posts Configuration
  */
 
+function terms_slug_list( $taxonomy ) {
+  $slugs = [];
+  $terms = get_terms( $taxonomy );
+  foreach( $terms as $term ):
+    array_push( $slugs, $term->slug );
+  endforeach;
+  return $slugs;
+}
+
+function davalues( $connection, $direction ) {
+  global $post;
+  $key = ( 'from' == $direction ) ? 'p2p_to' : 'p2p_from';
+
+  $post = get_post( $connection->$key );
+  setup_postdata( $post );
+  if( $direction === 'from' ) {
+    return $direction.' '.get_post_meta( $post->ID, 'sport_pictures', true );
+  }
+  else {
+    return '';
+  }
+  // global $post;
+  // $key = ( 'from' == $direction ) ? 'p2p_to' : 'p2p_from';
+  // $post = get_post( $connection->$key );
+  // setup_postdata( $post );
+  // global $wp_query;
+  // echo ' this ';
+  // echo $post->ID;
+  // echo get_post_meta( $post->ID, 'sport_pictures', true );
+  // echo ' this ';
+  // wp_reset_query();
+  // $sports = [$post->ID, 'letters'];
+  // $pictures = get_field('sport_pictures', $post->ID );
+  // // echo get_field( 'graduation_year', $post->ID );
+  // print_r( get_post_custom($post->ID) );
+  // print_r( $pictures );
+  // print_r( $sports );
+  // foreach( $pictures as $row ) :
+  //   echo $row['sport']->name;
+  //   $sports[$row['sport']->term_id] = $row['sport']->name;
+  //   $image = $row['image'];
+  //   echo "<img src='$image' alt='' />";
+  // endforeach;
+  // return implode( ',', $sports );
+}
+
 class NHCS_Posts2Posts {
   public static function init() {
     add_action( 'p2p_init', array( __CLASS__, 'nhcs_p2p_connections' ) );
@@ -304,11 +350,37 @@ class NHCS_Posts2Posts {
       'to' => 'coach',
       'sortable' => 'any'
     ) );
+    // p2p_register_connection_type( array(
+    //   'name' => 'player_to_pages',
+    //   'from' => 'page',
+    //   'to' => 'player',
+    //   'sortable' => 'any'
+    // ) );
     p2p_register_connection_type( array(
-      'name' => 'player_to_pages',
+      'name' => 'student_to_pages',
       'from' => 'page',
-      'to' => 'player',
-      'sortable' => 'any'
+      'to' => 'student',
+      'sortable' => 'any',
+      'fields' => array(
+        'number' => array(
+          'title' => 'Number',
+          'type' => 'text',
+        ),
+        'position' => array(
+          'title' => 'Position',
+          'type' => 'text',
+          'default_cb' => 'davalues',
+        ),
+        'hide' => array(
+          'title' => 'Special',
+          'type' => 'checkbox'
+        ),
+        'sport' => array(
+            'title' => 'Sport Tax',
+            'type' => 'select',
+            'values' => terms_slug_list('sport'),
+        ),
+      )
     ) );
   }
 
@@ -323,7 +395,7 @@ class NHCS_Posts2Posts {
         $args['meta_value'] = 'page-department.php';
       if ( 'ministry_to_pages' == $ctype->name )
         $args['meta_value'] = 'page-ministry.php';
-      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
+      if ( 'student_to_pages' == $ctype->name || 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
         $args['meta_value'] = 'page-sport.php';
     }
     return $args;
@@ -337,9 +409,9 @@ class NHCS_Posts2Posts {
       if ( 'ministry_to_pages' == $ctype->name )
         return ( 'page-ministry.php' == $post->page_template );
     if( $post->post_type == 'page' )
-      if ( 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
+      if ( 'student_to_pages' == $ctype->name || 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
         return ( 'page-sport.php' == $post->page_template );
-    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach' )
+    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach' || $post->post_type == 'student' )
     return $show;
   }
 }
