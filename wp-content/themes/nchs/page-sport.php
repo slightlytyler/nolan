@@ -23,44 +23,61 @@ $student_query = new WP_Query( [
     'compare' => 'NOT EXISTS'
   ] ],
 ] );
-echo "<div class='page-content col-sm-8'>";
-echo "<h2>Football News</h2>";
-if( $news_query->have_posts() ) :
-  echo "<div class='sport-news'>";
-  while ( $news_query->have_posts() ) : $news_query->the_post();
-    echo sprintf( "<h4><a href='%s'>%s</a></h4>", get_permalink(), get_the_title() );
-    the_date();
-  endwhile;
-  wp_reset_postdata();
-  echo "</div>";
-endif;
-echo "<div>";
-while ( have_posts() ) : the_post();
-  the_title( '<h1>', '</h1>' );
-  the_content();
-endwhile;
-wp_reset_postdata();
-echo '</div>';
 
-echo '<div>';
+echo "<div class='page-content col-sm-8 nopad'>"
+; 
+
+  if( $news_query->have_posts() ) :
+    echo "<div class='col-sm-12 nopad'>";
+        echo "<div class='col-md-12'>";
+          echo "<h2>Football News</h2>";
+        echo "</div>";
+        echo "<div class='sport-news'>";
+      while ( $news_query->have_posts() ) : $news_query->the_post();
+        if( $news_query->current_post === 0 ) :
+          echo "<div class='col-md-12'>";
+            echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), the_date() );
+          echo "</div>";
+        else :
+          echo "<div class='col-md-6'>";
+            echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), the_date() );
+          echo "</div>";
+        endif;
+      endwhile;
+        echo "<div class='clearfix'></div>";
+      echo "</div>";
+      wp_reset_postdata();
+    echo "</div>";
+  endif;
+
+  echo "<div class='col-sm-12'>";
+    while ( have_posts() ) : the_post();
+      the_title( '<h1>', '</h1>' );
+      the_content();
+    endwhile;
+    wp_reset_postdata();
+  echo '</div>';
+
 if ( $coach_query->have_posts() ) :
-  echo '<h2>Coaches</h2>';
-  while ( $coach_query->have_posts() ) : $coach_query->the_post(); 
-    echo '<div class="coach-picture col-xs-6 col-sm-4 col-md-3 col-lg-4 nopad">';
-      echo '<div class="info">';
-        echo '<h3>'.get_the_title().'</h3>';
-        the_field('wpcf-coach-position');
-        echo sprintf(' | <a href="%s">Read Bio &raquo;</a>', get_permalink() );
+  echo "<div class='col-sm-12'>";
+    echo '<h2>Coaches</h2>';
+    while ( $coach_query->have_posts() ) : $coach_query->the_post();
+
+      echo '<div class="coach-picture col-xs-6 col-sm-4 col-md-3 col-lg-4 nopad">';
+        echo '<div class="info">';
+          echo '<h3>'.get_the_title().'</h3>';
+          the_field('wpcf-coach-position');
+          echo sprintf(' | <a href="%s">Read Bio &raquo;</a>', get_permalink() );
+        echo '</div>';
+      the_post_thumbnail();
       echo '</div>';
-    the_post_thumbnail();
-    echo '</div>';
-  endwhile;
-  wp_reset_postdata();
+    endwhile;
+    wp_reset_postdata();
+  echo '<div class="clearfix"></div></div>';
 endif;
-echo '<div class="clearfix"></div></div>';
 
 if ( $student_query->have_posts() ) :
-  echo '<div>';
+  echo "<div class='col-sm-12'>";
     echo '<h2>Players</h2>';
   while ( $student_query->have_posts() ) : $student_query->the_post(); 
     echo '<div class="player-picture col-xs-4 col-sm-3 col-lg-2 nopad">';
