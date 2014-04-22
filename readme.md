@@ -1,5 +1,7 @@
 ## CPTs, Connections & Taxa
 
+### People Types
+
 #### Faculty
 
 Connected to Department Template
@@ -12,7 +14,9 @@ Connected to Ministry Template
 
 Connected to Sport Template
 
-#### Players
+#### Students
+
+### Post Types
 
 Connected to Sport Template
 
@@ -21,6 +25,8 @@ Connected to Sport Template
 Athletics News Stories - Sports Taxonomy
 
 #### News (Articles)
+
+### Events
 
 New Stories - Vanilla Cats and Tags
 
@@ -32,6 +38,15 @@ Event Organizer - Event Cats, Event Tags and Sports Taxonomy
 
 Related to Events by Event Organizer
 
+### Theme Types
+
+#### Slides
+
+Slides displayed on the homepage.
+
+#### Media
+
+Any images or media uploaded to any section of the site will appear here.
 
 ## Templates
 
@@ -61,6 +76,10 @@ A department page template that includes both Coaches and Players.
 
     @todo athletics news category selector
 
+#### Club
+
+A department page template that includes Students.
+
 ## Plugins 
 
 #### ACF - Advanced Custom Fields
@@ -75,7 +94,7 @@ Define Relationships, Drag & Drop Ordering, Widget
 
 #### Event Organizer
 
-Event Post Type and Dashboard Interface, Widgets
+Event & Venue Post Type, Dashboard Interface, Widgets. NCHS theme loads custom templates.
 
 ## Meta Boxes
 
