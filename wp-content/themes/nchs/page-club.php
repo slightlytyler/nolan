@@ -12,24 +12,19 @@ get_header();
     'connected_items' => get_queried_object(),
     'nopaging' => true,
   ) );
-  if ( $connected->have_posts() ) :
-    echo '<h2>Students</h2>';
-    while ( $connected->have_posts() ) : $connected->the_post(); 
-      echo '<div class="card">';
-      if( get_field('title') == "Department Head" ) {
-        echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
-      }
-      else {
-        echo '<h3>'.get_the_title().'</h3>';
-      }
+if ( $connected->have_posts() ) :
 ?>
+  <h2>Students</h2>
+<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
+  <div class="card">
+    <h3><?php the_title() ?></h3>
     <div class='col-sm-4 nopad'>
       <?php the_post_thumbnail(); ?>
     </div>
     <div class='col-sm-8 nopad'>
-      <p><strong>Teaches:</strong> <?php the_field('teaches'); ?></p>
-      <p><strong>Education:</strong> <?php the_field('education'); ?></p>
-      <p><strong><?php echo date('Y') - get_field('since'); ?> Years of service</strong></p>
+      <p>Field 1: <?php echo p2p_get_meta( get_post()->p2p_id, 'number', true ) ?></p>
+      <p>Field 2: <?php echo p2p_get_meta( get_post()->p2p_id, 'position', true ) ?></p>
+      <p><strong><?php echo date('Y') - get_field('since'); ?> Class</strong></p>
     </div>
     <div class='clearfix'></div>
   </div>

@@ -1,3 +1,5 @@
+    <div class='clearfix'></div>
+</div><!-- .wrap -->
 <?php if(!is_single() && !is_home()) : ?>
 </div>
 <?php endif;?>

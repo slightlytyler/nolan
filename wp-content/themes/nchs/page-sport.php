@@ -100,7 +100,7 @@ if ( $student_query->have_posts() ) :
 endif;
 ?>
 </div>
-<div class="col-sm-4 banner nopad">
+<div class="right col-sm-4 banner nopad">
   <h3>NCHS Athletics</h3>
   <div class="banner-inner">
     <ul class="widgets">

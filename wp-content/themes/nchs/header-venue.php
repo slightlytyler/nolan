@@ -103,3 +103,4 @@
 <?php 
 get_template_part('nav');
 ?>
+<div class='wrap'>

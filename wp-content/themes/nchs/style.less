@@ -24,6 +24,12 @@ Version: 1.0
  * Taylor's Code
  */
 
+.wrap {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
 img {
   max-width: 100%;
 }
@@ -84,7 +90,20 @@ blockquote::after{
   content: "";
 }
 
+.right {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  overflow: scroll;
+}
+.left {
+  // height: 100%;
+  // position: absolute;
+  // left: 0;
+  // overflow: scroll;
+}
 .page-content {
+  min-height: 480px;
   font-family: @font-family-serif;
   background: @brand-light;
   border-right: 1px solid @brand-border;
@@ -113,7 +132,7 @@ blockquote::after{
 /*
  * Widgets
  */
-
+  
 // .right_sidebar {
 //   border-left: 1px solid @brand-border;
 // }
@@ -310,6 +329,26 @@ li.widget {
   left: 15px;
 }
 
+/*
+ * Athletics Template Banner
+ */
+
+body.page-template-page-sport-php {
+  background: @brand-light;
+}
+.page-template-page-sport-php .banner {
+  top: 0px !important;
+  right: 5px !important;
+  padding: 0 5px 40px 5px !important;
+}
+.page-template-page-sport-php .banner-right {
+  right: 5px !important;
+}
+.page-template-page-sport-php .banner-left {
+  left: 5px !important;
+}
+
+
 // Navigation
 .navbar {
   border-radius: 0;
@@ -443,7 +482,7 @@ th {
 }
 #wp-calendar > tbody > tr:nth-child(odd) > td,
 #wp-calendar > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+  background-color: @brand-light;
 }
 #wp-calendar > tbody > tr > td:hover,
 #wp-calendar > tbody > tr > th:hover {
