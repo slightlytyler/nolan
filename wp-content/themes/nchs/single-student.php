@@ -8,7 +8,7 @@
       the_author();
       the_content();
       $pictures = get_field('sport_pictures',$post->ID);
-      print_r($pictures);
+      // print_r($pictures);
       foreach( get_field('sport_pictures') as $row ) :
         // echo print_r($row);
         echo $row['sport']->term_id;
