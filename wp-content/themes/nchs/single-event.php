@@ -14,7 +14,6 @@
 			<?php
 				//Events have their own 'event-category' taxonomy. Get list of categories this event is in.
 				$categories_list = get_the_term_list( get_the_ID(), 'event-category', '', ', ',''); 
-
 				if ( '' != $categories_list ) {
 					$utility_text = __( 'This event was posted in %1$s by <a href="%5$s">%4$s</a>. Bookmark the <a href="%2$s" title="Permalink to %3$s" rel="bookmark">permalink</a>.', 'eventorganiser' );
 				} else {

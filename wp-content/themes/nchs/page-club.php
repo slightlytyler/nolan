@@ -1,5 +1,9 @@
 <?php
 /* Template Name: Club */
+$meta_title_1 = get_field('meta_title_1');
+$meta_title_2 = get_field('meta_title_2');
+$meta_title_3 = get_field('meta_title_3');
+$meta_title_4 = get_field('meta_title_4');
 get_header();
   echo "<div class='page-content col-sm-7 col-md-8'>";
   while ( have_posts() ) : the_post();
@@ -22,9 +26,17 @@ if ( $connected->have_posts() ) :
       <?php the_post_thumbnail(); ?>
     </div>
     <div class='col-sm-8 nopad'>
-      <p>Field 1: <?php echo p2p_get_meta( get_post()->p2p_id, 'number', true ) ?></p>
-      <p>Field 2: <?php echo p2p_get_meta( get_post()->p2p_id, 'position', true ) ?></p>
-      <p><strong><?php echo date('Y') - get_field('since'); ?> Class</strong></p>
+<?php 
+    if( $meta_title_1 != '' )
+      echo '<p>' . $meta_title_1 . ': ' . p2p_get_meta( get_post()->p2p_id, 'field_1', true ) . '</p>';
+    if( $meta_title_2 != '' )
+      echo '<p>' . $meta_title_2 . ': ' . p2p_get_meta( get_post()->p2p_id, 'field_2', true ) . '</p>';
+    if( $meta_title_3 != '' )
+      echo '<p>' . $meta_title_3 . ': ' . p2p_get_meta( get_post()->p2p_id, 'field_3', true ) . '</p>';
+    if( $meta_title_4 != '' )
+      echo '<p>' . $meta_title_4 . ': ' . p2p_get_meta( get_post()->p2p_id, 'field_4', true ) . '</p>';
+?>
+      <p><strong>Class of <?php echo date('Y') - get_field('since'); ?></strong></p>
     </div>
     <div class='clearfix'></div>
   </div>

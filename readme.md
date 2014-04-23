@@ -148,6 +148,7 @@ Clicking the add page button from these posts edit pages requires the user to se
 - Fix Calendar Widget Links
 - Drag and Drop Page Heiarchy
 - Fix Years of Service & Class Stuff
+- Header text work (Page Field?)
 
 ### Options
 
@@ -167,5 +168,12 @@ Can also just allow coaches. (Same box on frontend, 2 boxes for dashboard)
 
 #### More News/Post Channels
 
-Student News (Club Communications?)
-Others?
+Student News (Internal Channel)
+
+#### Club page schedule
+
+Would require new taxonomy, pairs nicely with a new post channel.
+
+#### Sliders anywhere
+
+Slideshow post type, page template options.

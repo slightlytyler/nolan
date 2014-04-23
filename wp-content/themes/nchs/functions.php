@@ -613,7 +613,7 @@ class Athletics_Widget extends WP_Widget {
         echo $before_title . $term->slug . ' News' . $after_title;
       echo '<ul>';
       while ( $news_query->have_posts() ) : $news_query->the_post();
-        echo get_the_term_list( $post->ID, 'sport' );
+        // echo get_the_term_list( $post->ID, 'sport' );
         echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
       endwhile;
       wp_reset_postdata();
