@@ -1,10 +1,19 @@
 <?php
 /* Template Name: Sport */
+$meta_title_1 = get_field('meta_title_1');
+$meta_title_2 = get_field('meta_title_2');
+$meta_title_3 = get_field('meta_title_3');
+$meta_title_4 = get_field('meta_title_4');
 get_header();
 $term = get_term( get_field('news_category'), 'sport' );
 $news_query = new WP_Query( [ 
   'post_type' => 'athletics',
   'posts_per_page' => '3',
+  'sport' => $term->slug
+] );
+$event_query = new WP_Query( [ 
+  'post_type' => 'event',
+  'posts_per_page' => '10',
   'sport' => $term->slug
 ] );
 $coach_query = new WP_Query( [
@@ -35,10 +44,12 @@ echo "<div class='page-content col-sm-8 nopad'>";
       while ( $news_query->have_posts() ) : $news_query->the_post();
         if( $news_query->current_post === 0 ) :
           echo "<div class='col-md-12'>";
+            echo get_the_post_thumbnail( $post->ID, 'nchs-admin' );
             echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), get_the_date() );
           echo "</div>";
         else :
           echo "<div class='col-md-6'>";
+            echo get_the_post_thumbnail( $post->ID, 'nchs-admin' );
             echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), get_the_date() );
           echo "</div>";
         endif;
@@ -49,9 +60,33 @@ echo "<div class='page-content col-sm-8 nopad'>";
     echo "</div>";
   endif;
 
-  echo "<div class='col-sm-12'>";
-    echo '<h1>Schedule</h1>';
-  echo '</div>';
+  if ( $event_query->have_posts() ) :
+    echo "<div class='col-sm-12'>";
+      echo '<h1>Schedule</h1>';
+      echo '<table class="table table-striped"><tbody>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Event</th>
+        <th>Location</th>
+        <th>Level</th>
+        <th>Results</th>
+      </tr>';
+      while ( $event_query->have_posts() ) : $event_query->the_post();
+      echo "<tr>";
+        // echo "<td>" . eo_get_schedule_start('j F Y') . "</td>";
+        echo "<td>" . eo_get_the_start('F j') . "</td>";
+        echo "<td>" . eo_get_the_start('g:i a') . "</td>";
+        echo sprintf( "<td><a href='%s'>%s</a></td>", get_the_permalink(), get_the_title() );
+        echo sprintf( "<td><a href='%s'>%s</a></td>", eo_get_venue_link(), eo_get_venue_name() );
+        echo "<td>" . get_field('level') . "</td>";
+        echo "<td>" . get_field('results') . "</td>";
+      echo "</tr>";
+      endwhile;
+      echo '</tbody></table>';
+      wp_reset_postdata();
+    echo '<div class="clearfix"></div></div>';
+  endif;
 
   echo "<div class='col-sm-12'>";
     while ( have_posts() ) : the_post();
@@ -86,12 +121,14 @@ if ( $student_query->have_posts() ) :
     echo '<div class="player-picture col-xs-4 col-sm-3 col-lg-2 nopad">';
     echo sprintf('<a href="%s">', get_permalink() );
     echo '<div class="info">';
-      echo '<div class="number">'.p2p_get_meta( get_post()->p2p_id, 'number', true ).'</div>';
+      if( $meta_title_1 != '' )
+        echo '<div class="number">'.p2p_get_meta( get_post()->p2p_id, 'field_1', true ).'</div>';
       if( get_field('title') == "Department Head" )
         echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
       else
         echo '<h3>'.get_the_title().'</h3>';
-      echo '<div class="clear">'.p2p_get_meta( get_post()->p2p_id, 'position', true ).'</div style="clear:both">';
+      if( $meta_title_2 != '' )
+        echo '<p style="clear:both; margin-bottom:0">'.p2p_get_meta( get_post()->p2p_id, 'field_2', true ).'</p>';
     echo '</div>';
     echo '</a>';
     $pictures = get_field('sport_pictures');
