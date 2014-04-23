@@ -5,10 +5,10 @@ get_header();
   <h3>In the Marianist tradition since 1961</h3>
 </div>
 <div class="col-sm-12 home-top-wrap">
-  <div class="col-sm-7 col-md-8 col-sm-push-5 col-md-push-4 video">
+  <div class="col-sm-7 col-md-8 col-sm-push-5 col-md-push-4 video nopad">
     <?php echo nhcs_video( get_field('homepage_video', 'option') ); ?>
   </div>
-  <div class="col-sm-5 col-md-4 col-sm-pull-7 col-md-pull-8 latest">
+  <div class="col-sm-5 col-md-4 col-sm-pull-7 col-md-pull-8 latest nopad">
     <h2>Latest</h2>
   <?php 
   while ( have_posts() ) : the_post();

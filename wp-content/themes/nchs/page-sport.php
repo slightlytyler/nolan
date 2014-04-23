@@ -28,8 +28,8 @@ echo "<div class='page-content col-sm-8 nopad'>";
 
   if( $news_query->have_posts() ) :
     echo "<div class='col-sm-12 nopad'>";
-        echo "<div class='col-md-12'>";
-          echo "<h2>Football News</h2>";
+        echo "<div class='col-sm-12'>";
+          echo "<h2>$term->name News</h2>";
         echo "</div>";
         echo "<div class='sport-news'>";
       while ( $news_query->have_posts() ) : $news_query->the_post();

@@ -18,6 +18,11 @@ Version: 1.0
 @import "css/lib/bootstrap-social";
 @import "css/nchs";
 
+.alignleft {
+  float: left;
+  margin: 0 15px 3px 0;
+}
+
 @brand-border: #dbdbdb;
 
 .coach-picture,
@@ -115,6 +120,7 @@ blockquote::after{
 }
 
 .page-content {
+  min-height: 640px;
   font-family: @font-family-serif;
   background: @brand-light;
   border-right: 1px solid @brand-border;
@@ -159,7 +165,15 @@ li.widget {
   // background: white;
   // .gradient( lighten( @brand-primary, 82% ) , white );
   border-bottom: 1px solid @brand-light-gray;
-  padding: 0 15px 15px 15px;
+  padding: 0 0 15px 0;
+}
+li.widget h3 {
+  margin-left: 5px;
+}
+li.widget ul,
+li.widget ul.eo-events,
+li.widget ol {
+  margin: 0 0 0 10px;
 }
 
 .widget p {
@@ -365,6 +379,9 @@ body.page-template-page-sport-php {
 }
 .page-template-page-sport-php .banner-left {
   left: 5px !important;
+}
+.page-template-page-sport-php .page-content {
+  border: none;
 }
 
 
