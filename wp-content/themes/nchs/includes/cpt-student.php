@@ -4,7 +4,11 @@ $student = new CPT( [
   'singular' => 'Student',
   'plural' => 'Students',
   'slug' => 'student',
-], $supports );
+], [
+  'supports' => [ 'title', 'editor', 'thumbnail' ],
+  // 'has_archive' => 'false',
+  'exclude_from_search' => 'true',
+] );
 $student->columns(array(
   'cb' => '<input type="checkbox" />',
   'image' => __('Image'),
@@ -15,8 +19,6 @@ $student->columns(array(
 $student->populate_column('graduation_year', function($column, $post) {
   the_field('graduation_year');
 });
-$student->populate_column('image', function($column, $post) {
-  the_post_thumbnail( 'nchs-admin' );
-});
+$student->populate_column('image', 'person_image_column');
 $student->menu_icon("dashicons-welcome-learn-more");
 ?>

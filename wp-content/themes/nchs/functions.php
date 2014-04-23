@@ -5,11 +5,15 @@ $faculty_columns = [
   'image' => __('Image'),
   'title' => __('Name'),
   'since' => __('Since'),
-  'date' => __('Date')
+  'date' => __('Date'),
 ];
-$supports = [
-  'supports' => [ 'title', 'editor', 'thumbnail' ],
-];
+
+function post_image_column($column, $post) {
+  the_post_thumbnail( 'nchs-square' );
+}
+function person_image_column($column, $post) {
+  the_post_thumbnail( 'nchs-admin' );
+}
 
 include_once('includes/cpt-faculty.php');
 include_once('includes/cpt-coach.php');
@@ -20,12 +24,30 @@ include_once('includes/cpt-slide.php');
 include_once('includes/cpt-news.php');
 include_once('includes/cpt-athletics.php');
 
-// CPT Dashboard Image Column Width
-add_action('admin_head', 'nhcs_column_width');
-function nhcs_column_width() {
+/*
+ * Dashboard Modifictions
+ */
+
+add_filter('admin_head', 'nchs_dashboard');
+  function nchs_dashboard() {
+    // CPT Dashboard Image Column Width
     echo '<style type="text/css">';
     echo '.column-image { text-align: center; width:100px !important; overflow:hidden }';
     echo '</style>';
+    // Save the page on template change, so user sees correct interface for template.
+    global $parent_file;
+    if ( is_admin() && $parent_file == 'edit.php?post_type=page') {
+?>
+<script type="text/javascript">
+jQuery(function($){
+  $('#page_template').on('change', function(){
+    $('#save-post').click();
+    $('#publish').click();
+  });
+});
+</script>
+<?php
+  }
 }
 
 // @todo transient cache for spreadsheet template
@@ -36,8 +58,8 @@ function nhcs_column_width() {
 add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 function remove_width_attribute( $html ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
+  $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+  return $html;
 }
 
 function nhcs_video( $id ) {
@@ -61,24 +83,6 @@ function nchs_pagination($html) {
   return '<ul class="pagination">'.$out.'</ul>';
 }
 
-// Save the page on template change, so user sees correct interface for template.
-add_filter('admin_head', 'nchs_save_page_on_template_change');
-function nchs_save_page_on_template_change() {
-    global $parent_file;
-    if ( is_admin() && $parent_file == 'edit.php?post_type=page') {
-    ?>
-    <script type="text/javascript">
-    jQuery(function($){
-      $('#page_template').on('change', function(){
-        $('#save-post').click();
-        $('#publish').click();
-      });
-    });
-    </script>
-    <?php
-    }
-}
-
 // Modify the Homepage Query
 add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 function add_my_post_types_to_query( $query ) {
@@ -97,12 +101,13 @@ function add_my_post_types_to_query( $query ) {
   }
 }
 
-add_filter( 'manage_taxonomies_for_athletics_columns', 'activity_type_columns' );
-function activity_type_columns( $taxonomies ) {
-    $taxonomies[] = 'sport';
-    return $taxonomies;
-}
+// add_filter( 'manage_taxonomies_for_athletics_columns', 'activity_type_columns' );
+// function activity_type_columns( $taxonomies ) {
+//   $taxonomies[] = 'sport';
+//   return $taxonomies;
+// }
 
+// WP Admin Taxonomy Filters
 function nchs_add_taxonomy_filters() {
   global $typenow; 
   $taxonomies = array('sport');
@@ -207,6 +212,16 @@ class NHCS_ThemeSetup {
       'nchs-main-menu'  => __('Main Menu'),
       'nchs-nav-menu'   => __('Nav Menu')
     ) );
+    register_taxonomy( 'sport',
+      [ 'athletics',
+        'event',
+      ],
+      [ 'label' => __( 'Sport' ),
+        'rewrite' => [ 'slug' => 'sport' ],
+        'hierarchical' => false,
+        'show_admin_column' => true,
+      ]
+    );
   }
 
   public function nchs_widgets_init() {
@@ -291,6 +306,7 @@ class NHCS_ThemeSetup {
       set_post_thumbnail_size( 400, 500 );
     }
     $image_sizes = [
+      [ 'nchs-square', 100, 100 ],
       [ 'nchs-admin', 125, 100 ],
       [ 'nchs-background', 1251, 328 ],
       [ 'nchs-foreground', 9999, 254 ],
@@ -359,13 +375,6 @@ class NHCS_Posts2Posts {
       'sortable' => 'any',
       'admin_column' => 'any',
     ) );
-    // p2p_register_connection_type( array(
-    //   'name' => 'player_to_pages',
-    //   'from' => 'page',
-    //   'to' => 'player',
-    //   'sortable' => 'any',
-    //   'admin_column' => 'any',
-    // ) );
     p2p_register_connection_type( array(
       'name' => 'student_to_pages',
       'from' => 'page',

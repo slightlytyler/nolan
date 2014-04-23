@@ -4,6 +4,18 @@ $athletics = new CPT( [
   'singular' => 'Athletics',
   'plural' => 'Athletics',
   'slug' => 'athletics',
-], $supports );
+], [
+  'supports' => [ 'title', 'editor', 'thumbnail' ],
+  'has_archive' => 'true',
+] );
+$athletics->filters(['sport']);
+$athletics->columns([
+  'cb' => '<input type="checkbox" />',
+  'image' => __('Image'),
+  'title' => __('Name'),
+  'sport' => __('Sport'),
+  'date' => __('Date')
+]);
+$athletics->populate_column('image', 'post_image_column');
 $athletics->menu_icon("dashicons-megaphone");
 ?>

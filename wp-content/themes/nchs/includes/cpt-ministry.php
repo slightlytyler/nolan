@@ -4,13 +4,15 @@ $ministry = new CPT( [
   'singular' => 'Minister',
   'plural' => 'Ministry',
   'slug' => 'ministry',
-], $supports );
+], [
+  'supports' => [ 'title', 'editor', 'thumbnail' ],
+  // 'has_archive' => 'true',
+  'exclude_from_search' => 'true',
+] );
 $ministry->columns($faculty_columns);
 $ministry->populate_column('since', function($column, $post) {
   the_field('since');
 });
-$ministry->populate_column('image', function($column, $post) {
-  the_post_thumbnail( 'nchs-admin' );
-});
+$ministry->populate_column('image', 'person_image_column');
 $ministry->menu_icon("dashicons-shield");
 ?>
