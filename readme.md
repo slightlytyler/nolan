@@ -16,6 +16,9 @@ Connected to Sport Template
 
 #### Students
 
+Connected to Sport Template
+Connected to Club Template
+
 ### Post Types
 
 Connected to Sport Template
@@ -26,9 +29,9 @@ Athletics News Stories - Sports Taxonomy
 
 #### News (Articles)
 
-### Event Types
+News Stories - Vanilla Cats and Tags
 
-New Stories - Vanilla Cats and Tags
+### Event Types
 
 #### Events
 
