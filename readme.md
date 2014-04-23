@@ -69,7 +69,7 @@ Departments are linked to faculty. You can select Faculty from the department pa
 
 #### Ministry
 
-Ministry is the almost the same as Department, with different connection post type.
+Ministry is the almost the same as Department, connects to Ministers.
 
 #### Sport
 
@@ -79,7 +79,12 @@ A department page template that includes both Coaches and Players.
 
 A department page template that includes Students.
 
-var banner_tail = ( ( $('.banner').outerWidth() - 2 ) /2 );
+#### Ideas
+
+Banner Sidebar Page or Option
+Reverse Layout
+Activity (Faculty and Students Connected Pages)
+Better Galleries
 
 ## Widgets
 
@@ -141,16 +146,26 @@ Clicking the add page button from these posts edit pages requires the user to se
 - Event Board Page -http://wordpress.org/plugins/event-organiser-posterboard/
 - Calendar Page
 - Fix Calendar Widget Links
+- Drag and Drop Page Heiarchy
+- Fix Years of Service & Class Stuff
 
 ### Options
 
-Gravity Forms
+#### Gravity Forms
 
-Consolidate Faculty. We could consolidate ministry and coaches, or just one (coaches).
+Just really good
+
+#### Authors
+
+Relate Authors to Faculty or Pull Information
+
+#### Consolidate Faculty
+
+We could consolidate ministry and coaches, or just one (coaches).
 Simplify Relationships if Coaches need to be attached to clubs.
 Can also just allow coaches. (Same box on frontend, 2 boxes for dashboard)
 
-More News Channels
+#### More News/Post Channels
 
 Student News (Club Communications?)
 Others?
