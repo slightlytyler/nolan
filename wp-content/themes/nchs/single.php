@@ -73,6 +73,6 @@ endif;
 ?>
   </div>
 <?php
-get_sidebar("page");
+nchs_sidebar("page");
 get_footer();
 ?>

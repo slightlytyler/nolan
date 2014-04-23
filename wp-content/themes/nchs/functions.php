@@ -68,6 +68,24 @@ jQuery(function($){
  * Template Helpers
  */
 
+// Sidebar Helper
+function nchs_sidebar( $sidebar = null ) {
+  if ( $sidebar == 'video' )
+    echo "<div class='right col-md-4'>";
+  else
+    echo "<div class='right col-sm-5 col-md-4'>";
+  if ( $sidebar == null ) {
+    $sidebar = 'archive';
+  }
+    echo "<div class='right_sidebar'>";
+      echo "<ul class='widgets'>";
+        if ( !dynamic_sidebar( $sidebar . '-sidebar' ) ) {}
+      echo "</ul>";
+    echo "</div>";
+  echo "</div>";
+}
+
+// Responsive Video Container
 function nhcs_video( $id ) {
   if ( is_numeric( $id ) )
     $url = '//player.vimeo.com/video/'.$id;
@@ -271,27 +289,27 @@ class NHCS_ThemeSetup {
       'id' => 'events-sidebar',
       'description' => __( 'Shown on event templates', 'nchs' )
     ) );
-    register_sidebar( array(
-      'name' => __( 'Homepage Top Widget Area', 'nchs' ),
-      'id' => 'homepage-top-widget-area',
-      'description' => __( 'The Homepage top widget area', 'nchs' ),
-      'before_widget' => '',
-      'after_widget'  => ''
-    ) );
+    // register_sidebar( array(
+    //   'name' => __( 'Homepage Top Widget Area', 'nchs' ),
+    //   'id' => 'homepage-top-widget-area',
+    //   'description' => __( 'The Homepage top widget area', 'nchs' ),
+    //   'before_widget' => '',
+    //   'after_widget'  => ''
+    // ) );
     register_sidebar( array(
       'name' => __( 'Homepage Bottom', 'nchs' ),
-      'id' => 'homepage-bottom-widget-area',
+      'id' => 'homepage-bottom',
       'description' => __( 'The homepage bottom widget area', 'nchs' ),
       'before_widget' => '<div class="col-md-6">',
       'after_widget'  => '</div>'
     ) );
-    register_sidebar( array(
-      'name' => __( 'Homepage Right Widget Area', 'nchs' ),
-      'id' => 'homepage-right-widget-area',
-      'description' => __( 'The homepage right widget area', 'nchs' ),
-      'before_widget' => '',
-      'after_widget'  => ''
-    ) );
+    // register_sidebar( array(
+    //   'name' => __( 'Homepage Right Widget Area', 'nchs' ),
+    //   'id' => 'homepage-right-widget-area',
+    //   'description' => __( 'The homepage right widget area', 'nchs' ),
+    //   'before_widget' => '',
+    //   'after_widget'  => ''
+    // ) );
   }
 
   public function nchs_after_setup_theme() { 

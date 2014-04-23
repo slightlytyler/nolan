@@ -1,6 +1,4 @@
-<?php
-get_header();
-?>
+<?php get_header(); ?>
 <div class='info_title'>
   <h3><?php the_field('tagline','options') ?></h3>
 </div>
@@ -18,7 +16,7 @@ get_header();
     the_author();
     // the_excerpt();
   endwhile;
-  next_posts_link();
+  // next_posts_link();
   // echo '<a href="/news">More News &raquo;</a>'
   ?>
   </div>
@@ -45,11 +43,6 @@ get_header();
 </div>
 <div class="clearfix"></div>
 <div class="col-sm-6 col-md-8 nopad">
-<?php
-// get_sidebar("homepage-top");
-// get_sidebar('homepage-right');
-// get_sidebar('homepage-middle');
-get_sidebar('homepage-bottom');
-?>
+  <?php if ( !dynamic_sidebar( 'homepage-bottom' ) ) {} ?>
 </div>
 <?php get_footer(); ?>

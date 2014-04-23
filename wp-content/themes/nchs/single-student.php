@@ -19,6 +19,6 @@
 ?>
   </div>
 <?php
-get_sidebar("student");
+nchs_sidebar("student");
 get_footer();
 ?>

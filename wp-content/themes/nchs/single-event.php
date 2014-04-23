@@ -37,6 +37,6 @@
 	<?php endwhile; // end of the loop. ?>
 </div><!-- #primary -->
 <?php 
-get_sidebar('events');
+nchs_sidebar('events');
 get_footer();
 ?>

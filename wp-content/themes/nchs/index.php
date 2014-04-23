@@ -19,6 +19,6 @@ echo "<div class='page-content col-sm-7 col-md-8'>";
   endwhile;
   wp_pagenavi();
 echo '</div>';
-get_sidebar();
+nchs_sidebar();
 get_footer();
 ?>

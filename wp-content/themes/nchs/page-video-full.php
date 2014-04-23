@@ -13,6 +13,6 @@ get_header();
     the_content();
   echo '</div>';
   endwhile;
-get_sidebar('video');
+nchs_sidebar('video');
 get_footer();
 ?>

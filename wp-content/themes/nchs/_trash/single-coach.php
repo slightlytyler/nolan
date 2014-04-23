@@ -9,7 +9,7 @@
 		</div>
 	<?php endwhile; ?>
 	<div class='right_sidebar single_athletics'>
-		<?php get_sidebar("athletics")?>
+		<?php nchs_sidebar("athletics")?>
 	</div>
 	<div class="clear"></div>
 </div>

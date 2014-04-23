@@ -38,7 +38,7 @@ $slug = get_post( $post )->post_name;
       </div>
 
       <div class='right_sidebar'>
-        <?php get_sidebar("athletics")?>
+        <?php nchs_sidebar("athletics")?>
       </div>
       <div class='clear'></div>
     </div>

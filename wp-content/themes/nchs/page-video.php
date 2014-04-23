@@ -12,6 +12,6 @@ get_header();
     echo '<hr>';
   endwhile;
   echo '</div>';
-get_sidebar('video');
+nchs_sidebar('video');
 get_footer();
 ?>

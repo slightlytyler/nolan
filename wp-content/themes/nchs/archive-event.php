@@ -63,6 +63,6 @@ else :
 <?php
 endif;
 echo '</div>';
-get_sidebar('events');
+nchs_sidebar('events');
 get_footer();
 ?>

@@ -10,6 +10,6 @@ get_header(); ?>
       endwhile;
     ?>
   </div>
-  <?php get_sidebar("page"); ?>
+  <?php nchs_sidebar("page"); ?>
   <script type='text/javascript'> var spreadsheet_id = '<?php echo get_field("spreadsheet_id"); ?>';</script>
 <?php get_footer(); ?>

@@ -10,6 +10,6 @@ get_header();
   endwhile;
   get_template_part( 'section', 'students' );
   echo "</div>";
-get_sidebar("page");
+nchs_sidebar("page");
 get_footer();
 ?>

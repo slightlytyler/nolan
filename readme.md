@@ -152,9 +152,13 @@ Clicking the add page button from these posts edit pages requires the user to se
 
 Style Fixes
 
-Pagination
-Event Listing
-Teacher Cards
+- Home Banner
+- Pagination
+- Event Listing
+- Teacher Cards
+- Fix up Sidebars / Widget Areas
+- Headers
+- Slider
 
 ### Options
 
