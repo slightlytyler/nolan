@@ -82,6 +82,8 @@ var banner_tail = ( ( $('.banner').outerWidth() - 2 ) /2 );
 
 ### Connections
 
+Displays A list of connected information. Students for a club, players for a sport. Will not display if there are no connected posts.
+
 ### Freshest
 
     @todo Displays Combined Recent News and Athletics Feed
@@ -89,6 +91,8 @@ var banner_tail = ( ( $('.banner').outerWidth() - 2 ) /2 );
 ### Athletics News Widget 
 
 Recent Athletics News
+
+    @todo Choose number of articles to show
 
 ### News Widget
 
