@@ -18,6 +18,20 @@ Version: 1.0
 @import "css/lib/bootstrap-social";
 @import "css/nchs";
 
+.nchs_banner {
+  display: block;
+  position: absolute;
+  background: url("img/NCHSCrest.png");
+  width: 200px;
+  height: 196px;
+  z-index: 1001;
+  background-size: 100%;
+  left: 5px;
+}
+#menu-main-menu {
+  padding-left: 195px;
+}
+
 .alignleft {
   float: left;
   margin: 0 15px 3px 0;
@@ -454,16 +468,23 @@ body.page-template-page-sport-php {
   margin: 0;
   border: none;
 }
-.navbar .navbar-top > li > a {
-  line-height: 21px;
-  padding: 4px 10px;
+body .navbar-top ul > li > a {
+  padding: 4px 8px;
+  line-height: 33px;
+  font-size: 14px;
 }
+body .navbar-top ul.dropdown-menu > li > a {
+  padding: 4px 8px;
+  line-height: 20px;
+}
+// .navbar .navbar-top > li > a {
+//   line-height: 21px;
+//   padding: 0px 10px;
+// }
 
 .navbar-inverse .nchs-nav > li > a:hover, .navbar-inverse .nchs-main > li > a:hover {
   color: white;
 }
-
-
 .nchs-nav > li > a {
   font-family: @font-family-trajan;
 }

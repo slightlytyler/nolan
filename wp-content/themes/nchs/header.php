@@ -51,6 +51,7 @@
   ?>
   <body <?php body_class($class); ?>>
     <div class="navbar navbar-top"><!-- navbar-fixed-top -->
+      <a href="/" class='nchs_banner'></a>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
@@ -96,4 +97,6 @@ if( is_single() || is_page() )
 if( is_page( $page = 'athletics') || (is_archive() && in_array( get_query_var('post_type'), array('coach','player') ) ) )
   get_template_part('titles-athletics');
 get_template_part('nav');
+
+
 ?>
