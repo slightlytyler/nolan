@@ -1,14 +1,3 @@
-<?php
-/**
-* The Header for our theme.
-*
-* Displays all of the <head> section and everything up till <div id="main">
-*
-* @package WordPress
-* @subpackage Nolan2
-* @since Vype 1.0
-*/
-?>
 <!doctype html>  
 <!--[if IEMobile 7 ]> <html <?php language_attributes(); ?>class="no-js iem7"> <![endif]-->
 <!--[if lt IE 7 ]> <html <?php language_attributes(); ?> class="no-js ie6"> <![endif]-->
@@ -32,78 +21,46 @@
     <?php wp_head(); ?>
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
-  <?php
-    $class = "";
-    // can this be detected with the just added body classes instead?
-    if (is_home())
-      $class .= "home ";
-    elseif (is_page( $page = 'athletics') || (is_archive() && in_array(get_query_var('post_type'), array('coach', 'player'))))
-      $class .= "athletics ";
-    elseif (is_page() || is_single())
-      $class .= "interior ";
-    global $post;
-    $parents = get_post_ancestors( $post->ID );
-    $id = ($parents) ? $parents[count($parents)-1]: $post->ID;
-    $parent = get_page($id);
-    if (strcmp($parent->post_name, "athletics") == 0) {
-      $class .= $parent->post_name;
-    }
-  ?>
-  <body <?php body_class($class); ?>>
-    <div class="navbar navbar-top"><!-- navbar-fixed-top -->
-      <a href="/" class='nchs_banner hidden-xs'></a>
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="navbar-collapse collapse navbar-inverse">
-        <?php
-          nhcs_get_nav( 'nchs-main-menu' );
-          nhcs_get_nav( 'nchs-nav-menu', true ); // mobile_only
-          get_search_form();
-        ?>
-        <ul class="social-nav nav navbar-nav navbar-right visible-md visible-lg">
-          <li>
-            <a href="#facebook">
-              <i class='fa fa-facebook-square'></i>
-            </a>
-          </li>
-          <li>
-            <a href="#twitter">
-              <i class='fa fa-twitter-square'></i>
-            </a>
-          </li>
-          <li>
-            <a href="#gplus">
-              <i class='fa fa-google-plus-square'></i>
-            </a>
-          </li>
-          <li>
-            <a href="#pinterest">
-              <i class='fa fa-pinterest-square'></i>
-            </a>
-          </li>
-          <li>
-            <a href="#search" data-toggle="collapse" data-target=".navbar-form">
-              <i class="fa fa-search" style='font-size: 26px;'></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
 <?php
-if( is_home() && is_front_page() )
-  // get_template_part('slider', 'index');
-  echo 'slider';
 
-if( is_single() || is_page() )
-  get_template_part('titles');
+get_template_part('head', 'body');
+get_template_part('head', 'topnav');
+
+if( is_home() ) {
+  echo '<h1>Home</h1>';
+  get_template_part('head', 'slideshow');
+}
+elseif( is_archive() ) {
+  echo '<h1>Archive</h1>';
+  echo get_query_var('post_type');
+  // Theme Options Headers
+}
+elseif( is_page_template( 'single-event.php' ) ) {
+  // get_template_part('head', 'venue');
+?>
+<div class='venue-map'>
+  <?php $venue_id = get_queried_object_id(); ?>
+  <div class="slide1_title">
+    <h1><?php printf( __( 'Events at: %s', 'eventorganiser' ), '<span>' .eo_get_venue_name($venue_id). '</span>' );?></h1>
+  </div>
+<?php
+  if( $venue_description = eo_get_venue_description( $venue_id ) )
+    echo '<div class="venue-archive-meta">'.$venue_description.'</div>';
+  echo eo_get_venue_map( $venue_id, array('width'=>"100%") );
+?>
+  </div>
+</div>
+<?php
+}
+// elseif( is_single() || is_page() ) {
+//   get_template_part('head', 'page');
+// }
+// elseif( is_page_template() ) {
+//   get_template_part('head', 'venue');
+// }
+
+
 // if( is_page( $page = 'athletics') || (is_archive() && in_array( get_query_var('post_type'), array('coach','player') ) ) )
 //   get_template_part('titles-athletics');
 get_template_part('nav');
-
-
 ?>

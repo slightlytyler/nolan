@@ -78,10 +78,15 @@ jQuery(function($){
 
 // Sidebar Helper
 function nchs_sidebar( $sidebar = null ) {
-  if ( $sidebar == 'video' )
+  if ( $sidebar == 'video' ) {
     echo "<div class='right col-md-4'>";
-  else
+  }
+  elseif ( $sidebar == 'home' ) {
+    echo "<div class='right col-md-4'>";
+  }
+  else {
     echo "<div class='right col-sm-5 col-md-4'>";
+  }
   if ( $sidebar == null ) {
     $sidebar = 'archive';
   }
