@@ -26,7 +26,7 @@ Athletics News Stories - Sports Taxonomy
 
 #### News (Articles)
 
-### Events
+### Event Types
 
 New Stories - Vanilla Cats and Tags
 
