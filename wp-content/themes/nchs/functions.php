@@ -1,5 +1,10 @@
 <?php
+// @todo transient cache for spreadsheet template
+// $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
+// print_r($response);
+
 include_once('includes/CPT.php');
+
 $faculty_columns = [
   'cb' => '<input type="checkbox" />',
   'image' => __('Image'),
@@ -24,19 +29,28 @@ include_once('includes/cpt-slide.php');
 include_once('includes/cpt-news.php');
 include_once('includes/cpt-athletics.php');
 
+include_once('widgets/athletics-widget.php');
+include_once('widgets/news-widget.php');
+include_once('widgets/sport-events-widget.php');
+include_once('widgets/sport-news-widget.php');
+include_once('widgets/subpages-widget.php');
+
+include_once('includes/NHCS_Posts2Posts.php');
+NHCS_Posts2Posts::init();
+
 /*
  * Dashboard Modifictions
  */
 
 add_filter('admin_head', 'nchs_dashboard');
-  function nchs_dashboard() {
-    // CPT Dashboard Image Column Width
-    echo '<style type="text/css">';
-    echo '.column-image { text-align: center; width:100px !important; overflow:hidden }';
-    echo '</style>';
-    // Save the page on template change, so user sees correct interface for template.
-    global $parent_file;
-    if ( is_admin() && $parent_file == 'edit.php?post_type=page') {
+function nchs_dashboard() {
+  // CPT Dashboard Image Column Width
+  echo '<style type="text/css">';
+  echo '.column-image { text-align: center; width: 100px !important; overflow: hidden }';
+  echo '</style>';
+  // Save the page on template change, so user sees correct interface for template.
+  global $parent_file;
+  if ( is_admin() && $parent_file == 'edit.php?post_type=page') {
 ?>
 <script type="text/javascript">
 jQuery(function($){
@@ -49,10 +63,6 @@ jQuery(function($){
 <?php
   }
 }
-
-// @todo transient cache for spreadsheet template
-// $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
-// print_r($response);
 
 /* 
  * Template Helpers
@@ -96,6 +106,8 @@ function nchs_display_cards( $post ) {
   endif;
 }
 
+include_once('includes/Bootstrap_Walker.php');
+
 function nhcs_get_nav( $menu, $mobile_only = null ) {
   if($mobile_only == null) $mobile_only = false;
   $class = str_replace( '-menu', '', $menu );
@@ -105,61 +117,10 @@ function nhcs_get_nav( $menu, $mobile_only = null ) {
     'container' => '',
     // 'fallback_cb' => 'wp_bootstrap_main_nav_fallback',
     // 'depth' => '2',  suppress lower levels
-    'walker' => new Bootstrap_walker()
+    'walker' => new Bootstrap_Walker()
   );
   if ( $mobile_only ) $args['menu_class'] = "nav navbar-nav visible-xs";
   wp_nav_menu( $args );
-}
-
-/* 
- * Menu Walker for Bootsrap 2 level hover menus
- */
-
-class Bootstrap_walker extends Walker_Nav_Menu{
-  function start_el(&$output, $object, $depth = 0, $args = Array(), $current_object_id = 0){
-   global $wp_query;
-   $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-   $class_names = $value = '';
-    // If the item has children, add the dropdown class for bootstrap
-    if ( $args->has_children )
-      $class_names = "dropdown ";
-    $classes = empty( $object->classes ) ? array() : (array) $object->classes;
-    $class_names .= join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $object ) );
-    $class_names = ' class="'. esc_attr( $class_names ) . '"';
-    $output .= $indent . '<li id="menu-item-'. $object->ID . '"' . $value . $class_names .'>';
-    $attributes  = ! empty( $object->attr_title ) ? ' title="'  . esc_attr( $object->attr_title ) .'"' : '';
-    $attributes .= ! empty( $object->target )     ? ' target="' . esc_attr( $object->target     ) .'"' : '';
-    $attributes .= ! empty( $object->xfn )        ? ' rel="'    . esc_attr( $object->xfn        ) .'"' : '';
-    $attributes .= ! empty( $object->url )        ? ' href="'   . esc_attr( $object->url        ) .'"' : '';
-    // if the item has children add these two attributes to the anchor tag
-    // if ( $args->has_children )
-    //   $attributes .= ' class="dropdown-toggle" data-toggle="dropdown"';
-    $item_output = $args->before;
-    $item_output .= '<a'. $attributes .'>';
-    $item_output .= $args->link_before .apply_filters( 'the_title', $object->title, $object->ID );
-    $item_output .= $args->link_after;
-    // if the item has children add the caret just before closing the anchor tag
-    if ( $args->has_children ) {
-      $item_output .= '<b class="caret"></b></a>';
-    }
-    else {
-      $item_output .= '</a>';
-    }
-    $item_output .= $args->after;
-    $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $object, $depth, $args );
-  } // end start_el function
-
-  function start_lvl(&$output, $depth = 0, $args = Array()) {
-    $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
-  }
-
-  function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ){
-    $id_field = $this->db_fields['id'];
-    if ( is_object( $args[0] ) )
-      $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
-    return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
-  }
 }
 
 /* 
@@ -368,118 +329,6 @@ class NHCS_ThemeSetup {
 NHCS_ThemeSetup::init();
 
 /* 
- * Posts 2 Posts Configuration
- */
-
-// function terms_slug_list( $taxonomy ) {
-//   $slugs = [];
-//   $terms = get_terms( $taxonomy );
-//   foreach( $terms as $term ):
-//     array_push( $slugs, $term->slug );
-//   endforeach;
-//   return $slugs;
-// }
-
-class NHCS_Posts2Posts {
-  public static function init() {
-    add_action( 'p2p_init', array( __CLASS__, 'nhcs_p2p_connections' ) );
-    add_filter( 'p2p_connectable_args', array( __CLASS__, 'nhcs_filter_pages_by_template' ), 10, 3 );
-    add_filter( 'p2p_admin_box_show', array( __CLASS__, 'nhcs_restrict_p2p_box_display' ), 10, 3 );
-  }
-
-  public function nhcs_p2p_connections() {
-    p2p_register_connection_type( array(
-      'name' => 'faculty_to_pages',
-      'from' => 'page',
-      'to' => 'faculty',
-      'sortable' => 'any',
-      'admin_column' => 'any',
-    ) );
-    p2p_register_connection_type( array(
-      'name' => 'ministry_to_pages',
-      'from' => 'page',
-      'to' => 'ministry',
-      'sortable' => 'any',
-      'admin_column' => 'any',
-    ) );
-    p2p_register_connection_type( array(
-      'name' => 'coach_to_pages',
-      'from' => 'page',
-      'to' => 'coach',
-      'sortable' => 'any',
-      'admin_column' => 'any',
-    ) );
-    p2p_register_connection_type( array(
-      'name' => 'student_to_pages',
-      'from' => 'page',
-      'to' => 'student',
-      'sortable' => 'any',
-      'admin_column' => 'any',
-      'fields' => array(
-        'field_1' => array(
-          'title' => 'Field 1',
-          'type' => 'text',
-        ),
-        'field_2' => array(
-          'title' => 'Field 2',
-          'type' => 'text',
-        ),
-        'field_3' => array(
-          'title' => 'Field 3',
-          'type' => 'text',
-        ),
-        'field_4' => array(
-          'title' => 'Field 4',
-          'type' => 'text',
-        ),
-        'hide' => array(
-          'title' => 'Hide',
-          'type' => 'checkbox'
-        ),
-      )
-    ) );
-  }
-
-  public function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {
-    // @todo Theme Option?
-    $args['p2p:per_page'] = 15;
-    if( 'to' == $ctype->get_direction() ) {
-      $args['post_type'] = 'page';
-      $args['meta_key'] = '_wp_page_template';
-      $args['meta_compare'] = '=';
-      // if ( 'student_to_pages' == $ctype->name )
-      //   $args['meta_value'] = 'page-club.php';
-      if ( 'faculty_to_pages' == $ctype->name )
-        $args['meta_value'] = 'page-department.php';
-      if ( 'ministry_to_pages' == $ctype->name )
-        $args['meta_value'] = 'page-ministry.php';
-      if ( 'student_to_pages' == $ctype->name || 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )
-        $args['meta_value'] = 'page-sport.php';
-    }
-    return $args;
-  }
-
-  public function nhcs_restrict_p2p_box_display( $show, $ctype, $post ) {
-    if ( 'faculty_to_pages' == $ctype->name )
-      if( $post->post_type == 'page' )
-        return ( 'page-department.php' == $post->page_template );
-    if( $post->post_type == 'page' )
-      if ( $post->page_template == 'page-ministry.php' )
-        if ( 'ministry_to_pages' == $ctype->name )
-          return ( 'page-ministry.php' == $post->page_template );
-      if ( $post->page_template == 'page-sport.php' )
-        if ( 'student_to_pages' == $ctype->name || 'coach_to_pages' == $ctype->name || 'player_to_pages' == $ctype->name )        
-          return ( 'page-sport.php' == $post->page_template );
-      if ( $post->page_template == 'page-club.php' )
-        if ( 'student_to_pages' == $ctype->name )
-          return ( 'page-club.php' == $post->page_template );
-    if( $post->post_type == 'faculty' || $post->post_type == 'ministry' || $post->post_type == 'player' || $post->post_type == 'coach' || $post->post_type == 'student' )
-    return $show;
-  }
-}
-NHCS_Posts2Posts::init();
-
-/* 
  * Original Stuff
  */
 
@@ -498,32 +347,6 @@ function has_children($child_of = null) {
   }
   return (wp_list_pages("child_of=$child_of&echo=0")) ? true : false;
 }
-
-// function add_sport_column ($original_columns) {
-//   $new_columns['cb']    = '<input type="checkbox" />';
-//   $new_columns['title'] = 'Name';
-//   $new_columns['sport'] = 'Sport';
-//   $new_columns['date']  = 'Date';
-//   return $new_columns;
-// }
-// add_filter('manage_edit-player_columns', 'add_sport_column');
-// add_filter('manage_edit-coach_columns', 'add_sport_column');
-
-// function manage_player_sport_columns($column_name, $id) {
-//   global $wpdb;
-//   switch ($column_name) {
-//   case 'sport':
-//     $taxonomies = wp_get_post_terms($id, 'sport');
-//     foreach ($taxonomies as $taxonomy) {
-//       echo $taxonomy->name;
-//     }
-//     break;
-//   default:
-//     break;
-//   }
-// }
-// add_action('manage_player_posts_custom_column', 'manage_player_sport_columns', 10, 2);
-// add_action('manage_coach_posts_custom_column', 'manage_player_sport_columns', 10, 2);
 
 function add_news_categories_column ($original_columns) {
   $new_columns['cb']    = '<input type="checkbox" />';
@@ -561,335 +384,30 @@ function nchs_slides_number_fields_html() {
 }
 add_filter( 'admin_init', 'nchs_register_fields');
 
-/*
- * Custom Widgets
- * @todo Move!
- */
-
-// function register_athletics_widget() {
-//   register_widget( 'Athletics_Widget' );
+// function add_sport_column ($original_columns) {
+//   $new_columns['cb']    = '<input type="checkbox" />';
+//   $new_columns['title'] = 'Name';
+//   $new_columns['sport'] = 'Sport';
+//   $new_columns['date']  = 'Date';
+//   return $new_columns;
 // }
-// add_action( 'widgets_init', 'register_athletics_widget' );
+// add_filter('manage_edit-player_columns', 'add_sport_column');
+// add_filter('manage_edit-coach_columns', 'add_sport_column');
 
-class News_Widget extends WP_Widget {
-  function __construct() {
-    parent::__construct(
-      'news_widget'
-      , 'News'
-      , array( 'description' => 'Displays 5 most recent News Stories' )
-    );
-  }
-  function widget($args, $instance) {
-    extract( $args );
-    $title = apply_filters('widget_title', $instance['title']);
-    $news_query = new WP_Query( [ 
-      'post_type' => 'news',
-      'posts_per_page' => '5'
-    ] );
-    if( $news_query->have_posts() ) :
-      echo $before_widget;
-      if ( $title )
-        echo $before_title . $title . $after_title;
-      else
-        echo $before_title . $term->slug . ' News' . $after_title;
-      echo '<ul>';
-      while ( $news_query->have_posts() ) : $news_query->the_post();
-        echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
-        // echo '<p>'.get_terms('sport', 'orderby=count&hide_empty=0').'</p>';
-        // the_excerpt();
-      endwhile;
-      wp_reset_postdata();
-      echo '</ul>';
-      echo $after_widget;
-    endif;
-  }
-
-  function update($new_instance, $old_instance) {   
-    $instance = $old_instance;
-    $instance['title'] = strip_tags($new_instance['title']);
-    return $instance;
-  }
-
-  function form($instance) {  
-    $title    = esc_attr($instance['title']);
-    if( !$title )
-      $title = 'News';
-    ?>
-    <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
-      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-    </p>
-    <?php 
-  }
-}
-
-class Athletics_Widget extends WP_Widget {
-  function __construct() {
-    parent::__construct(
-      'athletics_widget'
-      , 'Athletics News'
-      , array( 'description' => 'Displays 5 most recent Athletics Stories' )
-    );
-  }
-
-  function widget($args, $instance) {
-    extract( $args );
-    $title = apply_filters('widget_title', $instance['title']);
-    $news_query = new WP_Query( [ 
-      'post_type' => 'athletics',
-      'posts_per_page' => '5'
-    ] );
-    if( $news_query->have_posts() ) :
-      echo $before_widget;
-      if ( $title )
-        echo $before_title . $title . $after_title;
-      else
-        echo $before_title . $term->slug . ' News' . $after_title;
-      echo '<ul>';
-      while ( $news_query->have_posts() ) : $news_query->the_post();
-        // echo get_the_term_list( $post->ID, 'sport' );
-        echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
-      endwhile;
-      wp_reset_postdata();
-      echo '</ul>';
-      echo $after_widget;
-    endif;
-  }
-
-  function update($new_instance, $old_instance) {   
-    $instance = $old_instance;
-    $instance['title'] = strip_tags($new_instance['title']);
-    return $instance;
-  }
-
-
-  function form($instance) {  
-    $title    = esc_attr($instance['title']);
-    if( !$title )
-      $title = 'Athletics News';
-    ?>
-    <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
-      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-    </p>
-    <?php 
-  }
-}
-
-
-class Sport_News_Widget extends WP_Widget {
-  function __construct() {
-    parent::__construct(
-      'sports_news_widget'
-      , 'Sport News'
-      , array( 'description' => 'Displays 5 most recent Athletics Stories for the current sport page.' )
-    );
-  }
-
-  function widget($args, $instance) {
-    extract( $args );
-    $title    = apply_filters('widget_title', $instance['title']);
-    $sport_id = $instance['sport'];
-    if( !$sport_id )
-      $sport_id = get_field('news_category', $GLOBALS['post']->ID );
-    $term = get_term( $sport_id, 'sport' );
-    $news_query = new WP_Query( [ 
-      'post_type' => 'event',
-      'posts_per_page' => '5',
-      'sport' => $term->slug
-    ] );
-    if( $news_query->have_posts() ) :
-      echo $before_widget;
-      if ( $title )
-        echo $before_title . $title . $after_title;
-      else
-        echo $before_title . $term->slug . ' News' . $after_title;
-      echo '<ul>';
-      while ( $news_query->have_posts() ) : $news_query->the_post();
-        echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
-        the_excerpt();
-      endwhile;
-      wp_reset_postdata();
-      echo '</ul>';
-      echo $after_widget;
-    endif;
-  }
-
-  function update($new_instance, $old_instance) {   
-    $instance = $old_instance;
-    $instance['title'] = strip_tags($new_instance['title']);
-    $instance['sport'] = strip_tags($new_instance['sport']);
-    return $instance;
-  }
-
-
-  function form($instance) {  
-    $title = esc_attr($instance['title']);
-    $sport = esc_attr($instance['sport']);
-    ?>
-    <p>Leave the title blank to use '[Sport] News' default title</p>
-    <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
-      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-    </p>
-    <p>When used with the Sport Template 'Sport Page Context' mode automatically displays relevant content. (Category set on page template)</p>
-    <p>
-      <label for="<?php echo $this->get_field_id('sport'); ?>">Sport:</label> 
-<?php
-    $terms = get_terms('sport');
-    if(count($terms) > 0) {
-      echo '<select id="'.$this->get_field_id("sport").'" name="'.$this->get_field_name("sport").'" type="text" value="'.$sport.'">';
-      echo "<option value=''>Sport Page Context</option>";
-      foreach ($terms as $term) { 
-        if( $term->term_id === $sport )
-          echo "<option value='$term->term_id' selected='selected'>$term->name ($term->count)</option>";
-        else
-          echo "<option value='$term->term_id'>$term->name ($term->count)</option>";
-      }
-      echo "</select>";
-    }
-    echo "</p>";
-  }
-}
-
-class Sport_Events_Widget extends WP_Widget {
-  function __construct() {
-    parent::__construct(
-      'sports_events_widget'
-      , 'Sport Events'
-      , array( 'description' => 'Displays 5 most recent Events in the sport for the current sport page.' )
-    );
-  }
-
-  function widget($args, $instance) {
-    extract( $args );
-    $title = apply_filters('widget_title', $instance['title']);
-    $sport_id = $instance['sport'];
-    if( !$sport_id )
-      $sport_id = get_field('news_category', $GLOBALS['post']->ID );
-    $term = get_term( $sport_id, 'sport' );
-    $event_query = new WP_Query( [ 
-      'post_type' => 'event',
-      'posts_per_page' => '5',
-      'sport' => $term->slug
-    ] );
-    if( $event_query->have_posts() ) :
-      echo $before_widget;
-      if ( $title )
-        echo $before_title . $title . $after_title;
-      else
-        echo $before_title . $term->slug . ' Events' . $after_title;
-      echo '<ul>';
-      while ( $event_query->have_posts() ) : $event_query->the_post();
-          //Format date/time according to whether its an all day event.
-          //Use microdata http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035
-          if( eo_is_all_day() ){
-            $format = 'd F Y';
-            $microformat = 'Y-m-d';
-          }else{
-            $format = 'd F Y '.get_option('time_format');
-            $microformat = 'c';
-          }
-?>
-          <time itemprop="startDate" datetime="<?php eo_the_start($microformat); ?>"><?php eo_the_start($format); ?></time>
-<?php
-        echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
-        the_excerpt();
-      endwhile;
-      wp_reset_postdata();
-      echo '</ul>';
-      echo $after_widget;
-    endif;
-  }
-
-  function update($new_instance, $old_instance) {   
-    $instance = $old_instance;
-    $instance['title'] = strip_tags($new_instance['title']);
-    $instance['sport'] = strip_tags($new_instance['sport']);
-    return $instance;
-  }
-
-  function form($instance) {  
-    $title = esc_attr($instance['title']);
-    $sport = esc_attr($instance['sport']);
-?>
-    <p>Leave the title blank to use '[Sport] Events' default title</p>
-    <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
-      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-    </p>
-    <p>When used with the Sport Template 'Sport Page Context' mode automatically displays relevant content. (Category set on page template)</p>
-    <p>
-      <label for="<?php echo $this->get_field_id('sport'); ?>">Sport:</label> 
-<?php
-    $terms = get_terms('sport');
-    if(count($terms) > 0) {
-      echo '<select id="'.$this->get_field_id("sport").'" name="'.$this->get_field_name("sport").'" type="text" value="'.$sport.'">';
-      echo "<option value=''>Sport Page Context</option>";
-      foreach ($terms as $term) { 
-        if( $term->term_id === $sport )
-          echo "<option value='$term->term_id' selected='selected'>$term->name ($term->count)</option>";
-        else
-          echo "<option value='$term->term_id'>$term->name ($term->count)</option>";
-      }
-      echo "</select>";
-    }
-    echo "</p>";
-  }
-}
-
-
-class Subpages_Widget extends WP_Widget {
-  function __construct() {
-    parent::__construct(
-      'subpages_widget'
-      , 'Subpages Navigation'
-      , array( 'description' => 'Displays subpage navigation.' )
-    );
-  }
-  function widget($args, $instance) {
-    extract( $args );
-    $title = apply_filters('widget_title', $instance['title']);
-    $news_query = new WP_Query( [ 
-      'post_type' => 'page',
-      'post_parent' => $GLOBALS['post']->ID,
-      'posts_per_page' => '15',
-    ] );
-    if( $news_query->have_posts() ) :
-      echo $before_widget;
-      if ( $title )
-        echo $before_title . $title . $after_title;
-      else
-        echo $before_title . 'Subpages' . $after_title;
-      echo '<ul>';
-      while ( $news_query->have_posts() ) : $news_query->the_post();
-        echo sprintf( "<li><a href='%s'>%s</a></li>", get_permalink(), get_the_title() );
-        // echo '<p>'.get_terms('sport', 'orderby=count&hide_empty=0').'</p>';
-        // the_excerpt();
-      endwhile;
-      wp_reset_postdata();
-      echo '</ul>';
-      echo $after_widget;
-    endif;
-  }
-
-  function update($new_instance, $old_instance) {   
-    $instance = $old_instance;
-    $instance['title'] = strip_tags($new_instance['title']);
-    return $instance;
-  }
-
-  function form($instance) {  
-    $title    = esc_attr($instance['title']);
-    if( !$title )
-      $title = 'News';
-    ?>
-    <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label> 
-      <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-    </p>
-    <?php 
-  }
-}
+// function manage_player_sport_columns($column_name, $id) {
+//   global $wpdb;
+//   switch ($column_name) {
+//   case 'sport':
+//     $taxonomies = wp_get_post_terms($id, 'sport');
+//     foreach ($taxonomies as $taxonomy) {
+//       echo $taxonomy->name;
+//     }
+//     break;
+//   default:
+//     break;
+//   }
+// }
+// add_action('manage_player_posts_custom_column', 'manage_player_sport_columns', 10, 2);
+// add_action('manage_coach_posts_custom_column', 'manage_player_sport_columns', 10, 2);
 
 ?>
