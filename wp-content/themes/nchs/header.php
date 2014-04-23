@@ -51,7 +51,7 @@
   ?>
   <body <?php body_class($class); ?>>
     <div class="navbar navbar-top"><!-- navbar-fixed-top -->
-      <a href="/" class='nchs_banner'></a>
+      <a href="/" class='nchs_banner hidden-xs'></a>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>

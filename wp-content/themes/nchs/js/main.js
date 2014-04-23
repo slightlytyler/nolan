@@ -107,13 +107,21 @@ if( $('body').hasClass('page-template-page-table-php') === true ) {
   .done( table_done );
 }
 
+$('.nchs_banner').hover(function(){
+      $(this).css({'top':'0px'});
+}, function(){
+  $(this).css({'top':'-119px'});
+});
+
 jQuery(function($) {
   $(document).ready(function(){
+
     $('.flexslider').flexslider({ // Slider - http://flexslider.woothemes.com/
       animation: "slide",
       controlNav: true,
       manualControls: ".control-nav button"
     });
+
   });
 });
 
