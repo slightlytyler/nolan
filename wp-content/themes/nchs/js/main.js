@@ -95,16 +95,23 @@ $(window).resize(function(){
 
 if( $('body').hasClass('page-template-page-table-php') === true ) {
   // //docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml
-  var url = '//spreadsheets.google.com/feeds/list/' + spreadsheet_id + '/od6/public/basic';
-  $.ajax({
-    type: 'GET',
-    data: { 'alt': 'json-in-script' },
-    url: url,
-    async: false,
-    contentType: "application/json",
-    dataType: 'jsonp'
-  })
-  .done( table_done );
+  // For loading tables client side
+  // var url = '//spreadsheets.google.com/feeds/list/' + spreadsheet_id + '/od6/public/basic';
+  // $.ajax({
+  //   type: 'GET',
+  //   data: { 'alt': 'json-in-script' },
+  //   url: url,
+  //   async: false,
+  //   contentType: "application/json",
+  //   dataType: 'jsonp'
+  // })
+  // .done( table_done );
+
+  // Server Side Style
+  // See nhcs_the_transient_json() & footer.php
+  var gdata = {};
+  gdata.io = {};
+  gdata.io.handleScriptLoaded = table_done;
 }
 
 $('.nchs_banner').hover(function(){

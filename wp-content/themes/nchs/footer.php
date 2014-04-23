@@ -43,7 +43,11 @@
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery.flexslider.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
 <!-- end scripts -->
-<?php wp_footer(); ?>
+<?php
+wp_footer();
+if( is_page_template('page-table.php') ) {
+    nhcs_the_transient_json( get_field("spreadsheet_id") );
+}
+?>
 </body>
-
 </html>

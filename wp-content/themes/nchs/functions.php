@@ -1,8 +1,4 @@
 <?php
-// @todo transient cache for spreadsheet template
-// $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
-// print_r($response);
-
 include_once('includes/CPT.php');
 
 $faculty_columns = [
@@ -46,7 +42,19 @@ add_filter('admin_head', 'nchs_dashboard');
 function nchs_dashboard() {
   // CPT Dashboard Image Column Width
   echo '<style type="text/css">';
-  echo '.column-image { text-align: center; width: 100px !important; overflow: hidden }';
+  echo '.column-image {
+    text-align: center;
+    width: 100px !important;
+    overflow: hidden;
+  }';
+  echo '#adminmenu div.wp-menu-image:before,
+  #wpadminbar #adminbarsearch:before,
+  #wpadminbar .ab-icon:before,
+  #wpadminbar .ab-item:before {
+    // color: #0054a3; /* @brand-logo */
+    color: #2b7bc9; /* @brand-success */
+    // color: #c3e1ff; /* @brand-powder-blue */
+  }';
   echo '</style>';
   // Save the page on template change, so user sees correct interface for template.
   global $parent_file;
@@ -139,6 +147,21 @@ function nhcs_get_nav( $menu, $mobile_only = null ) {
   );
   if ( $mobile_only ) $args['menu_class'] = "nav navbar-nav visible-xs";
   wp_nav_menu( $args );
+}
+
+function nhcs_the_transient_json( $spreadsheet_id ) {
+  $key = 'gdoc_' + $spreadsheet_id;
+  $transient = get_transient( $key );
+  if( $transient ) {
+    $gdoc_spreadsheet_data = $transient;
+  }
+  else {
+    $response = wp_remote_request("http://spreadsheets.google.com/feeds/list/".$spreadsheet_id."/od6/public/basic?alt=json-in-script");
+    set_transient( $key, $response['body'], 5 );
+    $gdoc_spreadsheet_data = $response['body'];
+    // https://spreadsheets.google.com/feeds/list/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/od6/public/basic
+  }
+  echo "<script type='text/javascript'>" . $gdoc_spreadsheet_data . "</script>";
 }
 
 /* 

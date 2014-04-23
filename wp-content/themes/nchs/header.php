@@ -96,11 +96,13 @@
     </div>
 <?php
 if( is_home() && is_front_page() )
-  get_template_part('slider', 'index');
+  // get_template_part('slider', 'index');
+  echo 'slider';
+
 if( is_single() || is_page() )
   get_template_part('titles');
-if( is_page( $page = 'athletics') || (is_archive() && in_array( get_query_var('post_type'), array('coach','player') ) ) )
-  get_template_part('titles-athletics');
+// if( is_page( $page = 'athletics') || (is_archive() && in_array( get_query_var('post_type'), array('coach','player') ) ) )
+//   get_template_part('titles-athletics');
 get_template_part('nav');
 
 

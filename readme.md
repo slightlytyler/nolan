@@ -150,6 +150,7 @@ Clicking the add page button from these posts edit pages requires the user to se
 - Fix Years of Service & Class Stuff
 - Header text work (Page Field?)
 
+
 Style Fixes
 
 - Home Banner
@@ -187,3 +188,12 @@ Would require new taxonomy, pairs nicely with a new post channel.
 #### Sliders anywhere
 
 Slideshow post type, page template options.
+
+#### More Events Templates
+
+Addtional Custom Fields, add page-templates support.
+
+#### More Custom Post Types
+
+Instapaper Likes
+YouTube Likes
