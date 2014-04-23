@@ -1,7 +1,9 @@
 <?php
 $slides_number = get_option( 'nchs_slides_number_setting', 5 );
-$args = array( 'post_type' => 'slide', 'posts_per_page' => $slides_number, 'orderby' => 'menu_order', 'order' => 'ASC');
-$loop = new WP_Query( $args );
+$loop = new WP_Query( [
+  'post_type' => 'slide',
+  'posts_per_page' => $slides_number
+] );
 ?>
 <?php if ($loop->have_posts()): ?>
 <div class='slider_section'>

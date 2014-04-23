@@ -5,6 +5,7 @@ $slide = new CPT( [
   'plural' => 'Slides',
   'slug' => 'slide',
 ], [
+  'hierarchical' => 'true',
   'supports' => [ 'title' ],
   'exclude_from_search' => 'true',
 ] );
