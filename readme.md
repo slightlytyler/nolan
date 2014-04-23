@@ -64,8 +64,6 @@ Any images or media uploaded to any section of the site will appear here.
 
 Departments are linked to faculty. You can select Faculty from the department pages, or you can select a deparment for each faculty memeber.
 
-    @idea Faculty Pages are a template away, if we can solve the data gathering issue.
-
 #### Ministry
 
 Ministry is the almost the same as Department, with different connection post type.
@@ -74,11 +72,40 @@ Ministry is the almost the same as Department, with different connection post ty
 
 A department page template that includes both Coaches and Players.
 
-    @todo athletics news category selector
-
 #### Club
 
 A department page template that includes Students.
+
+var banner_tail = ( ( $('.banner').outerWidth() - 2 ) /2 );
+
+## Widgets
+
+### Connections
+
+### Freshest
+
+    @todo Displays Combined Recent News and Athletics Feed
+
+### Athletics News Widget 
+
+Recent Athletics News
+
+### News Widget
+
+Recent News
+
+### Sport_News_Widget
+
+Pick a Sport or Use in Context Mode
+
+### Sport_Events_Widget
+
+Pick a Sport or Use in Context Mode
+
+### Subpages_Widget
+
+List of subpages
+
 
 ## Plugins 
 
@@ -100,11 +127,23 @@ Event & Venue Post Type, Dashboard Interface, Widgets. NCHS theme loads custom t
 
 Custom metaboxes setup with Advanced Custom Fields. Save files in `/nhcs/acf`
 
-Clicking the add page button from these posts edit pages requires the user to select the correct template when creating a page (then save it).
-
-    @todo Find elusive on template change hook. (JavaScript?)
+Clicking the add page button from these posts edit pages requires the user to select the correct template when creating a page (then save it). The post should automatically save a draft or do a publish. If it does not, save the post to get the missing fields to show up.
 
 @later
+- Cache Table Responses
 - Event Board Page -http://wordpress.org/plugins/event-organiser-posterboard/
 - Calendar Page
 - Fix Calendar Widget Links
+
+### Options
+
+Gravity Forms
+
+Consolidate Faculty. We could consolidate ministry and coaches, or just one (coaches).
+Simplify Relationships if Coaches need to be attached to clubs.
+Can also just allow coaches. (Same box on frontend, 2 boxes for dashboard)
+
+More News Channels
+
+Student News (Club Communications?)
+Others?
