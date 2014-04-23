@@ -150,6 +150,12 @@ Clicking the add page button from these posts edit pages requires the user to se
 - Fix Years of Service & Class Stuff
 - Header text work (Page Field?)
 
+Style Fixes
+
+Pagination
+Event Listing
+Teacher Cards
+
 ### Options
 
 #### Gravity Forms

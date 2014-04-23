@@ -2,7 +2,7 @@
 get_header();
 ?>
 <div class='info_title'>
-  <h3>In the Marianist tradition since 1961</h3>
+  <h3><?php the_field('tagline','options') ?></h3>
 </div>
 <div class="col-sm-12 home-top-wrap">
   <div class="col-sm-7 col-md-8 col-sm-push-5 col-md-push-4 video nopad">
@@ -27,8 +27,10 @@ get_header();
 <div class="col-sm-12 nopad home-stripe">
   <div class="col-sm-6 col-md-8 mission">
     <h2>NHCS Mission</h2>
-    <p>Yeah, yeah what are you wearing, Dave. I can't play. Pretty Mediocre photographic fakery, they cut off your brother's hair. I know what you're gonna say, son, and you're right, you're right, But Biff just happens to be my supervisor, and I'm afraid I'm not very good at confrontations. Hey man, the dance is over. Unless you know someone else who could play the guitar.</p>
-    <p><button class="btn btn-info">Read More</button></p>
+    <p><?php the_field('mission','options') ?></p>
+    <?php the_field('mission_link','options') ?>
+    <?php the_field('mission_link_icon','options') ?>
+    <p><button class="btn btn-info"><?php the_field('mission_link_text','options') ?></button></p>
   </div>
   <div class="col-sm-6 col-md-4 banner">
     <h3>Events</h3>

@@ -54,13 +54,9 @@ jQuery(function($){
 // $response = wp_remote_request('http://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml');
 // print_r($response);
 
-// Don't use width on <img tags
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-function remove_width_attribute( $html ) {
-  $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-  return $html;
-}
+/* 
+ * Template Helpers
+ */
 
 function nhcs_video( $id ) {
   if ( is_numeric( $id ) )
@@ -69,69 +65,36 @@ function nhcs_video( $id ) {
     $url = '//www.youtube.com/embed/'.$id;
   return sprintf( '<div class="video-container"><iframe src="%s" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>', $url );
 }
- 
-//customize the PageNavi HTML before it is output
-add_filter( 'wp_pagenavi', 'nchs_pagination', 10, 2 );
-function nchs_pagination($html) {
-  $out = '';
-  $out = str_replace("<a","<li><a",$html);  
-  $out = str_replace("</a>","</a></li>",$out);
-  $out = str_replace("<span","<li><span",$out); 
-  $out = str_replace("</span>","</span></li>",$out);
-  $out = str_replace("<div class='wp-pagenavi'>","",$out);
-  $out = str_replace("</div>","",$out);
-  return '<ul class="pagination">'.$out.'</ul>';
+
+function nchs_display_cards( $post ) {
+  $connected = new WP_Query( array(
+    'connected_type' => $post . '_to_pages',
+    'connected_items' => get_queried_object(),
+    'nopaging' => true,
+  ) );
+  if ( $connected->have_posts() ) :
+    $title = ucfirst($post);
+    echo "<h2>$title</h2>";
+    while ( $connected->have_posts() ) : $connected->the_post(); 
+      echo '<div class="card">';
+      if( get_field('title') == "Department Head" )
+        echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
+      else
+        echo '<h3>'.get_the_title().'</h3>';
+      echo sprintf( "<div class='col-sm-4 nopad'>%s</div>", get_the_post_thumbnail() );
+?>
+      <div class='col-sm-8 nopad'>
+        <p><strong>Teaches:</strong> <?php the_field('teaches'); ?></p>
+        <p><strong>Education:</strong> <?php the_field('education'); ?></p>
+        <p><strong><?php echo date('Y') - get_field('since'); ?> Years of service</strong></p>
+      </div>
+<?php
+      echo "<div class='clearfix'></div>";
+    echo "</div>";
+    endwhile;
+    wp_reset_postdata();
+  endif;
 }
-
-// Modify the Homepage Query
-add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
-function add_my_post_types_to_query( $query ) {
-  if ( $query->is_main_query() && is_home() ) {
-    // show athletics and news on the homepage
-    $query->set( 'post_type', array( 'news', 'athletics' ) );
-    $query->set( 'posts_per_page', '3' );
-  }
-  // elseif ( $query->is_main_query() && is_tax('sport') ) {
-  //   // show past events on the sport tag archives
-  //   $query->set( 'post_type', array( 'event', 'athletics' ) );
-  //   $query->set( 'posts_per_page', '10' );
-  // }
-  else {
-    return $query;
-  }
-}
-
-// add_filter( 'manage_taxonomies_for_athletics_columns', 'activity_type_columns' );
-// function activity_type_columns( $taxonomies ) {
-//   $taxonomies[] = 'sport';
-//   return $taxonomies;
-// }
-
-// WP Admin Taxonomy Filters
-function nchs_add_taxonomy_filters() {
-  global $typenow; 
-  $taxonomies = array('sport');
-  if( $typenow == 'athletics' ){
-    foreach ($taxonomies as $tax_slug) {
-      $tax_obj = get_taxonomy($tax_slug);
-      $tax_name = $tax_obj->labels->name;
-      $terms = get_terms($tax_slug);
-      if(count($terms) > 0) {
-        echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-        echo "<option value=''>Show All $tax_name</option>";
-        foreach ($terms as $term) { 
-          echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
-        }
-        echo "</select>";
-      }
-    }
-  }
-}
-add_action( 'restrict_manage_posts', 'nchs_add_taxonomy_filters' );
-
-/* 
- * Menu Helpers
- */
 
 function nhcs_get_nav( $menu, $mobile_only = null ) {
   if($mobile_only == null) $mobile_only = false;
@@ -147,6 +110,10 @@ function nhcs_get_nav( $menu, $mobile_only = null ) {
   if ( $mobile_only ) $args['menu_class'] = "nav navbar-nav visible-xs";
   wp_nav_menu( $args );
 }
+
+/* 
+ * Menu Walker for Bootsrap 2 level hover menus
+ */
 
 class Bootstrap_walker extends Walker_Nav_Menu{
   function start_el(&$output, $object, $depth = 0, $args = Array(), $current_object_id = 0){
@@ -205,6 +172,73 @@ class NHCS_ThemeSetup {
     add_action( 'widgets_init', [ __CLASS__, 'nchs_widgets_init' ] );
     add_action( 'after_setup_theme', [ __CLASS__, 'nchs_after_setup_theme' ] );
     add_action( 'wp_enqueue_scripts', [ __CLASS__, 'nchs_wp_enqueue_scripts' ] );
+    add_action( 'pre_get_posts', [ __CLASS__, 'nchs_add_post_types_to_query' ] );
+    add_action( 'restrict_manage_posts', [ __CLASS__, 'nchs_add_taxonomy_filters' ] );
+    add_filter( 'post_thumbnail_html', [ __CLASS__, 'nchs_remove_width_attribute' ] );
+    add_filter( 'image_send_to_editor', [ __CLASS__, 'nchs_remove_width_attribute' ] );
+    add_filter( 'wp_pagenavi', [ __CLASS__, 'nchs_pagination' ] );
+  }
+
+  // add_filter( 'manage_taxonomies_for_athletics_columns', 'activity_type_columns' );
+  // function activity_type_columns( $taxonomies ) {
+  //   $taxonomies[] = 'sport';
+  //   return $taxonomies;
+  // }
+
+  public function nchs_remove_width_attribute( $html ) {
+    // Don't use width on <img tags
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+  }
+
+  public function nchs_pagination($html) {
+    //customize the PageNavi HTML before it is output
+    $out = '';
+    $out = str_replace("<a","<li><a",$html);  
+    $out = str_replace("</a>","</a></li>",$out);
+    $out = str_replace("<span","<li><span",$out); 
+    $out = str_replace("</span>","</span></li>",$out);
+    $out = str_replace("<div class='wp-pagenavi'>","",$out);
+    $out = str_replace("</div>","",$out);
+    return '<ul class="pagination">'.$out.'</ul>';
+  }
+
+  public function nchs_add_post_types_to_query( $query ) {
+    // Modify the Homepage Query
+    if ( $query->is_main_query() && is_home() ) {
+      // show athletics and news on the homepage
+      $query->set( 'post_type', array( 'news', 'athletics' ) );
+      $query->set( 'posts_per_page', '3' );
+    }
+    // elseif ( $query->is_main_query() && is_tax('sport') ) {
+    //   // show past events on the sport tag archives
+    //   $query->set( 'post_type', array( 'event', 'athletics' ) );
+    //   $query->set( 'posts_per_page', '10' );
+    // }
+    else {
+      return $query;
+    }
+  }
+
+  // WP Admin Taxonomy Filters
+  public function nchs_add_taxonomy_filters() {
+    global $typenow; 
+    $taxonomies = array('sport');
+    if( $typenow == 'athletics' ){
+      foreach ($taxonomies as $tax_slug) {
+        $tax_obj = get_taxonomy($tax_slug);
+        $tax_name = $tax_obj->labels->name;
+        $terms = get_terms($tax_slug);
+        if(count($terms) > 0) {
+          echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+          echo "<option value=''>Show All $tax_name</option>";
+          foreach ($terms as $term) { 
+            echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
+          }
+          echo "</select>";
+        }
+      }
+    }
   }
 
   public function nchs_init() {
