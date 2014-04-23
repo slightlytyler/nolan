@@ -86,6 +86,11 @@
               <i class='fa fa-pinterest-square'></i>
             </a>
           </li>
+          <li>
+            <a href="#search" data-toggle="collapse" data-target=".navbar-form">
+              <i class="fa fa-search" style='font-size: 26px;'></i>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

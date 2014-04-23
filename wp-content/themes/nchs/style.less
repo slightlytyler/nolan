@@ -28,7 +28,7 @@ Version: 1.0
   background-size: 100%;
   left: 5px;
   top: -112px;
-  transition: top 0.2s;
+  transition: top 0.15s;
 }
 #menu-main-menu {
   padding-left: 195px;
@@ -446,7 +446,8 @@ body.page-template-page-sport-php {
   padding: 3px 6px;
 }
 .navbar .btn {
-  padding: 1px 5px
+  padding: 0 5px;
+  font-size: 14px;
 }
 .dropdown:hover .dropdown-menu {
   display: block;
@@ -478,6 +479,10 @@ body .navbar-top ul > li > a {
 body .navbar-top ul.dropdown-menu > li > a {
   padding: 4px 8px;
   line-height: 20px;
+}
+.dropdown-menu > li > a {
+  padding: 3px 5px; // 5px is better, 3px lets us put more in the menu
+  line-height: 18px;
 }
 // .navbar .navbar-top > li > a {
 //   line-height: 21px;
