@@ -269,7 +269,6 @@ function nchs_display_cards( $post ) {
 }
 
 include_once('includes/Bootstrap_Walker.php');
-
 function nhcs_get_nav( $menu, $mobile_only = null ) {
   if($mobile_only == null) $mobile_only = false;
   $class = str_replace( '-menu', '', $menu );
@@ -304,6 +303,7 @@ function nhcs_the_transient_json( $spreadsheet_id ) {
  * Theme Setup
  */
 
+NHCS_ThemeSetup::init();
 class NHCS_ThemeSetup {
   public static function init() {
     add_action( 'init', [ __CLASS__, 'nchs_init' ] );
@@ -489,7 +489,6 @@ class NHCS_ThemeSetup {
     // wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true );
   }
 }
-NHCS_ThemeSetup::init();
 
 /* 
  * Original Stuff
@@ -537,6 +536,8 @@ function manage_news_story_columns($column_name, $id) {
 }
 add_action('manage_news-story_posts_custom_column', 'manage_news_story_columns', 10, 2);
 
+
+// Options General - Add Field
 function nchs_register_fields() {
   register_setting( 'general', 'nchs_slides_number_setting' );
   add_settings_field( 'nchs_slides_number_setting', 'Number of slides to be displayed', 'nchs_slides_number_fields_html', 'general');
