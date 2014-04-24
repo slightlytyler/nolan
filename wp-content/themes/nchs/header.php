@@ -22,35 +22,39 @@
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
   </head>
 <?php
-
 get_template_part('head', 'body');
 get_template_part('head', 'topnav');
-
 $pt = get_query_var('post_type');
-
-
 if( is_home() ) {
-  echo '<h1>Home</h1>';
+  // echo '<h1>Home</h1>';
   get_template_part('head', 'slideshow');
 }
 elseif( is_archive() ) {
-  echo '<h1>Archive</h1>';
-//   echo get_query_var('post_type');
+  // echo '<h1>Archive</h1>';
   if( $pt == 'event' ) {
     get_template_part('head', 'venue');
   }
-  // Theme Options Headers 
+  else {
+    ?>
+    <div class='slider_section'>
+      <img src="<?php echo get_field( $pt . '_header', 'options')['sizes']['nchs-slide-foreground'] ?>" />
+    </div>
+    <?php
+  }
 }
 elseif( is_page() ) {
-  echo "<h1>Page</h1>";
+  // echo "<h1>Page</h1>";
   get_template_part('head', 'page');
 }
 elseif( is_single() ) {
-  echo "<h1>Single</h1>";
+  // echo "<h1>Single</h1>";
   get_template_part('head', 'page');
 }
+else {
+  echo "<div class='slider_section'>";
+}
 
-print_r($pt);
+// print_r($pt);
 
 // if( is_page( $page = 'athletics') || (is_archive() && in_array( get_query_var('post_type'), array('coach','player') ) ) )
 // get_template_part('titles-athletics');
