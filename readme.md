@@ -153,18 +153,18 @@ Clicking the add page button from these posts edit pages requires the user to se
 
 ## @todo
 
-- [x] Home Banner
-- [x] Pagination
-- [x] Event Listing
-- [x] Headers
-- [x] Slider
-- [x] Slide up Logo Banner
-- [ ] Teacher Cards
-- [ ] Student Display for club template
-- [ ] Fix up Sidebars / Widget Areas
+ - [x] Home Banner
+ - [x] Pagination
+ - [x] Event Listing
+ - [x] Headers
+ - [x] Slider
+ - [x] Slide up Logo Banner
+ - [ ] Teacher Cards
+ - [ ] Student Display for club template
+ - [ ] Fix up Sidebars / Widget Areas
 
-- [ ] Slides Taxonomy - Slideshow
-- [ ] Slideshow Page Template
+ - [ ] Slides Taxonomy - Slideshow
+ - [ ] Slideshow Page Template
 
 
 ### Options
