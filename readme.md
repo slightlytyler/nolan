@@ -160,6 +160,7 @@ Style Fixes
 - Fix up Sidebars / Widget Areas
 - Headers
 - Slider
+- Slide up Logo Banner
 
 ### Options
 
