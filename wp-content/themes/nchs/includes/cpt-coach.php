@@ -6,7 +6,6 @@ $coach = new CPT( [
   'slug' => 'coach',
 ], [
   'supports' => [ 'title', 'editor', 'thumbnail' ],
-  // 'has_archive' => 'true',
   'exclude_from_search' => 'true',
 ] );
 $coach->columns( $faculty_columns );

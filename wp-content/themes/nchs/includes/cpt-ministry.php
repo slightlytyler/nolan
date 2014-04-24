@@ -6,7 +6,6 @@ $ministry = new CPT( [
   'slug' => 'ministry',
 ], [
   'supports' => [ 'title', 'editor', 'thumbnail' ],
-  // 'has_archive' => 'true',
   'exclude_from_search' => 'true',
 ] );
 $ministry->columns($faculty_columns);

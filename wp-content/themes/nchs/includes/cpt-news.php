@@ -6,7 +6,7 @@ $news = new CPT( [
   'slug' => 'news',
 ], [
   'supports' => [ 'title', 'editor', 'thumbnail' ],
-  'has_archive' => 'true',
+  'has_archive' => 'news',
   'taxonomies' => [ 'category', 'post_tag' ]
 ] );
 $news->columns(array(

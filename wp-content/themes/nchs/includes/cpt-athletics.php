@@ -6,7 +6,7 @@ $athletics = new CPT( [
   'slug' => 'athletics',
 ], [
   'supports' => [ 'title', 'editor', 'thumbnail' ],
-  'has_archive' => 'true',
+  'has_archive' => 'athletics',
 ] );
 $athletics->filters(['sport']);
 $athletics->columns([

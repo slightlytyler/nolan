@@ -6,7 +6,6 @@ $faculty = new CPT( [
   'slug' => 'faculty',
 ], [
   'supports' => [ 'title', 'editor', 'thumbnail' ],
-  // 'has_archive' => 'true',
   'exclude_from_search' => 'true',
 ] );
 $faculty->columns($faculty_columns);
