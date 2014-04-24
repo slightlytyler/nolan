@@ -137,6 +137,46 @@ Define Relationships, Drag & Drop Ordering, Widget
 
 Event & Venue Post Type, Dashboard Interface, Widgets. NCHS theme loads custom templates.
 
+#### Smart Archives Reloaded
+
+Alternate Archive Templates
+
+#### WP Pagenavi
+
+Pagination
+
+#### Admin Menu Editor
+
+Custom Dashboard Menu Order with Dividers
+
+#### Custom Posts per Page
+
+Dashboard Options for setting the number of posts shown in indexs.
+
+#### Custom Sidebars
+
+Sidebar Assignment and Creation (In addition to the built in sidebars).
+
+#### Post Type Switcher
+
+Essential Option for sites with many post types, not always a good idea.
+
+#### Term Management Tools
+
+Bulk editing for Categories and Tags
+
+#### Simple Page ordering
+
+Drag and drop ordering of heiarchal post types. (Slides and Pages)
+
+#### Simple User Password generator
+
+#### Simple Section Navigation Widget
+
+#### Really Simple Gallery Widget
+
+#### Latest Published Updates Dashboard Widget
+
 ## Meta Boxes
 
 Custom metaboxes setup with Advanced Custom Fields. Save files in `/nhcs/acf`
@@ -185,7 +225,7 @@ Style up the gallery widget.
 
 #### Authors
 
-Relate Authors to Faculty or Sync Info
+Relate Authors to Faculty or Sync Info (with: Simple Local Avatars)
 
 #### More News/Post Channels
 
