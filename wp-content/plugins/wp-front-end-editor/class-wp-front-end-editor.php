@@ -62,6 +62,13 @@ class WP_Front_End_Editor {
 
 			$link = home_url( '?editing' );
 
+		// NCHS Customizations
+		} elseif ( is_page_template( 'page-sport.php' ) 
+		  || is_page_template( 'page-ministry.php' )
+		  || is_page_template( 'page-club.php' )
+		  || is_page_template( 'page-department.php' ) ) {
+		  $link = admin_url( '/post.php?post=' . $post->ID . '&action=edit' );
+
 		} else {
 
 			$permalink = get_permalink( $post->ID );

@@ -38,6 +38,9 @@ NHCS_Posts2Posts::init();
  * Dashboard Modifictions
  */
 
+add_post_type_support( 'news', 'front-end-editor' );
+add_post_type_support( 'athletics', 'front-end-editor' );
+
 add_filter('admin_head', 'nchs_dashboard');
 function nchs_dashboard() {
   // CPT Dashboard Image Column Width
