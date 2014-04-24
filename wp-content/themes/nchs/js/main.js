@@ -1,4 +1,4 @@
-(function($,sr){
+(function(jQuery,sr){
   // debouncing function from John Hann
   // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
   var debounce = function (func, threshold, execAsap) {
@@ -23,58 +23,58 @@
 
 var table_done = function( data ) {
   // console.log( JSON.stringify( data ) );
-  var $table = $( '<table />' ).addClass( 'table table-striped' );
+  var jQuerytable = jQuery( '<table />' ).addClass( 'table table-striped' );
   // console.log( data );
-  $.each( data.feed.entry, function ( i, v ) {
-    var $row = $( '<tr />' );
-    $.each( v.content.$t.split( ',' ), function ( idx, val ){
+  jQuery.each( data.feed.entry, function ( i, v ) {
+    var jQueryrow = jQuery( '<tr />' );
+    jQuery.each( v.content.jQueryt.split( ',' ), function ( idx, val ){
       var value = val.split( ':' )
-      var $cell = $( '<td />' );
+      var jQuerycell = jQuery( '<td />' );
       if( i === 0 )
-        $cell = $( '<th />' );
-      $cell.text( value[1].trim() );
-      $row.append( $cell );
+        jQuerycell = jQuery( '<th />' );
+      jQuerycell.text( value[1].trim() );
+      jQueryrow.append( jQuerycell );
     });
-    $table.append( $row );
+    jQuerytable.append( jQueryrow );
   });
-  $('.spreadsheet').append( $table );
+  jQuery('.spreadsheet').append( jQuerytable );
 }
 
 var reset = true;
 var tail_resize = function( tail_size ) {
   var banner_tail = 10;
-  if( $('body').hasClass('page-template-page-sport-php') === true )
-    banner_tail = ( ( $('.banner').outerWidth() - 2 ) /2 );
+  if( jQuery('body').hasClass('page-template-page-sport-php') === true )
+    banner_tail = ( ( jQuery('.banner').outerWidth() - 2 ) /2 );
   else
-    banner_tail = ( ( $('.banner').outerWidth() - 32 ) /2 );
-  $('.banner-right').css({ 'width': banner_tail, 'border-left-width': banner_tail });
-  $('.banner-left').css({ 'width': banner_tail, 'border-right-width': banner_tail });
-  $('.banner-left').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
-  $('.banner-right').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
+    banner_tail = ( ( jQuery('.banner').outerWidth() - 32 ) /2 );
+  jQuery('.banner-right').css({ 'width': banner_tail, 'border-left-width': banner_tail });
+  jQuery('.banner-left').css({ 'width': banner_tail, 'border-right-width': banner_tail });
+  jQuery('.banner-left').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
+  jQuery('.banner-right').animate({ 'border-top-width':  tail_size+'px' }, 1000 );
   reset = false;
 }
 var tail_resize_reset = function() {
   reset = true;
-  $('.banner-right').css({ 'border-top-width': '0' });
-  $('.banner-left').css({ 'border-top-width': '0' });
+  jQuery('.banner-right').css({ 'border-top-width': '0' });
+  jQuery('.banner-left').css({ 'border-top-width': '0' });
 }
 
 var fix_page_container = function() {
   // @todo Unset this fix for mobile view
-  var sidebar_tall = $(".right").height();
+  var sidebar_tall = jQuery(".right").height();
   // @note this if is not strictly necessary with min-height
-  if( sidebar_tall > $(".page-content").height() ) {
-    $('.page-content').css({ 'min-height': sidebar_tall + 'px' });
+  if( sidebar_tall > jQuery(".page-content").height() ) {
+    jQuery('.page-content').css({ 'min-height': sidebar_tall + 'px' });
   }
 }
 
 tail_resize( 30 );
 
-$(window).smartresize(function(){
+jQuery(window).smartresize(function(){
   tail_resize( 30 );
 });
 
-$(window).load(function() {
+jQuery(window).load(function() {
   fix_page_container();
 });
 
@@ -86,18 +86,18 @@ setTimeout(function () {
   fix_page_container();
 }, 3000 );
 
-$(window).resize(function(){
+jQuery(window).resize(function(){
   if( !reset ) {
     tail_resize_reset();
     fix_page_container();
   }
 });
 
-if( $('body').hasClass('page-template-page-table-php') === true ) {
+if( jQuery('body').hasClass('page-template-page-table-php') === true ) {
   // //docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml
   // For loading tables client side
   // var url = '//spreadsheets.google.com/feeds/list/' + spreadsheet_id + '/od6/public/basic';
-  // $.ajax({
+  // jQuery.ajax({
   //   type: 'GET',
   //   data: { 'alt': 'json-in-script' },
   //   url: url,
@@ -114,16 +114,16 @@ if( $('body').hasClass('page-template-page-table-php') === true ) {
   gdata.io.handleScriptLoaded = table_done;
 }
 
-$('.nchs_banner').hover(function(){
-      $(this).css({'top':'0px'});
+jQuery('.nchs_banner').hover(function(){
+      jQuery(this).css({'top':'0px'});
 }, function(){
-  $(this).css({'top':'-119px'});
+  jQuery(this).css({'top':'-119px'});
 });
 
-jQuery(function($) {
-  $(document).ready(function(){
+jQuery(function(jQuery) {
+  jQuery(document).ready(function(){
 
-    $('.flexslider').flexslider({ // Slider - http://flexslider.woothemes.com/
+    jQuery('.flexslider').flexslider({ // Slider - http://flexslider.woothemes.com/
       animation: "slide",
       controlNav: true,
       manualControls: ".control-nav button"
@@ -133,29 +133,29 @@ jQuery(function($) {
 });
 
 // if (typeof jQuery !== 'undefined') {
-  // jQuery(function($) {
-  //   $(document).ready(function(){
+  // jQuery(function(jQuery) {
+  //   jQuery(document).ready(function(){
 
       // ****************************************** PLACEHOLDER       
       // function placeholder() { // placeholder for inputs textarea
       //   //placeholder for form    
-      //   $('input, textarea').focus(function() {
-      //     if($(this).attr('placeholder') == $(this).val()){
-      //         $(this).val('');  
-      //         $(this).data('placeholder', $(this).attr('placeholder'));
-      //         $(this).attr('placeholder','');  
+      //   jQuery('input, textarea').focus(function() {
+      //     if(jQuery(this).attr('placeholder') == jQuery(this).val()){
+      //         jQuery(this).val('');  
+      //         jQuery(this).data('placeholder', jQuery(this).attr('placeholder'));
+      //         jQuery(this).attr('placeholder','');  
       //     }
       //   });
-      //   $('input, textarea').blur(function() {
-      //     if ($(this).val() == '') {
-      //       $(this).val($(this).data('placeholder'));
-      //       $(this).attr('placeholder',$(this).data('placeholder'));  
+      //   jQuery('input, textarea').blur(function() {
+      //     if (jQuery(this).val() == '') {
+      //       jQuery(this).val(jQuery(this).data('placeholder'));
+      //       jQuery(this).attr('placeholder',jQuery(this).data('placeholder'));  
       //     }
       //   });
       // };
       // placeholder();
 
-      // $('.coach_slider').flexslider({
+      // jQuery('.coach_slider').flexslider({
       //   animation: "slide",
       //   controlNav: false,
       //   itemWidth: 187,
@@ -163,13 +163,13 @@ jQuery(function($) {
       //   slideshow: false,
       //   move: 1
       // });
-      // $('.team_box').flexslider({ // Slider - http://flexslider.woothemes.com/
+      // jQuery('.team_box').flexslider({ // Slider - http://flexslider.woothemes.com/
       //   animation: "slide",
       //   controlNav: false,
       //   direction: "vertical"
       // });
-      // $(document).on('click', '.main_menu_btn', function(){
-      //   $('.main_menu').toggle();
+      // jQuery(document).on('click', '.main_menu_btn', function(){
+      //   jQuery('.main_menu').toggle();
       // })
 
   //   });

@@ -121,6 +121,8 @@ List of subpages
 
 ## Plugins 
 
+@idea - https://wordpress.org/plugins/plugin-dependencies/
+
 #### ACF - Advanced Custom Fields
 
 Custom Post Type and Template Meta Box editor
@@ -177,19 +179,17 @@ Clicking the add page button from these posts edit pages requires the user to se
 
 Just really good
 
+#### Gallery Widget
+
+Style up the gallery widget.
+
 #### Authors
 
-Relate Authors to Faculty or Pull Information
-
-#### Consolidate Faculty
-
-We could consolidate ministry and coaches, or just one (coaches).
-Simplify Relationships if Coaches need to be attached to clubs.
-Can also just allow coaches. (Same box on frontend, 2 boxes for dashboard)
+Relate Authors to Faculty or Sync Info
 
 #### More News/Post Channels
 
-Student News (Internal Channel)
+Student News (Campus Clicks?)
 
 #### Club page schedule
 
