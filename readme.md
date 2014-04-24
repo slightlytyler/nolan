@@ -192,6 +192,7 @@ Clicking the add page button from these posts edit pages requires the user to se
 - Drag and Drop Page Heiarchy
 - Fix Years of Service & Class Stuff
 - Header text work (Page Field?)
+- Video Shortcode (Football Page)
 
 ## @todo
 
@@ -201,9 +202,12 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Headers
  - [x] Slider
  - [x] Slide up Logo Banner
+ - [ ] Refine Slide up Logo Banner
+ - [x] Smart Archives Tempaltes
+ - [ ] Smart Archives Template Styles
  - [ ] Teacher Cards
  - [ ] Student Display for club template
- - [ ] Fix up Sidebars / Widget Areas
+ - [x] Fix up Sidebars / Widget Areas
 
  - [ ] Archive Titles
  - [ ] Slides Taxonomy - Slideshow
@@ -212,6 +216,7 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Open Source (Github Streak)
  - [ ] Hyprtxt Example Website
  - [ ] School Start Date Stuff (Optional?)
+ - [ ] WP Admin bar style search animation
 
 ### Options
 
