@@ -14,10 +14,10 @@ if ($loop->have_posts()):
   <li style="background-image: url('<?php echo get_field('background')['sizes']['nchs-slide-background'] ?>')">
     <div class='slide_wrapper'>
       <div class='slide1_title'>
-          <?php the_title('<h3>','</h3>'); the_field('text'); ?>
+        <?php the_title('<h3>','</h3>'); the_field('text'); ?>
       </div>
       <div class='slide_img'>
-          <img src="<?php echo get_field('foreground')['sizes']['nchs-slide-foreground'] ?>" />
+        <img src="<?php echo get_field('foreground')['sizes']['nchs-slide-foreground'] ?>" />
       </div>
     </div>
   </li>
