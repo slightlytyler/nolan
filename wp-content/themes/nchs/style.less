@@ -407,6 +407,29 @@ body.page-template-page-sport-php {
 }
 
 
+// Pagination
+.pagination > li > span.current {
+  background: @brand-powder-blue;
+}
+
+.pagination > li > a, .pagination > li > span {
+  padding: 5px 15px;
+  color: #2b7bc9;
+  background: transparent;
+  border: 1px solid #2b7bc9;
+  font-family: @font-family-sans-serif;
+}
+
+.pagination > li:last-child > a,
+.pagination > li:last-child > span,
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 // Navigation
 .navbar {
   border-radius: 0;
@@ -460,10 +483,10 @@ body.page-template-page-sport-php {
 }
 .nav li.icon > a,
 .social-nav > li > a {
-  padding: 7px 5px 0 0 !important;
+  padding: 6px 2px 0px 2px !important;
 }
 .navbar-inverse .social-nav > li > a:hover {
-  color: @brand-success;
+  color: white;
 }
 .input-group-btn {
   position: absolute;

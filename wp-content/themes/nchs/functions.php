@@ -76,6 +76,23 @@ jQuery(function($){
  * Template Helpers
  */
 
+// Searchform
+
+function nchs_search_form( $form, $classes = null ) {
+  $form = '<form class="' . $classes . '" role="search" method="get" id="searchform" action="'. home_url( '/' ) . '">
+    <div class="form-group input-group">
+      <input type="text" value="' . get_search_query() . '" name="s" id="s" class="form-control" placeholder="Search">
+      <span class="input-group-btn">
+        <button type="submit" id="searchsubmit" class="btn btn-success">
+          <i class="fa fa-search"></i>
+        </button>
+      </span>
+    </div>
+  </form>';
+  return $form;
+}
+add_filter( 'get_search_form', 'nchs_search_form' );
+
 // Sidebar Helper
 function nchs_sidebar( $sidebar = null ) {
   if ( $sidebar == 'video' ) {
@@ -162,7 +179,7 @@ function nhcs_the_transient_json( $spreadsheet_id ) {
   }
   else {
     $response = wp_remote_request("http://spreadsheets.google.com/feeds/list/".$spreadsheet_id."/od6/public/basic?alt=json-in-script");
-    set_transient( $key, $response['body'], 5 );
+    set_transient( $key, $response['body'], 600 );
     $gdoc_spreadsheet_data = $response['body'];
     // https://spreadsheets.google.com/feeds/list/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/od6/public/basic
   }
