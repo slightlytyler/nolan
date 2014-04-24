@@ -141,7 +141,8 @@ Custom metaboxes setup with Advanced Custom Fields. Save files in `/nhcs/acf`
 
 Clicking the add page button from these posts edit pages requires the user to select the correct template when creating a page (then save it). The post should automatically save a draft or do a publish. If it does not, save the post to get the missing fields to show up.
 
-@later
+## @later
+
 - Cache Table Responses
 - Event Board Page -http://wordpress.org/plugins/event-organiser-posterboard/
 - Calendar Page
@@ -150,17 +151,21 @@ Clicking the add page button from these posts edit pages requires the user to se
 - Fix Years of Service & Class Stuff
 - Header text work (Page Field?)
 
+## @todo
 
-Style Fixes
+- [x] Home Banner
+- [x] Pagination
+- [x] Event Listing
+- [x] Headers
+- [x] Slider
+- [x] Slide up Logo Banner
+- [ ] Teacher Cards
+- [ ] Student Display for club template
+- [ ] Fix up Sidebars / Widget Areas
 
-- Home Banner
-- Pagination
-- Event Listing
-- Teacher Cards
-- Fix up Sidebars / Widget Areas
-- Headers
-- Slider
-- Slide up Logo Banner
+- [ ] Slides Taxonomy - Slideshow
+- [ ] Slideshow Page Template
+
 
 ### Options
 
