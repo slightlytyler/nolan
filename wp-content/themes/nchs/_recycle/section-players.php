@@ -4,14 +4,14 @@ $meta_title_2 = get_field('meta_title_2');
 $meta_title_3 = get_field('meta_title_3');
 $meta_title_4 = get_field('meta_title_4');
 $student_query = new WP_Query( [
-'connected_type' => 'student_to_pages',
-'connected_items' => get_queried_object(),
-'posts_per_page' => '15',
-'nopaging' => true,
-'connected_meta' => [ [
-  'key' => 'hide',
-  'compare' => 'NOT EXISTS'
-] ],
+  'connected_type' => 'student_to_pages',
+  'connected_items' => get_queried_object(),
+  'posts_per_page' => '15',
+  'nopaging' => true,
+  'connected_meta' => [ [
+    'key' => 'hide',
+    'compare' => 'NOT EXISTS'
+  ] ],
 ] );
 if ( $student_query->have_posts() ) :
 echo "<div class='col-sm-12'>";

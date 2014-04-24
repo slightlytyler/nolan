@@ -31,36 +31,58 @@ class NHCS_Posts2Posts {
       'to' => 'coach',
       'sortable' => 'any',
       'admin_column' => 'any',
+      'fields' => [
+        'field_1' => [
+          'title' => 'Field 1',
+          'type' => 'text',
+        ],
+        'field_2' => [
+          'title' => 'Field 2',
+          'type' => 'text',
+        ],
+        // 'field_3' => [
+        //   'title' => 'Field 3',
+        //   'type' => 'text',
+        // ],
+        // 'field_4' => [
+        //   'title' => 'Field 4',
+        //   'type' => 'text',
+        // ],
+        'hide' => [
+          'title' => 'Hide',
+          'type' => 'checkbox'
+        ],
+      ],
     ) );
-    p2p_register_connection_type( array(
+    p2p_register_connection_type( [
       'name' => 'student_to_pages',
       'from' => 'page',
       'to' => 'student',
       'sortable' => 'any',
       'admin_column' => 'any',
-      'fields' => array(
-        'field_1' => array(
+      'fields' => [
+        'field_1' => [
           'title' => 'Field 1',
           'type' => 'text',
-        ),
-        'field_2' => array(
+        ],
+        'field_2' => [
           'title' => 'Field 2',
           'type' => 'text',
-        ),
-        'field_3' => array(
-          'title' => 'Field 3',
-          'type' => 'text',
-        ),
-        'field_4' => array(
-          'title' => 'Field 4',
-          'type' => 'text',
-        ),
-        'hide' => array(
+        ],
+        // 'field_3' => [
+        //   'title' => 'Field 3',
+        //   'type' => 'text',
+        // ],
+        // 'field_4' => [
+        //   'title' => 'Field 4',
+        //   'type' => 'text',
+        // ],
+        'hide' => [
           'title' => 'Hide',
           'type' => 'checkbox'
-        ),
-      )
-    ) );
+        ],
+      ],
+    ] );
   }
 
   public function nhcs_filter_pages_by_template( $args, $ctype, $post_id ) {

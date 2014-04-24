@@ -163,9 +163,13 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Student Display for club template
  - [ ] Fix up Sidebars / Widget Areas
 
+ - [ ] Archive Titles
  - [ ] Slides Taxonomy - Slideshow
  - [ ] Slideshow Page Template
-
+ - [ ] Image Size Selection
+ - [ ] Open Source (Github Streak)
+ - [ ] Hyprtxt Example Website
+ - [ ] School Start Date Stuff (Optional?)
 
 ### Options
 

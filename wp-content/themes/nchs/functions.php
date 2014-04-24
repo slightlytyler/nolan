@@ -111,8 +111,87 @@ add_action( 'dashboard_glance_items' , 'vm_right_now_content_table_end' );
  * Template Helpers
  */
 
-// Searchform
+function nchs_people_with_sport_thumbs_list( $title = null, $connection = null, $loop = null, $classes = null ) {
+  // get_template_part('section', 'players');
+  if( $title === null )
+    $title = 'Players';
+  if( $classes === null )
+    $classes = 'player-picture col-xs-4 col-sm-3 col-lg-2';
+  if( $connection === null )
+    $connection = 'student_to_pages';
+  if( $loop === null )
+    $loop = 'nchs_player_loop';
 
+  $student_query = new WP_Query( [
+    'connected_type' => $connection,
+    'connected_items' => get_queried_object(),
+    'posts_per_page' => '15',
+    'nopaging' => true,
+    'connected_meta' => [ [
+      'key' => 'hide',
+      'compare' => 'NOT EXISTS'
+    ] ],
+  ] );
+  if ( $student_query->have_posts() ) :
+  echo "<div class='col-sm-12'>";
+    echo '<h2>' . $title . '</h2>';
+  while ( $student_query->have_posts() ) : $student_query->the_post(); 
+    echo '<div class="' . $classes . ' nopad">';
+    $loop();
+    nchs_the_person_image( get_field('sport_pictures') );
+  echo '</div>';
+  endwhile;
+  wp_reset_postdata();
+  echo '<div class="clearfix"></div></div>';
+  endif;
+}
+
+function nchs_the_person_image( $pictures = null ) {
+  if( $pictures === null )
+    get_field('sport_pictures');
+  $output = false;
+  if( $pictures ) :
+    foreach( $pictures as $row ) :
+      if( $term->term_id === $row['sport']->term_id ) :
+        $image = $row['image']['sizes']['thumbnail'];
+        echo "<img src='$image' alt='' />";
+        $output = true;
+      endif;
+    endforeach;
+  endif;
+  if( !$output )
+    the_post_thumbnail();
+}
+
+function nchs_coach_loop() {
+  $meta_title_1 = get_field('meta_title_1');
+  $meta_title_2 = get_field('meta_title_2');
+  $meta_title_3 = get_field('meta_title_3');
+  $meta_title_4 = get_field('meta_title_4');
+  echo '<div class="info">';
+    echo '<h3>'.get_the_title().'</h3>';
+    the_field('wpcf-coach-position');
+    echo sprintf(' | <a href="%s">Read Bio &raquo;</a>', get_permalink() );
+  echo '</div>';
+}
+
+function nchs_player_loop() {
+  $meta_title_1 = get_field('meta_title_1');
+  $meta_title_2 = get_field('meta_title_2');
+  $meta_title_3 = get_field('meta_title_3');
+  $meta_title_4 = get_field('meta_title_4');
+  echo sprintf('<a href="%s">', get_permalink() );
+  echo '<div class="info">';
+    if( $meta_title_1 != '' )
+      echo '<div class="number">'.p2p_get_meta( get_post()->p2p_id, 'field_1', true ).'</div>';
+    echo '<h3>'.get_the_title().'</h3>';
+    if( $meta_title_2 != '' )
+      echo '<p style="clear:both; margin-bottom:0">'.p2p_get_meta( get_post()->p2p_id, 'field_2', true ).'</p>';
+  echo '</div>';
+  echo '</a>';
+}
+
+// Searchform
 function nchs_search_form( $form, $classes = null ) {
   $form = '<form class="' . $classes . '" role="search" method="get" id="searchform" action="'. home_url( '/' ) . '">
     <div class="form-group input-group">
@@ -343,11 +422,11 @@ class NHCS_ThemeSetup {
       'description' => __( 'Sidebar for the single student pages', 'nchs' )
     ) );
     register_sidebar( array(
-      'name' => __( 'Athletics - Right Column Widget Area', 'nchs' ),
-      'id' => 'athletics-right-widget-area',
-      'description' => __( 'Athletics - The Right Column widget area', 'nchs' ),
-      'before_widget' => '',
-      'after_widget'  => ''
+      'name' => __( 'Athletics Sidebar', 'nchs' ),
+      'id' => 'athletics-sidebar',
+      'description' => __( 'Shown on Athletics Archive and Single Posts', 'nchs' ),
+      // 'before_widget' => '',
+      // 'after_widget'  => ''
     ) );
     register_sidebar( array(
       'name' => __( 'Page Sidebar', 'nchs' ),
@@ -369,13 +448,6 @@ class NHCS_ThemeSetup {
       'id' => 'events-sidebar',
       'description' => __( 'Shown on event templates', 'nchs' )
     ) );
-    // register_sidebar( array(
-    //   'name' => __( 'Homepage Top Widget Area', 'nchs' ),
-    //   'id' => 'homepage-top-widget-area',
-    //   'description' => __( 'The Homepage top widget area', 'nchs' ),
-    //   'before_widget' => '',
-    //   'after_widget'  => ''
-    // ) );
     register_sidebar( array(
       'name' => __( 'Homepage Bottom', 'nchs' ),
       'id' => 'homepage-bottom',
@@ -383,13 +455,6 @@ class NHCS_ThemeSetup {
       'before_widget' => '<div class="col-md-6">',
       'after_widget'  => '</div>'
     ) );
-    // register_sidebar( array(
-    //   'name' => __( 'Homepage Right Widget Area', 'nchs' ),
-    //   'id' => 'homepage-right-widget-area',
-    //   'description' => __( 'The homepage right widget area', 'nchs' ),
-    //   'before_widget' => '',
-    //   'after_widget'  => ''
-    // ) );
   }
 
   public function nchs_after_setup_theme() { 
