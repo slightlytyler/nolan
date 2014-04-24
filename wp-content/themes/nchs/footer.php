@@ -1,7 +1,4 @@
     <!-- <div class='clearfix'></div> -->
-<?php if(!is_single() && !is_home()) : ?>
-</div>
-<?php endif;?>
 <div class='clearfix'></div>
 <div class='footer'>
     <div class='col-sm-4 contact_us_box'>

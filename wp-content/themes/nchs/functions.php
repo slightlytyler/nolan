@@ -111,16 +111,23 @@ add_action( 'dashboard_glance_items' , 'vm_right_now_content_table_end' );
  * Template Helpers
  */
 
-function nchs_people_with_sport_thumbs_list( $title = null, $connection = null, $loop = null, $classes = null ) {
+function nchs_people_thumbs_list( $title = null, $connection = null, $loop = null, $classes = null ) {
   // get_template_part('section', 'players');
   if( $title === null )
     $title = 'Players';
   if( $classes === null )
-    $classes = 'player-picture col-xs-4 col-sm-3 col-lg-2';
+    $classes = 'col-xs-4 col-sm-3 col-lg-2';
   if( $connection === null )
     $connection = 'student_to_pages';
   if( $loop === null )
     $loop = 'nchs_player_loop';
+
+  $meta_titles = [];
+  array_push( $meta_titles, 'zero' );
+  array_push( $meta_titles, get_field('meta_title_1') );
+  array_push( $meta_titles, get_field('meta_title_2') );
+  array_push( $meta_titles, get_field('meta_title_3') );
+  array_push( $meta_titles, get_field('meta_title_4') );
 
   $student_query = new WP_Query( [
     'connected_type' => $connection,
@@ -133,16 +140,15 @@ function nchs_people_with_sport_thumbs_list( $title = null, $connection = null, 
     ] ],
   ] );
   if ( $student_query->have_posts() ) :
-  echo "<div class='col-sm-12'>";
     echo '<h2>' . $title . '</h2>';
-  while ( $student_query->have_posts() ) : $student_query->the_post(); 
-    echo '<div class="' . $classes . ' nopad">';
-    $loop();
-    nchs_the_person_image( get_field('sport_pictures') );
-  echo '</div>';
-  endwhile;
-  wp_reset_postdata();
-  echo '<div class="clearfix"></div></div>';
+    while ( $student_query->have_posts() ) : $student_query->the_post(); 
+      echo '<div class="' . $classes . ' nopad">';
+      $loop( $meta_titles );
+      nchs_the_person_image( get_field('sport_pictures') );
+      echo '</div>';
+    endwhile;
+    wp_reset_postdata();
+    echo '<div class="clearfix"></div>';
   endif;
 }
 
@@ -163,11 +169,7 @@ function nchs_the_person_image( $pictures = null ) {
     the_post_thumbnail();
 }
 
-function nchs_coach_loop() {
-  $meta_title_1 = get_field('meta_title_1');
-  $meta_title_2 = get_field('meta_title_2');
-  $meta_title_3 = get_field('meta_title_3');
-  $meta_title_4 = get_field('meta_title_4');
+function nchs_coach_loop( $meta_titles ) {
   echo '<div class="info">';
     echo '<h3>'.get_the_title().'</h3>';
     the_field('wpcf-coach-position');
@@ -175,17 +177,25 @@ function nchs_coach_loop() {
   echo '</div>';
 }
 
-function nchs_player_loop() {
-  $meta_title_1 = get_field('meta_title_1');
-  $meta_title_2 = get_field('meta_title_2');
-  $meta_title_3 = get_field('meta_title_3');
-  $meta_title_4 = get_field('meta_title_4');
+function nchs_player_loop( $meta_titles ) {
   echo sprintf('<a href="%s">', get_permalink() );
   echo '<div class="info">';
-    if( $meta_title_1 != '' )
+    if( $meta_titles['1'] != '' )
       echo '<div class="number">'.p2p_get_meta( get_post()->p2p_id, 'field_1', true ).'</div>';
     echo '<h3>'.get_the_title().'</h3>';
-    if( $meta_title_2 != '' )
+    if( $meta_titles['2'] != '' )
+      echo '<p style="clear:both; margin-bottom:0">'.p2p_get_meta( get_post()->p2p_id, 'field_2', true ).'</p>';
+  echo '</div>';
+  echo '</a>';
+}
+
+function nchs_student_loop( $meta_titles ) {
+  // @todo
+  echo '<div class="info">';
+    if( $meta_titles['1'] != '' )
+      echo '<div class="number">'.p2p_get_meta( get_post()->p2p_id, 'field_1', true ).'</div>';
+    echo '<h3>'.get_the_title().'</h3>';
+    if( $meta_titles['2'] != '' )
       echo '<p style="clear:both; margin-bottom:0">'.p2p_get_meta( get_post()->p2p_id, 'field_2', true ).'</p>';
   echo '</div>';
   echo '</a>';
