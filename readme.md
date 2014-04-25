@@ -76,12 +76,6 @@ A department page template that includes both Coaches and Players.
 
 A department page template that includes Students.
 
-#### Ideas
-
-Banner Sidebar Page or Option
-Reverse Layout
-Activity (Faculty and Students Connected Pages)
-Better Galleries
 
 ## Widgets
 
@@ -210,30 +204,34 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Event Style + Header Titles
  - [x] Archive Titles
  - [x] Get Venue Metadata out of the header on venue pages
+ - [x] Teacher Cards
 
- - [ ] Teacher Cards
- - [ ] School Start Date Stuff (Optional?)
+ - [ ] School Start Date Stuff
  - [ ] Search Results Pages
  - [ ] Search Widget Style
  - [ ] Promo Card Widget Style
  - [ ] Tagline, Mission and Banner Background Images
  - [ ] Fix - Default Backgrounds
- - [ ] Fix - Custom Page Headers not working
-
+ - [ ] HP Slider Mobile View
+ - [ ] Cards Mobile View
 
 ## @notnow
 
- - [ ] Slides Taxonomy - Slideshow
- - [ ] Slideshows for Page Template
+ - [ ] Fix/Remove Custom Page Headers
  - [ ] Refine Slide up Logo Banner
  - [ ] Image Size Selection
+ - [ ] WP Admin bar style search animation
+ - [ ] Slides Taxonomy - Slideshow
+ - [ ] Slideshows for Page Template
+ - [ ] Modal Forms
+ - [ ] Banner Sidebar Template (Athletics style page template)
+ - [ ] Reverse Layout Template (Left Sidebar)
+ - [ ] Style Gallery Widget
+ - [ ] Better Galleries (flickr or ?)
+ - [ ] Link to CPT Date Archives
+ - [ ] Patch Frontend Editor Plugin without Plugin File Modifications
  - [ ] Open Source (Github Streak)
  - [ ] Hyprtxt Example Website
- - [ ] Link to CPT Date Archives
- - [ ] Patch Frontend Editor Plugin without File Modifications
- - [ ] WP Admin bar style search animation
- - [ ] Modal Forms
-
 
 ### Options
 
@@ -263,5 +261,4 @@ Addtional Custom Fields, add page-templates support.
 
 #### More Custom Post Types
 
-Instapaper Likes
-YouTube Likes
+Instapaper Likes, YouTube Likes
