@@ -25,17 +25,6 @@ include_once('includes/cpt-slide.php');
 include_once('includes/cpt-news.php');
 include_once('includes/cpt-athletics.php');
 
-// include_once('widgets/athletics-widget.php');
-
-// include_once('widgets/news-widget.php');
-// register_widget( 'News_Widget' );
-// include_once('widgets/sport-events-widget.php');
-// register_widget( 'Sport_News_Widget' );
-// include_once('widgets/sport-news-widget.php');
-// register_widget( 'Sport_Events_Widget' );
-// include_once('widgets/subpages-widget.php');
-// register_widget( 'Subpages_Widget' );
-
 include_once('includes/NHCS_Posts2Posts.php');
 NHCS_Posts2Posts::init();
 

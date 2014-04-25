@@ -76,6 +76,7 @@ jQuery(window).smartresize(function(){
 
 jQuery(window).load(function() {
   fix_page_container();
+  // Fix search widget without title
 });
 
 setTimeout(function () {
@@ -94,21 +95,6 @@ jQuery(window).resize(function(){
 });
 
 if( jQuery('body').hasClass('page-template-page-table-php') === true ) {
-  // //docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml
-  // For loading tables client side
-  // var url = '//spreadsheets.google.com/feeds/list/' + spreadsheet_id + '/od6/public/basic';
-  // jQuery.ajax({
-  //   type: 'GET',
-  //   data: { 'alt': 'json-in-script' },
-  //   url: url,
-  //   async: false,
-  //   contentType: "application/json",
-  //   dataType: 'jsonp'
-  // })
-  // .done( table_done );
-
-  // Server Side Style
-  // See nhcs_the_transient_json() & footer.php
   var gdata = {};
   gdata.io = {};
   gdata.io.handleScriptLoaded = table_done;
@@ -120,58 +106,28 @@ jQuery('.nchs_banner').hover(function(){
   jQuery(this).css({'top':'-119px'});
 });
 
-jQuery(function(jQuery) {
-  jQuery(document).ready(function(){
-
-    jQuery('.flexslider').flexslider({ // Slider - http://flexslider.woothemes.com/
-      animation: "slide",
-      controlNav: true,
-      manualControls: ".control-nav button"
-    });
-
-  });
+jQuery('.flexslider').flexslider({
+  animation: "slide",
+  controlNav: true,
+  manualControls: ".control-nav button"
 });
 
-// if (typeof jQuery !== 'undefined') {
-  // jQuery(function(jQuery) {
-  //   jQuery(document).ready(function(){
+jQuery( '.widget_search' )
+  .not( 'h3' )
+  .find( '.form-group' )
+  .css( 'margin-top', '30px' );
 
-      // ****************************************** PLACEHOLDER       
-      // function placeholder() { // placeholder for inputs textarea
-      //   //placeholder for form    
-      //   jQuery('input, textarea').focus(function() {
-      //     if(jQuery(this).attr('placeholder') == jQuery(this).val()){
-      //         jQuery(this).val('');  
-      //         jQuery(this).data('placeholder', jQuery(this).attr('placeholder'));
-      //         jQuery(this).attr('placeholder','');  
-      //     }
-      //   });
-      //   jQuery('input, textarea').blur(function() {
-      //     if (jQuery(this).val() == '') {
-      //       jQuery(this).val(jQuery(this).data('placeholder'));
-      //       jQuery(this).attr('placeholder',jQuery(this).data('placeholder'));  
-      //     }
-      //   });
-      // };
-      // placeholder();
-
-      // jQuery('.coach_slider').flexslider({
-      //   animation: "slide",
-      //   controlNav: false,
-      //   itemWidth: 187,
-      //   animationLoop: true,
-      //   slideshow: false,
-      //   move: 1
-      // });
-      // jQuery('.team_box').flexslider({ // Slider - http://flexslider.woothemes.com/
-      //   animation: "slide",
-      //   controlNav: false,
-      //   direction: "vertical"
-      // });
-      // jQuery(document).on('click', '.main_menu_btn', function(){
-      //   jQuery('.main_menu').toggle();
-      // })
-
-  //   });
-  // });
-// };
+// if( jQuery('body').hasClass('page-template-page-table-php') === true ) {
+//   //docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/pubhtml
+//   For loading tables client side
+//   var url = '//spreadsheets.google.com/feeds/list/' + spreadsheet_id + '/od6/public/basic';
+//   jQuery.ajax({
+//     type: 'GET',
+//     data: { 'alt': 'json-in-script' },
+//     url: url,
+//     async: false,
+//     contentType: "application/json",
+//     dataType: 'jsonp'
+//   })
+//   .done( table_done );
+// }

@@ -166,6 +166,10 @@ Bulk editing for Categories and Tags
 
 Drag and drop ordering of heiarchal post types. (Slides and Pages)
 
+#### Relevanssi
+
+Search Indexing, better search results
+
 #### Link Mananger
 
 #### Simple User Password generator
@@ -205,6 +209,7 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Archive Titles
  - [x] Get Venue Metadata out of the header on venue pages
  - [x] Teacher Cards
+ - [x] Relevanssi Search
 
  - [ ] School Start Date Stuff
  - [ ] Search Results Pages
@@ -232,6 +237,7 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Patch Frontend Editor Plugin without Plugin File Modifications
  - [ ] Open Source (Github Streak)
  - [ ] Hyprtxt Example Website
+ - [ ] 
 
 ### Options
 
