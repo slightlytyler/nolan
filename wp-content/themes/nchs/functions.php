@@ -472,6 +472,13 @@ class NHCS_ThemeSetup {
       'description' => __( 'The homepage ribbion widget area', 'nchs' ),
     ) );
     register_sidebar( array(
+      'name' => __( 'Homepage Bottom', 'nchs' ),
+      'id' => 'homepage-bottom',
+      'description' => __( 'The homepage bottom widget area', 'nchs' ),
+      'before_widget' => '<div class="col-md-6 promo">',
+      'after_widget'  => '</div>'
+    ) );
+    register_sidebar( array(
       'name' => __( 'Video Sidebar', 'nchs' ),
       'id' => 'video-sidebar',
       'description' => __( 'Accompanies all video templates', 'nchs' )
@@ -481,13 +488,7 @@ class NHCS_ThemeSetup {
       'id' => 'events-sidebar',
       'description' => __( 'Shown on event templates', 'nchs' )
     ) );
-    register_sidebar( array(
-      'name' => __( 'Homepage Bottom', 'nchs' ),
-      'id' => 'homepage-bottom',
-      'description' => __( 'The homepage bottom widget area', 'nchs' ),
-      'before_widget' => '<div class="col-md-6">',
-      'after_widget'  => '</div>'
-    ) );
+
   }
 
   public function nchs_after_setup_theme() { 

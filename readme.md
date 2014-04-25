@@ -215,12 +215,10 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Search Widget Style
  - [x] Tagline, Mission and Banner Background Images
 
-
  - [ ] School Start Date Stuff 
  - [ ] Promo Card Widget Style
  - [ ] Fix - Default Backgrounds
  - [ ] Homepage and Search Results Pagination
- - [ ] Hover activation of flexslider navigation
  - [ ] Button Font/Style
  - [ ] Meta information on Archives and Single (Authors, Taxa)
  - [ ] Adjust Mission Styles to content
@@ -245,10 +243,12 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Style Gallery Widget
  - [ ] Better Galleries (flickr or ?)
  - [ ] Link to CPT Date Archives
+ - [ ] Past Events in Calendar widget do not link correctly
  - [ ] Patch Frontend Editor Plugin without Plugin File Modifications
+ - [ ] Hover activation of flexslider navigation
  - [ ] Open Source (Github Streak)
  - [ ] Hyprtxt Example Website
- - [ ] 
+
 
 ### Options
 
