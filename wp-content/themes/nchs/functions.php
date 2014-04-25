@@ -359,7 +359,7 @@ class NHCS_ThemeSetup {
     if ( $query->is_main_query() && is_home() ) {
       // show athletics and news on the homepage
       $query->set( 'post_type', array( 'news', 'athletics' ) );
-      $query->set( 'posts_per_page', '3' );
+      // $query->set( 'posts_per_page', '3' );
     }
     // elseif ( $query->is_main_query() && is_tax('sport') ) {
     //   // show past events on the sport tag archives
@@ -586,5 +586,23 @@ add_filter( 'admin_init', 'nchs_register_fields');
 // }
 // add_action('manage_player_posts_custom_column', 'manage_player_sport_columns', 10, 2);
 // add_action('manage_coach_posts_custom_column', 'manage_player_sport_columns', 10, 2);
+
+/**
+* Add custom icons using Dashicons for Gravity Forms.
+*
+* This outputs some extra stlying to force Gravity Forms to use a modern
+* dashicon in the wp-admin sidebar.
+*
+* @author  Robert Neu
+* @link    http://melchoyce.github.io/dashicons/
+*/
+function prefix_gforms_admin_css() {
+  $css = '<style type="text/css">';
+    $css .= '#adminmenu #toplevel_page_gf_edit_forms div.wp-menu-image img { display: none }';
+    $css .= '#adminmenu #toplevel_page_gf_edit_forms div.wp-menu-image:before { content: "\f175"; }';
+  $css .= '</style>';
+  echo $css;
+}
+add_action('admin_head', 'prefix_gforms_admin_css');
 
 ?>

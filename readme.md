@@ -123,11 +123,11 @@ List of subpages
 
 @idea - https://wordpress.org/plugins/plugin-dependencies/
 
-#### ACF - Advanced Custom Fields
+#### Advanced Custom Fields
 
 Custom Post Type and Template Meta Box editor
 
-#### P2P - Posts 2 Posts
+#### Posts 2 Posts
 
 Define Relationships, Drag & Drop Ordering, Widget
 
@@ -136,6 +136,10 @@ Define Relationships, Drag & Drop Ordering, Widget
 #### Event Organizer
 
 Event & Venue Post Type, Dashboard Interface, Widgets. NCHS theme loads custom templates.
+
+#### Gravity Forms
+
+Form manager
 
 #### Smart Archives Reloaded
 
@@ -204,10 +208,13 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Slide up Logo Banner
  - [ ] Refine Slide up Logo Banner
  - [x] Smart Archives Tempaltes
- - [ ] Smart Archives Template Styles
+ - [ ] Smart Archives Template Styles + Link Fix
  - [ ] Teacher Cards
- - [ ] Student Display for club template
+ - [x] Student Display for club template
  - [x] Fix up Sidebars / Widget Areas
+ - [ ] Patch Frontend Editor Plugin without File Modifications
+ - [ ] Search Results Pages
+ - [ ] Favicon
 
  - [ ] Archive Titles
  - [ ] Slides Taxonomy - Slideshow
@@ -218,11 +225,8 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] School Start Date Stuff (Optional?)
  - [ ] WP Admin bar style search animation
 
+
 ### Options
-
-#### Gravity Forms
-
-Just really good
 
 #### Gallery Widget
 
