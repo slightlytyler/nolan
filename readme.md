@@ -92,31 +92,33 @@ Better Galleries
 
 Displays A list of connected information. Students for a club, players for a sport. Will not display if there are no connected posts.
 
-### Freshest
-
-    @todo Displays Combined Recent News and Athletics Feed
-
-### Athletics News Widget 
+#### Athletics News Widget 
 
 Recent Athletics News
 
     @todo Choose number of articles to show
 
-### News Widget
+#### News Widget
 
 Recent News
 
-### Sport_News_Widget
+#### Sport_News_Widget
 
 Pick a Sport or Use in Context Mode
 
-### Sport_Events_Widget
+#### Sport_Events_Widget
 
 Pick a Sport or Use in Context Mode
 
-### Subpages_Widget
+#### Subpages_Widget
 
 List of subpages
+
+#### Simple Section Navigation Widget
+
+#### Really Simple Gallery Widget
+
+#### Latest Published Updates Dashboard Widget
 
 
 ## Plugins 
@@ -173,13 +175,9 @@ Bulk editing for Categories and Tags
 
 Drag and drop ordering of heiarchal post types. (Slides and Pages)
 
+#### Link Mananger
+
 #### Simple User Password generator
-
-#### Simple Section Navigation Widget
-
-#### Really Simple Gallery Widget
-
-#### Latest Published Updates Dashboard Widget
 
 ## Meta Boxes
 
