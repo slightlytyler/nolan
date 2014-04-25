@@ -233,6 +233,7 @@ Clicking the add page button from these posts edit pages requires the user to se
 
  - [ ] Refine Slide up Logo Banner
  - [ ] Image Size Selection
+ - [ ] Proper Page and Slideshow Image Sizes
  - [ ] WP Admin bar style search animation
  - [ ] Fix/Remove Custom Page Headers
  - [ ] Slides Taxonomy - Slideshow

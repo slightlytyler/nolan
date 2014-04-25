@@ -175,6 +175,7 @@ blockquote::after{
   background: #d9d9d9;
   border-top: 1px solid #b4b4b4;
   padding: 30px inherit;
+  font-family: @font-family-serif;
 }
 
 /*
@@ -338,14 +339,22 @@ li.widget ol {
   webkit-box-shadow: none;
   box-shadow: none;
   margin: 15px 0 !important;
+  font-family: @font-family-serif;
+  min-height: 442px;
 }
 .promo-info {
   margin: 0 15px;
 }
+.promo-card img {
+  margin: 0 auto;
+  display: block;
+}
 .home {
   background: @brand-light;
 }
-
+.home .slide1_title {
+  left: 65px;
+}
 // .promo {
 //   margin: 15px inherit;
 //   border: 1px solid black;
@@ -366,7 +375,7 @@ li.widget ol {
 }
 .banner .crest {
   background: url(img/nchs_watermark_big.png) #003161 no-repeat top center;
-  min-height: 80px;
+  min-height: 90px;
   padding: 0;
   margin: 0;
   background-size: 20%;
@@ -399,8 +408,8 @@ li.widget ol {
 // width: @banner-width/2;
 @banner-width: 320px;
 .banner {
-  position: relative;
-  top: -20px;
+  // position: relative;
+  // top: -20px;
   // width: 100%;
   // width: @banner-width + 30;
 }
@@ -975,6 +984,9 @@ input, {
 }
 
 @media (max-width:767px) {
+  .slider_section {
+    display: none;
+  }
   .info_title h3 {
     margin: 0;
     font-size: 22px;

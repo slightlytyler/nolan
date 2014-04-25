@@ -30,7 +30,7 @@ class nchs_individual_promo_Widget extends WP_Widget {
 
     echo $before_widget;
     echo '<div class="promo-card">';
-      if( !empty( $img_id ) ) { echo '<div class="promo-img"><img src="'.$img->get_image_src('full').'" /></div>'; }
+      if( !empty( $img_id ) ) { echo '<img src="'.$img->get_image_src('full').'" />'; }
       echo '<div class="promo-info">';
         if( !empty( $title ) ) { echo '<h3>'.$title.'</h3>'; }
         if( !empty( $msg ) ) { echo '<p>'.$msg.'</p>'; }
