@@ -25,11 +25,16 @@ include_once('includes/cpt-slide.php');
 include_once('includes/cpt-news.php');
 include_once('includes/cpt-athletics.php');
 
-include_once('widgets/athletics-widget.php');
-include_once('widgets/news-widget.php');
-include_once('widgets/sport-events-widget.php');
-include_once('widgets/sport-news-widget.php');
-include_once('widgets/subpages-widget.php');
+// include_once('widgets/athletics-widget.php');
+
+// include_once('widgets/news-widget.php');
+// register_widget( 'News_Widget' );
+// include_once('widgets/sport-events-widget.php');
+// register_widget( 'Sport_News_Widget' );
+// include_once('widgets/sport-news-widget.php');
+// register_widget( 'Sport_Events_Widget' );
+// include_once('widgets/subpages-widget.php');
+// register_widget( 'Subpages_Widget' );
 
 include_once('includes/NHCS_Posts2Posts.php');
 NHCS_Posts2Posts::init();
@@ -113,6 +118,13 @@ add_action( 'dashboard_glance_items' , 'vm_right_now_content_table_end' );
 /* 
  * Template Helpers
  */
+function nchs_get_meta_section() {
+  echo "<p class='meta'>";
+    the_date();
+    echo " | ";
+    the_author();
+  echo "</p>";
+}
 
 function nchs_people_thumbs_list( $title = null, $connection = null, $loop = null, $classes = null ) {
   // get_template_part('section', 'players');
@@ -433,14 +445,9 @@ class NHCS_ThemeSetup {
 
   public function nchs_widgets_init() {
     unregister_widget('WP_Widget_Archives');
-    unregister_widget('WP_Widget_Links');
+    // unregister_widget('WP_Widget_Links');
     unregister_widget('WP_Widget_Recent_Posts');
     unregister_widget('WP_Widget_Recent_Comments');
-    register_widget( 'Athletics_Widget' );
-    register_widget( 'News_Widget' );
-    register_widget( 'Sport_News_Widget' );
-    register_widget( 'Sport_Events_Widget' );
-    register_widget( 'Subpages_Widget' );
     register_sidebar( array(
       'name' => __( 'Sport Page Sidebar', 'nchs' ),
       'id' => 'sport-sidebar',

@@ -1,4 +1,15 @@
 <?php
+/*
+Plugin Name: NCHS Sport Events Widget
+Plugin URI: http://deepspacerobots.com/
+Description: Displays 5 most recent Events in the sport for the current sport page.
+Author: Taylor Young
+Version: 1
+Author URI: http://deepspacerobots.com/
+*/
+
+add_action( 'widgets_init', function(){ register_widget( 'Sport_Events_Widget' ); });
+
 class Sport_Events_Widget extends WP_Widget {
   function __construct() {
     parent::__construct(
