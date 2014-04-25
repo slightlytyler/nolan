@@ -206,26 +206,29 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Smart Archives Tempaltes
  - [x] Student Display for club template
  - [x] Fix up Sidebars / Widget Areas
- - [ ] Search Results Pages
+ - [x] Event Board Page Styles
+ - [x] Smart Archives Template Styles + Link Fix
+
  - [ ] Teacher Cards
  - [ ] Favicon
  - [ ] Archive Titles
- - [ ] Slides Taxonomy - Slideshow
- - [ ] Slideshow Page Template
- - [ ] Image Size Selection
- - [ ] Open Source (Github Streak)
- - [ ] Hyprtxt Example Website
+ - [ ] 404 Page
  - [ ] School Start Date Stuff (Optional?)
-
+ - [ ] Search Results Pages
 
 ## @notnow
 
- - [ ] Event Board Page Styles
- - [ ] Smart Archives Template Styles + Link Fix
+ - [ ] Slides Taxonomy - Slideshow
+ - [ ] Slideshows for Page Template
  - [ ] Refine Slide up Logo Banner
+ - [ ] Image Size Selection
+ - [ ] Open Source (Github Streak)
+ - [ ] Hyprtxt Example Website
+ - [ ] Link to CPT Date Archives
  - [ ] Patch Frontend Editor Plugin without File Modifications
  - [ ] WP Admin bar style search animation
  - [ ] Modal Forms
+
 
 ### Options
 
