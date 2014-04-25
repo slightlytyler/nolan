@@ -6,7 +6,7 @@ $slide = new CPT( [
   'slug' => 'slide',
 ], [
   'hierarchical' => 'true',
-  'supports' => [ 'title', 'page-attributes' ],
+  'supports' => [ 'title' ],
   'exclude_from_search' => 'true',
 ] );
 $slide->columns(array(

@@ -3,7 +3,7 @@
 $loop = new WP_Query( [
   'post_type' => 'slide',
   'orderby' => 'menu_order',
-  // 'posts_per_page' => $slides_number
+  'order' => 'ASC'
 ] );
 if ($loop->have_posts()): 
 ?>
