@@ -39,9 +39,12 @@ if ( have_posts() ) :
 					$microformat = 'c';
 				}
 			?>
-			<time itemprop="startDate" datetime="<?php eo_the_start($microformat); ?>"><?php eo_the_start($format); ?></time>
+			<strong>
+				<time itemprop="startDate" datetime="<?php eo_the_start($microformat); ?>"><?php eo_the_start($format); ?></time>
+				 @ <a href="<?php echo eo_get_venue_link(); ?>"><?php echo eo_get_venue_name(); ?></a>
+			</strong>
 			<?php
-				echo eo_get_event_meta_list();
+				// echo eo_get_event_meta_list();
 				the_excerpt();
 			?>
 		</div><!-- .event-entry-meta -->

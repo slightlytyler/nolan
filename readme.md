@@ -210,9 +210,10 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Smart Archives Template Styles + Link Fix
  - [x] Favicon
  - [x] 404 Page
+ - [x] Event Style + Header Titles
+ - [ ] Archive Titles
 
  - [ ] Teacher Cards
- - [ ] Archive Titles
  - [ ] School Start Date Stuff (Optional?)
  - [ ] Search Results Pages
 
