@@ -59,9 +59,6 @@ Any images or media uploaded to any section of the site will appear here.
 
 [Example](https://docs.google.com/spreadsheets/d/1_VHSGDt19QbriEOR55C1WwT1fIm1YPBHuekzsV1kJVs/edit?pli=1#gid=0)
 
-    @todo optional second title and description
-    @todo cache response in a transient
-    @idea sub-templates for better responsive display?
 
 #### Department
 
@@ -219,6 +216,9 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Search Widget Style
  - [ ] Promo Card Widget Style
  - [ ] Tagline, Mission and Banner Background Images
+ - [ ] Fix - Default Backgrounds
+ - [ ] Fix - Custom Page Headers not working
+ - [ ] Get Venue Metadata out of the header on venue pages
 
 ## @notnow
 
