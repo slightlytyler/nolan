@@ -13,5 +13,9 @@ if ( have_posts() ) :
   wp_pagenavi();
   wp_reset_postdata();
   // echo "<div class='clearfix'></div>";
+else:
+  echo '<h1>No results found</h1>';
+  echo '<p>Sorry, we can\'t seem to find anything relevant for that search term. Perhaps you would like to try again?</p>';
+  echo nchs_search_form( );
 endif;
 ?>

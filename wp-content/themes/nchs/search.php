@@ -4,6 +4,8 @@
   </div>
 <?php
 echo "<div class='page-content col-sm-7 col-md-8'>";
+  echo '<h1>Search Results</h1>';
+  echo nchs_search_form();
   get_template_part('loop-archive');
 echo "</div>";
 nchs_sidebar();

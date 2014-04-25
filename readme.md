@@ -210,6 +210,7 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Get Venue Metadata out of the header on venue pages
  - [x] Teacher Cards
  - [x] Relevanssi Search
+ - [x] Banner Sprites
 
  - [ ] School Start Date Stuff
  - [ ] Search Results Pages
@@ -219,6 +220,8 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Fix - Default Backgrounds
  - [ ] HP Slider Mobile View
  - [ ] Cards Mobile View
+ - [ ] Homepage and Search Results Pagination
+ - [ ] Hover activation of flexslider navigation
 
 ## @notnow
 

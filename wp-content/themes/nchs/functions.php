@@ -206,7 +206,9 @@ function nchs_student_loop( $meta_titles ) {
 }
 
 // Searchform
-function nchs_search_form( $form, $classes = null ) {
+function nchs_search_form( $form = null, $classes = null ) {
+  if ( $form == null ) $form = '';
+  if ( $classes == null ) $classes = '';
   $form = '<form class="' . $classes . '" role="search" method="get" id="searchform" action="'. home_url( '/' ) . '">
     <div class="form-group input-group">
       <input type="text" value="' . get_search_query() . '" name="s" id="s" class="form-control" placeholder="Search">

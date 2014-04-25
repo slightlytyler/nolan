@@ -31,13 +31,15 @@
     <p><button class="btn btn-info"><?php the_field('mission_link_text','options') ?></button></p>
   </div>
   <div class="col-sm-6 col-md-4 banner">
-    <h3>Events</h3>
+    <h3>Calendar</h3>
     <div class="banner-inner">
       <ul class="widgets">
         <?php if ( !dynamic_sidebar( 'homepage-ribbion' ) ) {} ?>
       </ul>
       <div class="clearfix"></div>
     </div>
+    <a href="#calenderLink" class="calendar-link">View Full Calendar</a>
+    <div class="crest"></div>
     <div class="banner-left"></div><div class="banner-right"></div>
   </div>
 </div>
