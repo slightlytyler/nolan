@@ -217,10 +217,10 @@ Clicking the add page button from these posts edit pages requires the user to se
 
 ## @notnow
 
- - [ ] Fix/Remove Custom Page Headers
  - [ ] Refine Slide up Logo Banner
  - [ ] Image Size Selection
  - [ ] WP Admin bar style search animation
+ - [ ] Fix/Remove Custom Page Headers
  - [ ] Slides Taxonomy - Slideshow
  - [ ] Slideshows for Page Template
  - [ ] Modal Forms
