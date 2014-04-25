@@ -240,7 +240,7 @@ li.widget ol {
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   height: 0;
   overflow: hidden;
 }
@@ -305,21 +305,32 @@ li.widget ol {
   max-width: 100%;
   // margin: 10px auto;
 }
+.info_title img {
+  width: 70px;
+  margin-right: 10px;
+}
 .home-top-wrap {
   background: white;
   padding-bottom: 30px;
 }
 .home-stripe {
-  background: @brand-gray;
+  background: url(img/mission-top-color.png) @brand-gray repeat-x 0px -40px;
   z-index: 1;
 }
 .mission {
-  margin: 20px inherit;
+  background: url(img/nchs_watermark_big.png) transparent no-repeat top center;
+  background-size: 30%;
+  margin: 0 inherit;
   color: @brand-light-gray;
 }
 .mission h2,
 .mission p {
   text-align: center;
+}
+.mission h2 {
+  margin: 15px;
+//   background: #545454;
+//   width: 100%;
 }
 .promo_card {
   width: 100% !important;
@@ -341,14 +352,14 @@ li.widget ol {
   text-align: center;
   width: 100%;
   margin: 0;
-  padding: 10px 0;
+  padding: 0 0 10px 0;
   text-align: center;
   background: @brand-blue;
 }
 .banner .crest {
   background: url(img/nchs_watermark_big.png) #003161 no-repeat top center;
-  min-height: 100px;
-  padding: 0 0 15px 0;
+  min-height: 80px;
+  padding: 0;
   margin: 0;
   background-size: 20%;
 }
@@ -940,6 +951,15 @@ input, {
  * Media Queries
  */
 
+@media (max-width:991px) {
+  .home-stripe {
+    background-position: 0 -5px;
+  }
+  .mission h2 {
+    font-size: 30px;
+  }
+}
+
 @media (min-width:768px) {
   .home-stripe {
     height: 240px;
@@ -947,6 +967,16 @@ input, {
 }
 
 @media (max-width:767px) {
+  .info_title h3 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: left;
+  }
+  .info_title img {
+    display: block;
+    float: left;
+  }
   #menu-main-menu {
     padding-left: 0;
   }

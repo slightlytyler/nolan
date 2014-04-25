@@ -211,17 +211,25 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Teacher Cards
  - [x] Relevanssi Search
  - [x] Banner Sprites
+ - [x] Search Results Pages
+ - [x] Search Widget Style
+ - [x] Tagline, Mission and Banner Background Images
 
- - [ ] School Start Date Stuff
- - [ ] Search Results Pages
- - [ ] Search Widget Style
+
+ - [ ] School Start Date Stuff 
  - [ ] Promo Card Widget Style
- - [ ] Tagline, Mission and Banner Background Images
  - [ ] Fix - Default Backgrounds
- - [ ] HP Slider Mobile View
- - [ ] Cards Mobile View
  - [ ] Homepage and Search Results Pagination
  - [ ] Hover activation of flexslider navigation
+ - [ ] Button Font/Style
+ - [ ] Meta information on Archives and Single (Authors, Taxa)
+ - [ ] Adjust Mission Styles to content
+
+## Mobile View Issues
+
+ - [ ] Tagline Section 
+ - [ ] HP Slider
+ - [ ] Cards
 
 ## @notnow
 
