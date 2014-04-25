@@ -187,11 +187,8 @@ Clicking the add page button from these posts edit pages requires the user to se
 
 ## @later
 
-- Cache Table Responses
-- Event Board Page -http://wordpress.org/plugins/event-organiser-posterboard/
 - Calendar Page
 - Fix Calendar Widget Links
-- Drag and Drop Page Heiarchy
 - Fix Years of Service & Class Stuff
 - Header text work (Page Field?)
 - Video Shortcode (Football Page)
@@ -203,17 +200,15 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Event Listing
  - [x] Headers
  - [x] Slider
+ - [x] Slide Sorting (Page Sorting too)
  - [x] Slide up Logo Banner
- - [ ] Refine Slide up Logo Banner
+ - [x] Event Board Page
  - [x] Smart Archives Tempaltes
- - [ ] Smart Archives Template Styles + Link Fix
- - [ ] Teacher Cards
  - [x] Student Display for club template
  - [x] Fix up Sidebars / Widget Areas
- - [ ] Patch Frontend Editor Plugin without File Modifications
  - [ ] Search Results Pages
+ - [ ] Teacher Cards
  - [ ] Favicon
-
  - [ ] Archive Titles
  - [ ] Slides Taxonomy - Slideshow
  - [ ] Slideshow Page Template
@@ -221,8 +216,16 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Open Source (Github Streak)
  - [ ] Hyprtxt Example Website
  - [ ] School Start Date Stuff (Optional?)
- - [ ] WP Admin bar style search animation
 
+
+## @notnow
+
+ - [ ] Event Board Page Styles
+ - [ ] Smart Archives Template Styles + Link Fix
+ - [ ] Refine Slide up Logo Banner
+ - [ ] Patch Frontend Editor Plugin without File Modifications
+ - [ ] WP Admin bar style search animation
+ - [ ] Modal Forms
 
 ### Options
 
