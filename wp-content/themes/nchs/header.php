@@ -52,7 +52,7 @@ elseif( is_single() ) {
   get_template_part('head', 'page');
 }
 else {
-  echo "<div class='slider_section'>";
+  echo "<div class='slider_section'></div>";
 }
 
 // print_r($pt);
