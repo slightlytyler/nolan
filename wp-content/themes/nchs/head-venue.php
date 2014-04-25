@@ -5,7 +5,7 @@
     if( get_query_var('event-venue') )
       printf( __( '<h1>%s Events</h1>', 'eventorganiser' ), '<span>' .eo_get_venue_name($venue_id). '</span>' );
     else
-      echo '<h1>Upcoming Events</h1>';
+      echo '<h1>' . get_field( 'events_title', 'options' ) . '</h1>';
 ?>
   </div>
 <?php

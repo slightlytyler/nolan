@@ -38,6 +38,9 @@ elseif( is_archive() ) {
   else {
     ?>
     <div class='slider_section'>
+      <div class="slide1_title">
+        <h3><?php the_field( $pt . '_title', 'options' ) ?></h3>
+      </div>
       <img src="<?php echo get_field( $pt . '_header', 'options')['sizes']['nchs-slide-foreground'] ?>" />
     </div>
     <?php

@@ -211,7 +211,7 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Favicon
  - [x] 404 Page
  - [x] Event Style + Header Titles
- - [ ] Archive Titles
+ - [x] Archive Titles
 
  - [ ] Teacher Cards
  - [ ] School Start Date Stuff (Optional?)
