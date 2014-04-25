@@ -216,6 +216,9 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Teacher Cards
  - [ ] School Start Date Stuff (Optional?)
  - [ ] Search Results Pages
+ - [ ] Search Widget Style
+ - [ ] Promo Card Widget Style
+ - [ ] Tagline, Mission and Banner Background Images
 
 ## @notnow
 

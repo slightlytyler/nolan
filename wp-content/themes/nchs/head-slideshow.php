@@ -7,7 +7,7 @@ $loop = new WP_Query( [
 ] );
 if ($loop->have_posts()): 
 ?>
-<div class='slider_section'>404040
+<div class='slider_section'>
   <div class='flexslider'>
     <ul class='slides'>
 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
