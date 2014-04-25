@@ -23,21 +23,21 @@
 
 var table_done = function( data ) {
   // console.log( JSON.stringify( data ) );
-  var jQuerytable = jQuery( '<table />' ).addClass( 'table table-striped' );
+  var table = jQuery( '<table />' ).addClass( 'table table-striped' );
   // console.log( data );
   jQuery.each( data.feed.entry, function ( i, v ) {
-    var jQueryrow = jQuery( '<tr />' );
-    jQuery.each( v.content.jQueryt.split( ',' ), function ( idx, val ){
+    var row = jQuery( '<tr />' );
+    jQuery.each( v.content.$t.split( ',' ), function ( idx, val ){
       var value = val.split( ':' )
-      var jQuerycell = jQuery( '<td />' );
+      var cell = jQuery( '<td />' );
       if( i === 0 )
-        jQuerycell = jQuery( '<th />' );
-      jQuerycell.text( value[1].trim() );
-      jQueryrow.append( jQuerycell );
+        cell = jQuery( '<th />' );
+      cell.text( value[1].trim() );
+      row.append( cell );
     });
-    jQuerytable.append( jQueryrow );
+    table.append( row );
   });
-  jQuery('.spreadsheet').append( jQuerytable );
+  jQuery('.spreadsheet').append( table );
 }
 
 var reset = true;
@@ -115,7 +115,7 @@ if( jQuery('body').hasClass('page-template-page-table-php') === true ) {
 }
 
 jQuery('.nchs_banner').hover(function(){
-      jQuery(this).css({'top':'0px'});
+  jQuery(this).css({'top':'0px'});
 }, function(){
   jQuery(this).css({'top':'-119px'});
 });

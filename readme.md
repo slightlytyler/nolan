@@ -209,6 +209,7 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] 404 Page
  - [x] Event Style + Header Titles
  - [x] Archive Titles
+ - [x] Get Venue Metadata out of the header on venue pages
 
  - [ ] Teacher Cards
  - [ ] School Start Date Stuff (Optional?)
@@ -218,7 +219,7 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Tagline, Mission and Banner Background Images
  - [ ] Fix - Default Backgrounds
  - [ ] Fix - Custom Page Headers not working
- - [ ] Get Venue Metadata out of the header on venue pages
+
 
 ## @notnow
 

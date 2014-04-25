@@ -10,7 +10,7 @@
   </div>
 <?php
   if( $venue_description = eo_get_venue_description( $venue_id ) )
-    echo '<div class="venue-archive-meta">'.$venue_description.'</div>';
+    // echo '<div class="venue-archive-meta">'.$venue_description.'</div>';
   echo eo_get_venue_map( $venue_id, array('width'=>"100%") );
 ?>
   </div>

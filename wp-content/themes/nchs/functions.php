@@ -261,25 +261,47 @@ function nchs_display_cards( $post ) {
     $title = ucfirst($post);
     echo "<h2>$title</h2>";
     while ( $connected->have_posts() ) : $connected->the_post(); 
-      echo '<div class="card">';
-      if( get_field('title') == "Department Head" )
-        echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
+      if ( $post == 'ministry' )
+        nchs_minister_card();
       else
-        echo '<h3>'.get_the_title().'</h3>';
-      echo sprintf( "<div class='col-sm-4 nopad'>%s</div>", get_the_post_thumbnail() );
-?>
-      <div class='col-sm-8 nopad'>
-        <p><strong>Teaches:</strong> <?php the_field('teaches'); ?></p>
-        <p><strong>Education:</strong> <?php the_field('education'); ?></p>
-        <p><strong><?php echo date('Y') - get_field('since'); ?> Years of service</strong></p>
-      </div>
-<?php
-      echo "<div class='clearfix'></div>";
-    echo "</div>";
+        nchs_teacher_card();
     endwhile;
     wp_reset_postdata();
   endif;
 }
+
+function nchs_minister_card() {
+  echo '<div class="card">';
+    echo sprintf( "<div class='col-sm-4 nopad'>%s</div>", get_the_post_thumbnail() );
+    echo "<div class='card-info col-sm-8 nopad'>";
+      echo '<h3>' . get_field( 'title' ) . '</h3>';
+      the_title( '<h5>', '</h5>' );
+    echo "</div>";
+    echo "<div class='clearfix'></div>";
+  echo "</div>";
+}
+
+function nchs_teacher_card() {
+  echo '<div class="card">';
+  if( get_field('title') == "Department Head" )
+    echo '<h3>'.get_field('title').' - '.get_the_title().'</h3>';
+  else
+    echo '<h3>'.get_the_title().'</h3>';
+    echo sprintf( "<div class='col-sm-4 nopad'>%s</div>", get_the_post_thumbnail() );
+?>
+    <div class='card-info col-sm-8 nopad'>
+      <p><strong>Teaches:</strong> <?php the_field('teaches'); ?></p>
+      <p><strong>Education:</strong><br><?php the_field('education'); ?></p>
+      <?php if ( get_field('recognitions') ) : ?>
+        <p><strong>Recognitions:</strong><br><?php the_field('recognitions'); ?></p>
+      <?php endif; ?>
+      <p><strong><?php echo date('Y') - get_field('since'); ?> Years of service</strong></p>
+    </div>
+<?php
+    echo "<div class='clearfix'></div>";
+  echo "</div>";
+}
+
 
 include_once('includes/Bootstrap_Walker.php');
 function nhcs_get_nav( $menu, $mobile_only = null ) {
