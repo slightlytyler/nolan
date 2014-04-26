@@ -100,10 +100,26 @@ if( jQuery('body').hasClass('page-template-page-table-php') === true ) {
   gdata.io.handleScriptLoaded = table_done;
 }
 
-jQuery('.nchs_banner').hover(function(){
+$nchs_banner = jQuery( '.nchs_banner' );
+var down = false;
+if( jQuery('body').hasClass('home') ) {
+  setTimeout(function() {
+    $nchs_banner.animate({'top':'0px'});
+    down = true;
+  }, 1000);
+}
+
+jQuery('.home a').click( function() {
+  console.log( down );
+  if( down )
+    $nchs_banner.css({'top':'-119px'});
+});
+
+$nchs_banner.hover( function() {
   jQuery(this).css({'top':'0px'});
 }, function(){
   jQuery(this).css({'top':'-119px'});
+  down = false;
 });
 
 jQuery('.flexslider').flexslider({

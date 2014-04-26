@@ -168,7 +168,7 @@ Drag and drop ordering of heiarchal post types. (Slides and Pages)
 
 #### Relevanssi
 
-Search Indexing, better search results
+Search Indexing, better search results. If the search function starts to act odd, re-index the content.
 
 #### Link Mananger
 
@@ -214,9 +214,11 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [x] Search Results Pages
  - [x] Search Widget Style
  - [x] Tagline, Mission and Banner Background Images
+ - [x] Foot Styles
+ - [x] Promo Card Widget Style
+ - [ ] Refine Slide up Logo Banner
 
  - [ ] School Start Date Stuff 
- - [ ] Promo Card Widget Style
  - [ ] Fix - Default Backgrounds
  - [ ] Homepage and Search Results Pagination
  - [ ] Button Font/Style
@@ -228,10 +230,11 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Tagline Section 
  - [ ] HP Slider
  - [ ] Cards
+ - [ ] Logo
 
 ## @notnow
 
- - [ ] Refine Slide up Logo Banner
+
  - [ ] Image Size Selection
  - [ ] Proper Page and Slideshow Image Sizes
  - [ ] WP Admin bar style search animation
@@ -245,10 +248,9 @@ Clicking the add page button from these posts edit pages requires the user to se
  - [ ] Better Galleries (flickr or ?)
  - [ ] Link to CPT Date Archives
  - [ ] Past Events in Calendar widget do not link correctly
+
  - [ ] Patch Frontend Editor Plugin without Plugin File Modifications
  - [ ] Hover activation of flexslider navigation
- - [ ] Open Source (Github Streak)
- - [ ] Hyprtxt Example Website
 
 
 ### Options
