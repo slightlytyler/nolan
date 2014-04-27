@@ -40,7 +40,7 @@ body #event-board-items .event-box {
   background: url("img/NCHSCrest.png");
   width: 200px;
   height: 196px;
-  z-index: 1001;
+  z-index: 501;
   background-size: 100%;
   left: 5px;
   top: -119px;
@@ -159,6 +159,7 @@ blockquote::after{
   font-family: @font-family-serif;
   background: @brand-light;
   border-right: 1px solid @brand-border;
+  overflow: auto;
 }
 .page-content p,
 .page-content ul,
@@ -324,9 +325,11 @@ li.widget ol {
 }
 .mission {
   background: url(img/nchs_watermark_big.png) transparent no-repeat top center;
-  background-size: 30%;
+  background-size: 20%;
   margin: 0 inherit;
   color: @brand-light-gray;
+  min-height: 240px;
+  background-position: center 70px, center;
 }
 .mission h2,
 .mission p {
@@ -363,6 +366,9 @@ li.widget ol {
 //   margin: 15px inherit;
 //   border: 1px solid black;
 // }
+.promos {
+  min-height: 600px;
+}
 
 /*
  * Homepage Banner
@@ -658,13 +664,14 @@ th {
   background: black;
   position: relative;
   z-index: 500;
-}
-.slides {height: 254px;}
-.slider_section {
   background: url(img/slide_bg.jpg) black no-repeat top center;
+  font-family: @font-family-serif;
+}
+.slides {
+  height: 254px;
 }
 .flexslider .slide_wrapper {
-  height: 345px;
+  height: 332px;
 }
 .slide_wrapper {
   *zoom: 1;
@@ -679,16 +686,16 @@ th {
   clear: both;
 }
 .slide1_title h3 {
-  color: #c3e1ff;
+  color: @brand-primary;
   font-family: @font-family-trajan;
   font-style: normal;
+  letter-spacing: 1px;
+  // font-family: @font-family-serif;
+  // font-style: italic;
 }
 .slide1_title {
-  color: white;
   font-size: 16px;
   line-height: 18px;
-  font-family: "ChronicleTextG1SemiItalic";
-  font-style: italic;
   font-weight: bold;
   left: 15px;
   top: 128px;

@@ -43,7 +43,7 @@
   </div>
 </div>
 <div class="clearfix"></div>
-<div class="col-sm-6 col-md-8 nopad">
+<div class="promos col-sm-6 col-md-8 nopad">
   <?php if ( !dynamic_sidebar( 'homepage-bottom' ) ) {} ?>
 </div>
 <?php get_footer(); ?>

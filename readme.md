@@ -234,6 +234,7 @@ Clicking the add page button from these posts edit pages requires the user to se
 
 ## @notnow
 
+ - [ ] Slide Text Color Issue
 
  - [ ] Image Size Selection
  - [ ] Proper Page and Slideshow Image Sizes
