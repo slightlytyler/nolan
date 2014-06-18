@@ -17,6 +17,29 @@ Version: 1.0
 @import "css/lib/bootstrap/bootstrap";
 @import "css/lib/bootstrap-social";
 @import "css/nchs";
+@import "css/lib/grid";
+
+@columns: 12;
+@column-width: 60;
+@gutter-width: 20;
+@total-width: 100%;
+@outer-width: 1018px;
+
+.fa-facebook-square{
+  color: #3B5998;
+}
+
+.fa-twitter-square{
+  color: #4099ff;
+}
+
+.fa-google-plus-square{
+  color: #d34836;
+}
+
+.fa-pinterest-square{
+  color: #c92228;
+}
 
 .sport-news h3,
 .sport-news h4,
@@ -506,12 +529,16 @@ body.page-template-page-sport-php {
   border-radius: 0;
   min-height: 0;
   margin-bottom: 0; 
+  background-color: @navbar-inverse-bg;
 }
 .navbar li.icon:hover {
   background: none;
 }
 .navbar li:hover {
   background: @brand-blue;
+}
+.navbar li.social-icon:hover{
+  background-color: @navbar-inverse-bg;
 }
 .navbar-top ul > li > a {
   padding: 10px 10px 10px 10px;
@@ -532,6 +559,11 @@ body.page-template-page-sport-php {
 .navbar-nav>li>a {
   padding: 10px;
 }
+.navbar-collapse{
+  max-width: @outer-width;
+  margin: 0 auto;
+  position: relative;;
+}
 .container>.navbar-header,
 .container-fluid>.navbar-header,
 .container>.navbar-collapse,
@@ -550,7 +582,6 @@ body.page-template-page-sport-php {
   display: block;
 }
 .nav i {
-  font-size: 28px;
 }
 .navbar-inverse .navbar-nav > li > a  {
   line-height: 21px;
@@ -571,10 +602,15 @@ body.page-template-page-sport-php {
   margin: 0;
   border: none;
 }
+
+.social-nav{
+  margin-top: 4px;
+}
+
 body .navbar-top ul > li > a {
   padding: 4px 8px;
   line-height: 33px;
-  font-size: 14px;
+  font-size: 10px;
 }
 body .navbar-top ul.dropdown-menu > li > a {
   padding: 4px 8px;

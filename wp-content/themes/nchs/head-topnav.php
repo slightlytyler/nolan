@@ -1,5 +1,4 @@
 <div class="navbar navbar-top"><!-- navbar-fixed-top -->
-  <a href="/" class='nchs_banner'></a>
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-bar"></span>
@@ -8,35 +7,43 @@
     </button>
   </div>
   <div class="navbar-collapse collapse navbar-inverse">
+  <a href="/" class='nchs_banner'></a>
     <?php
       nhcs_get_nav( 'nchs-main-menu' );
       nhcs_get_nav( 'nchs-nav-menu', true ); // mobile_only
-      echo nchs_search_form( '', 'navbar-form navbar-right collapse' );
+      echo nchs_search_form( '', 'navbar-form navbar-right' );
     ?>
     <ul class="social-nav nav navbar-nav navbar-right hidden-xs">
-      <li>
+      <li class="social-icon">
         <a href="#facebook">
-          <i class='fa fa-facebook-square'></i>
+          <span class="fa-stack fa">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-facebook-square fa-stack-2x"></i>
+          </span>
         </a>
       </li>
-      <li>
+      <li class="social-icon">
         <a href="#twitter">
-          <i class='fa fa-twitter-square'></i>
+          <span class="fa-stack fa">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-twitter-square fa-stack-2x"></i>
+          </span>
         </a>
       </li>
-      <li>
+      <li class="social-icon">
         <a href="#gplus">
-          <i class='fa fa-google-plus-square'></i>
+           <span class="fa-stack fa">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-google-plus-square fa-stack-2x"></i>
+          </span>
         </a>
       </li>
-      <li>
+      <li class="social-icon">
         <a href="#pinterest">
-          <i class='fa fa-pinterest-square'></i>
-        </a>
-      </li>
-      <li data-toggle="collapse" data-target=".navbar-form">
-        <a href="#search">
-          <i class="fa fa-search" style='font-size: 26px;'></i>
+           <span class="fa-stack fa">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-pinterest-square fa-stack-2x"></i>
+          </span>
         </a>
       </li>
     </ul>
