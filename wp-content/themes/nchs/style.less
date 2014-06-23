@@ -138,8 +138,27 @@ body #event-board-items .event-box {
   bottom: 0;
   padding: 0 10px;
 }
+.coach-picture{
+  height: 326px;
+  border-left: 3px solid #f9f9f9;
+  border-right: 3px solid #f9f9f9;
+}
+.coach-picture .info{
+  width: 100%;
+  background-color: #bbb;
+  padding: 10px;
+  height: 95px;
+}
+.coach-picture img{
+  width: 100%;
+}
+.coach-picture .info a{
+  display: block;
+}
 .coach-picture .info h3 {
   width: 100%;
+  font-size: 14px;
+  margin: 0;
 }
 .player-picture .number {
   font-size: 21px;
@@ -329,6 +348,9 @@ li.widget {
   border-bottom: 1px solid @brand-light-gray;
   padding: 0 0 15px 0;
 }
+li.widget:last-child{
+  border-bottom: none;
+}
 li.widget h3 {
   margin-left: 5px;
 }
@@ -361,6 +383,18 @@ li.widget ol {
   font-size: 42px;
   background: rgba(255,255,255,0.8);
   padding: 5px 15px 5px 10px;
+}
+.football-schedule tbody{
+  background-color: white;
+  border: 1px solid #ddd;
+  font-family: @font-family-sans-serif;
+}
+.football-schedule tr:first-child{
+  border-bottom: 1px solid #ddd;
+  text-transform: uppercase;
+}
+.football-schedule td{
+  padding: 10px 15px !important;
 }
 
 /*

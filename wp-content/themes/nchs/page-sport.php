@@ -6,9 +6,9 @@ echo '<div class="outer-container">';
     get_template_part( 'section', 'news' );
     get_template_part( 'section', 'schedule' );
     echo "<div class='col-sm-12'>";
-      get_template_part('loop');
+      #get_template_part('loop');
       nchs_people_thumbs_list( 'Coaches', 'coach_to_pages', 'nchs_coach_loop', 'coach-picture col-xs-6 col-sm-4 col-md-3 col-lg-4' );
-      nchs_people_thumbs_list( 'Players', 'student_to_pages', 'nchs_player_loop', 'player-picture col-xs-4 col-sm-3 col-lg-2' );
+      #nchs_people_thumbs_list( 'Players', 'student_to_pages', 'nchs_player_loop', 'player-picture col-xs-4 col-sm-3 col-lg-2' );
     echo '</div>';
   echo '</div>';
 ?>

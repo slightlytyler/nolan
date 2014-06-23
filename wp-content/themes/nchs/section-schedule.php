@@ -7,8 +7,8 @@ $events = eo_get_events(array(
 ));
 if($events):
   echo "<div class='col-sm-12'>";
-    echo '<h1>Schedule</h1>';
-    echo '<table class="table table-striped"><tbody>
+    echo '<h2>Schedule</h2>';
+    echo '<table class="table football-schedule"><tbody>
     <tr>
       <th>Date</th>
       <th>Time</th>

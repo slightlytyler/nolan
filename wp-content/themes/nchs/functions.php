@@ -177,7 +177,7 @@ function nchs_coach_loop( $meta_titles ) {
   echo '<div class="info">';
     echo '<h3>'.get_the_title().'</h3>';
     the_field('wpcf-coach-position');
-    echo sprintf(' | <a href="%s">Read Bio &raquo;</a>', get_permalink() );
+    echo sprintf('<a href="%s">Read Bio &raquo;</a>', get_permalink() );
   echo '</div>';
 }
 
