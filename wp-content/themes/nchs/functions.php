@@ -145,12 +145,18 @@ function nchs_people_thumbs_list( $title = null, $connection = null, $loop = nul
   ] );
   if ( $student_query->have_posts() ) :
     echo '<h2>' . $title . '</h2>';
-    while ( $student_query->have_posts() ) : $student_query->the_post(); 
-      echo '<div class="' . $classes . ' nopad">';
-      $loop( $meta_titles );
-      nchs_the_person_image( get_field('sport_pictures') );
+      echo '<div class="coach_slider">';
+        echo '<i class="previous fa fa-caret-left"></i>';
+        echo '<ul class="slides">';
+          while ( $student_query->have_posts() ) : $student_query->the_post(); 
+            echo '<li class="' . $classes . ' nopad">';
+            $loop( $meta_titles );
+            nchs_the_person_image( get_field('sport_pictures') );
+            echo '</li>';
+          endwhile;
+        echo '</ul>';
+        echo '<i class="next fa fa-caret-right"></i>';
       echo '</div>';
-    endwhile;
     wp_reset_postdata();
     echo '<div class="clearfix"></div>';
   endif;

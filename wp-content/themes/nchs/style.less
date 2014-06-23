@@ -126,7 +126,33 @@ body #event-board-items .event-box {
 }
 
 @brand-border: #dbdbdb;
-
+.coach_slider{
+  position: relative;
+  width: calc(100% - 3.5em);
+}
+.coach_slider .flex-prev, .coach_slider .flex-next{
+  display: none;
+}
+.coach_slider .previous, .coach_slider .next{
+  content: '';
+  font-size: 36px;
+  color: #2b7bc9;
+  line-height: 0;
+  position: absolute;
+  width: 20px;
+  top: 0;
+  background-color: white;
+}
+.coach_slider .previous{
+  text-align: right;
+  padding: 163px 4px 163px 0;
+  left: -24px;
+}
+.coach_slider .next{
+  text-align: left;
+  padding: 163px 0 163px 4px;
+  right: -24px;
+}
 .coach-picture,
 .player-picture {
   position: relative;
@@ -249,7 +275,6 @@ blockquote::after{
   font-family: @font-family-serif;
   background: @brand-light;
   border-right: 1px solid @brand-border;
-  overflow: auto;
 }
 .page-content p,
 .page-content ul,

@@ -129,6 +129,24 @@ jQuery('.flexslider').flexslider({
   manualControls: ".control-nav button"
 });
 
+jQuery('.coach_slider').flexslider({
+  animation: "slide",
+  controlNav: false,
+  slideshow: false,
+  itemWidth: 350,
+  minItems: 3,
+  maxItems: 3,
+  directionNav: true
+});
+
+jQuery('.coach_slider .next').click(function(){
+  jQuery('.flex-next')[0].click();
+});
+
+jQuery('.coach_slider .previous').click(function(){
+  jQuery('.flex-prev')[0].click();
+});
+
 jQuery( '.widget_search' )
   .not( 'h3' )
   .find( '.form-group' )
