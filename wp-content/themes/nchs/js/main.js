@@ -125,6 +125,7 @@ $nchs_banner.hover( function() {
 jQuery('.flexslider').flexslider({
   animation: "slide",
   controlNav: true,
+  slideshow: false,
   manualControls: ".control-nav button"
 });
 

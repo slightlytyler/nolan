@@ -128,6 +128,9 @@ img {
 .clear {
   clear:both
 }
+.navbar-main{
+  text-align: center;
+}
 .single .navbar-main {
   border-top: 0;
 }
@@ -327,6 +330,7 @@ li.widget ol {
 .info_title {
   margin: 0;
   max-width: 100%;
+  border-bottom: 32px solid white;
 }
 .info_title h3 {
   text-align: center;
@@ -339,8 +343,10 @@ li.widget ol {
   margin-right: 10px;
 }
 .home-top-wrap {
-  background: white;
   padding-bottom: 30px;
+  max-width: @outer-width;
+  margin: 0 auto;
+  float: none;
 }
 .home-stripe {
   background: url(img/mission-top-color.png) @brand-gray repeat-x 0px -40px;
@@ -603,8 +609,9 @@ body.page-template-page-sport-php {
   border: none;
 }
 
-.social-nav{
+.navbar-nav.social-nav{
   margin-top: 4px;
+  margin-right: -10px !important;
 }
 
 body .navbar-top ul > li > a {
@@ -625,6 +632,10 @@ body .navbar-top ul.dropdown-menu > li > a {
 //   padding: 0px 10px;
 // }
 
+.nchs-nav{
+  display: inline-block;
+  float: none;
+}
 .navbar-inverse .nchs-nav > li > a:hover, .navbar-inverse .nchs-main > li > a:hover {
   color: white;
 }
@@ -708,6 +719,8 @@ th {
 }
 .flexslider .slide_wrapper {
   height: 332px;
+  max-width: @outer-width;
+  margin: 0 auto;
 }
 .slide_wrapper {
   *zoom: 1;
