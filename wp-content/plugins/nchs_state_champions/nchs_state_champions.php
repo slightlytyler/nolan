@@ -26,7 +26,7 @@ class nchs_state_champions_Widget extends WP_Widget {
       <h4>'.$title.'</h4>
       <div class="dates_box">'.$text.'</div>
     </div>';
-
+    echo '<div class="crest"></div>';
 	  echo $content;
 
   	echo $after_widget;

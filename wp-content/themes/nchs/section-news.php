@@ -13,12 +13,12 @@ if( $news_query->have_posts() ) :
       echo "<div class='sport-news'>";
     while ( $news_query->have_posts() ) : $news_query->the_post();
       if( $news_query->current_post === 0 ) :
-        echo "<div class='col-md-12'>";
+        echo "<div class='col-md-12 athletics-post'>";
           echo get_the_post_thumbnail( $post->ID, 'nchs-admin' );
           echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), get_the_date() );
         echo "</div>";
       else :
-        echo "<div class='col-md-6'>";
+        echo "<div class='col-md-6 athletics-post'>";
           echo get_the_post_thumbnail( $post->ID, 'nchs-admin' );
           echo sprintf( "<h4><a href='%s'>%s</a></h4><p>%s</p>", get_permalink(), get_the_title(), get_the_date() );
         echo "</div>";

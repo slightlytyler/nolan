@@ -5,7 +5,7 @@
 		<?php else: ?>
 			<div class='slides'>
 			<?php endif; ?>
-			<div class='slide_wrapper'>
+			<div class='slide_wrapper outer-container'>
 				<div class='slide1_title'>
 					<?php $parents = get_post_ancestors( $post->ID );?>
 					<?php $section_title = get_the_title($parents[count($parents)-1])?>
